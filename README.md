@@ -72,6 +72,29 @@ The email forms work out-of-the-box (they show a success state) but don't store 
 - **Branding/colors:** edit the CSS variables in `:root` at the top of `assets/css/styles.css`.
 - **Custom domain:** add a `CNAME` file with your domain and set it in Settings → Pages.
 
+## 🚀 When (and how) to move to Vercel
+
+You do **not** need Vercel today — this site is pure static files, which GitHub Pages serves for free.
+Consider migrating only when the site stops being "just files" and needs a **backend**, for example:
+
+- Store collected emails in **your own database** instead of Formspree/Mailchimp
+- Generate the full NIL report as a **server-rendered PDF**
+- Add **athlete accounts** so users can save results
+- Add a **paid tier** with Stripe checkout
+- Rebuild the front end in a framework like **Next.js**
+
+If you reach that point, migrating is quick because the code is plain and portable:
+
+1. Create a free account at [vercel.com](https://vercel.com) and click **"Add New → Project"**.
+2. **Import this GitHub repo.** Vercel auto-detects a static site — no build settings needed
+   (Framework Preset: *Other*; Output dir: project root).
+3. Click **Deploy**. You get a live `*.vercel.app` URL immediately, plus a preview URL on every PR.
+4. Add your custom domain in Vercel → **Settings → Domains** (it manages HTTPS for you).
+5. Add backend features as serverless functions under an `/api` folder when you need them.
+
+You can keep GitHub Pages and Vercel pointed at the same repo during a transition, then switch your
+domain's DNS to Vercel when ready. **Netlify** and **Cloudflare Pages** are equivalent alternatives.
+
 ## ⚠️ Disclaimer
 
 Estimates are informational only — not a guarantee of earnings and not financial, legal, tax or eligibility
