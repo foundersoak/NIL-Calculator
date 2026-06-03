@@ -1,0 +1,58 @@
+{
+  "_comment": "NIL athlete dataset. Figures are estimated 12-month NIL valuations based on public reporting and/or our model — not amounts paid. 'reported: true' means a public figure was cited (see source). Add athletes here and re-run `node scripts/build.js` to regenerate pages + sitemap. Keep data accurate: each page must offer real value to rank (avoid bulk/fabricated entries).",
+  "updated": "2026-06-03",
+  "teams": {
+    "texas-longhorns":   { "name": "Texas Longhorns", "conference": "SEC", "sport": "Football" },
+    "ohio-state-buckeyes": { "name": "Ohio State Buckeyes", "conference": "Big Ten", "sport": "Football" },
+    "byu-cougars":       { "name": "BYU Cougars", "conference": "Big 12", "sport": "Men's Basketball" },
+    "lsu-tigers":        { "name": "LSU Tigers", "conference": "SEC", "sport": "Multiple" },
+    "usc-trojans":       { "name": "USC Trojans", "conference": "Big Ten", "sport": "Women's Basketball" }
+  },
+  "athletes": [
+    {
+      "slug": "arch-manning",
+      "name": "Arch Manning",
+      "sport": "Football",
+      "position": "Quarterback",
+      "team": "texas-longhorns",
+      "level": "power",
+      "followers": { "instagram": 240000, "tiktok": 0, "x": 95000, "youtube": 0 },
+      "engagement": 6,
+      "valuation": 5400000,
+      "reported": true,
+      "source": "On3 NIL Valuations (2026)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/nil-valuations/",
+      "blurb": "The Texas quarterback and member of the Manning football dynasty holds the highest NIL valuation of any college athlete heading into 2026, driven by elite name recognition and a blue-chip program."
+    },
+    {
+      "slug": "jeremiah-smith",
+      "name": "Jeremiah Smith",
+      "sport": "Football",
+      "position": "Wide Receiver",
+      "team": "ohio-state-buckeyes",
+      "level": "power",
+      "followers": { "instagram": 300000, "tiktok": 120000, "x": 80000, "youtube": 0 },
+      "engagement": 7,
+      "valuation": 4200000,
+      "reported": true,
+      "source": "On3 NIL Valuations (2026)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/nil-valuations/",
+      "blurb": "After a standout freshman season, the Ohio State receiver became the first college athlete on a Red Bull can and signed with Adidas, EA Sports, Nintendo and more — fueling a top-tier NIL valuation."
+    },
+    {
+      "slug": "aj-dybantsa",
+      "name": "AJ Dybantsa",
+      "sport": "Men's Basketball",
+      "position": "Guard/Forward",
+      "team": "byu-cougars",
+      "level": "power",
+      "followers": { "instagram": 350000, "tiktok": 90000, "x": 40000, "youtube": 0 },
+      "engagement": 6.5,
+      "valuation": 4200000,
+      "reported": true,
+      "source": "On3 NIL Valuations (2026)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/basketball/",
+      "blurb": "The BYU freshman phenom is among the highest-valued basketball players in the country, with a valuation rivaling the top college football stars."
+    }
+  ]
+}

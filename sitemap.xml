@@ -1,18 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://foundersoak.github.io/nil-calculator/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://foundersoak.github.io/nil-calculator/privacy.html</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
-  <url>
-    <loc>https://foundersoak.github.io/nil-calculator/terms.html</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
+  <url><loc>https://foundersoak.github.io/NIL-Calculator/</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://foundersoak.github.io/NIL-Calculator/athletes/</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://foundersoak.github.io/NIL-Calculator/privacy.html</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://foundersoak.github.io/NIL-Calculator/terms.html</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://foundersoak.github.io/NIL-Calculator/athlete/arch-manning/</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://foundersoak.github.io/NIL-Calculator/athlete/jeremiah-smith/</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://foundersoak.github.io/NIL-Calculator/athlete/aj-dybantsa/</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://foundersoak.github.io/NIL-Calculator/team/texas-longhorns/</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://foundersoak.github.io/NIL-Calculator/team/ohio-state-buckeyes/</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://foundersoak.github.io/NIL-Calculator/team/byu-cougars/</loc><changefreq>weekly</changefreq></url>
 </urlset>

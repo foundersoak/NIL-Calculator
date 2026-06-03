@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://foundersoak.github.io/nil-calculator/sitemap.xml
+Sitemap: https://foundersoak.github.io/NIL-Calculator/sitemap.xml
