@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NIL Value Calculator — Estimate Your Name, Image & Likeness Worth</title>
+  <meta name="description" content="Free NIL value calculator for college and high school athletes. Estimate your Name, Image & Likeness worth from your sport, division, social following and engagement in seconds." />
+  <meta name="theme-color" content="#0b1120" />
+  <link rel="canonical" href="https://foundersoak.github.io/nil-calculator/" />
+
+  <!-- Open Graph / social -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="NIL Value Calculator — What Is Your NIL Worth?" />
+  <meta property="og:description" content="Estimate your Name, Image & Likeness value in seconds. Free calculator for college & high school athletes." />
+  <meta property="og:url" content="https://foundersoak.github.io/nil-calculator/" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Google AdSense (replace ca-pub-XXXXXXXXXXXXXXXX with your Publisher ID) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+
+  <!-- Structured data for SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "NIL Value Calculator",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Web",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "description": "Free NIL value calculator for athletes."
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="/">
+        <span class="brand-mark" aria-hidden="true">NIL</span>
+        <span class="brand-text">Value<span class="brand-accent">Calc</span></span>
+      </a>
+      <nav class="nav-links">
+        <a href="#calculator">Calculator</a>
+        <a href="#how">How it works</a>
+        <a href="#faq">FAQ</a>
+        <a class="nav-cta" href="#calculator">Estimate now</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="container hero-inner">
+        <span class="eyebrow">Free • No sign-up to start</span>
+        <h1>What is your <span class="grad-text">NIL</span> worth?</h1>
+        <p class="lede">
+          Get an instant, data-informed estimate of your Name, Image &amp; Likeness value.
+          Built for college and high-school athletes who want to know their market — before they sign.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#calculator">Calculate my NIL value</a>
+          <a class="btn btn-ghost" href="#how">See how it works</a>
+        </div>
+        <div class="hero-stats">
+          <div><strong>4</strong><span>valuation factors</span></div>
+          <div><strong>6</strong><span>social platforms</span></div>
+          <div><strong>30s</strong><span>to your estimate</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AD SLOT (top leaderboard) -->
+    <div class="container ad-wrap">
+      <p class="ad-label">Advertisement</p>
+      <ins class="adsbygoogle ad-leaderboard"
+           style="display:block"
+           data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+           data-ad-slot="0000000000"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+    </div>
+
+    <!-- CALCULATOR -->
+    <section id="calculator" class="calc-section">
+      <div class="container calc-grid">
+        <form id="nil-form" class="calc-card" novalidate>
+          <h2 class="calc-title">Build your athlete profile</h2>
+          <p class="calc-sub">All fields are optional — fill in what you know for a sharper estimate.</p>
+
+          <div class="field-grid">
+            <div class="field">
+              <label for="sport">Sport</label>
+              <select id="sport">
+                <option value="1.5">Football</option>
+                <option value="1.5">Men's Basketball</option>
+                <option value="1.25">Women's Basketball</option>
+                <option value="1.3">Gymnastics</option>
+                <option value="1.1">Baseball</option>
+                <option value="1.1">Softball</option>
+                <option value="1.1">Volleyball</option>
+                <option value="1.05">Soccer</option>
+                <option value="1.05">Wrestling</option>
+                <option value="1.0">Track &amp; Field</option>
+                <option value="1.0">Swimming &amp; Diving</option>
+                <option value="1.0" selected>Other</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="division">Level / Division</label>
+              <select id="division">
+                <option value="power">NCAA D1 — Power conference</option>
+                <option value="d1" selected>NCAA D1 — Mid-major</option>
+                <option value="d2">NCAA D2</option>
+                <option value="d3">NCAA D3</option>
+                <option value="naia">NAIA</option>
+                <option value="juco">JUCO</option>
+                <option value="hs">High school</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="performance">On-field profile</label>
+              <select id="performance">
+                <option value="1.6">Star / All-conference</option>
+                <option value="1.2" selected>Regular starter</option>
+                <option value="1.0">Rotation player</option>
+                <option value="0.8">Reserve / walk-on</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="market">Market &amp; brand reach</label>
+              <select id="market">
+                <option value="1.3">National attention</option>
+                <option value="1.15">Large market</option>
+                <option value="1.0" selected>Mid-size market</option>
+                <option value="0.9">Small market</option>
+              </select>
+            </div>
+          </div>
+
+          <h3 class="group-title">Social following</h3>
+          <div class="field-grid">
+            <div class="field">
+              <label for="instagram"><span class="plat ig">Instagram</span> followers</label>
+              <input id="instagram" type="number" inputmode="numeric" min="0" placeholder="e.g. 12000" />
+            </div>
+            <div class="field">
+              <label for="tiktok"><span class="plat tt">TikTok</span> followers</label>
+              <input id="tiktok" type="number" inputmode="numeric" min="0" placeholder="e.g. 8000" />
+            </div>
+            <div class="field">
+              <label for="x"><span class="plat x">X / Twitter</span> followers</label>
+              <input id="x" type="number" inputmode="numeric" min="0" placeholder="e.g. 3000" />
+            </div>
+            <div class="field">
+              <label for="youtube"><span class="plat yt">YouTube</span> subscribers</label>
+              <input id="youtube" type="number" inputmode="numeric" min="0" placeholder="e.g. 1500" />
+            </div>
+          </div>
+
+          <div class="field engagement-field">
+            <label for="engagement">
+              Average engagement rate
+              <span class="hint" title="Likes + comments + shares divided by followers, as a %. 1–3% is typical; 5%+ is strong.">?</span>
+              <span class="eng-value" id="eng-value">4%</span>
+            </label>
+            <input id="engagement" type="range" min="0.5" max="15" step="0.5" value="4" />
+            <div class="range-scale"><span>0.5%</span><span>Typical 1–3%</span><span>15%+</span></div>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block">Calculate my NIL value</button>
+          <p class="disclaimer-mini">Estimate only — not a guarantee of earnings. See <a href="#how">methodology</a>.</p>
+        </form>
+
+        <!-- RESULTS -->
+        <aside class="result-card" id="result" aria-live="polite">
+          <div class="result-empty" id="result-empty">
+            <div class="result-empty-icon" aria-hidden="true">📈</div>
+            <h3>Your estimate appears here</h3>
+            <p>Fill in your profile and hit calculate to see your projected annual NIL value and a breakdown of what drives it.</p>
+          </div>
+
+          <div class="result-filled" id="result-filled" hidden>
+            <p class="result-eyebrow">Estimated annual NIL value</p>
+            <div class="result-amount" id="result-amount">$0</div>
+            <p class="result-range" id="result-range">Range: $0 – $0</p>
+
+            <div class="result-bars" id="result-bars"></div>
+
+            <!-- EMAIL CAPTURE -->
+            <div class="email-capture">
+              <h4>Get your full NIL report 📩</h4>
+              <p>We'll email a detailed breakdown plus tips to grow your value and land deals. Free.</p>
+              <form id="email-form" class="email-form"
+                    action="https://formspree.io/f/your-form-id" method="POST">
+                <input type="hidden" name="nil_estimate" id="nil_estimate_field" />
+                <input type="email" name="email" required placeholder="you@email.com" aria-label="Email address" />
+                <button type="submit" class="btn btn-primary">Send my report</button>
+              </form>
+              <p class="email-success" id="email-success" hidden>✅ You're in! Check your inbox shortly.</p>
+              <p class="privacy-note">No spam. Unsubscribe anytime. <a href="privacy.html">Privacy</a>.</p>
+            </div>
+
+            <button class="share-btn" id="share-btn" type="button">🔗 Share my result</button>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- IN-CONTENT AD -->
+    <div class="container ad-wrap">
+      <p class="ad-label">Advertisement</p>
+      <ins class="adsbygoogle ad-inline"
+           style="display:block"
+           data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+           data-ad-slot="1111111111"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+    </div>
+
+    <!-- HOW IT WORKS -->
+    <section id="how" class="how-section">
+      <div class="container">
+        <h2 class="section-title">How we estimate NIL value</h2>
+        <p class="section-lede">
+          Industry valuations weigh four pillars. Our model blends your social reach and engagement
+          with sport, level, performance and market — calibrated to publicly reported NIL deal ranges.
+        </p>
+        <div class="pillars">
+          <article class="pillar">
+            <div class="pillar-icon">📣</div>
+            <h3>Influence</h3>
+            <p>Followers and — more importantly — engagement across Instagram, TikTok, X and YouTube. Active audiences out-earn big-but-quiet ones.</p>
+          </article>
+          <article class="pillar">
+            <div class="pillar-icon">🏟️</div>
+            <h3>Exposure</h3>
+            <p>Your division, conference and market size. Power-conference visibility multiplies every deal.</p>
+          </article>
+          <article class="pillar">
+            <div class="pillar-icon">🏆</div>
+            <h3>Performance</h3>
+            <p>On-field production and role. Stars and starters command premiums over reserves.</p>
+          </article>
+          <article class="pillar">
+            <div class="pillar-icon">⭐</div>
+            <h3>Brand</h3>
+            <p>Sport marketability and personal story. Some sports simply convert attention into dollars faster.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="faq-section">
+      <div class="container">
+        <h2 class="section-title">NIL questions, answered</h2>
+        <div class="faq-list">
+          <details>
+            <summary>What is NIL?</summary>
+            <p>NIL stands for <strong>Name, Image &amp; Likeness</strong>. Since 2021, NCAA athletes (and high-schoolers in many states) can earn money from endorsements, social posts, autographs, appearances and more — without losing eligibility.</p>
+          </details>
+          <details>
+            <summary>How accurate is this calculator?</summary>
+            <p>It produces a data-informed <em>estimate</em> based on the factors brands actually weigh, calibrated to publicly reported deal ranges. Real offers vary with timing, relationships and negotiation. Treat it as a starting benchmark, not a quote.</p>
+          </details>
+          <details>
+            <summary>Why does engagement matter more than followers?</summary>
+            <p>Brands pay for attention that converts. A 50k-follower account with 6% engagement can be worth more than a 200k account with 0.5% engagement, because more of the audience actually sees and acts on content.</p>
+          </details>
+          <details>
+            <summary>Do high-school athletes have NIL value?</summary>
+            <p>Yes — many states now permit high-school NIL deals. Local and regional brands, camps and gear companies are common partners.</p>
+          </details>
+          <details>
+            <summary>Is my data stored?</summary>
+            <p>Your calculator inputs stay in your browser. We only collect an email if you choose to request your full report. See our <a href="privacy.html">Privacy Policy</a>.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- EMAIL CTA BAND -->
+    <section class="cta-band">
+      <div class="container cta-inner">
+        <div>
+          <h2>Grow your NIL value</h2>
+          <p>Join the newsletter for athlete brand-building tips, deal breakdowns and tools — straight to your inbox.</p>
+        </div>
+        <form class="cta-form" id="cta-email-form" action="https://formspree.io/f/your-form-id" method="POST">
+          <input type="email" name="email" required placeholder="you@email.com" aria-label="Email address" />
+          <button class="btn btn-primary" type="submit">Subscribe free</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <a class="brand" href="/">
+          <span class="brand-mark" aria-hidden="true">NIL</span>
+          <span class="brand-text">Value<span class="brand-accent">Calc</span></span>
+        </a>
+        <p class="footer-tag">Know your worth. Sign with confidence.</p>
+      </div>
+      <nav class="footer-links">
+        <a href="#calculator">Calculator</a>
+        <a href="#how">How it works</a>
+        <a href="#faq">FAQ</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+      </nav>
+    </div>
+    <div class="container footer-bottom">
+      <p>© <span id="year"></span> NIL ValueCalc. Estimates are for informational purposes only and are not financial, legal or tax advice. Not affiliated with the NCAA.</p>
+    </div>
+  </footer>
+
+  <script src="assets/js/calculator.js" defer></script>
+</body>
+</html>
