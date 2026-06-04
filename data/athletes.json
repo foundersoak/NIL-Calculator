@@ -23,7 +23,13 @@
     "kansas-jayhawks":        { "name": "Kansas Jayhawks", "conference": "Big 12", "sport": "Men's Basketball" },
     "arizona-wildcats":       { "name": "Arizona Wildcats", "conference": "Big 12", "sport": "Women's Basketball" },
     "uconn-huskies":          { "name": "UConn Huskies", "conference": "Big East", "sport": "Women's Basketball" },
-    "texas-am-aggies":        { "name": "Texas A&M Aggies", "conference": "SEC", "sport": "Baseball" }
+    "texas-am-aggies":        { "name": "Texas A&M Aggies", "conference": "SEC", "sport": "Baseball" },
+    "florida-gators":         { "name": "Florida Gators", "conference": "SEC", "sport": "Football" },
+    "ucla-bruins":            { "name": "UCLA Bruins", "conference": "Big Ten", "sport": "Football" },
+    "nebraska-cornhuskers":   { "name": "Nebraska Cornhuskers", "conference": "Big Ten", "sport": "Football" },
+    "alabama-crimson-tide":   { "name": "Alabama Crimson Tide", "conference": "SEC", "sport": "Football" },
+    "notre-dame-fighting-irish": { "name": "Notre Dame Fighting Irish", "conference": "ACC", "sport": "Women's Basketball" },
+    "auburn-tigers":          { "name": "Auburn Tigers", "conference": "SEC", "sport": "Men's Basketball" }
   },
   "athletes": [
     { "slug": "arch-manning", "name": "Arch Manning", "sport": "Football", "position": "Quarterback", "team": "texas-longhorns", "level": "power",
@@ -184,6 +190,46 @@
     { "slug": "gavin-guidry", "name": "Gavin Guidry", "sport": "Baseball", "position": "Pitcher", "team": "lsu-tigers", "level": "power",
       "followers": {}, "engagement": 5,
       "valuation": 600000, "reported": false, "source": "Estimate (D1Baseball top rankings, 2026)", "sourceUrl": "https://www.on3.com/nil/rankings/player/college/baseball/",
-      "blurb": "The LSU pitcher is among the top NIL names in college baseball as a key arm for the national-contender Tigers." }
+      "blurb": "The LSU pitcher is among the top NIL names in college baseball as a key arm for the national-contender Tigers." },
+
+    { "slug": "dj-lagway", "name": "DJ Lagway", "sport": "Football", "position": "Quarterback", "team": "florida-gators", "level": "power",
+      "followers": {}, "engagement": 5,
+      "valuation": 3700000, "reported": true, "source": "On3 NIL Valuations (2026)", "sourceUrl": "https://www.on3.com/nil/rankings/player/college/football/",
+      "blurb": "The Florida quarterback owns one of the highest NIL valuations in college football as the face of the Gators' offense." },
+
+    { "slug": "julian-sayin", "name": "Julian Sayin", "sport": "Football", "position": "Quarterback", "team": "ohio-state-buckeyes", "level": "power",
+      "followers": {}, "engagement": 5,
+      "valuation": 2400000, "reported": true, "source": "On3 NIL Valuations (2026)", "sourceUrl": "https://www.on3.com/nil/rankings/player/college/football/",
+      "blurb": "After a 32-touchdown redshirt-freshman season, the Ohio State quarterback is among the most valuable NIL players in the country." },
+
+    { "slug": "caleb-downs", "name": "Caleb Downs", "sport": "Football", "position": "Safety", "team": "ohio-state-buckeyes", "level": "power",
+      "followers": {}, "engagement": 5,
+      "valuation": 2400000, "reported": true, "source": "On3 NIL Valuations (2026)", "sourceUrl": "https://www.on3.com/nil/rankings/player/college/football/",
+      "blurb": "One of the most valuable defensive players in college football, the Ohio State safety pairs elite play with deals from Beats and Panini." },
+
+    { "slug": "dylan-raiola", "name": "Dylan Raiola", "sport": "Football", "position": "Quarterback", "team": "nebraska-cornhuskers", "level": "power",
+      "followers": {}, "engagement": 5,
+      "valuation": 2300000, "reported": true, "source": "On3 NIL Valuations (2026)", "sourceUrl": "https://www.on3.com/nil/rankings/player/college/football/",
+      "blurb": "The Nebraska quarterback is the centerpiece of the Cornhuskers' rebuild and one of the highest-valued QBs in the sport." },
+
+    { "slug": "nico-iamaleava", "name": "Nico Iamaleava", "sport": "Football", "position": "Quarterback", "team": "ucla-bruins", "level": "power",
+      "followers": {}, "engagement": 5,
+      "valuation": 2000000, "reported": true, "source": "On3 NIL Valuations (2026)", "sourceUrl": "https://www.on3.com/nil/rankings/player/college/football/",
+      "blurb": "After a high-profile transfer to UCLA, the quarterback remains one of the most talked-about NIL names in college football." },
+
+    { "slug": "ryan-williams", "name": "Ryan Williams", "sport": "Football", "position": "Wide Receiver", "team": "alabama-crimson-tide", "level": "power",
+      "followers": {}, "engagement": 5,
+      "valuation": 1800000, "reported": true, "source": "On3 NIL Valuations (2026)", "sourceUrl": "https://www.on3.com/nil/rankings/player/college/football/",
+      "blurb": "The electric Alabama wide receiver and former five-star recruit carries brand deals with Uber Eats and Hollister." },
+
+    { "slug": "hannah-hidalgo", "name": "Hannah Hidalgo", "sport": "Women's Basketball", "position": "Guard", "team": "notre-dame-fighting-irish", "level": "power",
+      "followers": {}, "engagement": 5,
+      "valuation": 1000000, "reported": false, "source": "Estimate (widely reported, ~$1M; On3 does not disclose exact figure)", "sourceUrl": "https://www.on3.com/nil/rankings/player/college/womens-basketball/",
+      "blurb": "The Notre Dame guard is one of the biggest stars in women's college basketball, with deals from Red Bull, New Era and Topps and CAA representation." },
+
+    { "slug": "tahaad-pettiford", "name": "Tahaad Pettiford", "sport": "Men's Basketball", "position": "Guard", "team": "auburn-tigers", "level": "power",
+      "followers": {}, "engagement": 5,
+      "valuation": 2100000, "reported": false, "source": "Estimate (reported ~$2.1M NIL deal; On3 does not disclose exact figure)", "sourceUrl": "https://www.on3.com/nil/rankings/player/college/basketball/",
+      "blurb": "The Auburn point guard returned for his junior season on a reported seven-figure NIL package, turning down larger offers elsewhere." }
   ]
 }
