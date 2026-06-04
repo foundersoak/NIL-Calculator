@@ -217,14 +217,16 @@
       "reported": true,
       "source": "On3 NIL Valuations (2026)",
       "sourceUrl": "https://www.on3.com/nil/rankings/player/college/football/",
-      "blurb": "The veteran quarterback transferred to Miami and carries one of the highest NIL valuations in college football, backed by national exposure in the ACC."
+      "blurb": "The veteran quarterback transferred to Miami and carries one of the highest NIL valuations in college football, backed by national exposure in the ACC.",
+      "former": true,
+      "nowWith": "Arizona Cardinals (NFL)"
     },
     {
       "slug": "sam-leavitt",
       "name": "Sam Leavitt",
       "sport": "Football",
       "position": "Quarterback",
-      "team": "arizona-state-sun-devils",
+      "team": "lsu-tigers",
       "level": "power",
       "followers": {
         "instagram": 61000,
@@ -237,7 +239,7 @@
       "reported": true,
       "source": "On3 NIL Valuations (2026)",
       "sourceUrl": "https://www.on3.com/nil/rankings/player/college/football/",
-      "blurb": "Arizona State's quarterback emerged as a national name and a top-five NIL valuation after leading the Sun Devils' breakout."
+      "blurb": "After a breakout at Arizona State, the quarterback transferred to LSU and carries a top-five NIL valuation heading into the 2026 season."
     },
     {
       "slug": "lanorris-sellers",
@@ -277,7 +279,9 @@
       "reported": true,
       "source": "On3 NIL Valuations (2026)",
       "sourceUrl": "https://www.on3.com/nil/rankings/player/college/football/",
-      "blurb": "LSU's quarterback ranks among the top NIL earners in college football, boosted by the Tigers' national brand."
+      "blurb": "LSU's quarterback ranks among the top NIL earners in college football, boosted by the Tigers' national brand.",
+      "former": true,
+      "nowWith": "Kansas City Chiefs (NFL)"
     },
     {
       "slug": "cade-klubnik",
@@ -297,7 +301,9 @@
       "reported": true,
       "source": "On3 NIL Valuations (2026)",
       "sourceUrl": "https://www.on3.com/nil/rankings/player/college/football/",
-      "blurb": "Clemson's starting quarterback carries a multi-million-dollar NIL valuation as a face of the ACC."
+      "blurb": "Clemson's starting quarterback carries a multi-million-dollar NIL valuation as a face of the ACC.",
+      "former": true,
+      "nowWith": "New York Jets (NFL)"
     },
     {
       "slug": "drew-allar",
@@ -317,7 +323,9 @@
       "reported": true,
       "source": "On3 NIL Valuations (2026)",
       "sourceUrl": "https://www.on3.com/nil/rankings/player/college/football/",
-      "blurb": "Penn State's quarterback is one of the Big Ten's highest-valued NIL athletes heading into 2026."
+      "blurb": "Penn State's quarterback is one of the Big Ten's highest-valued NIL athletes heading into 2026.",
+      "former": true,
+      "nowWith": "Pittsburgh Steelers (NFL)"
     },
     {
       "slug": "dante-moore",
@@ -537,7 +545,9 @@
       "reported": true,
       "source": "On3 Women's NIL Valuations (2026)",
       "sourceUrl": "https://www.on3.com/nil/rankings/player/womens-nil-valuations/",
-      "blurb": "The LSU guard and recording artist is the highest-valued player in women's college basketball, with a huge social following and 20-plus brand deals."
+      "blurb": "The LSU guard and recording artist is the highest-valued player in women's college basketball, with a huge social following and 20-plus brand deals.",
+      "former": true,
+      "nowWith": "Seattle Storm (WNBA)"
     },
     {
       "slug": "juju-watkins",
@@ -684,7 +694,7 @@
       "name": "Jada Williams",
       "sport": "Women's Basketball",
       "position": "Guard",
-      "team": "arizona-wildcats",
+      "team": "lsu-tigers",
       "level": "power",
       "followers": {
         "instagram": 600000,
@@ -697,7 +707,7 @@
       "reported": true,
       "source": "On3 Women's NIL Valuations (2026)",
       "sourceUrl": "https://www.on3.com/nil/rankings/player/womens-nil-valuations/",
-      "blurb": "An early NIL pioneer, the Arizona guard pairs veteran leadership with a 1.1M-plus social following to rank among women's basketball's most valuable players."
+      "blurb": "An early NIL pioneer who transferred to LSU, the veteran guard pairs leadership with a 1.1M-plus social following to rank among women's basketball's most valuable players."
     },
     {
       "slug": "azzi-fudd",
@@ -717,7 +727,9 @@
       "reported": true,
       "source": "On3 Women's NIL Valuations (2026)",
       "sourceUrl": "https://www.on3.com/nil/rankings/player/womens-nil-valuations/",
-      "blurb": "The UConn sharpshooter and national champion is one of the most recognizable names in women's college basketball."
+      "blurb": "The UConn sharpshooter and national champion is one of the most recognizable names in women's college basketball.",
+      "former": true,
+      "nowWith": "Dallas Wings (WNBA)"
     },
     {
       "slug": "deja-kelly",
@@ -857,7 +869,9 @@
       "reported": true,
       "source": "On3 NIL Valuations (2026)",
       "sourceUrl": "https://www.on3.com/nil/rankings/player/college/football/",
-      "blurb": "One of the most valuable defensive players in college football, the Ohio State safety pairs elite play with deals from Beats and Panini."
+      "blurb": "One of the most valuable defensive players in college football, the Ohio State safety pairs elite play with deals from Beats and Panini.",
+      "former": true,
+      "nowWith": "NFL (2026 Draft)"
     },
     {
       "slug": "dylan-raiola",

@@ -157,8 +157,12 @@ function athletePage(a) {
   const team = DATA.teams[a.team] || { name: a.team, conference: '', sport: a.sport };
   const prefix = '../../';
   const url = `${SITE_URL}/athlete/${a.slug}/`;
-  const title = `How Much Does ${a.name} Make in NIL? (2026 Value: ${moneyShort(a.valuation)})`;
-  const desc = `${a.name}'s estimated 2026 NIL valuation is ${money(a.valuation)}. See the ${esc(team.name)} ${a.sport.toLowerCase()} star's social following, valuation breakdown and how it's calculated.`;
+  const title = a.former
+    ? `How Much Did ${a.name} Make in NIL? (College Value: ${moneyShort(a.valuation)})`
+    : `How Much Does ${a.name} Make in NIL? (2026 Value: ${moneyShort(a.valuation)})`;
+  const desc = a.former
+    ? `${a.name}'s NIL valuation at ${esc(team.name)} was about ${money(a.valuation)} before turning pro${a.nowWith ? ` (now ${esc(a.nowWith)})` : ''}. See the ${a.sport.toLowerCase()} star's social following and how the figure is calculated.`
+    : `${a.name}'s estimated 2026 NIL valuation is ${money(a.valuation)}. See the ${esc(team.name)} ${a.sport.toLowerCase()} star's social following, valuation breakdown and how it's calculated.`;
   const jsonld = {
     "@context": "https://schema.org",
     "@graph": [
@@ -170,10 +174,14 @@ function athletePage(a) {
         { "@type": "ListItem", "position": 3, "name": a.name, "item": url }
       ]},
       { "@type": "FAQPage", "mainEntity": [
-        { "@type": "Question", "name": `How much does ${a.name} make in NIL?`,
-          "acceptedAnswer": { "@type": "Answer", "text": `${a.name}'s estimated NIL valuation for 2026 is approximately ${money(a.valuation)} over a 12-month window. This is an estimate of earning potential, not a confirmed salary.` } },
-        { "@type": "Question", "name": `What team does ${a.name} play for?`,
-          "acceptedAnswer": { "@type": "Answer", "text": `${a.name} plays ${a.position} for the ${team.name}.` } }
+        { "@type": "Question", "name": `How much ${a.former ? 'did' : 'does'} ${a.name} make in NIL?`,
+          "acceptedAnswer": { "@type": "Answer", "text": a.former
+            ? `${a.name}'s NIL valuation while at ${team.name} was estimated around ${money(a.valuation)} over a 12-month window before turning professional${a.nowWith ? ` (now with ${a.nowWith})` : ''}. This is an estimate, not a confirmed salary.`
+            : `${a.name}'s estimated NIL valuation for 2026 is approximately ${money(a.valuation)} over a 12-month window. This is an estimate of earning potential, not a confirmed salary.` } },
+        { "@type": "Question", "name": `What team ${a.former ? 'did' : 'does'} ${a.name} play for?`,
+          "acceptedAnswer": { "@type": "Answer", "text": a.former
+            ? `${a.name} played ${a.position} for the ${team.name}${a.nowWith ? ` and is now with ${a.nowWith}` : ''}.`
+            : `${a.name} plays ${a.position} for the ${team.name}.` } }
       ]}
     ]
   };
@@ -181,13 +189,13 @@ function athletePage(a) {
   return head({ title, desc, canonical: url, prefix, jsonld }) + `
     <section class="container narrow athlete-hero">
       <nav class="crumbs"><a href="${prefix}athletes/index.html">Athletes</a> › <a href="${prefix}team/${a.team}/index.html">${esc(team.name)}</a> › <span>${esc(a.name)}</span></nav>
-      <h1>How much does ${esc(a.name)} make in NIL?</h1>
-      <p class="athlete-sub">${esc(a.position)} · ${esc(team.name)}${team.conference ? ' · ' + esc(team.conference) : ''}</p>
+      <h1>How much ${a.former ? 'did' : 'does'} ${esc(a.name)} make in NIL?</h1>
+      <p class="athlete-sub">${a.former ? 'Former ' : ''}${esc(a.position)} · ${esc(team.name)}${team.conference ? ' · ' + esc(team.conference) : ''}${a.former && a.nowWith ? ` · <strong>Now: ${esc(a.nowWith)}</strong>` : ''}</p>
       <div class="valuation-hero">
         <div>
-          <span class="result-eyebrow">Estimated 2026 NIL valuation</span>
+          <span class="result-eyebrow">${a.former ? 'Final college NIL valuation' : 'Estimated 2026 NIL valuation'}</span>
           <div class="big-number">${money(a.valuation)}</div>
-          <p class="val-note">${a.reported ? 'Based on publicly reported figures' : 'Modeled estimate'} · 12-month earning potential${a.source ? ` · <a href="${a.sourceUrl}" rel="nofollow noopener" target="_blank">Source: ${esc(a.source)}</a>` : ''}</p>
+          <p class="val-note">${a.reported ? 'Based on publicly reported figures' : 'Modeled estimate'} · ${a.former ? 'final season in college' : '12-month earning potential'}${a.source ? ` · <a href="${a.sourceUrl}" rel="nofollow noopener" target="_blank">Source: ${esc(a.source)}</a>` : ''}</p>
         </div>
       </div>
       <p class="athlete-blurb">${esc(a.blurb || '')}</p>
@@ -226,7 +234,7 @@ function teamPage(slug, team, roster) {
     "member": sorted.map(a => ({ "@type": "Person", "name": a.name, "url": `${SITE_URL}/athlete/${a.slug}/` }))
   };
   const rows = sorted.map((a, i) =>
-    `<tr><td>${i + 1}</td><td><a href="${prefix}athlete/${a.slug}/index.html">${esc(a.name)}</a></td><td>${esc(a.position)}</td><td class="num">${money(a.valuation)}</td></tr>`).join('');
+    `<tr><td>${i + 1}</td><td><a href="${prefix}athlete/${a.slug}/index.html">${esc(a.name)}</a>${a.former ? ' <span class="muted">(former)</span>' : ''}</td><td>${esc(a.position)}</td><td class="num">${money(a.valuation)}</td></tr>`).join('');
 
   return head({ title, desc, canonical: url, prefix, jsonld }) + `
     <section class="container narrow athlete-hero">
@@ -267,10 +275,10 @@ function directoryPage(athletes, teams) {
     return `<a class="athlete-card" href="${prefix}athlete/${a.slug}/index.html">
       <span class="ac-rank">${moneyShort(a.valuation)}</span>
       <strong>${esc(a.name)}</strong>
-      <span class="ac-meta">${esc(a.position)} · ${esc(team.name || '')}</span>
+      <span class="ac-meta">${esc(a.position)} · ${esc(team.name || '')}${a.former ? ' · former' : ''}</span>
     </a>`;
   }).join('');
-  const teamList = Object.keys(teams).map(slug =>
+  const teamList = Object.keys(teams).filter(slug => athletes.some(a => a.team === slug)).map(slug =>
     `<a class="team-chip" href="${prefix}team/${slug}/index.html">${esc(teams[slug].name)} roster value</a>`).join('');
 
   return head({ title, desc, canonical: url, prefix, jsonld: {
