@@ -1,58 +1,140 @@
 {
-  "_comment": "NIL athlete dataset. Figures are estimated 12-month NIL valuations based on public reporting and/or our model — not amounts paid. 'reported: true' means a public figure was cited (see source). Add athletes here and re-run `node scripts/build.js` to regenerate pages + sitemap. Keep data accurate: each page must offer real value to rank (avoid bulk/fabricated entries).",
-  "updated": "2026-06-03",
+  "_comment": "NIL athlete dataset. Figures are estimated 12-month NIL valuations from public reporting (On3, FOX Sports, SportsGrid) and/or our model — not amounts paid. 'reported: true' cites a public figure (see source). Add athletes here and run `node scripts/build.js` to regenerate pages + sitemap. Keep data accurate and sourced — each page must offer real value to rank.",
+  "updated": "2026-06-04",
   "teams": {
-    "texas-longhorns":   { "name": "Texas Longhorns", "conference": "SEC", "sport": "Football" },
-    "ohio-state-buckeyes": { "name": "Ohio State Buckeyes", "conference": "Big Ten", "sport": "Football" },
-    "byu-cougars":       { "name": "BYU Cougars", "conference": "Big 12", "sport": "Men's Basketball" },
-    "lsu-tigers":        { "name": "LSU Tigers", "conference": "SEC", "sport": "Multiple" },
-    "usc-trojans":       { "name": "USC Trojans", "conference": "Big Ten", "sport": "Women's Basketball" }
+    "texas-longhorns":        { "name": "Texas Longhorns", "conference": "SEC", "sport": "Football" },
+    "ohio-state-buckeyes":    { "name": "Ohio State Buckeyes", "conference": "Big Ten", "sport": "Football" },
+    "miami-hurricanes":       { "name": "Miami Hurricanes", "conference": "ACC", "sport": "Multiple" },
+    "arizona-state-sun-devils": { "name": "Arizona State Sun Devils", "conference": "Big 12", "sport": "Football" },
+    "south-carolina-gamecocks": { "name": "South Carolina Gamecocks", "conference": "SEC", "sport": "Football" },
+    "lsu-tigers":             { "name": "LSU Tigers", "conference": "SEC", "sport": "Multiple" },
+    "clemson-tigers":         { "name": "Clemson Tigers", "conference": "ACC", "sport": "Football" },
+    "penn-state-nittany-lions": { "name": "Penn State Nittany Lions", "conference": "Big Ten", "sport": "Football" },
+    "oregon-ducks":           { "name": "Oregon Ducks", "conference": "Big Ten", "sport": "Football" },
+    "michigan-wolverines":    { "name": "Michigan Wolverines", "conference": "Big Ten", "sport": "Multiple" },
+    "byu-cougars":            { "name": "BYU Cougars", "conference": "Big 12", "sport": "Men's Basketball" },
+    "texas-tech-red-raiders": { "name": "Texas Tech Red Raiders", "conference": "Big 12", "sport": "Multiple" },
+    "duke-blue-devils":       { "name": "Duke Blue Devils", "conference": "ACC", "sport": "Men's Basketball" },
+    "kentucky-wildcats":      { "name": "Kentucky Wildcats", "conference": "SEC", "sport": "Men's Basketball" },
+    "north-carolina-tar-heels": { "name": "North Carolina Tar Heels", "conference": "ACC", "sport": "Men's Basketball" },
+    "purdue-boilermakers":    { "name": "Purdue Boilermakers", "conference": "Big Ten", "sport": "Men's Basketball" },
+    "usc-trojans":            { "name": "USC Trojans", "conference": "Big Ten", "sport": "Women's Basketball" },
+    "oregon-state-beavers":   { "name": "Oregon State Beavers", "conference": "WCC", "sport": "Gymnastics" }
   },
   "athletes": [
-    {
-      "slug": "arch-manning",
-      "name": "Arch Manning",
-      "sport": "Football",
-      "position": "Quarterback",
-      "team": "texas-longhorns",
-      "level": "power",
-      "followers": { "instagram": 240000, "tiktok": 0, "x": 95000, "youtube": 0 },
-      "engagement": 6,
-      "valuation": 5400000,
-      "reported": true,
-      "source": "On3 NIL Valuations (2026)",
-      "sourceUrl": "https://www.on3.com/nil/rankings/player/nil-valuations/",
-      "blurb": "The Texas quarterback and member of the Manning football dynasty holds the highest NIL valuation of any college athlete heading into 2026, driven by elite name recognition and a blue-chip program."
-    },
-    {
-      "slug": "jeremiah-smith",
-      "name": "Jeremiah Smith",
-      "sport": "Football",
-      "position": "Wide Receiver",
-      "team": "ohio-state-buckeyes",
-      "level": "power",
-      "followers": { "instagram": 300000, "tiktok": 120000, "x": 80000, "youtube": 0 },
-      "engagement": 7,
-      "valuation": 4200000,
-      "reported": true,
-      "source": "On3 NIL Valuations (2026)",
-      "sourceUrl": "https://www.on3.com/nil/rankings/player/nil-valuations/",
-      "blurb": "After a standout freshman season, the Ohio State receiver became the first college athlete on a Red Bull can and signed with Adidas, EA Sports, Nintendo and more — fueling a top-tier NIL valuation."
-    },
-    {
-      "slug": "aj-dybantsa",
-      "name": "AJ Dybantsa",
-      "sport": "Men's Basketball",
-      "position": "Guard/Forward",
-      "team": "byu-cougars",
-      "level": "power",
-      "followers": { "instagram": 350000, "tiktok": 90000, "x": 40000, "youtube": 0 },
-      "engagement": 6.5,
-      "valuation": 4200000,
-      "reported": true,
-      "source": "On3 NIL Valuations (2026)",
-      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/basketball/",
-      "blurb": "The BYU freshman phenom is among the highest-valued basketball players in the country, with a valuation rivaling the top college football stars."
-    }
+    { "slug": "arch-manning", "name": "Arch Manning", "sport": "Football", "position": "Quarterback", "team": "texas-longhorns", "level": "power",
+      "followers": { "instagram": 240000, "tiktok": 0, "x": 95000, "youtube": 0 }, "engagement": 6,
+      "valuation": 5400000, "reported": true, "source": "On3 NIL Valuations (2026)", "sourceUrl": "https://www.on3.com/nil/rankings/player/nil-valuations/",
+      "blurb": "The Texas quarterback and member of the Manning football dynasty holds the highest NIL valuation of any college athlete heading into 2026, driven by elite name recognition and a blue-chip program." },
+
+    { "slug": "jeremiah-smith", "name": "Jeremiah Smith", "sport": "Football", "position": "Wide Receiver", "team": "ohio-state-buckeyes", "level": "power",
+      "followers": { "instagram": 300000, "tiktok": 120000, "x": 80000, "youtube": 0 }, "engagement": 7,
+      "valuation": 4200000, "reported": true, "source": "On3 NIL Valuations (2026)", "sourceUrl": "https://www.on3.com/nil/rankings/player/nil-valuations/",
+      "blurb": "After a standout freshman season, the Ohio State receiver became the first college athlete on a Red Bull can and signed with Adidas, EA Sports, Nintendo and more — fueling a top-tier NIL valuation." },
+
+    { "slug": "carson-beck", "name": "Carson Beck", "sport": "Football", "position": "Quarterback", "team": "miami-hurricanes", "level": "power",
+      "followers": { "instagram": 120000, "tiktok": 0, "x": 60000, "youtube": 0 }, "engagement": 5,
+      "valuation": 4300000, "reported": true, "source": "On3 NIL Valuations (2026)", "sourceUrl": "https://www.on3.com/nil/rankings/player/college/football/",
+      "blurb": "The veteran quarterback transferred to Miami and carries one of the highest NIL valuations in college football, backed by national exposure in the ACC." },
+
+    { "slug": "sam-leavitt", "name": "Sam Leavitt", "sport": "Football", "position": "Quarterback", "team": "arizona-state-sun-devils", "level": "power",
+      "followers": {}, "engagement": 5,
+      "valuation": 4000000, "reported": true, "source": "On3 NIL Valuations (2026)", "sourceUrl": "https://www.on3.com/nil/rankings/player/college/football/",
+      "blurb": "Arizona State's quarterback emerged as a national name and a top-five NIL valuation after leading the Sun Devils' breakout." },
+
+    { "slug": "lanorris-sellers", "name": "LaNorris Sellers", "sport": "Football", "position": "Quarterback", "team": "south-carolina-gamecocks", "level": "power",
+      "followers": {}, "engagement": 5,
+      "valuation": 3700000, "reported": true, "source": "On3 NIL Valuations (2026)", "sourceUrl": "https://www.on3.com/nil/rankings/player/college/football/",
+      "blurb": "South Carolina's dynamic dual-threat quarterback is among the SEC's most valuable NIL assets heading into 2026." },
+
+    { "slug": "garrett-nussmeier", "name": "Garrett Nussmeier", "sport": "Football", "position": "Quarterback", "team": "lsu-tigers", "level": "power",
+      "followers": {}, "engagement": 5,
+      "valuation": 3700000, "reported": true, "source": "On3 NIL Valuations (2026)", "sourceUrl": "https://www.on3.com/nil/rankings/player/college/football/",
+      "blurb": "LSU's quarterback ranks among the top NIL earners in college football, boosted by the Tigers' national brand." },
+
+    { "slug": "cade-klubnik", "name": "Cade Klubnik", "sport": "Football", "position": "Quarterback", "team": "clemson-tigers", "level": "power",
+      "followers": {}, "engagement": 5,
+      "valuation": 3400000, "reported": true, "source": "On3 NIL Valuations (2026)", "sourceUrl": "https://www.on3.com/nil/rankings/player/college/football/",
+      "blurb": "Clemson's starting quarterback carries a multi-million-dollar NIL valuation as a face of the ACC." },
+
+    { "slug": "drew-allar", "name": "Drew Allar", "sport": "Football", "position": "Quarterback", "team": "penn-state-nittany-lions", "level": "power",
+      "followers": {}, "engagement": 5,
+      "valuation": 3100000, "reported": true, "source": "On3 NIL Valuations (2026)", "sourceUrl": "https://www.on3.com/nil/rankings/player/college/football/",
+      "blurb": "Penn State's quarterback is one of the Big Ten's highest-valued NIL athletes heading into 2026." },
+
+    { "slug": "dante-moore", "name": "Dante Moore", "sport": "Football", "position": "Quarterback", "team": "oregon-ducks", "level": "power",
+      "followers": {}, "engagement": 5,
+      "valuation": 3000000, "reported": true, "source": "On3 NIL Valuations (2026)", "sourceUrl": "https://www.on3.com/nil/rankings/player/college/football/",
+      "blurb": "Oregon's quarterback holds a seven-figure NIL valuation as the Ducks compete at the top of the Big Ten." },
+
+    { "slug": "bryce-underwood", "name": "Bryce Underwood", "sport": "Football", "position": "Quarterback", "team": "michigan-wolverines", "level": "power",
+      "followers": {}, "engagement": 5,
+      "valuation": 3000000, "reported": true, "source": "On3 NIL Valuations (2026)", "sourceUrl": "https://www.on3.com/nil/rankings/player/college/football/",
+      "blurb": "The heralded Michigan freshman quarterback arrived with one of the largest NIL valuations of any incoming player in the country." },
+
+    { "slug": "aj-dybantsa", "name": "AJ Dybantsa", "sport": "Men's Basketball", "position": "Guard/Forward", "team": "byu-cougars", "level": "power",
+      "followers": { "instagram": 350000, "tiktok": 90000, "x": 40000, "youtube": 0 }, "engagement": 6.5,
+      "valuation": 4200000, "reported": true, "source": "On3 NIL Valuations (2026)", "sourceUrl": "https://www.on3.com/nil/rankings/player/college/basketball/",
+      "blurb": "The BYU freshman phenom is among the highest-valued basketball players in the country, with a valuation rivaling the top college football stars." },
+
+    { "slug": "jt-toppin", "name": "JT Toppin", "sport": "Men's Basketball", "position": "Power Forward", "team": "texas-tech-red-raiders", "level": "power",
+      "followers": {}, "engagement": 5,
+      "valuation": 2800000, "reported": true, "source": "On3 NIL Valuations (2026)", "sourceUrl": "https://www.on3.com/nil/rankings/player/college/basketball/",
+      "blurb": "Texas Tech's standout forward returned to school on a major NIL package, making him one of college basketball's highest-valued players." },
+
+    { "slug": "cameron-boozer", "name": "Cameron Boozer", "sport": "Men's Basketball", "position": "Power Forward", "team": "duke-blue-devils", "level": "power",
+      "followers": {}, "engagement": 5,
+      "valuation": 2200000, "reported": true, "source": "On3 NIL Valuations (2026)", "sourceUrl": "https://www.on3.com/nil/rankings/player/college/basketball/",
+      "blurb": "The Duke freshman and son of NBA veteran Carlos Boozer is among the most valuable newcomers in college basketball." },
+
+    { "slug": "morez-johnson-jr", "name": "Morez Johnson Jr.", "sport": "Men's Basketball", "position": "Power Forward", "team": "michigan-wolverines", "level": "power",
+      "followers": {}, "engagement": 5,
+      "valuation": 2000000, "reported": true, "source": "On3 NIL Valuations (2026)", "sourceUrl": "https://www.on3.com/nil/rankings/player/college/basketball/",
+      "blurb": "The Michigan forward carries a seven-figure NIL valuation among the Wolverines' rising basketball core." },
+
+    { "slug": "jayden-quaintance", "name": "Jayden Quaintance", "sport": "Men's Basketball", "position": "Forward", "team": "kentucky-wildcats", "level": "power",
+      "followers": {}, "engagement": 5,
+      "valuation": 2000000, "reported": true, "source": "On3 NIL Valuations (2026)", "sourceUrl": "https://www.on3.com/nil/rankings/player/college/basketball/",
+      "blurb": "Kentucky's young big man is one of the highest-valued sophomores in college basketball." },
+
+    { "slug": "caleb-wilson", "name": "Caleb Wilson", "sport": "Men's Basketball", "position": "Forward", "team": "north-carolina-tar-heels", "level": "power",
+      "followers": {}, "engagement": 5,
+      "valuation": 1900000, "reported": true, "source": "On3 NIL Valuations (2026)", "sourceUrl": "https://www.on3.com/nil/rankings/player/college/basketball/",
+      "blurb": "The North Carolina freshman forward ranks near the top of college basketball NIL valuations." },
+
+    { "slug": "braden-smith", "name": "Braden Smith", "sport": "Men's Basketball", "position": "Point Guard", "team": "purdue-boilermakers", "level": "power",
+      "followers": {}, "engagement": 5,
+      "valuation": 1700000, "reported": true, "source": "On3 NIL Valuations (2026)", "sourceUrl": "https://www.on3.com/nil/rankings/player/college/basketball/",
+      "blurb": "Purdue's senior floor general is one of the most valuable returning guards in college basketball." },
+
+    { "slug": "denzel-aberdeen", "name": "Denzel Aberdeen", "sport": "Men's Basketball", "position": "Guard", "team": "kentucky-wildcats", "level": "power",
+      "followers": {}, "engagement": 5,
+      "valuation": 1600000, "reported": true, "source": "On3 NIL Valuations (2026)", "sourceUrl": "https://www.on3.com/nil/rankings/player/college/basketball/",
+      "blurb": "The Kentucky guard carries a seven-figure NIL valuation after transferring into a national-title contender." },
+
+    { "slug": "flaujae-johnson", "name": "Flau'jae Johnson", "sport": "Women's Basketball", "position": "Guard", "team": "lsu-tigers", "level": "power",
+      "followers": { "instagram": 1800000, "tiktok": 1600000, "x": 120000, "youtube": 300000 }, "engagement": 5,
+      "valuation": 1500000, "reported": true, "source": "On3 Women's NIL Valuations (2026)", "sourceUrl": "https://www.on3.com/nil/rankings/player/womens-nil-valuations/",
+      "blurb": "The LSU guard and recording artist is the highest-valued player in women's college basketball, with a huge social following and 20-plus brand deals." },
+
+    { "slug": "juju-watkins", "name": "JuJu Watkins", "sport": "Women's Basketball", "position": "Guard", "team": "usc-trojans", "level": "power",
+      "followers": { "instagram": 500000, "tiktok": 200000, "x": 80000, "youtube": 0 }, "engagement": 5,
+      "valuation": 760000, "reported": true, "source": "On3 Women's NIL Valuations (2026)", "sourceUrl": "https://www.on3.com/nil/rankings/player/womens-nil-valuations/",
+      "blurb": "USC's superstar guard is among the most marketable players in women's college basketball, with national endorsement appeal." },
+
+    { "slug": "nijaree-canady", "name": "NiJaree Canady", "sport": "Softball", "position": "Pitcher", "team": "texas-tech-red-raiders", "level": "power",
+      "followers": {}, "engagement": 5,
+      "valuation": 1000000, "reported": true, "source": "On3 / public reporting (2026)", "sourceUrl": "https://www.on3.com/nil/rankings/player/womens-nil-valuations/",
+      "blurb": "Texas Tech's ace became the first softball player to cross the $1M NIL threshold after leading the Red Raiders to a Women's College World Series appearance." },
+
+    { "slug": "kai-trump", "name": "Kai Trump", "sport": "Golf", "position": "Golfer", "team": "miami-hurricanes", "level": "power",
+      "followers": { "instagram": 1000000, "tiktok": 500000, "x": 200000, "youtube": 200000 }, "engagement": 5,
+      "valuation": 1200000, "reported": true, "source": "SportsGrid Women's NIL Rankings (2026)", "sourceUrl": "https://www.on3.com/nil/rankings/player/womens-nil-valuations/",
+      "blurb": "The Miami golf commit carries one of the largest NIL valuations in women's sports, powered by an enormous social following and national name recognition." },
+
+    { "slug": "jade-carey", "name": "Jade Carey", "sport": "Gymnastics", "position": "Gymnast", "team": "oregon-state-beavers", "level": "power",
+      "followers": {}, "engagement": 5,
+      "valuation": 397000, "reported": true, "source": "On3 Women's NIL Valuations (2026)", "sourceUrl": "https://www.on3.com/nil/rankings/player/womens-nil-valuations/",
+      "blurb": "The Olympic gold medalist and Oregon State gymnast is one of the highest-valued NIL athletes in college gymnastics." }
   ]
 }

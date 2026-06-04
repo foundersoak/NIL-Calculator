@@ -194,18 +194,18 @@ function athletePage(a) {
     </section>
     ${adUnit()}
     <section class="container narrow">
-      <h2>What drives ${esc(a.name)}'s NIL value</h2>
+      <h2>Why ${esc(a.name)} is worth this much</h2>
       ${breakdownBars(a)}
       <h2>Social media following</h2>
-      ${socialTable(a) || '<p>Social following data coming soon.</p>'}
-      <p class="muted">Total reach: roughly ${totalFollowers(a).toLocaleString('en-US')} followers across platforms (approximate).</p>
+      ${socialTable(a) || '<p>We\'ll add social numbers soon.</p>'}
+      ${totalFollowers(a) ? `<p class="muted">That's about ${totalFollowers(a).toLocaleString('en-US')} followers in all (rough number).</p>` : ''}
 
-      <h2>How this NIL valuation is estimated</h2>
-      <p>An NIL valuation estimates an athlete's total earning power across a 12-month window — built from metrics, not a record of money received. Our model weighs four factors: <strong>influence</strong> (social reach and engagement), <strong>exposure</strong> (program, conference and market), <strong>performance</strong> (on-field role) and <strong>brand</strong> (sport marketability and name recognition).</p>
+      <h2>How we get this number</h2>
+      <p>An NIL value is a guess at how much money a player could make in one year. It is not a paycheck. We look at four things: their <strong>fans</strong> (social media), their <strong>stage</strong> (school and league), their <strong>game</strong> (how they play), and their <strong>brand</strong> (their sport and story).</p>
 
       <div class="cta-inline">
-        <p><strong>Want your own number?</strong> Estimate any athlete's — or your own — NIL value in seconds.</p>
-        <a class="btn btn-primary" href="${prefix}index.html#calculator">Open the NIL calculator</a>
+        <p><strong>Want your own number?</strong> See what your NIL could be worth in 30 seconds.</p>
+        <a class="btn btn-primary" href="${prefix}index.html#calculator">Try the calculator</a>
       </div>
     </section>
     ${emailCapture(prefix)}
@@ -245,10 +245,10 @@ function teamPage(slug, team, roster) {
     <section class="container narrow">
       <h2>${esc(team.name)} players by NIL value</h2>
       <table class="data-table ranked"><thead><tr><th>#</th><th>Player</th><th>Position</th><th class="num">Est. NIL value</th></tr></thead><tbody>${rows}</tbody></table>
-      <p class="muted">Estimates of 12-month earning potential based on public data and our model — not amounts spent by the program. We track a growing set of players; figures update over time.</p>
+      <p class="muted">These are estimates of what each player could earn in a year, not what the school spent. We add more players over time.</p>
       <div class="cta-inline">
-        <p><strong>Curious about another player?</strong> Estimate any athlete's NIL value.</p>
-        <a class="btn btn-primary" href="${prefix}index.html#calculator">Open the NIL calculator</a>
+        <p><strong>Want another player?</strong> See what anyone's NIL could be worth.</p>
+        <a class="btn btn-primary" href="${prefix}index.html#calculator">Try the calculator</a>
       </div>
     </section>
     ${emailCapture(prefix)}
