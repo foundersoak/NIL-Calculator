@@ -19,7 +19,11 @@
     "north-carolina-tar-heels": { "name": "North Carolina Tar Heels", "conference": "ACC", "sport": "Men's Basketball" },
     "purdue-boilermakers":    { "name": "Purdue Boilermakers", "conference": "Big Ten", "sport": "Men's Basketball" },
     "usc-trojans":            { "name": "USC Trojans", "conference": "Big Ten", "sport": "Women's Basketball" },
-    "oregon-state-beavers":   { "name": "Oregon State Beavers", "conference": "WCC", "sport": "Gymnastics" }
+    "oregon-state-beavers":   { "name": "Oregon State Beavers", "conference": "WCC", "sport": "Gymnastics" },
+    "kansas-jayhawks":        { "name": "Kansas Jayhawks", "conference": "Big 12", "sport": "Men's Basketball" },
+    "arizona-wildcats":       { "name": "Arizona Wildcats", "conference": "Big 12", "sport": "Women's Basketball" },
+    "uconn-huskies":          { "name": "UConn Huskies", "conference": "Big East", "sport": "Women's Basketball" },
+    "texas-am-aggies":        { "name": "Texas A&M Aggies", "conference": "SEC", "sport": "Baseball" }
   },
   "athletes": [
     { "slug": "arch-manning", "name": "Arch Manning", "sport": "Football", "position": "Quarterback", "team": "texas-longhorns", "level": "power",
@@ -135,6 +139,51 @@
     { "slug": "jade-carey", "name": "Jade Carey", "sport": "Gymnastics", "position": "Gymnast", "team": "oregon-state-beavers", "level": "power",
       "followers": {}, "engagement": 5,
       "valuation": 397000, "reported": true, "source": "On3 Women's NIL Valuations (2026)", "sourceUrl": "https://www.on3.com/nil/rankings/player/womens-nil-valuations/",
-      "blurb": "The Olympic gold medalist and Oregon State gymnast is one of the highest-valued NIL athletes in college gymnastics." }
+      "blurb": "The Olympic gold medalist and Oregon State gymnast is one of the highest-valued NIL athletes in college gymnastics." },
+
+    { "slug": "cam-coleman", "name": "Cam Coleman", "sport": "Football", "position": "Wide Receiver", "team": "texas-longhorns", "level": "power",
+      "followers": {}, "engagement": 5,
+      "valuation": 2900000, "reported": true, "source": "On3 NIL Valuations (2026)", "sourceUrl": "https://www.on3.com/nil/rankings/player/college/football/",
+      "blurb": "The explosive wide receiver is among the most valuable non-quarterbacks in college football, adding to Texas's loaded roster." },
+
+    { "slug": "yaxel-lendeborg", "name": "Yaxel Lendeborg", "sport": "Men's Basketball", "position": "Forward", "team": "michigan-wolverines", "level": "power",
+      "followers": {}, "engagement": 5,
+      "valuation": 2300000, "reported": true, "source": "On3 / SportsGrid (2026)", "sourceUrl": "https://www.on3.com/nil/rankings/player/college/basketball/",
+      "blurb": "After transferring from UAB to Michigan, the versatile forward saw his NIL value jump to among the highest in the Big Ten." },
+
+    { "slug": "darryn-peterson", "name": "Darryn Peterson", "sport": "Men's Basketball", "position": "Guard", "team": "kansas-jayhawks", "level": "power",
+      "followers": {}, "engagement": 5,
+      "valuation": 1500000, "reported": true, "source": "On3 NIL Valuations (2026)", "sourceUrl": "https://www.on3.com/nil/rankings/player/college/basketball/",
+      "blurb": "The Kansas freshman guard and projected top NBA Draft pick carries star power and a seven-figure NIL valuation." },
+
+    { "slug": "jada-williams", "name": "Jada Williams", "sport": "Women's Basketball", "position": "Guard", "team": "arizona-wildcats", "level": "power",
+      "followers": { "instagram": 1100000, "tiktok": 300000, "x": 60000, "youtube": 0 }, "engagement": 5,
+      "valuation": 626000, "reported": true, "source": "On3 Women's NIL Valuations (2026)", "sourceUrl": "https://www.on3.com/nil/rankings/player/womens-nil-valuations/",
+      "blurb": "An early NIL pioneer, the Arizona guard pairs veteran leadership with a 1.1M-plus social following to rank among women's basketball's most valuable players." },
+
+    { "slug": "azzi-fudd", "name": "Azzi Fudd", "sport": "Women's Basketball", "position": "Guard", "team": "uconn-huskies", "level": "power",
+      "followers": { "instagram": 700000, "tiktok": 200000, "x": 80000, "youtube": 0 }, "engagement": 5,
+      "valuation": 323000, "reported": true, "source": "On3 Women's NIL Valuations (2026)", "sourceUrl": "https://www.on3.com/nil/rankings/player/womens-nil-valuations/",
+      "blurb": "The UConn sharpshooter and national champion is one of the most recognizable names in women's college basketball." },
+
+    { "slug": "deja-kelly", "name": "Deja Kelly", "sport": "Women's Basketball", "position": "Guard", "team": "texas-tech-red-raiders", "level": "power",
+      "followers": {}, "engagement": 5,
+      "valuation": 331000, "reported": true, "source": "On3 Women's NIL Valuations (2026)", "sourceUrl": "https://www.on3.com/nil/rankings/player/womens-nil-valuations/",
+      "blurb": "The veteran guard is a proven NIL performer and one of the higher-valued players in women's college basketball." },
+
+    { "slug": "chloe-kitts", "name": "Chloe Kitts", "sport": "Women's Basketball", "position": "Forward", "team": "south-carolina-gamecocks", "level": "power",
+      "followers": {}, "engagement": 5,
+      "valuation": 219000, "reported": true, "source": "On3 Women's NIL Valuations (2026)", "sourceUrl": "https://www.on3.com/nil/rankings/player/womens-nil-valuations/",
+      "blurb": "The South Carolina forward and national champion is a key NIL name for the powerhouse Gamecocks." },
+
+    { "slug": "caden-sorrell", "name": "Caden Sorrell", "sport": "Baseball", "position": "Outfielder", "team": "texas-am-aggies", "level": "power",
+      "followers": {}, "engagement": 5,
+      "valuation": 850000, "reported": true, "source": "SportsGrid / D1Baseball (2026)", "sourceUrl": "https://www.on3.com/nil/rankings/player/college/baseball/",
+      "blurb": "A projected top-15 MLB Draft pick and the face of the Aggies, Sorrell holds one of the highest NIL valuations in college baseball." },
+
+    { "slug": "gavin-guidry", "name": "Gavin Guidry", "sport": "Baseball", "position": "Pitcher", "team": "lsu-tigers", "level": "power",
+      "followers": {}, "engagement": 5,
+      "valuation": 600000, "reported": false, "source": "Estimate (D1Baseball top rankings, 2026)", "sourceUrl": "https://www.on3.com/nil/rankings/player/college/baseball/",
+      "blurb": "The LSU pitcher is among the top NIL names in college baseball as a key arm for the national-contender Tigers." }
   ]
 }
