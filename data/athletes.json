@@ -5,7 +5,7 @@
     "texas-longhorns": {
       "name": "Texas Longhorns",
       "conference": "SEC",
-      "sport": "Football"
+      "sport": "Multiple"
     },
     "ohio-state-buckeyes": {
       "name": "Ohio State Buckeyes",
@@ -115,7 +115,7 @@
     "florida-gators": {
       "name": "Florida Gators",
       "conference": "SEC",
-      "sport": "Football"
+      "sport": "Multiple"
     },
     "ucla-bruins": {
       "name": "UCLA Bruins",
@@ -135,7 +135,7 @@
     "notre-dame-fighting-irish": {
       "name": "Notre Dame Fighting Irish",
       "conference": "ACC",
-      "sport": "Women's Basketball"
+      "sport": "Multiple"
     },
     "auburn-tigers": {
       "name": "Auburn Tigers",
@@ -155,6 +155,16 @@
     "iowa-hawkeyes": {
       "name": "Iowa Hawkeyes",
       "conference": "Big Ten",
+      "sport": "Men's Basketball"
+    },
+    "georgia-bulldogs": {
+      "name": "Georgia Bulldogs",
+      "conference": "SEC",
+      "sport": "Football"
+    },
+    "louisville-cardinals": {
+      "name": "Louisville Cardinals",
+      "conference": "ACC",
       "sport": "Men's Basketball"
     }
   },
@@ -1032,6 +1042,286 @@
       "source": "Estimate (reported ~$1.7M; On3 does not disclose exact figure)",
       "sourceUrl": "https://www.on3.com/nil/rankings/player/college/basketball/",
       "blurb": "The All-Transfer Team point guard followed coach Ben McCollum from Drake to Iowa and quickly became one of the Big Ten's most valuable players."
+    },
+    {
+      "slug": "colin-simmons",
+      "name": "Colin Simmons",
+      "sport": "Football",
+      "position": "Edge",
+      "team": "texas-longhorns",
+      "level": "power",
+      "followers": {
+        "instagram": 91000,
+        "tiktok": 94000,
+        "x": 27000,
+        "youtube": 0
+      },
+      "engagement": 5,
+      "valuation": 1500000,
+      "reported": true,
+      "source": "On3 NIL Valuations (2026)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/football/",
+      "blurb": "Texas's star pass rusher returned for 2026 rather than declaring early, carrying one of the highest NIL valuations of any non-quarterback in college football."
+    },
+    {
+      "slug": "ryan-wingo",
+      "name": "Ryan Wingo",
+      "sport": "Football",
+      "position": "Wide Receiver",
+      "team": "texas-longhorns",
+      "level": "power",
+      "followers": {
+        "instagram": 40000,
+        "tiktok": 2000,
+        "x": 10000,
+        "youtube": 0
+      },
+      "engagement": 5,
+      "valuation": 1300000,
+      "reported": true,
+      "source": "On3 NIL Valuations (2026)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/football/",
+      "blurb": "The Longhorns' big-play receiver pairs national SEC exposure with a seven-figure NIL valuation entering 2026."
+    },
+    {
+      "slug": "cj-carr",
+      "name": "CJ Carr",
+      "sport": "Football",
+      "position": "Quarterback",
+      "team": "notre-dame-fighting-irish",
+      "level": "power",
+      "followers": {
+        "instagram": 50000,
+        "tiktok": 0,
+        "x": 19000,
+        "youtube": 0
+      },
+      "engagement": 5,
+      "valuation": 1500000,
+      "reported": true,
+      "source": "On3 NIL Valuations (2026)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/football/",
+      "blurb": "Notre Dame's starting quarterback and a preseason Heisman contender, Carr enters 2026 among the most valuable players in college football."
+    },
+    {
+      "slug": "gunner-stockton",
+      "name": "Gunner Stockton",
+      "sport": "Football",
+      "position": "Quarterback",
+      "team": "georgia-bulldogs",
+      "level": "power",
+      "followers": {
+        "instagram": 112000,
+        "tiktok": 0,
+        "x": 10000,
+        "youtube": 0
+      },
+      "engagement": 5,
+      "valuation": 1400000,
+      "reported": true,
+      "source": "On3 NIL Valuations (2026)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/football/",
+      "blurb": "Georgia's starting quarterback tops the Bulldogs' NIL board after stepping into the SEC spotlight in Athens."
+    },
+    {
+      "slug": "kj-bolden",
+      "name": "KJ Bolden",
+      "sport": "Football",
+      "position": "Safety",
+      "team": "georgia-bulldogs",
+      "level": "power",
+      "followers": {
+        "instagram": 92000,
+        "tiktok": 66000,
+        "x": 0,
+        "youtube": 0
+      },
+      "engagement": 5,
+      "valuation": 433000,
+      "reported": true,
+      "source": "On3 NIL Valuations (2026)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/football/",
+      "blurb": "A preseason All-American safety, Bolden is among Georgia's most marketable returning defenders."
+    },
+    {
+      "slug": "nate-frazier",
+      "name": "Nate Frazier",
+      "sport": "Football",
+      "position": "Running Back",
+      "team": "georgia-bulldogs",
+      "level": "power",
+      "followers": {
+        "instagram": 52000,
+        "tiktok": 0,
+        "x": 11000,
+        "youtube": 0
+      },
+      "engagement": 5,
+      "valuation": 730000,
+      "reported": true,
+      "source": "On3 NIL Valuations (2026)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/football/",
+      "blurb": "The Bulldogs' lead running back has built a strong NIL profile as a featured back in the SEC."
+    },
+    {
+      "slug": "ellis-robinson-iv",
+      "name": "Ellis Robinson IV",
+      "sport": "Football",
+      "position": "Cornerback",
+      "team": "georgia-bulldogs",
+      "level": "power",
+      "followers": {
+        "instagram": 42000,
+        "tiktok": 0,
+        "x": 0,
+        "youtube": 0
+      },
+      "engagement": 5,
+      "valuation": 430000,
+      "reported": true,
+      "source": "On3 NIL Valuations (2026)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/football/",
+      "blurb": "A former five-star cornerback, Robinson is one of Georgia's rising NIL names on defense."
+    },
+    {
+      "slug": "elijah-griffin",
+      "name": "Elijah Griffin",
+      "sport": "Football",
+      "position": "Defensive Lineman",
+      "team": "georgia-bulldogs",
+      "level": "power",
+      "followers": {
+        "instagram": 12000,
+        "tiktok": 0,
+        "x": 0,
+        "youtube": 0
+      },
+      "engagement": 5,
+      "valuation": 588000,
+      "reported": true,
+      "source": "On3 NIL Valuations (2026)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/football/",
+      "blurb": "The top-rated defensive lineman in his recruiting class, Griffin already carries a six-figure NIL valuation at Georgia."
+    },
+    {
+      "slug": "boogie-fland",
+      "name": "Boogie Fland",
+      "sport": "Men's Basketball",
+      "position": "Guard",
+      "team": "florida-gators",
+      "level": "power",
+      "followers": {
+        "instagram": 109000,
+        "tiktok": 165000,
+        "x": 7600,
+        "youtube": 0
+      },
+      "engagement": 5,
+      "valuation": 1400000,
+      "reported": true,
+      "source": "On3 NIL Valuations (2026)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/basketball/",
+      "blurb": "Florida's lead guard runs it back for 2026-27 on a seven-figure NIL package after transferring from Arkansas."
+    },
+    {
+      "slug": "thomas-haugh",
+      "name": "Thomas Haugh",
+      "sport": "Men's Basketball",
+      "position": "Forward",
+      "team": "florida-gators",
+      "level": "power",
+      "followers": {
+        "instagram": 58000,
+        "tiktok": 9000,
+        "x": 6000,
+        "youtube": 0
+      },
+      "engagement": 5,
+      "valuation": 1100000,
+      "reported": true,
+      "source": "On3 NIL Valuations (2026)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/basketball/",
+      "blurb": "The versatile forward passed on the NBA Draft to return to Florida, where his NIL profile ranks among college basketball's highest."
+    },
+    {
+      "slug": "karter-knox",
+      "name": "Karter Knox",
+      "sport": "Men's Basketball",
+      "position": "Guard",
+      "team": "louisville-cardinals",
+      "level": "power",
+      "followers": {
+        "instagram": 106000,
+        "tiktok": 0,
+        "x": 0,
+        "youtube": 0
+      },
+      "engagement": 5,
+      "valuation": 614000,
+      "reported": true,
+      "source": "On3 NIL Valuations (2026)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/basketball/",
+      "blurb": "The athletic wing transferred to Louisville for 2026-27, bringing a six-figure NIL valuation and a growing national following."
+    },
+    {
+      "slug": "sarah-strong",
+      "name": "Sarah Strong",
+      "sport": "Women's Basketball",
+      "position": "Forward",
+      "team": "uconn-huskies",
+      "level": "power",
+      "followers": {
+        "instagram": 139000,
+        "tiktok": 0,
+        "x": 0,
+        "youtube": 0
+      },
+      "engagement": 5,
+      "valuation": 1200000,
+      "reported": false,
+      "source": "Estimate (reported ~$1M+, Jordan Brand and other deals; On3 does not disclose exact figure)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/womens-basketball/",
+      "blurb": "The reigning national champion and AP Player of the Year, Strong is the most valuable returning player in women's college basketball, with a Jordan Brand deal among her partnerships."
+    },
+    {
+      "slug": "madison-booker",
+      "name": "Madison Booker",
+      "sport": "Women's Basketball",
+      "position": "Guard",
+      "team": "texas-longhorns",
+      "level": "power",
+      "followers": {
+        "instagram": 34000,
+        "tiktok": 0,
+        "x": 0,
+        "youtube": 0
+      },
+      "engagement": 5,
+      "valuation": 900000,
+      "reported": false,
+      "source": "Estimate (multiple major deals; On3 does not disclose exact figure)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/womens-basketball/",
+      "blurb": "A multi-year All-American, Booker became the first athlete in Kevin Durant's Nike-backed Texas NIL program."
+    },
+    {
+      "slug": "mikaylah-williams",
+      "name": "Mikaylah Williams",
+      "sport": "Women's Basketball",
+      "position": "Guard",
+      "team": "lsu-tigers",
+      "level": "power",
+      "followers": {
+        "instagram": 78000,
+        "tiktok": 0,
+        "x": 0,
+        "youtube": 0
+      },
+      "engagement": 5,
+      "valuation": 800000,
+      "reported": false,
+      "source": "Estimate (Jordan Brand and other deals; On3 does not disclose exact figure)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/womens-basketball/",
+      "blurb": "A First-Team All-SEC guard and Jordan Brand athlete, Williams is among the most marketable players in women's college basketball."
     }
   ]
 }
