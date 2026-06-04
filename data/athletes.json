@@ -29,7 +29,10 @@
     "nebraska-cornhuskers":   { "name": "Nebraska Cornhuskers", "conference": "Big Ten", "sport": "Football" },
     "alabama-crimson-tide":   { "name": "Alabama Crimson Tide", "conference": "SEC", "sport": "Football" },
     "notre-dame-fighting-irish": { "name": "Notre Dame Fighting Irish", "conference": "ACC", "sport": "Women's Basketball" },
-    "auburn-tigers":          { "name": "Auburn Tigers", "conference": "SEC", "sport": "Men's Basketball" }
+    "auburn-tigers":          { "name": "Auburn Tigers", "conference": "SEC", "sport": "Men's Basketball" },
+    "oklahoma-sooners":       { "name": "Oklahoma Sooners", "conference": "SEC", "sport": "Football" },
+    "kansas-state-wildcats":  { "name": "Kansas State Wildcats", "conference": "Big 12", "sport": "Men's Basketball" },
+    "iowa-hawkeyes":          { "name": "Iowa Hawkeyes", "conference": "Big Ten", "sport": "Men's Basketball" }
   },
   "athletes": [
     { "slug": "arch-manning", "name": "Arch Manning", "sport": "Football", "position": "Quarterback", "team": "texas-longhorns", "level": "power",
@@ -230,6 +233,21 @@
     { "slug": "tahaad-pettiford", "name": "Tahaad Pettiford", "sport": "Men's Basketball", "position": "Guard", "team": "auburn-tigers", "level": "power",
       "followers": {}, "engagement": 5,
       "valuation": 2100000, "reported": false, "source": "Estimate (reported ~$2.1M NIL deal; On3 does not disclose exact figure)", "sourceUrl": "https://www.on3.com/nil/rankings/player/college/basketball/",
-      "blurb": "The Auburn point guard returned for his junior season on a reported seven-figure NIL package, turning down larger offers elsewhere." }
+      "blurb": "The Auburn point guard returned for his junior season on a reported seven-figure NIL package, turning down larger offers elsewhere." },
+
+    { "slug": "john-mateer", "name": "John Mateer", "sport": "Football", "position": "Quarterback", "team": "oklahoma-sooners", "level": "power",
+      "followers": {}, "engagement": 5,
+      "valuation": 2800000, "reported": true, "source": "On3 NIL Valuations (2026)", "sourceUrl": "https://www.on3.com/nil/rankings/player/college/football/",
+      "blurb": "After choosing to return to Oklahoma rather than enter the NFL Draft, Mateer is the highest-valued player in Sooners history, anchored by a Beats by Dre deal." },
+
+    { "slug": "pj-haggerty", "name": "PJ Haggerty", "sport": "Men's Basketball", "position": "Guard", "team": "kansas-state-wildcats", "level": "power",
+      "followers": {}, "engagement": 5,
+      "valuation": 2500000, "reported": true, "source": "Reports / On3 (2026)", "sourceUrl": "https://www.on3.com/nil/rankings/player/college/basketball/",
+      "blurb": "One of the most coveted players in the transfer portal, the high-scoring guard landed at Kansas State on a reported $2.5M NIL deal." },
+
+    { "slug": "bennett-stirtz", "name": "Bennett Stirtz", "sport": "Men's Basketball", "position": "Guard", "team": "iowa-hawkeyes", "level": "power",
+      "followers": {}, "engagement": 5,
+      "valuation": 1700000, "reported": false, "source": "Estimate (reported ~$1.7M; On3 does not disclose exact figure)", "sourceUrl": "https://www.on3.com/nil/rankings/player/college/basketball/",
+      "blurb": "The All-Transfer Team point guard followed coach Ben McCollum from Drake to Iowa and quickly became one of the Big Ten's most valuable players." }
   ]
 }
