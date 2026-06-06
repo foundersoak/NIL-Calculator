@@ -1,5 +1,5 @@
 /* ============================================================
-   NIL ValueCalc — calculator, player lookup, email gate
+   NIL ValueCalc - calculator, player lookup, email gate
    ============================================================ */
 (function () {
   'use strict';
@@ -26,7 +26,7 @@
     if (n >= 1e3) return '$' + Math.round(n / 1e3) + 'K';
     return '$' + Math.round(n);
   }
-  function range(lo, hi) { return moneyShort(lo) + ' – ' + moneyShort(hi); }
+  function range(lo, hi) { return moneyShort(lo) + ' to ' + moneyShort(hi); }
 
   /* ---------- Email unlock state (one-time per browser) ---------- */
   function isUnlocked() { return localStorage.getItem('nil_unlocked') === '1'; }
@@ -208,7 +208,7 @@
           if (q.length < 2) { close(); return; }
           var hits = list.filter(function (p) { return p.name.toLowerCase().indexOf(q) > -1 ||
             (p.team && p.team.toLowerCase().indexOf(q) > -1); }).slice(0, 8);
-          if (!hits.length) { resultsBox.hidden = false; resultsBox.innerHTML = '<div class="search-empty">No match — try the “Estimate any athlete” tab.</div>'; return; }
+          if (!hits.length) { resultsBox.hidden = false; resultsBox.innerHTML = '<div class="search-empty">No match. Try the “Estimate any athlete” tab.</div>'; return; }
           resultsBox.hidden = false;
           resultsBox.innerHTML = hits.map(function (p) {
             return '<button type="button" class="search-item" data-slug="' + p.slug + '">' +
@@ -224,13 +224,13 @@
               var sel = $('lookup-selected');
               if (sel) {
                 sel.hidden = false;
-                sel.innerHTML = '<p class="lookup-name">Selected: <strong>' + p.name + '</strong> — ' +
+                sel.innerHTML = '<p class="lookup-name">Selected: <strong>' + p.name + '</strong>, ' +
                   p.position + ', ' + p.team + '</p>' +
                   '<a class="lookup-full" href="' + BASE + 'athlete/' + p.slug + '/index.html">View full profile ›</a>';
               }
               present({
                 value: p.value, low: p.low, high: p.high, sport: p.sport,
-                eyebrow: (p.former ? 'Estimated college NIL value' : 'Estimated 2026 NIL value') + ' — ' + p.name,
+                eyebrow: (p.former ? 'Estimated college NIL value' : 'Estimated 2026 NIL value') + ': ' + p.name,
                 bars: null, lookup: true
               });
             });

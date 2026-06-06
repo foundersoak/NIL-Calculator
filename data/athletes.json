@@ -1,5 +1,5 @@
 {
-  "_comment": "NIL athlete dataset. Figures are estimated 12-month NIL valuations from public reporting (On3, FOX Sports, SportsGrid) and/or our model — not amounts paid. 'reported: true' cites a public figure (see source). Add athletes here and run `node scripts/build.js` to regenerate pages + sitemap. Keep data accurate and sourced — each page must offer real value to rank.",
+  "_comment": "NIL athlete dataset. Figures are estimated 12-month NIL valuations from public reporting (On3, FOX Sports, SportsGrid) and/or our model, not amounts paid. 'reported: true' cites a public figure (see source). Add athletes here and run `node scripts/build.js` to regenerate pages + sitemap. Keep data accurate and sourced, each page must offer real value to rank.",
   "updated": "2026-06-06",
   "teams": {
     "texas-longhorns": {
@@ -217,7 +217,7 @@
       "reported": true,
       "source": "On3 NIL Valuations (2026)",
       "sourceUrl": "https://www.on3.com/nil/rankings/player/nil-valuations/",
-      "blurb": "After a standout freshman season, the Ohio State receiver became the first college athlete on a Red Bull can and signed with Adidas, EA Sports, Nintendo and more — fueling a top-tier NIL valuation."
+      "blurb": "After a standout freshman season, the Ohio State receiver became the first college athlete on a Red Bull can and signed with Adidas, EA Sports, Nintendo and more, fueling a top-tier NIL valuation."
     },
     {
       "slug": "carson-beck",

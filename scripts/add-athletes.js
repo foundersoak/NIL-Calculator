@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /* ============================================================
-   NIL ValueCalc — add athletes from a research run
+   NIL ValueCalc - add athletes from a research run
    ------------------------------------------------------------
    You NEVER edit HTML. All pages are generated from
    data/athletes.json. This importer lets each research run be a
@@ -67,7 +67,7 @@ incAthletes.forEach((raw, i) => {
   }
   if (a.valuation == null || isNaN(+a.valuation)) problems.push(`${a.name}: missing/invalid "valuation"`);
   if (a.team && !data.teams[a.team]) {
-    problems.push(`${a.name}: team "${a.team}" not found — add it under "teams" in the incoming file.`);
+    problems.push(`${a.name}: team "${a.team}" not found. Add it under "teams" in the incoming file.`);
   }
   if (problems.length && problems[problems.length - 1].startsWith(a.name)) return;
 

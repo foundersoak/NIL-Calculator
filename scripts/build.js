@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /* ============================================================
-   NIL ValueCalc — static page generator
+   NIL ValueCalc - static page generator
    Reads data/athletes.json and generates:
      - /athlete/<slug>/index.html   (one per athlete)
      - /team/<slug>/index.html      (one per team, aggregates roster)
@@ -21,7 +21,7 @@ const ADSENSE_CLIENT = 'ca-pub-XXXXXXXXXXXXXXXX';
 const FORMSPREE = 'https://formspree.io/f/mkoangpz';
 const UPDATED = DATA.updated || new Date().toISOString().slice(0, 10);
 
-/* Asset version — hash of CSS+JS so browsers re-fetch when either changes. */
+/* Asset version: hash of CSS+JS so browsers re-fetch when either changes. */
 const crypto = require('crypto');
 const ASSET_VER = (() => {
   try {
@@ -115,7 +115,7 @@ function emailCapture(prefix) {
   return `<section class="container narrow">
     <div class="email-capture light">
       <h4>Get the NIL newsletter 📩</h4>
-      <p>Deal breakdowns, valuation updates and athlete brand tips — free.</p>
+      <p>Deal breakdowns, valuation updates and athlete brand tips. Free.</p>
       <form class="email-form" action="${FORMSPREE}" method="POST">
         <input type="email" name="email" required placeholder="you@email.com" aria-label="Email address" />
         <button type="submit" class="btn btn-primary">Subscribe</button>
@@ -141,7 +141,7 @@ function foot(prefix) {
       </nav>
     </div>
     <div class="container footer-bottom">
-      <p>© ${new Date().getFullYear()} NIL ValueCalc. NIL valuations are estimates of 12-month earning potential based on public data and our model — not amounts paid, and not endorsed by the athletes or schools. Informational only; not financial, legal or tax advice. Not affiliated with the NCAA. Data updated ${UPDATED}.</p>
+      <p>© ${new Date().getFullYear()} NIL ValueCalc. NIL valuations are estimates of 12-month earning potential based on public data and our model, not amounts paid, and not endorsed by the athletes or schools. Informational only; not financial, legal or tax advice. Not affiliated with the NCAA. Data updated ${UPDATED}.</p>
     </div>
   </footer>
   <script src="${prefix}assets/js/calculator.js?v=${ASSET_VER}" defer></script>
@@ -172,8 +172,8 @@ function athletePage(a) {
     ? `How Much Did ${a.name} Make in NIL? | ${team.name} ${a.sport}`
     : `How Much Does ${a.name} Make in NIL? | ${team.name} ${a.sport}`;
   const desc = a.former
-    ? `${a.name}, former ${esc(team.name)} ${a.sport.toLowerCase()} star${a.nowWith ? ` (now ${esc(a.nowWith)})` : ''} — see the social following, NIL factors and unlock the estimated college NIL valuation, free.`
-    : `${a.name}, ${esc(team.name)} ${a.sport.toLowerCase()} — see the social following and NIL factors, and unlock ${a.name.split(' ')[0]}'s estimated 2026 NIL valuation. Free.`;
+    ? `${a.name}, former ${esc(team.name)} ${a.sport.toLowerCase()} star${a.nowWith ? ` (now ${esc(a.nowWith)})` : ''}. See the social following, NIL factors and unlock the estimated college NIL valuation, free.`
+    : `${a.name}, ${esc(team.name)} ${a.sport.toLowerCase()}. See the social following and NIL factors, and unlock ${a.name.split(' ')[0]}'s estimated 2026 NIL valuation. Free.`;
   const jsonld = {
     "@context": "https://schema.org",
     "@graph": [
@@ -186,8 +186,8 @@ function athletePage(a) {
       { "@type": "FAQPage", "mainEntity": [
         { "@type": "Question", "name": `How much ${a.former ? 'did' : 'does'} ${a.name} make in NIL?`,
           "acceptedAnswer": { "@type": "Answer", "text": a.former
-            ? `${a.name}'s estimated college NIL valuation is based on social following, on-field performance and market. Unlock the figure with our free NIL calculator — it's an estimate of earning potential, not a confirmed salary.`
-            : `${a.name}'s estimated 2026 NIL valuation is based on social following, on-field performance and market reach. Unlock the figure with our free NIL calculator — it's an estimate of earning potential, not a confirmed salary.` } },
+            ? `${a.name}'s estimated college NIL valuation is based on social following, on-field performance and market. Unlock the figure with our free NIL calculator. It's an estimate of earning potential, not a confirmed salary.`
+            : `${a.name}'s estimated 2026 NIL valuation is based on social following, on-field performance and market reach. Unlock the figure with our free NIL calculator. It's an estimate of earning potential, not a confirmed salary.` } },
         { "@type": "Question", "name": `What team ${a.former ? 'did' : 'does'} ${a.name} play for?`,
           "acceptedAnswer": { "@type": "Answer", "text": a.former
             ? `${a.name} played ${a.position} for the ${team.name}${a.nowWith ? ` and is now with ${a.nowWith}` : ''}.`
@@ -232,7 +232,7 @@ function athletePage(a) {
       ${totalFollowers(a) ? `<p class="muted">That's about ${totalFollowers(a).toLocaleString('en-US')} followers in all (rough number).</p>` : ''}
 
       <h2>How we estimate ${esc(a.name.split(' ')[0])}'s NIL value</h2>
-      <p>An NIL value is an estimate of how much a player could earn in a year — it is not a salary or a confirmed deal. We weigh four things brands care about: <strong>fans</strong> (social reach and engagement), <strong>stage</strong> (school, conference and market), <strong>game</strong> (on-field role and performance), and <strong>brand</strong> (sport and story).${a.source ? ` Where a public figure exists, we sense-check against it (<a href="${a.sourceUrl}" rel="nofollow noopener" target="_blank">${esc(a.source)}</a>).` : ''}</p>
+      <p>An NIL value is an estimate of how much a player could earn in a year. It is not a salary or a confirmed deal. We weigh four things brands care about: <strong>fans</strong> (social reach and engagement), <strong>stage</strong> (school, conference and market), <strong>game</strong> (on-field role and performance), and <strong>brand</strong> (sport and story).${a.source ? ` Where a public figure exists, we sense-check against it (<a href="${a.sourceUrl}" rel="nofollow noopener" target="_blank">${esc(a.source)}</a>).` : ''}</p>
 
       <div class="cta-inline">
         <p><strong>Curious about another player?</strong> Look one up or estimate any athlete in seconds.</p>
@@ -247,7 +247,7 @@ function athletePage(a) {
 function directoryPage(athletes, teams) {
   const prefix = '../';
   const url = `${SITE_URL}/athletes/`;
-  const title = `College Athlete NIL Valuations 2026 — Browse by Player & Team`;
+  const title = `College Athlete NIL Valuations 2026: Browse by Player & Team`;
   const desc = `Browse estimated 2026 NIL valuations for top college athletes and team rosters. See how much your favorite players make in NIL.`;
   const sorted = athletes.slice().sort((x, y) => y.valuation - x.valuation);
   const cards = sorted.map(a => {

@@ -1,5 +1,5 @@
 /* ============================================================
-   NIL ValueCalc — styles
+   NIL ValueCalc - styles
    ============================================================ */
 :root {
   --bg: #0b1120;
@@ -367,7 +367,7 @@ input[type=range]::-moz-range-thumb {
 }
 .team-chip:hover { border-color: var(--brand); color: var(--brand); }
 
-/* Athlete card tag + CTA (gated — no dollar value shown) */
+/* Athlete card tag + CTA (gated, no dollar value shown) */
 .ac-tag {
   align-self: flex-start; font-family: var(--display); font-weight: 700; font-size: .72rem;
   letter-spacing: .04em; text-transform: uppercase; color: var(--brand);
