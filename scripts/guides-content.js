@@ -128,5 +128,35 @@ module.exports = [
         ['ESPN: clearinghouse rejected 500-plus NIL deals', 'https://www.espn.com/college-sports/story/_/id/47591684/college-watchdog-group-rejected-500-plus-nil-deals-worth-nearly-15-million']
       ])}
     `
+  },
+
+  {
+    slug: 'texas-softball-2026-wcws-champions',
+    title: 'Texas Softball Wins Back-to-Back WCWS Titles in 2026',
+    desc: "Texas swept Texas Tech to win the 2026 Women's College World Series, its second straight national title, behind two-time Most Outstanding Player Teagan Kavan.",
+    date: '2026-06-06',
+    body: `
+      <p>The <strong>Texas Longhorns</strong> are back-to-back national champions. Texas swept Texas Tech 2-0 in the best-of-three 2026 Women's College World Series finals at Devon Park in Oklahoma City, taking Game 1 by 7 to 3 and clinching with a 4 to 1 win in Game 2. It is the program's second straight softball title, after Texas won its first ever championship in 2025, also over Texas Tech.</p>
+
+      <h2>The "Heart Attack Horns"</h2>
+      <p>Texas earned a nickname on the way to the title. After dropping their World Series opener to Tennessee, the Longhorns reeled off a string of must-win games to reach the final, then finished the job against the Red Raiders. Head coach Mike White now has two championships in his first run of title trips in Austin.</p>
+
+      <h2>Teagan Kavan, two-time Most Outstanding Player</h2>
+      <p><a href="/athlete/teagan-kavan/">Teagan Kavan</a> was named Most Outstanding Player of the Women's College World Series for the second year in a row, the first player ever to win it twice. She threw a complete game in the opener and came out of the bullpen to close the clincher. Around her, <a href="/athlete/katie-stewart/">Katie Stewart</a>, the 2026 SEC Player of the Year who set a Texas single-season home run record, and <a href="/athlete/kayden-henry/">Kayden Henry</a>, who homered in Game 2, powered the lineup. Star catcher <a href="/athlete/reese-atwood/">Reese Atwood</a> capped a decorated college career before turning pro in the AUSL.</p>
+
+      <h2>Texas Tech and the Canady effect</h2>
+      <p>Texas Tech reached the championship series for the second straight year, a rapid rise powered in large part by <a href="/athlete/nijaree-canady/">NiJaree Canady</a>. Her move from Stanford to Lubbock came with a reported NIL deal worth more than $1 million, believed to be the first seven figure package in college softball, and she was the ace at the center of the Red Raiders' run. Infielder <a href="/athlete/mia-williams/">Mia Williams</a> led the team in average and power. Texas Tech came up just short of Texas in the final in both seasons.</p>
+
+      <h2>The NIL angle</h2>
+      <p>Softball is one of the fastest growing NIL sports, and this final showed why. Canady's seven figure deal reset the market, and Texas's repeat champions are among the most marketable players in the women's game. Curious what a softball star is worth? <a href="/#calculator">Estimate any athlete</a>, see the <a href="/guide/highest-paid-college-athletes-2026/">highest-paid college athletes in 2026</a>, or browse the full <a href="/athletes/">player database</a>.</p>
+
+      <p class="muted">Reporting compiled from ESPN, NCAA.com and other outlets. NIL figures on this site are estimates of earning potential, not confirmed deals.</p>
+      ${SOURCES([
+        ['ESPN: Heart Attack Horns, Texas wins the national championship', 'https://www.espn.com/college-sports/story/_/id/48971031/2026-wcws-texas-wins-national-championship'],
+        ['NCAA.com: Texas wins the 2026 NCAA DI softball championship', 'https://www.ncaa.com/news/softball/article/2026-06-04/texas-wins-2026-ncaa-di-softball-championship'],
+        ['ESPN: Texas claims second straight WCWS title over Texas Tech', 'https://www.espn.com/college-sports/story/_/id/48971064/texas-claims-second-straight-wcws-title-texas-tech'],
+        ['ESPN: NiJaree Canady signs another seven-figure deal with Texas Tech', 'https://www.espn.com/college-sports/story/_/id/45464899/nijaree-canady-signs-another-7-figure-deal-texas-tech']
+      ])}
+    `
   }
 ];
