@@ -200,8 +200,29 @@
       if (filledEl.scrollIntoView) filledEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
 
+    /* Populate the hidden lead fields on the gate form so each email carries context. */
+    function setF(id, v) { var el = $(id); if (el) el.value = (v == null ? '' : v); }
+    function fillLeadFields(res) {
+      var rng = moneyShort(res.low) + ' to ' + moneyShort(res.high);
+      setF('nil_estimate_field', rng);
+      setF('f_mode', res.lookup ? 'Player lookup' : 'Manual estimate');
+      setF('f_athlete', res.name || '');
+      setF('f_team', res.team || '');
+      setF('f_sport', res.sport || '');
+      setF('f_position', res.position || '');
+      if (res.lookup) {
+        setF('f_details', (res.name || '') + (res.team ? ' · ' + res.team : '') + (res.position ? ' (' + res.position + ')' : '') + ' · est ' + rng);
+        setF('f_subject', 'NIL unlock: ' + (res.name || 'player'));
+      } else {
+        setF('f_details', [res.sport, res.position, res.level, res.performance].filter(Boolean).join(' · ') +
+          (res.followsum ? ' · ' + res.followsum.toLocaleString('en-US') + ' followers' : '') + ' · est ' + rng);
+        setF('f_subject', 'NIL estimate: ' + (res.sport || 'athlete') + ' ' + rng);
+      }
+    }
+
     function present(res) {
       pending = res;
+      fillLeadFields(res);
       if (emptyEl) emptyEl.hidden = true;
       if (isUnlocked()) {
         if (gateEl) gateEl.hidden = true;
@@ -211,7 +232,6 @@
         filledEl.hidden = true;
         if (gateEl) {
           gateEl.hidden = false;
-          if ($('nil_estimate_field')) $('nil_estimate_field').value = moneyShort(res.value);
           if (gateEl.scrollIntoView) gateEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
       }
@@ -236,6 +256,11 @@
         e.preventDefault();
         var res = compute();
         res.eyebrow = 'Estimated annual NIL value';
+        var posEl = $('position-sel'), divEl = $('division'), perfEl = $('performance');
+        res.position = posEl ? posEl.options[posEl.selectedIndex].text : '';
+        res.level = divEl ? divEl.options[divEl.selectedIndex].text : '';
+        res.performance = perfEl ? perfEl.options[perfEl.selectedIndex].text : '';
+        res.followsum = num('instagram') + num('tiktok') + num('x') + num('youtube');
         present(res);
       });
     }
@@ -273,6 +298,7 @@
               }
               present({
                 value: p.value, low: p.low, high: p.high, sport: p.sport,
+                name: p.name, team: p.team, position: p.position, slug: p.slug,
                 eyebrow: (p.former ? 'Estimated college NIL value' : 'Estimated 2026 NIL value') + ': ' + p.name,
                 bars: null, lookup: true
               });

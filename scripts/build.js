@@ -229,7 +229,13 @@ function athletePage(a) {
           <div class="big-number blurred" aria-hidden="true">$•,•••,•••</div>
           <p class="gate-pitch">Enter your email to unlock ${esc(a.name.split(' ')[0])}'s estimated NIL value, the likely range, and the full breakdown. Free.</p>
           <form class="gate-form email-form" action="${FORMSPREE}" method="POST">
-            <input type="hidden" name="unlock_athlete" value="${esc(a.name)}" />
+            <input type="hidden" name="_subject" value="NIL unlock: ${esc(a.name)}" />
+            <input type="hidden" name="mode" value="Athlete page" />
+            <input type="hidden" name="athlete" value="${esc(a.name)}" />
+            <input type="hidden" name="team" value="${esc(team.name)}" />
+            <input type="hidden" name="sport" value="${esc(a.sport)}" />
+            <input type="hidden" name="position" value="${esc(a.position)}" />
+            <input type="hidden" name="page" value="athlete/${a.slug}" />
             <input type="email" name="email" required placeholder="you@email.com" aria-label="Email address" />
             <button type="submit" class="btn btn-primary">Unlock the value</button>
           </form>
