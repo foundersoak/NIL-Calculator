@@ -19,6 +19,10 @@ const DATA = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'athletes.json')
 const SITE_URL = 'https://howmuchnil.com'; // no trailing slash
 const ADSENSE_CLIENT = 'ca-pub-XXXXXXXXXXXXXXXX';
 const FORMSPREE = 'https://formspree.io/f/mkoangpz';
+
+/* Analytics + Search Console — paste your IDs here, leave '' to disable. Applies site-wide on rebuild. */
+const GA4_ID = '';            // Google Analytics 4 Measurement ID, e.g. 'G-XXXXXXXXXX'
+const GSC_VERIFICATION = '';  // Search Console "HTML tag" verification token (the content="..." value)
 const UPDATED = DATA.updated || new Date().toISOString().slice(0, 10);
 
 /* Asset version: hash of CSS+JS so browsers re-fetch when either changes. */
@@ -63,6 +67,14 @@ function breakdown(a) {
   ];
 }
 
+/* GA4 + Search Console verification markup (empty until IDs are set above). */
+function analyticsSnippet() {
+  let out = '';
+  if (GSC_VERIFICATION) out += `<meta name="google-site-verification" content="${GSC_VERIFICATION}" />`;
+  if (GA4_ID) out += `<script async src="https://www.googletagmanager.com/gtag/js?id=${GA4_ID}"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${GA4_ID}');</script>`;
+  return out;
+}
+
 /* ---------- shared HTML chunks ---------- */
 function head(opts) {
   const { title, desc, canonical, prefix, jsonld } = opts;
@@ -71,6 +83,7 @@ function head(opts) {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  ${analyticsSnippet()}
   <title>${esc(title)}</title>
   <meta name="description" content="${esc(desc)}" />
   <meta name="theme-color" content="#0b1120" />
@@ -301,7 +314,8 @@ writeFile(path.join('athletes', 'index.html'), directoryPage(athletes, teams));
   const fp = path.join(ROOT, f);
   if (!fs.existsSync(fp)) return;
   const out = fs.readFileSync(fp, 'utf8')
-    .replace(/(assets\/css\/styles\.css|assets\/js\/calculator\.js)(\?v=[a-z0-9]+)?/g, `$1?v=${ASSET_VER}`);
+    .replace(/(assets\/css\/styles\.css|assets\/js\/calculator\.js)(\?v=[a-z0-9]+)?/g, `$1?v=${ASSET_VER}`)
+    .replace(/<!-- ANALYTICS:START -->[\s\S]*?<!-- ANALYTICS:END -->/, `<!-- ANALYTICS:START -->${analyticsSnippet()}<!-- ANALYTICS:END -->`);
   fs.writeFileSync(fp, out);
   console.log('  stamped', f, '→ v=' + ASSET_VER);
 });
