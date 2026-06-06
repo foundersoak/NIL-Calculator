@@ -20,6 +20,25 @@
     sync();
   }
 
+  /* ---------- Position options per sport (NIL premium varies by position) ---------- */
+  var POSITIONS = {
+    'Football': [['Quarterback', 1.5], ['Wide Receiver', 1.2], ['Running Back', 1.15], ['Edge / Defensive Line', 1.1], ['Linebacker', 1.05], ['Defensive Back', 1.05], ['Tight End', 1.05], ['Offensive Line', 0.9], ['Other', 1.0]],
+    "Men's Basketball": [['Guard', 1.2], ['Wing / Forward', 1.1], ['Center', 1.05]],
+    "Women's Basketball": [['Guard', 1.2], ['Wing / Forward', 1.1], ['Center', 1.05]],
+    'Baseball': [['Pitcher', 1.15], ['Shortstop', 1.1], ['Catcher', 1.1], ['Two-Way Player', 1.15], ['Outfielder', 1.0], ['Infielder', 1.0]],
+    'Softball': [['Pitcher', 1.15], ['Catcher', 1.1], ['Infielder', 1.05], ['Outfielder', 1.0]],
+    'Gymnastics': [['All-Around', 1.1], ['Specialist', 1.0]],
+    '_default': [['Athlete', 1.0]]
+  };
+  var sportSel = $('sport'), posSel = $('position-sel');
+  function fillPositions() {
+    if (!sportSel || !posSel) return;
+    var name = sportSel.options[sportSel.selectedIndex].text;
+    var list = POSITIONS[name] || POSITIONS._default;
+    posSel.innerHTML = list.map(function (o) { return '<option value="' + o[1] + '">' + o[0] + '</option>'; }).join('');
+  }
+  if (sportSel && posSel) { sportSel.addEventListener('change', fillPositions); fillPositions(); }
+
   function money(n) { return '$' + Math.round(n).toLocaleString('en-US'); }
   function moneyShort(n) {
     if (n >= 1e6) return '$' + (n / 1e6).toFixed(n % 1e6 === 0 ? 0 : 1) + 'M';
@@ -66,9 +85,12 @@
     var sportMult = parseFloat(sportSel.value) || 1;
     var sportName = sportSel.options[sportSel.selectedIndex].text;
     var perfMult = parseFloat($('performance').value) || 1;
-    var marketMult = parseFloat($('market').value) || 1;
+    var posEl = $('position-sel');
+    var posMult = posEl ? (parseFloat(posEl.value) || 1) : 1;
+    var marketMult = $('market') ? (parseFloat($('market').value) || 1) : 1;
     var div = DIVISION[$('division').value] || DIVISION.d1;
-    var eng = (parseFloat(engagement.value) || 0) / 100;
+    var eng = engagement ? (parseFloat(engagement.value) || 0) / 100 : 0.04;
+    var roleMult = perfMult * posMult;
 
     var ig = num('instagram') * eng * PLATFORM_RATE.instagram;
     var tt = num('tiktok') * eng * PLATFORM_RATE.tiktok;
@@ -78,9 +100,9 @@
 
     var influence = socialBase * sportMult;
     var exposure = (socialBase * (div.mult - 1)) + div.floor;
-    var performance = socialBase * (perfMult - 1) + div.floor * (perfMult - 1);
+    var performance = socialBase * (roleMult - 1) + div.floor * (roleMult - 1);
     var brand = socialBase * (marketMult - 1) + div.floor * 0.4 * sportMult;
-    var total = (socialBase + div.floor) * sportMult * div.mult * perfMult * marketMult;
+    var total = (socialBase + div.floor) * sportMult * div.mult * roleMult * marketMult;
 
     var parts = {
       influence: Math.max(influence, 1), exposure: Math.max(exposure, 1),
