@@ -1,8 +1,3 @@
 # ads.txt - Authorized Digital Sellers (IAB Tech Lab)
-# This file tells ad exchanges (SSPs) who is allowed to sell ad space on this site.
-# Without it, most programmatic ad demand will refuse to buy your inventory.
-#
-# ACTION REQUIRED: replace pub-0000000000000000 with YOUR Google AdSense
-# Publisher ID (found in AdSense → Account → Settings; it looks like pub-1234567890123456).
-# After you are approved, Google may also list this exact line for you to copy.
-google.com, pub-0000000000000000, DIRECT, f08c47fec0942fa0
+# Tells ad exchanges who may sell ad space on this site.
+google.com, pub-6381950276439830, DIRECT, f08c47fec0942fa0

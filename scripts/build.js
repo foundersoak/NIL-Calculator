@@ -14,10 +14,11 @@ const path = require('path');
 
 const ROOT = path.join(__dirname, '..');
 const DATA = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'athletes.json'), 'utf8'));
+const GUIDES = require('./guides-content.js');
 
 /* ---- Config: change SITE_URL to your custom domain when you have one ---- */
 const SITE_URL = 'https://howmuchnil.com'; // no trailing slash
-const ADSENSE_CLIENT = 'ca-pub-XXXXXXXXXXXXXXXX';
+const ADSENSE_CLIENT = 'ca-pub-6381950276439830';
 const FORMSPREE = 'https://formspree.io/f/mkoangpz';
 
 /* Analytics + Search Console — paste your IDs here, leave '' to disable. Applies site-wide on rebuild. */
@@ -110,6 +111,7 @@ function head(opts) {
       </a>
       <nav class="nav-links">
         <a href="${prefix}athletes/index.html">Athletes</a>
+        <a href="${prefix}guides/index.html">Guides</a>
         <a href="${prefix}index.html#calculator">Calculator</a>
         <a href="${prefix}index.html#how">How it works</a>
         <a class="nav-cta" href="${prefix}index.html#calculator">Look up a player</a>
@@ -148,6 +150,7 @@ function foot(prefix) {
       </div>
       <nav class="footer-links">
         <a href="${prefix}athletes/index.html">Athletes</a>
+        <a href="${prefix}guides/index.html">Guides</a>
         <a href="${prefix}index.html#calculator">Calculator</a>
         <a href="${prefix}privacy.html">Privacy</a>
         <a href="${prefix}terms.html">Terms</a>
@@ -298,6 +301,57 @@ function directoryPage(athletes, teams) {
   ` + foot(prefix);
 }
 
+/* ---------- guide article ---------- */
+function guidePage(g) {
+  const prefix = '../../';
+  const url = `${SITE_URL}/guide/${g.slug}/`;
+  const jsonld = {
+    "@context": "https://schema.org", "@type": "Article",
+    "headline": g.title, "description": g.desc,
+    "datePublished": g.date, "dateModified": g.date,
+    "author": { "@type": "Organization", "name": "HowMuchNIL" },
+    "publisher": { "@type": "Organization", "name": "HowMuchNIL" },
+    "mainEntityOfPage": url
+  };
+  return head({ title: `${g.title} | HowMuchNIL`, desc: g.desc, canonical: url, prefix, jsonld }) + `
+    <section class="container narrow article">
+      <nav class="crumbs"><a href="${prefix}index.html">Home</a> › <a href="${prefix}guides/index.html">Guides</a> › <span>${esc(g.title)}</span></nav>
+      <h1>${esc(g.title)}</h1>
+      <p class="article-meta">Updated ${g.date}</p>
+      ${g.body}
+      <div class="cta-inline">
+        <p><strong>Curious about a specific player?</strong> Look anyone up, or estimate any athlete in seconds.</p>
+        <a class="btn btn-primary" href="${prefix}index.html#calculator">Open the NIL calculator</a>
+      </div>
+    </section>
+    ${adUnit()}
+    ${emailCapture(prefix)}
+  ` + foot(prefix);
+}
+
+/* ---------- guides index ---------- */
+function guidesIndex() {
+  const prefix = '../';
+  const url = `${SITE_URL}/guides/`;
+  const cards = GUIDES.map(g =>
+    `<a class="guide-card" href="${prefix}guide/${g.slug}/index.html"><strong>${esc(g.title)}</strong><span>${esc(g.desc)}</span></a>`).join('');
+  return head({
+    title: 'NIL Guides and Rankings | HowMuchNIL',
+    desc: 'Plain-English guides to college NIL: the highest-paid athletes, how valuations work, and how revenue sharing changed college sports.',
+    canonical: url, prefix,
+    jsonld: { "@context": "https://schema.org", "@type": "CollectionPage", "name": "NIL Guides", "url": url }
+  }) + `
+    <section class="container narrow athlete-hero">
+      <h1>NIL guides and rankings</h1>
+      <p class="athlete-sub">Plain-English guides to college NIL money.</p>
+    </section>
+    <section class="container narrow">
+      <div class="guide-list">${cards}</div>
+    </section>
+    ${emailCapture(prefix)}
+  ` + foot(prefix);
+}
+
 /* ---------- write helpers ---------- */
 function writeFile(rel, html) {
   const full = path.join(ROOT, rel);
@@ -314,6 +368,9 @@ console.log(`Generating from ${athletes.length} athletes, ${Object.keys(teams).l
 athletes.forEach(a => writeFile(path.join('athlete', a.slug, 'index.html'), athletePage(a)));
 
 writeFile(path.join('athletes', 'index.html'), directoryPage(athletes, teams));
+
+GUIDES.forEach(g => writeFile(path.join('guide', g.slug, 'index.html'), guidePage(g)));
+writeFile(path.join('guides', 'index.html'), guidesIndex());
 
 /* Stamp the current asset version onto the hand-written static pages too. */
 ['index.html', 'privacy.html', 'terms.html'].forEach(f => {
@@ -343,6 +400,8 @@ const urls = [
   `${SITE_URL}/athletes/`,
   `${SITE_URL}/privacy.html`,
   `${SITE_URL}/terms.html`,
+  `${SITE_URL}/guides/`,
+  ...GUIDES.map(g => `${SITE_URL}/guide/${g.slug}/`),
   ...athletes.map(a => `${SITE_URL}/athlete/${a.slug}/`)
 ];
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>

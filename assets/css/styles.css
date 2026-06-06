@@ -450,6 +450,23 @@ input[type=range]::-moz-range-thumb {
 .sim-card span { color: #94a3b8; font-size: .8rem; }
 .sim-card .sim-range { color: #4ade80; font-weight: 600; }
 
+/* Articles + guides */
+.article { padding-top: 16px; }
+.article h2 { margin-top: 1.7rem; font-size: 1.35rem; }
+.article p, .article li { color: #334155; }
+.article a { color: var(--brand); }
+.article-meta { color: var(--ink-soft); font-size: .85rem; margin: -.2rem 0 1rem; }
+.article .muted { color: var(--ink-soft); font-size: .9rem; }
+.article .sources li { font-size: .9rem; }
+.guide-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+.guide-card {
+  display: flex; flex-direction: column; gap: .3rem; background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--radius-sm); padding: 18px; box-shadow: var(--shadow); transition: transform .15s ease, box-shadow .2s ease;
+}
+.guide-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+.guide-card strong { font-size: 1.05rem; color: var(--ink); }
+.guide-card span { color: var(--ink-soft); font-size: .88rem; }
+
 /* Legal pages */
 .legal { max-width: 760px; margin: 0 auto; padding: 50px 0 70px; }
 .legal h1 { font-size: 2.2rem; margin-bottom: .3rem; }
