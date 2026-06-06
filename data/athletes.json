@@ -75,7 +75,7 @@
     "north-carolina-tar-heels": {
       "name": "North Carolina Tar Heels",
       "conference": "ACC",
-      "sport": "Men's Basketball"
+      "sport": "Multiple"
     },
     "purdue-boilermakers": {
       "name": "Purdue Boilermakers",
@@ -85,7 +85,7 @@
     "usc-trojans": {
       "name": "USC Trojans",
       "conference": "Big Ten",
-      "sport": "Women's Basketball"
+      "sport": "Multiple"
     },
     "oregon-state-beavers": {
       "name": "Oregon State Beavers",
@@ -95,7 +95,7 @@
     "kansas-jayhawks": {
       "name": "Kansas Jayhawks",
       "conference": "Big 12",
-      "sport": "Men's Basketball"
+      "sport": "Multiple"
     },
     "arizona-wildcats": {
       "name": "Arizona Wildcats",
@@ -130,7 +130,7 @@
     "alabama-crimson-tide": {
       "name": "Alabama Crimson Tide",
       "conference": "SEC",
-      "sport": "Football"
+      "sport": "Multiple"
     },
     "notre-dame-fighting-irish": {
       "name": "Notre Dame Fighting Irish",
@@ -140,12 +140,12 @@
     "auburn-tigers": {
       "name": "Auburn Tigers",
       "conference": "SEC",
-      "sport": "Men's Basketball"
+      "sport": "Multiple"
     },
     "oklahoma-sooners": {
       "name": "Oklahoma Sooners",
       "conference": "SEC",
-      "sport": "Football"
+      "sport": "Multiple"
     },
     "kansas-state-wildcats": {
       "name": "Kansas State Wildcats",
@@ -160,7 +160,7 @@
     "georgia-bulldogs": {
       "name": "Georgia Bulldogs",
       "conference": "SEC",
-      "sport": "Football"
+      "sport": "Multiple"
     },
     "louisville-cardinals": {
       "name": "Louisville Cardinals",
@@ -195,7 +195,7 @@
     "st-johns-red-storm": {
       "name": "St. John's Red Storm",
       "conference": "Big East",
-      "sport": "Men's Basketball"
+      "sport": "Multiple"
     },
     "colorado-buffaloes": {
       "name": "Colorado Buffaloes",
@@ -211,6 +211,21 @@
       "name": "Georgia Tech Yellow Jackets",
       "conference": "ACC",
       "sport": "Football"
+    },
+    "ole-miss-rebels": {
+      "name": "Ole Miss Rebels",
+      "conference": "SEC",
+      "sport": "Baseball"
+    },
+    "west-virginia-mountaineers": {
+      "name": "West Virginia Mountaineers",
+      "conference": "Big 12",
+      "sport": "Baseball"
+    },
+    "mississippi-state-bulldogs": {
+      "name": "Mississippi State Bulldogs",
+      "conference": "SEC",
+      "sport": "Baseball"
     }
   },
   "athletes": [
@@ -1879,6 +1894,644 @@
       "engagement": 5,
       "low": 376000,
       "high": 587500
+    },
+    {
+      "name": "Jake Schaffner",
+      "sport": "Baseball",
+      "position": "Shortstop",
+      "team": "north-carolina-tar-heels",
+      "followers": {
+        "instagram": 0,
+        "tiktok": 0,
+        "x": 0,
+        "youtube": 0
+      },
+      "valuation": 150000,
+      "reported": false,
+      "source": "Estimate (On3 does not publicly list baseball NIL figures)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/baseball/",
+      "blurb": "Schaffner is a Brooks Wallace Award finalist and North Dakota State transfer who leads North Carolina in hits, runs and stolen bases as the leadoff catalyst.",
+      "slug": "jake-schaffner",
+      "level": "power",
+      "engagement": 5,
+      "low": 120000,
+      "high": 187500
+    },
+    {
+      "name": "Ryan Lynch",
+      "sport": "Baseball",
+      "position": "Pitcher",
+      "team": "north-carolina-tar-heels",
+      "followers": {
+        "instagram": 0,
+        "tiktok": 0,
+        "x": 0,
+        "youtube": 0
+      },
+      "valuation": 140000,
+      "reported": false,
+      "source": "Estimate (On3 does not publicly list baseball NIL figures)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/baseball/",
+      "blurb": "Lynch is a preseason College Pitcher of the Year watch-list arm with a 94 to 96 mph sinker who threw seven shutout innings in the regional opener.",
+      "slug": "ryan-lynch",
+      "level": "power",
+      "engagement": 5,
+      "low": 112000,
+      "high": 175000
+    },
+    {
+      "name": "Mason Edwards",
+      "sport": "Baseball",
+      "position": "Pitcher",
+      "team": "usc-trojans",
+      "followers": {
+        "instagram": 2157,
+        "tiktok": 0,
+        "x": 0,
+        "youtube": 0
+      },
+      "valuation": 150000,
+      "reported": false,
+      "source": "Estimate (On3 does not publicly list baseball NIL figures)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/baseball/",
+      "blurb": "Edwards is the Big Ten Pitcher of the Year and a National Pitcher of the Year frontrunner who went 8-0 with a 1.49 ERA and 154 strikeouts in 2026.",
+      "slug": "mason-edwards",
+      "level": "power",
+      "engagement": 5,
+      "low": 120000,
+      "high": 187500
+    },
+    {
+      "name": "Grant Govel",
+      "sport": "Baseball",
+      "position": "Pitcher",
+      "team": "usc-trojans",
+      "followers": {
+        "instagram": 2733,
+        "tiktok": 0,
+        "x": 0,
+        "youtube": 0
+      },
+      "valuation": 80000,
+      "reported": false,
+      "source": "Estimate (On3 does not publicly list baseball NIL figures)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/baseball/",
+      "blurb": "Govel is a USC weekend starter who threw a seven-inning no-hitter against Pepperdine and started the Trojans' NCAA Tournament opener.",
+      "slug": "grant-govel",
+      "level": "power",
+      "engagement": 5,
+      "low": 64000,
+      "high": 100000
+    },
+    {
+      "name": "Chris Rembert",
+      "sport": "Baseball",
+      "position": "Second Baseman",
+      "team": "auburn-tigers",
+      "followers": {
+        "instagram": 9818,
+        "tiktok": 0,
+        "x": 0,
+        "youtube": 0
+      },
+      "valuation": 175000,
+      "reported": false,
+      "source": "Estimate (On3 does not publicly list baseball NIL figures)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/baseball/",
+      "blurb": "Rembert is one of the top pure hitters in the 2026 class, a Freshman All-American rated the nation's best second baseman by D1Baseball.",
+      "slug": "chris-rembert",
+      "level": "power",
+      "engagement": 5,
+      "low": 140000,
+      "high": 218750
+    },
+    {
+      "name": "Jake Marciano",
+      "sport": "Baseball",
+      "position": "Pitcher",
+      "team": "auburn-tigers",
+      "followers": {
+        "instagram": 0,
+        "tiktok": 0,
+        "x": 0,
+        "youtube": 0
+      },
+      "valuation": 70000,
+      "reported": false,
+      "source": "Estimate (On3 does not publicly list baseball NIL figures)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/baseball/",
+      "blurb": "Marciano is an Auburn weekend starter who posted a 2.64 ERA with 100 strikeouts over 81.2 innings after transferring from Virginia Tech.",
+      "slug": "jake-marciano",
+      "level": "power",
+      "engagement": 5,
+      "low": 56000,
+      "high": 87500
+    },
+    {
+      "name": "Cade Townsend",
+      "sport": "Baseball",
+      "position": "Pitcher",
+      "team": "ole-miss-rebels",
+      "followers": {
+        "instagram": 0,
+        "tiktok": 0,
+        "x": 0,
+        "youtube": 0
+      },
+      "valuation": 175000,
+      "reported": false,
+      "source": "Estimate (On3 does not publicly list baseball NIL figures)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/baseball/",
+      "blurb": "Townsend is a Golden Spikes Award semifinalist with a 96 mph fastball and a five-pitch mix, a projected first-round 2026 pick.",
+      "slug": "cade-townsend",
+      "level": "power",
+      "engagement": 5,
+      "low": 140000,
+      "high": 218750
+    },
+    {
+      "name": "Hunter Elliott",
+      "sport": "Baseball",
+      "position": "Pitcher",
+      "team": "ole-miss-rebels",
+      "followers": {
+        "instagram": 6683,
+        "tiktok": 0,
+        "x": 0,
+        "youtube": 0
+      },
+      "valuation": 130000,
+      "reported": false,
+      "source": "Estimate (On3 does not publicly list baseball NIL figures)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/baseball/",
+      "blurb": "Elliott is Ole Miss's Friday-night ace and last holdover from the 2022 national title team, a Perfect Game preseason All-American.",
+      "slug": "hunter-elliott",
+      "level": "power",
+      "engagement": 5,
+      "low": 104000,
+      "high": 162500
+    },
+    {
+      "name": "Maxx Yehl",
+      "sport": "Baseball",
+      "position": "Pitcher",
+      "team": "west-virginia-mountaineers",
+      "followers": {
+        "instagram": 2557,
+        "tiktok": 0,
+        "x": 0,
+        "youtube": 0
+      },
+      "valuation": 90000,
+      "reported": false,
+      "source": "Estimate (On3 does not publicly list baseball NIL figures)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/baseball/",
+      "blurb": "Yehl is the Big 12 Pitcher of the Year and a National Pitcher of the Year finalist who went 8-2 with a 2.12 ERA and 101 strikeouts.",
+      "slug": "maxx-yehl",
+      "level": "power",
+      "engagement": 5,
+      "low": 72000,
+      "high": 112500
+    },
+    {
+      "name": "Dawson Montesa",
+      "sport": "Baseball",
+      "position": "Pitcher",
+      "team": "west-virginia-mountaineers",
+      "followers": {
+        "instagram": 0,
+        "tiktok": 0,
+        "x": 0,
+        "youtube": 0
+      },
+      "valuation": 55000,
+      "reported": false,
+      "source": "Estimate (On3 does not publicly list baseball NIL figures)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/baseball/",
+      "blurb": "Montesa is a Division II transfer with a fastball up to 98 mph who pitched West Virginia into the Super Regionals.",
+      "slug": "dawson-montesa",
+      "level": "power",
+      "engagement": 5,
+      "low": 44000,
+      "high": 68750
+    },
+    {
+      "name": "Dylan Volantis",
+      "sport": "Baseball",
+      "position": "Pitcher",
+      "team": "texas-longhorns",
+      "followers": {
+        "instagram": 0,
+        "tiktok": 0,
+        "x": 0,
+        "youtube": 0
+      },
+      "valuation": 160000,
+      "reported": false,
+      "source": "Estimate (On3 does not publicly list baseball NIL figures)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/baseball/",
+      "blurb": "Volantis is the Texas ace left-hander and 2025 Baseball America Freshman of the Year who moved into the Friday-night rotation in 2026.",
+      "slug": "dylan-volantis",
+      "level": "power",
+      "engagement": 5,
+      "low": 128000,
+      "high": 200000
+    },
+    {
+      "name": "Carson Tinney",
+      "sport": "Baseball",
+      "position": "Catcher",
+      "team": "texas-longhorns",
+      "followers": {
+        "instagram": 0,
+        "tiktok": 0,
+        "x": 0,
+        "youtube": 0
+      },
+      "valuation": 130000,
+      "reported": false,
+      "source": "Estimate (On3 does not publicly list baseball NIL figures)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/baseball/",
+      "blurb": "Tinney is a power-hitting transfer catcher and 2026 Buster Posey Award finalist slashing about .321 with roughly 20 home runs for Texas.",
+      "slug": "carson-tinney",
+      "level": "power",
+      "engagement": 5,
+      "low": 104000,
+      "high": 162500
+    },
+    {
+      "name": "Ryan Cooney",
+      "sport": "Baseball",
+      "position": "Second Baseman",
+      "team": "oregon-ducks",
+      "followers": {
+        "instagram": 0,
+        "tiktok": 0,
+        "x": 0,
+        "youtube": 0
+      },
+      "valuation": 80000,
+      "reported": false,
+      "source": "Estimate (On3 does not publicly list baseball NIL figures)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/baseball/",
+      "blurb": "Cooney is Oregon's top hitter and a 2026 draft prospect, batting around .338 with eight home runs as a junior.",
+      "slug": "ryan-cooney",
+      "level": "power",
+      "engagement": 5,
+      "low": 64000,
+      "high": 100000
+    },
+    {
+      "name": "Maddox Molony",
+      "sport": "Baseball",
+      "position": "Shortstop",
+      "team": "oregon-ducks",
+      "followers": {
+        "instagram": 0,
+        "tiktok": 0,
+        "x": 0,
+        "youtube": 0
+      },
+      "valuation": 55000,
+      "reported": false,
+      "source": "Estimate (On3 does not publicly list baseball NIL figures)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/baseball/",
+      "blurb": "Molony is Oregon's defensively gifted shortstop and a 2026 draft prospect who contributed power from the middle of the order.",
+      "slug": "maddox-molony",
+      "level": "power",
+      "engagement": 5,
+      "low": 44000,
+      "high": 68750
+    },
+    {
+      "name": "Cal Scolari",
+      "sport": "Baseball",
+      "position": "Pitcher",
+      "team": "oregon-ducks",
+      "followers": {
+        "instagram": 0,
+        "tiktok": 0,
+        "x": 0,
+        "youtube": 0
+      },
+      "valuation": 50000,
+      "reported": false,
+      "source": "Estimate (On3 does not publicly list baseball NIL figures)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/baseball/",
+      "blurb": "Scolari is an Oregon right-hander who posted a 2.94 ERA with about 76 strikeouts over 49 innings in 2026.",
+      "slug": "cal-scolari",
+      "level": "power",
+      "engagement": 5,
+      "low": 40000,
+      "high": 62500
+    },
+    {
+      "name": "Tre Phelps",
+      "sport": "Baseball",
+      "position": "Outfielder",
+      "team": "georgia-bulldogs",
+      "followers": {
+        "instagram": 25000,
+        "tiktok": 0,
+        "x": 0,
+        "youtube": 0
+      },
+      "valuation": 175000,
+      "reported": false,
+      "source": "Estimate (On3 does not publicly list baseball NIL figures)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/baseball/",
+      "blurb": "Phelps is Georgia's premier bat, an All-American having a career year with a slash line above .390 in 2026.",
+      "slug": "tre-phelps",
+      "level": "power",
+      "engagement": 5,
+      "low": 140000,
+      "high": 218750
+    },
+    {
+      "name": "Joey Volchko",
+      "sport": "Baseball",
+      "position": "Pitcher",
+      "team": "georgia-bulldogs",
+      "followers": {
+        "instagram": 0,
+        "tiktok": 0,
+        "x": 0,
+        "youtube": 0
+      },
+      "valuation": 120000,
+      "reported": false,
+      "source": "Estimate (On3 does not publicly list baseball NIL figures)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/baseball/",
+      "blurb": "Volchko is Georgia's hard-throwing ace transfer with a fastball up to 99 mph who helped the Bulldogs win the SEC regular-season title.",
+      "slug": "joey-volchko",
+      "level": "power",
+      "engagement": 5,
+      "low": 96000,
+      "high": 150000
+    },
+    {
+      "name": "Kolby Branch",
+      "sport": "Baseball",
+      "position": "Shortstop",
+      "team": "georgia-bulldogs",
+      "followers": {
+        "instagram": 0,
+        "tiktok": 0,
+        "x": 0,
+        "youtube": 0
+      },
+      "valuation": 60000,
+      "reported": false,
+      "source": "Estimate (On3 does not publicly list baseball NIL figures)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/baseball/",
+      "blurb": "Branch is Georgia's everyday senior shortstop and a Brooks Wallace Award semifinalist who started all 61 games.",
+      "slug": "kolby-branch",
+      "level": "power",
+      "engagement": 5,
+      "low": 48000,
+      "high": 75000
+    },
+    {
+      "name": "Ace Reese",
+      "sport": "Baseball",
+      "position": "Third Baseman",
+      "team": "mississippi-state-bulldogs",
+      "followers": {
+        "instagram": 0,
+        "tiktok": 0,
+        "x": 0,
+        "youtube": 0
+      },
+      "valuation": 130000,
+      "reported": false,
+      "source": "Estimate (On3 does not publicly list baseball NIL figures)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/baseball/",
+      "blurb": "Reese is Mississippi State's slugging third baseman and 2026 preseason All-American, the 2025 SEC Newcomer of the Year.",
+      "slug": "ace-reese",
+      "level": "power",
+      "engagement": 5,
+      "low": 104000,
+      "high": 162500
+    },
+    {
+      "name": "Noah Sullivan",
+      "sport": "Baseball",
+      "position": "Two-Way Player",
+      "team": "mississippi-state-bulldogs",
+      "followers": {
+        "instagram": 0,
+        "tiktok": 0,
+        "x": 0,
+        "youtube": 0
+      },
+      "valuation": 90000,
+      "reported": false,
+      "source": "Estimate (On3 does not publicly list baseball NIL figures)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/baseball/",
+      "blurb": "Sullivan is Mississippi State's two-way standout and preseason All-American who hit about .345 while also posting a sub-2.00 ERA.",
+      "slug": "noah-sullivan",
+      "level": "power",
+      "engagement": 5,
+      "low": 72000,
+      "high": 112500
+    },
+    {
+      "name": "Chris Hacopian",
+      "sport": "Baseball",
+      "position": "Infielder",
+      "team": "texas-am-aggies",
+      "followers": {
+        "instagram": 0,
+        "tiktok": 0,
+        "x": 0,
+        "youtube": 0
+      },
+      "valuation": 110000,
+      "reported": false,
+      "source": "Estimate (On3 does not publicly list baseball NIL figures)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/baseball/",
+      "blurb": "Hacopian is a 2026 First Team All-SEC infielder and Golden Spikes watch-list bat who hit .375 with 14 home runs at Maryland before transferring to Texas A&M.",
+      "slug": "chris-hacopian",
+      "level": "power",
+      "engagement": 5,
+      "low": 88000,
+      "high": 137500
+    },
+    {
+      "name": "Justin Lebron",
+      "sport": "Baseball",
+      "position": "Shortstop",
+      "team": "alabama-crimson-tide",
+      "followers": {
+        "instagram": 44000,
+        "tiktok": 0,
+        "x": 0,
+        "youtube": 0
+      },
+      "valuation": 200000,
+      "reported": false,
+      "source": "Estimate (On3 does not publicly list baseball NIL figures)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/baseball/",
+      "blurb": "Lebron is Alabama's top position-player draft prospect and a former Freshman All-American who has been a three-year starter at shortstop.",
+      "slug": "justin-lebron",
+      "level": "power",
+      "engagement": 5,
+      "low": 160000,
+      "high": 250000
+    },
+    {
+      "name": "Zane Adams",
+      "sport": "Baseball",
+      "position": "Pitcher",
+      "team": "alabama-crimson-tide",
+      "followers": {
+        "instagram": 0,
+        "tiktok": 0,
+        "x": 0,
+        "youtube": 0
+      },
+      "valuation": 90000,
+      "reported": false,
+      "source": "Estimate (On3 does not publicly list baseball NIL figures)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/baseball/",
+      "blurb": "Adams is Alabama's staff ace, a draft-eligible left-hander who anchors the weekend rotation.",
+      "slug": "zane-adams",
+      "level": "power",
+      "engagement": 5,
+      "low": 72000,
+      "high": 112500
+    },
+    {
+      "name": "Jaxon Willits",
+      "sport": "Baseball",
+      "position": "Shortstop",
+      "team": "oklahoma-sooners",
+      "followers": {
+        "instagram": 4074,
+        "tiktok": 0,
+        "x": 0,
+        "youtube": 0
+      },
+      "valuation": 75000,
+      "reported": false,
+      "source": "Estimate (On3 does not publicly list baseball NIL figures)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/baseball/",
+      "blurb": "Willits is a switch-hitting shortstop and Oklahoma's top middle-infield draft prospect with a polished plate approach.",
+      "slug": "jaxon-willits",
+      "level": "power",
+      "engagement": 5,
+      "low": 60000,
+      "high": 93750
+    },
+    {
+      "name": "Cameron Johnson",
+      "sport": "Baseball",
+      "position": "Pitcher",
+      "team": "oklahoma-sooners",
+      "followers": {
+        "instagram": 0,
+        "tiktok": 0,
+        "x": 0,
+        "youtube": 0
+      },
+      "valuation": 80000,
+      "reported": false,
+      "source": "Estimate (On3 does not publicly list baseball NIL figures)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/baseball/",
+      "blurb": "Johnson is an LSU transfer left-hander and former top-15 national recruit who has been a strikeout-heavy weekend starter for Oklahoma.",
+      "slug": "cameron-johnson",
+      "level": "power",
+      "engagement": 5,
+      "low": 64000,
+      "high": 100000
+    },
+    {
+      "name": "Tyson LeBlanc",
+      "sport": "Baseball",
+      "position": "Shortstop",
+      "team": "kansas-jayhawks",
+      "followers": {
+        "instagram": 1363,
+        "tiktok": 0,
+        "x": 0,
+        "youtube": 0
+      },
+      "valuation": 70000,
+      "reported": false,
+      "source": "Estimate (On3 does not publicly list baseball NIL figures)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/baseball/",
+      "blurb": "LeBlanc is a junior college transfer shortstop who led Kansas in home runs and OPS and was named NCBWA National Hitter of the Month for May 2026.",
+      "slug": "tyson-leblanc",
+      "level": "power",
+      "engagement": 5,
+      "low": 56000,
+      "high": 87500
+    },
+    {
+      "name": "Dominic Voegele",
+      "sport": "Baseball",
+      "position": "Pitcher",
+      "team": "kansas-jayhawks",
+      "followers": {
+        "instagram": 1872,
+        "tiktok": 0,
+        "x": 0,
+        "youtube": 0
+      },
+      "valuation": 70000,
+      "reported": false,
+      "source": "Estimate (On3 does not publicly list baseball NIL figures)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/baseball/",
+      "blurb": "Voegele is Kansas's Friday-night ace who leads the staff in innings and strikeouts and threw a 15-strikeout complete game in 2026.",
+      "slug": "dominic-voegele",
+      "level": "power",
+      "engagement": 5,
+      "low": 56000,
+      "high": 87500
+    },
+    {
+      "name": "Adam Agresti",
+      "sport": "Baseball",
+      "position": "Catcher",
+      "team": "st-johns-red-storm",
+      "followers": {
+        "instagram": 3888,
+        "tiktok": 0,
+        "x": 0,
+        "youtube": 0
+      },
+      "valuation": 75000,
+      "reported": false,
+      "source": "Estimate (On3 does not publicly list baseball NIL figures)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/baseball/",
+      "blurb": "Agresti is St. John's standout catcher and top draft prospect who posted 19 home runs and a 1.211 OPS in 2026.",
+      "slug": "adam-agresti",
+      "level": "power",
+      "engagement": 5,
+      "low": 60000,
+      "high": 93750
+    },
+    {
+      "name": "Liam O'Leary",
+      "sport": "Baseball",
+      "position": "Pitcher",
+      "team": "st-johns-red-storm",
+      "followers": {
+        "instagram": 0,
+        "tiktok": 0,
+        "x": 0,
+        "youtube": 0
+      },
+      "valuation": 60000,
+      "reported": false,
+      "source": "Estimate (On3 does not publicly list baseball NIL figures)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/baseball/",
+      "blurb": "O'Leary is St. John's ace right-hander and a unanimous All-Big East First Team selection who went 8-4 with a 2.97 ERA in 2026.",
+      "slug": "liam-oleary",
+      "level": "power",
+      "engagement": 5,
+      "low": 48000,
+      "high": 75000
     }
   ]
 }
