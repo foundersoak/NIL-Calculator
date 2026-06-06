@@ -21,6 +21,16 @@ const ADSENSE_CLIENT = 'ca-pub-XXXXXXXXXXXXXXXX';
 const FORMSPREE = 'https://formspree.io/f/mkoangpz';
 const UPDATED = DATA.updated || new Date().toISOString().slice(0, 10);
 
+/* Asset version — hash of CSS+JS so browsers re-fetch when either changes. */
+const crypto = require('crypto');
+const ASSET_VER = (() => {
+  try {
+    const css = fs.readFileSync(path.join(ROOT, 'assets', 'css', 'styles.css'));
+    const js = fs.readFileSync(path.join(ROOT, 'assets', 'js', 'calculator.js'));
+    return crypto.createHash('md5').update(css).update(js).digest('hex').slice(0, 8);
+  } catch (e) { return String(Date.now()); }
+})();
+
 /* ---------- helpers ---------- */
 const money = n => '$' + Math.round(n).toLocaleString('en-US');
 const moneyShort = n => {
@@ -75,7 +85,7 @@ function head(opts) {
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="${prefix}assets/css/styles.css" />
+  <link rel="stylesheet" href="${prefix}assets/css/styles.css?v=${ASSET_VER}" />
   ${jsonld ? `<script type="application/ld+json">${JSON.stringify(jsonld)}</script>` : ''}
 </head>
 <body>
@@ -134,7 +144,7 @@ function foot(prefix) {
       <p>© ${new Date().getFullYear()} NIL ValueCalc. NIL valuations are estimates of 12-month earning potential based on public data and our model — not amounts paid, and not endorsed by the athletes or schools. Informational only; not financial, legal or tax advice. Not affiliated with the NCAA. Data updated ${UPDATED}.</p>
     </div>
   </footer>
-  <script src="${prefix}assets/js/calculator.js" defer></script>
+  <script src="${prefix}assets/js/calculator.js?v=${ASSET_VER}" defer></script>
 </body>
 </html>`;
 }
@@ -285,6 +295,16 @@ console.log(`Generating from ${athletes.length} athletes, ${Object.keys(teams).l
 athletes.forEach(a => writeFile(path.join('athlete', a.slug, 'index.html'), athletePage(a)));
 
 writeFile(path.join('athletes', 'index.html'), directoryPage(athletes, teams));
+
+/* Stamp the current asset version onto the hand-written static pages too. */
+['index.html', 'privacy.html', 'terms.html'].forEach(f => {
+  const fp = path.join(ROOT, f);
+  if (!fs.existsSync(fp)) return;
+  const out = fs.readFileSync(fp, 'utf8')
+    .replace(/(assets\/css\/styles\.css|assets\/js\/calculator\.js)(\?v=[a-z0-9]+)?/g, `$1?v=${ASSET_VER}`);
+  fs.writeFileSync(fp, out);
+  console.log('  stamped', f, '→ v=' + ASSET_VER);
+});
 
 /* client-side search / similar-players index (consumed by calculator.js) */
 const index = athletes.map(a => {
