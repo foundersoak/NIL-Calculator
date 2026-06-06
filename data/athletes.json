@@ -191,6 +191,26 @@
       "name": "Utah Utes",
       "conference": "Big 12",
       "sport": "Football"
+    },
+    "st-johns-red-storm": {
+      "name": "St. John's Red Storm",
+      "conference": "Big East",
+      "sport": "Men's Basketball"
+    },
+    "colorado-buffaloes": {
+      "name": "Colorado Buffaloes",
+      "conference": "Big 12",
+      "sport": "Football"
+    },
+    "houston-cougars": {
+      "name": "Houston Cougars",
+      "conference": "Big 12",
+      "sport": "Football"
+    },
+    "georgia-tech-yellow-jackets": {
+      "name": "Georgia Tech Yellow Jackets",
+      "conference": "ACC",
+      "sport": "Football"
     }
   },
   "athletes": [
@@ -1705,6 +1725,160 @@
       "engagement": 5,
       "low": 240000,
       "high": 375000
+    },
+    {
+      "name": "Donnie Freeman",
+      "sport": "Men's Basketball",
+      "position": "Forward",
+      "team": "st-johns-red-storm",
+      "followers": {
+        "instagram": 22000,
+        "tiktok": 0,
+        "x": 0,
+        "youtube": 0
+      },
+      "valuation": 1700000,
+      "reported": true,
+      "source": "On3 NIL Valuations (2026)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/basketball/",
+      "blurb": "Donnie Freeman is a 6-foot-9 forward from Washington, D.C. who transferred to St. John's after averaging 15.3 points and 7.5 rebounds across two injury-shortened seasons at Syracuse.",
+      "slug": "donnie-freeman",
+      "level": "power",
+      "engagement": 5,
+      "low": 1360000,
+      "high": 2125000
+    },
+    {
+      "name": "Tounde Yessoufou",
+      "sport": "Men's Basketball",
+      "position": "Guard",
+      "team": "st-johns-red-storm",
+      "followers": {
+        "instagram": 36000,
+        "tiktok": 0,
+        "x": 0,
+        "youtube": 0
+      },
+      "valuation": 1500000,
+      "reported": true,
+      "source": "On3 NIL Valuations (2026)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/basketball/",
+      "blurb": "Tounde Yessoufou is a 6-foot-5 wing from Benin who set a Baylor freshman scoring record with 17.8 points per game, then transferred to St. John's on a reported multimillion-dollar NIL deal.",
+      "slug": "tounde-yessoufou",
+      "level": "power",
+      "engagement": 5,
+      "low": 1200000,
+      "high": 1875000
+    },
+    {
+      "name": "Julian Lewis",
+      "sport": "Football",
+      "position": "Quarterback",
+      "team": "colorado-buffaloes",
+      "followers": {
+        "instagram": 204000,
+        "tiktok": 64200,
+        "x": 45000,
+        "youtube": 0
+      },
+      "valuation": 1100000,
+      "reported": true,
+      "source": "On3 NIL Valuations (2026)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/football/",
+      "blurb": "Julian 'JuJu' Lewis is a five-star quarterback who reclassified to enroll early at Colorado and is positioned as the Buffaloes' projected 2026 starter under Deion Sanders.",
+      "slug": "julian-lewis",
+      "level": "power",
+      "engagement": 5,
+      "low": 880000,
+      "high": 1375000
+    },
+    {
+      "name": "Keisean Henderson",
+      "sport": "Football",
+      "position": "Quarterback",
+      "team": "houston-cougars",
+      "followers": {
+        "instagram": 76000,
+        "tiktok": 86400,
+        "x": 0,
+        "youtube": 0
+      },
+      "valuation": 1000000,
+      "reported": true,
+      "source": "On3 NIL Valuations (2026)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/football/",
+      "blurb": "Keisean Henderson is the No. 1 ranked quarterback in the 2026 class who enrolled early at Houston and signed a Panini America trading card NIL deal.",
+      "slug": "keisean-henderson",
+      "level": "power",
+      "engagement": 5,
+      "low": 800000,
+      "high": 1250000
+    },
+    {
+      "name": "Husan Longstreet",
+      "sport": "Football",
+      "position": "Quarterback",
+      "team": "lsu-tigers",
+      "followers": {
+        "instagram": 12000,
+        "tiktok": 0,
+        "x": 4200,
+        "youtube": 0
+      },
+      "valuation": 1000000,
+      "reported": true,
+      "source": "On3 NIL Valuations (2026)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/football/",
+      "blurb": "Husan Longstreet is a former five-star quarterback who left USC after one season and transferred to LSU, where he will compete for playing time in 2026.",
+      "slug": "husan-longstreet",
+      "level": "power",
+      "engagement": 5,
+      "low": 800000,
+      "high": 1250000
+    },
+    {
+      "name": "Eric Singleton Jr.",
+      "sport": "Football",
+      "position": "Wide Receiver",
+      "team": "florida-gators",
+      "followers": {
+        "instagram": 0,
+        "tiktok": 0,
+        "x": 0,
+        "youtube": 0
+      },
+      "valuation": 907000,
+      "reported": true,
+      "source": "On3 NIL Valuations (2026)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/football/",
+      "blurb": "Eric Singleton Jr. is a senior wide receiver who joined Florida for 2026 after a freshman All-American season at Georgia Tech and a team-leading 58 catches at Auburn in 2025.",
+      "slug": "eric-singleton-jr",
+      "level": "power",
+      "engagement": 5,
+      "low": 725600,
+      "high": 1133750
+    },
+    {
+      "name": "Jaylen Mbakwe",
+      "sport": "Football",
+      "position": "Cornerback",
+      "team": "georgia-tech-yellow-jackets",
+      "followers": {
+        "instagram": 72000,
+        "tiktok": 0,
+        "x": 0,
+        "youtube": 0
+      },
+      "valuation": 470000,
+      "reported": true,
+      "source": "On3 NIL Valuations (2026)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/football/",
+      "blurb": "Jaylen Mbakwe is a former five-star athlete who transferred from Alabama to Georgia Tech for 2026, where he is expected to play primarily cornerback.",
+      "slug": "jaylen-mbakwe",
+      "level": "power",
+      "engagement": 5,
+      "low": 376000,
+      "high": 587500
     }
   ]
 }
