@@ -1,6 +1,6 @@
 {
   "_comment": "NIL athlete dataset. Figures are estimated 12-month NIL valuations from public reporting (On3, FOX Sports, SportsGrid) and/or our model — not amounts paid. 'reported: true' cites a public figure (see source). Add athletes here and run `node scripts/build.js` to regenerate pages + sitemap. Keep data accurate and sourced — each page must offer real value to rank.",
-  "updated": "2026-06-04",
+  "updated": "2026-06-06",
   "teams": {
     "texas-longhorns": {
       "name": "Texas Longhorns",
@@ -25,7 +25,7 @@
     "south-carolina-gamecocks": {
       "name": "South Carolina Gamecocks",
       "conference": "SEC",
-      "sport": "Football"
+      "sport": "Multiple"
     },
     "lsu-tigers": {
       "name": "LSU Tigers",
@@ -166,6 +166,16 @@
       "name": "Louisville Cardinals",
       "conference": "ACC",
       "sport": "Men's Basketball"
+    },
+    "tennessee-volunteers": {
+      "name": "Tennessee Volunteers",
+      "conference": "SEC",
+      "sport": "Football"
+    },
+    "oklahoma-state-cowgirls": {
+      "name": "Oklahoma State Cowgirls",
+      "conference": "Big 12",
+      "sport": "Women's Basketball"
     }
   },
   "athletes": [
@@ -1322,6 +1332,166 @@
       "source": "Estimate (Jordan Brand and other deals; On3 does not disclose exact figure)",
       "sourceUrl": "https://www.on3.com/nil/rankings/player/college/womens-basketball/",
       "blurb": "A First-Team All-SEC guard and Jordan Brand athlete, Williams is among the most marketable players in women's college basketball."
+    },
+    {
+      "slug": "keelon-russell",
+      "name": "Keelon Russell",
+      "sport": "Football",
+      "position": "Quarterback",
+      "team": "alabama-crimson-tide",
+      "level": "power",
+      "followers": {
+        "instagram": 106000,
+        "tiktok": 0,
+        "x": 0,
+        "youtube": 0
+      },
+      "engagement": 5,
+      "valuation": 1100000,
+      "reported": true,
+      "source": "On3 NIL Valuations (2026)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/football/",
+      "blurb": "The former five-star quarterback is in the mix to start at Alabama and already carries a seven-figure NIL valuation entering 2026."
+    },
+    {
+      "slug": "dylan-stewart",
+      "name": "Dylan Stewart",
+      "sport": "Football",
+      "position": "Edge",
+      "team": "south-carolina-gamecocks",
+      "level": "power",
+      "followers": {
+        "instagram": 44000,
+        "tiktok": 0,
+        "x": 8100,
+        "youtube": 0
+      },
+      "engagement": 5,
+      "valuation": 2500000,
+      "reported": true,
+      "source": "On3 NIL Valuations (2026)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/football/",
+      "blurb": "South Carolina's star pass rusher returned for 2026 with one of the highest NIL valuations of any defender in college football."
+    },
+    {
+      "slug": "faizon-brandon",
+      "name": "Faizon Brandon",
+      "sport": "Football",
+      "position": "Quarterback",
+      "team": "tennessee-volunteers",
+      "level": "power",
+      "followers": {
+        "instagram": 37000,
+        "tiktok": 0,
+        "x": 0,
+        "youtube": 0
+      },
+      "engagement": 5,
+      "valuation": 864000,
+      "reported": true,
+      "source": "On3 NIL Valuations (2026)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/football/",
+      "blurb": "Tennessee's prized five-star freshman quarterback arrived in Knoxville with one of the largest first-year NIL packages in the country."
+    },
+    {
+      "slug": "cayden-boozer",
+      "name": "Cayden Boozer",
+      "sport": "Men's Basketball",
+      "position": "Guard",
+      "team": "duke-blue-devils",
+      "level": "power",
+      "followers": {
+        "instagram": 150000,
+        "tiktok": 0,
+        "x": 0,
+        "youtube": 0
+      },
+      "engagement": 5,
+      "valuation": 747000,
+      "reported": true,
+      "source": "On3 NIL Valuations (2026)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/basketball/",
+      "blurb": "Duke's starting point guard and a McDonald's All-American, Boozer pairs a large social following with a strong NIL valuation alongside twin brother Cameron."
+    },
+    {
+      "slug": "otega-oweh",
+      "name": "Otega Oweh",
+      "sport": "Men's Basketball",
+      "position": "Guard",
+      "team": "kentucky-wildcats",
+      "level": "power",
+      "followers": {
+        "instagram": 10500,
+        "tiktok": 0,
+        "x": 5000,
+        "youtube": 0
+      },
+      "engagement": 5,
+      "valuation": 385000,
+      "reported": true,
+      "source": "On3 NIL Valuations (2026)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/basketball/",
+      "blurb": "Kentucky's leading scorer withdrew from the NBA Draft to return for 2026-27 as one of the SEC's most valuable guards."
+    },
+    {
+      "slug": "alex-condon",
+      "name": "Alex Condon",
+      "sport": "Men's Basketball",
+      "position": "Forward",
+      "team": "florida-gators",
+      "level": "power",
+      "followers": {
+        "instagram": 26000,
+        "tiktok": 0,
+        "x": 0,
+        "youtube": 0
+      },
+      "engagement": 5,
+      "valuation": 900000,
+      "reported": false,
+      "source": "Estimate (On3 does not disclose exact figure)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/basketball/",
+      "blurb": "Florida's versatile big man passed on the NBA Draft to return, projecting as a 2027 first-round pick and one of college basketball's most valuable forwards."
+    },
+    {
+      "slug": "joyce-edwards",
+      "name": "Joyce Edwards",
+      "sport": "Women's Basketball",
+      "position": "Forward",
+      "team": "south-carolina-gamecocks",
+      "level": "power",
+      "followers": {
+        "instagram": 42000,
+        "tiktok": 0,
+        "x": 0,
+        "youtube": 0
+      },
+      "engagement": 5,
+      "valuation": 650000,
+      "reported": false,
+      "source": "Estimate (media reports ~$626K; On3 does not disclose exact figure)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/womens-basketball/",
+      "blurb": "A rising South Carolina star and McDonald's All-American, Edwards is one of the most marketable young players in women's college basketball."
+    },
+    {
+      "slug": "audi-crooks",
+      "name": "Audi Crooks",
+      "sport": "Women's Basketball",
+      "position": "Center",
+      "team": "oklahoma-state-cowgirls",
+      "level": "power",
+      "followers": {
+        "instagram": 128000,
+        "tiktok": 0,
+        "x": 0,
+        "youtube": 0
+      },
+      "engagement": 5,
+      "valuation": 1200000,
+      "reported": false,
+      "source": "Estimate (reported ~$1.4M transfer NIL deal; On3 does not disclose exact figure)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/womens-basketball/",
+      "blurb": "The dominant post transferred to Oklahoma State on a reported seven-figure NIL package and brings a large national following."
     }
   ]
 }
