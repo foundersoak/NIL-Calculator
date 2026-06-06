@@ -45,7 +45,7 @@
     "oregon-ducks": {
       "name": "Oregon Ducks",
       "conference": "Big Ten",
-      "sport": "Football"
+      "sport": "Multiple"
     },
     "michigan-wolverines": {
       "name": "Michigan Wolverines",
@@ -105,12 +105,12 @@
     "uconn-huskies": {
       "name": "UConn Huskies",
       "conference": "Big East",
-      "sport": "Women's Basketball"
+      "sport": "Multiple"
     },
     "texas-am-aggies": {
       "name": "Texas A&M Aggies",
       "conference": "SEC",
-      "sport": "Baseball"
+      "sport": "Multiple"
     },
     "florida-gators": {
       "name": "Florida Gators",
@@ -120,7 +120,7 @@
     "ucla-bruins": {
       "name": "UCLA Bruins",
       "conference": "Big Ten",
-      "sport": "Football"
+      "sport": "Multiple"
     },
     "nebraska-cornhuskers": {
       "name": "Nebraska Cornhuskers",
@@ -176,6 +176,21 @@
       "name": "Oklahoma State Cowgirls",
       "conference": "Big 12",
       "sport": "Women's Basketball"
+    },
+    "unlv-rebels": {
+      "name": "UNLV Rebels",
+      "conference": "Mountain West",
+      "sport": "Football"
+    },
+    "missouri-tigers": {
+      "name": "Missouri Tigers",
+      "conference": "SEC",
+      "sport": "Football"
+    },
+    "utah-utes": {
+      "name": "Utah Utes",
+      "conference": "Big 12",
+      "sport": "Football"
     }
   },
   "athletes": [
@@ -1492,6 +1507,204 @@
       "source": "Estimate (reported ~$1.4M transfer NIL deal; On3 does not disclose exact figure)",
       "sourceUrl": "https://www.on3.com/nil/rankings/player/college/womens-basketball/",
       "blurb": "The dominant post transferred to Oklahoma State on a reported seven-figure NIL package and brings a large national following."
+    },
+    {
+      "name": "Marcel Reed",
+      "sport": "Football",
+      "position": "Quarterback",
+      "team": "texas-am-aggies",
+      "followers": {
+        "instagram": 119000,
+        "tiktok": 0,
+        "x": 3800,
+        "youtube": 0
+      },
+      "valuation": 2100000,
+      "reported": true,
+      "source": "On3 NIL Valuations (2026)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/football/",
+      "blurb": "Marcel Reed returns to Texas A&M for 2026 after passing for 3,169 yards and 25 touchdowns and leading the Aggies to their first College Football Playoff appearance.",
+      "slug": "marcel-reed",
+      "level": "power",
+      "engagement": 5,
+      "low": 1680000,
+      "high": 2625000
+    },
+    {
+      "name": "Jackson Arnold",
+      "sport": "Football",
+      "position": "Quarterback",
+      "team": "unlv-rebels",
+      "followers": {
+        "instagram": 44000,
+        "tiktok": 0,
+        "x": 0,
+        "youtube": 0
+      },
+      "valuation": 740000,
+      "reported": true,
+      "source": "On3 NIL Valuations (2026)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/football/",
+      "blurb": "Jackson Arnold is a former top recruit and ex-Oklahoma and Auburn starter who transferred to UNLV for 2026, his third school in three seasons.",
+      "slug": "jackson-arnold",
+      "level": "power",
+      "engagement": 5,
+      "low": 592000,
+      "high": 925000
+    },
+    {
+      "name": "Devon Dampier",
+      "sport": "Football",
+      "position": "Quarterback",
+      "team": "utah-utes",
+      "followers": {
+        "instagram": 61000,
+        "tiktok": 0,
+        "x": 5600,
+        "youtube": 0
+      },
+      "valuation": 740000,
+      "reported": true,
+      "source": "On3 NIL Valuations (2026)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/football/",
+      "blurb": "Devon Dampier returns to Utah for 2026 after a debut season worth 2,490 passing yards and 835 rushing yards that earned Big 12 Offensive Newcomer of the Year.",
+      "slug": "devon-dampier",
+      "level": "power",
+      "engagement": 5,
+      "low": 592000,
+      "high": 925000
+    },
+    {
+      "name": "Austin Simmons",
+      "sport": "Football",
+      "position": "Quarterback",
+      "team": "missouri-tigers",
+      "followers": {
+        "instagram": 51000,
+        "tiktok": 0,
+        "x": 11700,
+        "youtube": 0
+      },
+      "valuation": 700000,
+      "reported": false,
+      "source": "Estimate (On3 does not disclose exact figure)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/football/",
+      "blurb": "Austin Simmons transferred from Ole Miss to Missouri and was named the Tigers' starting quarterback for the 2026 season.",
+      "slug": "austin-simmons",
+      "level": "power",
+      "engagement": 5,
+      "low": 560000,
+      "high": 875000
+    },
+    {
+      "name": "Braylon Mullins",
+      "sport": "Men's Basketball",
+      "position": "Guard",
+      "team": "uconn-huskies",
+      "followers": {
+        "instagram": 47000,
+        "tiktok": 0,
+        "x": 4900,
+        "youtube": 0
+      },
+      "valuation": 803000,
+      "reported": true,
+      "source": "On3 NIL Valuations (2026)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/basketball/",
+      "blurb": "Braylon Mullins is a sharpshooting UConn guard who hit a buzzer-beating game-winner against Duke in the 2026 NCAA Tournament and returns for his sophomore season after averaging 12.0 points.",
+      "slug": "braylon-mullins",
+      "level": "power",
+      "engagement": 5,
+      "low": 642400,
+      "high": 1003750
+    },
+    {
+      "name": "Jasper Johnson",
+      "sport": "Men's Basketball",
+      "position": "Guard",
+      "team": "oregon-ducks",
+      "followers": {
+        "instagram": 137000,
+        "tiktok": 91400,
+        "x": 11400,
+        "youtube": 0
+      },
+      "valuation": 900000,
+      "reported": false,
+      "source": "Estimate (On3 lists a recruiting-era figure; modeled for current role)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/basketball/",
+      "blurb": "Jasper Johnson is a former five-star combo guard who transferred to Oregon after his freshman season at Kentucky, joining Dana Altman's 2026-27 backcourt.",
+      "slug": "jasper-johnson",
+      "level": "power",
+      "engagement": 5,
+      "low": 720000,
+      "high": 1125000
+    },
+    {
+      "name": "MiLaysia Fulwiley",
+      "sport": "Women's Basketball",
+      "position": "Guard",
+      "team": "lsu-tigers",
+      "followers": {
+        "instagram": 237000,
+        "tiktok": 90000,
+        "x": 0,
+        "youtube": 0
+      },
+      "valuation": 400000,
+      "reported": false,
+      "source": "Estimate (On3 ranks her among top women's players; exact figure not disclosed)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/womens-basketball/",
+      "blurb": "MiLaysia Fulwiley is an explosive, highly marketable scoring guard who transferred from South Carolina to Kim Mulkey's LSU, averaging 14.6 points in her first Tigers season.",
+      "slug": "milaysia-fulwiley",
+      "level": "power",
+      "engagement": 5,
+      "low": 320000,
+      "high": 500000
+    },
+    {
+      "name": "Syla Swords",
+      "sport": "Women's Basketball",
+      "position": "Guard",
+      "team": "michigan-wolverines",
+      "followers": {
+        "instagram": 31000,
+        "tiktok": 0,
+        "x": 0,
+        "youtube": 0
+      },
+      "valuation": 350000,
+      "reported": false,
+      "source": "Estimate (On3 does not disclose exact figure)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/womens-basketball/",
+      "blurb": "Syla Swords is a Canadian Olympian and 2026 First-Team All-Big Ten guard who returns to anchor a top-five Michigan team after averaging about 14.6 points per game.",
+      "slug": "syla-swords",
+      "level": "power",
+      "engagement": 5,
+      "low": 280000,
+      "high": 437500
+    },
+    {
+      "name": "Sienna Betts",
+      "sport": "Women's Basketball",
+      "position": "Forward",
+      "team": "ucla-bruins",
+      "followers": {
+        "instagram": 38000,
+        "tiktok": 0,
+        "x": 0,
+        "youtube": 0
+      },
+      "valuation": 300000,
+      "reported": false,
+      "source": "Estimate (On3 does not disclose exact figure)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/womens-basketball/",
+      "blurb": "Sienna Betts is a 6-foot-4 former top-three national recruit and 2026 Big Ten All-Freshman pick poised to become UCLA's offensive centerpiece.",
+      "slug": "sienna-betts",
+      "level": "power",
+      "engagement": 5,
+      "low": 240000,
+      "high": 375000
     }
   ]
 }
