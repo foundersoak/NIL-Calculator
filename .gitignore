@@ -1,0 +1,5 @@
+
+# NIL importer working files
+data/incoming.json
+data/incoming.imported-*.json
+node_modules/

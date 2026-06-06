@@ -64,6 +64,7 @@ function head(opts) {
   <title>${esc(title)}</title>
   <meta name="description" content="${esc(desc)}" />
   <meta name="theme-color" content="#0b1120" />
+  <meta name="nil-base" content="${prefix}" />
   <link rel="canonical" href="${canonical}" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="${esc(title)}" />
@@ -158,11 +159,11 @@ function athletePage(a) {
   const prefix = '../../';
   const url = `${SITE_URL}/athlete/${a.slug}/`;
   const title = a.former
-    ? `How Much Did ${a.name} Make in NIL? (College Value: ${moneyShort(a.valuation)})`
-    : `How Much Does ${a.name} Make in NIL? (2026 Value: ${moneyShort(a.valuation)})`;
+    ? `How Much Did ${a.name} Make in NIL? | ${team.name} ${a.sport}`
+    : `How Much Does ${a.name} Make in NIL? | ${team.name} ${a.sport}`;
   const desc = a.former
-    ? `${a.name}'s NIL valuation at ${esc(team.name)} was about ${money(a.valuation)} before turning pro${a.nowWith ? ` (now ${esc(a.nowWith)})` : ''}. See the ${a.sport.toLowerCase()} star's social following and how the figure is calculated.`
-    : `${a.name}'s estimated 2026 NIL valuation is ${money(a.valuation)}. See the ${esc(team.name)} ${a.sport.toLowerCase()} star's social following, valuation breakdown and how it's calculated.`;
+    ? `${a.name}, former ${esc(team.name)} ${a.sport.toLowerCase()} star${a.nowWith ? ` (now ${esc(a.nowWith)})` : ''} — see the social following, NIL factors and unlock the estimated college NIL valuation, free.`
+    : `${a.name}, ${esc(team.name)} ${a.sport.toLowerCase()} — see the social following and NIL factors, and unlock ${a.name.split(' ')[0]}'s estimated 2026 NIL valuation. Free.`;
   const jsonld = {
     "@context": "https://schema.org",
     "@graph": [
@@ -170,14 +171,13 @@ function athletePage(a) {
         "affiliation": { "@type": "SportsTeam", "name": team.name }, "url": url },
       { "@type": "BreadcrumbList", "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Athletes", "item": `${SITE_URL}/athletes/` },
-        { "@type": "ListItem", "position": 2, "name": team.name, "item": `${SITE_URL}/team/${a.team}/` },
-        { "@type": "ListItem", "position": 3, "name": a.name, "item": url }
+        { "@type": "ListItem", "position": 2, "name": a.name, "item": url }
       ]},
       { "@type": "FAQPage", "mainEntity": [
         { "@type": "Question", "name": `How much ${a.former ? 'did' : 'does'} ${a.name} make in NIL?`,
           "acceptedAnswer": { "@type": "Answer", "text": a.former
-            ? `${a.name}'s NIL valuation while at ${team.name} was estimated around ${money(a.valuation)} over a 12-month window before turning professional${a.nowWith ? ` (now with ${a.nowWith})` : ''}. This is an estimate, not a confirmed salary.`
-            : `${a.name}'s estimated NIL valuation for 2026 is approximately ${money(a.valuation)} over a 12-month window. This is an estimate of earning potential, not a confirmed salary.` } },
+            ? `${a.name}'s estimated college NIL valuation is based on social following, on-field performance and market. Unlock the figure with our free NIL calculator — it's an estimate of earning potential, not a confirmed salary.`
+            : `${a.name}'s estimated 2026 NIL valuation is based on social following, on-field performance and market reach. Unlock the figure with our free NIL calculator — it's an estimate of earning potential, not a confirmed salary.` } },
         { "@type": "Question", "name": `What team ${a.former ? 'did' : 'does'} ${a.name} play for?`,
           "acceptedAnswer": { "@type": "Answer", "text": a.former
             ? `${a.name} played ${a.position} for the ${team.name}${a.nowWith ? ` and is now with ${a.nowWith}` : ''}.`
@@ -186,77 +186,47 @@ function athletePage(a) {
     ]
   };
 
+  const lo = a.low || Math.round(a.valuation * 0.8);
+  const hi = a.high || Math.round(a.valuation * 1.25);
+  const barsJson = esc(JSON.stringify(breakdown(a).map(b => ({ key: b.key, label: b.label, pct: b.pct }))));
+
   return head({ title, desc, canonical: url, prefix, jsonld }) + `
     <section class="container narrow athlete-hero">
-      <nav class="crumbs"><a href="${prefix}athletes/index.html">Athletes</a> › <a href="${prefix}team/${a.team}/index.html">${esc(team.name)}</a> › <span>${esc(a.name)}</span></nav>
+      <nav class="crumbs"><a href="${prefix}athletes/index.html">Athletes</a> › <span>${esc(a.name)}</span></nav>
       <h1>How much ${a.former ? 'did' : 'does'} ${esc(a.name)} make in NIL?</h1>
       <p class="athlete-sub">${a.former ? 'Former ' : ''}${esc(a.position)} · ${esc(team.name)}${team.conference ? ' · ' + esc(team.conference) : ''}${a.former && a.nowWith ? ` · <strong>Now: ${esc(a.nowWith)}</strong>` : ''}</p>
-      <div class="valuation-hero">
-        <div>
-          <span class="result-eyebrow">${a.former ? 'Final college NIL valuation' : 'Estimated 2026 NIL valuation'}</span>
-          <div class="big-number">${money(a.valuation)}</div>
-          <p class="val-note">${a.reported ? 'Based on publicly reported figures' : 'Modeled estimate'} · ${a.former ? 'final season in college' : '12-month earning potential'}${a.source ? ` · <a href="${a.sourceUrl}" rel="nofollow noopener" target="_blank">Source: ${esc(a.source)}</a>` : ''}</p>
-        </div>
-      </div>
       <p class="athlete-blurb">${esc(a.blurb || '')}</p>
+
+      <div class="nil-gate" data-value="${a.valuation}" data-low="${lo}" data-high="${hi}"
+           data-name="${esc(a.name)}" data-reported="${a.reported ? 1 : 0}"
+           data-note="${esc((a.reported ? 'Based on publicly reported figures' : 'Modeled estimate') + (a.former ? ' · final season in college' : ' · 12-month earning potential'))}"
+           data-bars="${barsJson}">
+        <div class="gate-locked">
+          <span class="result-eyebrow">🔒 ${a.former ? 'Final college NIL valuation' : 'Estimated 2026 NIL valuation'}</span>
+          <div class="big-number blurred" aria-hidden="true">$•,•••,•••</div>
+          <p class="gate-pitch">Enter your email to unlock ${esc(a.name.split(' ')[0])}'s estimated NIL value, the likely range, and the full breakdown. Free.</p>
+          <form class="gate-form email-form" action="${FORMSPREE}" method="POST">
+            <input type="hidden" name="unlock_athlete" value="${esc(a.name)}" />
+            <input type="email" name="email" required placeholder="you@email.com" aria-label="Email address" />
+            <button type="submit" class="btn btn-primary">Unlock the value</button>
+          </form>
+          <p class="privacy-note">No spam. Unsubscribe anytime. <a href="${prefix}privacy.html">Privacy</a>.</p>
+        </div>
+        <div class="gate-reveal" hidden></div>
+      </div>
     </section>
     ${adUnit()}
     <section class="container narrow">
-      <h2>Why ${esc(a.name)} is worth this much</h2>
-      ${breakdownBars(a)}
       <h2>Social media following</h2>
       ${socialTable(a) || '<p>We\'ll add social numbers soon.</p>'}
       ${totalFollowers(a) ? `<p class="muted">That's about ${totalFollowers(a).toLocaleString('en-US')} followers in all (rough number).</p>` : ''}
 
-      <h2>How we get this number</h2>
-      <p>An NIL value is a guess at how much money a player could make in one year. It is not a paycheck. We look at four things: their <strong>fans</strong> (social media), their <strong>stage</strong> (school and league), their <strong>game</strong> (how they play), and their <strong>brand</strong> (their sport and story).</p>
+      <h2>How we estimate ${esc(a.name.split(' ')[0])}'s NIL value</h2>
+      <p>An NIL value is an estimate of how much a player could earn in a year — it is not a salary or a confirmed deal. We weigh four things brands care about: <strong>fans</strong> (social reach and engagement), <strong>stage</strong> (school, conference and market), <strong>game</strong> (on-field role and performance), and <strong>brand</strong> (sport and story).${a.source ? ` Where a public figure exists, we sense-check against it (<a href="${a.sourceUrl}" rel="nofollow noopener" target="_blank">${esc(a.source)}</a>).` : ''}</p>
 
       <div class="cta-inline">
-        <p><strong>Want your own number?</strong> See what your NIL could be worth in 30 seconds.</p>
-        <a class="btn btn-primary" href="${prefix}index.html#calculator">Try the calculator</a>
-      </div>
-    </section>
-    ${emailCapture(prefix)}
-  ` + foot(prefix);
-}
-
-/* ---------- team page ---------- */
-function teamPage(slug, team, roster) {
-  const prefix = '../../';
-  const url = `${SITE_URL}/team/${slug}/`;
-  const sorted = roster.slice().sort((x, y) => y.valuation - x.valuation);
-  const total = sorted.reduce((s, a) => s + a.valuation, 0);
-  const title = `${team.name} NIL Roster Value 2026 — Player-by-Player Breakdown`;
-  const desc = `The ${team.name} have an estimated combined NIL roster value of ${moneyShort(total)} for 2026. See every player's NIL valuation, ranked.`;
-  const jsonld = {
-    "@context": "https://schema.org",
-    "@type": "SportsTeam", "name": team.name, "sport": team.sport, "url": url,
-    "member": sorted.map(a => ({ "@type": "Person", "name": a.name, "url": `${SITE_URL}/athlete/${a.slug}/` }))
-  };
-  const rows = sorted.map((a, i) =>
-    `<tr><td>${i + 1}</td><td><a href="${prefix}athlete/${a.slug}/index.html">${esc(a.name)}</a>${a.former ? ' <span class="muted">(former)</span>' : ''}</td><td>${esc(a.position)}</td><td class="num">${money(a.valuation)}</td></tr>`).join('');
-
-  return head({ title, desc, canonical: url, prefix, jsonld }) + `
-    <section class="container narrow athlete-hero">
-      <nav class="crumbs"><a href="${prefix}athletes/index.html">Athletes</a> › <span>${esc(team.name)}</span></nav>
-      <h1>${esc(team.name)} NIL roster value</h1>
-      <p class="athlete-sub">${esc(team.conference)}${team.conference ? ' · ' : ''}${esc(team.sport)} · 2026</p>
-      <div class="valuation-hero">
-        <div>
-          <span class="result-eyebrow">Estimated combined roster NIL value</span>
-          <div class="big-number">${money(total)}</div>
-          <p class="val-note">Sum of tracked players' estimated 12-month NIL valuations</p>
-        </div>
-      </div>
-    </section>
-    ${adUnit()}
-    <section class="container narrow">
-      <h2>${esc(team.name)} players by NIL value</h2>
-      <table class="data-table ranked"><thead><tr><th>#</th><th>Player</th><th>Position</th><th class="num">Est. NIL value</th></tr></thead><tbody>${rows}</tbody></table>
-      <p class="muted">These are estimates of what each player could earn in a year, not what the school spent. We add more players over time.</p>
-      <div class="cta-inline">
-        <p><strong>Want another player?</strong> See what anyone's NIL could be worth.</p>
-        <a class="btn btn-primary" href="${prefix}index.html#calculator">Try the calculator</a>
+        <p><strong>Curious about another player?</strong> Look one up or estimate any athlete in seconds.</p>
+        <a class="btn btn-primary" href="${prefix}index.html#calculator">Open the NIL calculator</a>
       </div>
     </section>
     ${emailCapture(prefix)}
@@ -273,29 +243,25 @@ function directoryPage(athletes, teams) {
   const cards = sorted.map(a => {
     const team = teams[a.team] || {};
     return `<a class="athlete-card" href="${prefix}athlete/${a.slug}/index.html">
-      <span class="ac-rank">${moneyShort(a.valuation)}</span>
+      <span class="ac-tag">${esc(a.sport)}</span>
       <strong>${esc(a.name)}</strong>
       <span class="ac-meta">${esc(a.position)} · ${esc(team.name || '')}${a.former ? ' · former' : ''}</span>
+      <span class="ac-cta">View NIL value ›</span>
     </a>`;
   }).join('');
-  const teamList = Object.keys(teams).filter(slug => athletes.some(a => a.team === slug)).map(slug =>
-    `<a class="team-chip" href="${prefix}team/${slug}/index.html">${esc(teams[slug].name)} roster value</a>`).join('');
-
   return head({ title, desc, canonical: url, prefix, jsonld: {
     "@context": "https://schema.org", "@type": "CollectionPage", "name": title, "url": url
   }}) + `
     <section class="container narrow athlete-hero">
       <h1>College athlete NIL valuations</h1>
-      <p class="athlete-sub">Estimated 2026 NIL values for top players and teams.</p>
+      <p class="athlete-sub">Browse top players and unlock each one's estimated 2026 NIL value, free.</p>
     </section>
     ${adUnit()}
     <section class="container">
-      <h2>Top athletes by NIL value</h2>
+      <h2>Browse athletes</h2>
       <div class="athlete-grid">${cards}</div>
-      <h2 style="margin-top:2rem">Team roster values</h2>
-      <div class="team-chips">${teamList}</div>
       <div class="cta-inline" style="margin-top:2rem">
-        <p><strong>Don't see someone?</strong> Estimate any athlete's NIL value with the calculator.</p>
+        <p><strong>Don't see someone?</strong> Look up a player or estimate any athlete with the calculator.</p>
         <a class="btn btn-primary" href="${prefix}index.html#calculator">Open the NIL calculator</a>
       </div>
     </section>
@@ -318,12 +284,18 @@ console.log(`Generating from ${athletes.length} athletes, ${Object.keys(teams).l
 
 athletes.forEach(a => writeFile(path.join('athlete', a.slug, 'index.html'), athletePage(a)));
 
-Object.keys(teams).forEach(slug => {
-  const roster = athletes.filter(a => a.team === slug);
-  if (roster.length) writeFile(path.join('team', slug, 'index.html'), teamPage(slug, teams[slug], roster));
-});
-
 writeFile(path.join('athletes', 'index.html'), directoryPage(athletes, teams));
+
+/* client-side search / similar-players index (consumed by calculator.js) */
+const index = athletes.map(a => {
+  const team = teams[a.team] || {};
+  return {
+    slug: a.slug, name: a.name, team: team.name || a.team, sport: a.sport,
+    position: a.position, former: !!a.former, nowWith: a.nowWith || '',
+    value: a.valuation, low: a.low || Math.round(a.valuation * 0.8), high: a.high || Math.round(a.valuation * 1.25)
+  };
+}).sort((x, y) => y.value - x.value);
+writeFile(path.join('assets', 'data', 'athletes-index.json'), JSON.stringify(index));
 
 /* sitemap */
 const urls = [
@@ -331,8 +303,7 @@ const urls = [
   `${SITE_URL}/athletes/`,
   `${SITE_URL}/privacy.html`,
   `${SITE_URL}/terms.html`,
-  ...athletes.map(a => `${SITE_URL}/athlete/${a.slug}/`),
-  ...Object.keys(teams).filter(s => athletes.some(a => a.team === s)).map(s => `${SITE_URL}/team/${s}/`)
+  ...athletes.map(a => `${SITE_URL}/athlete/${a.slug}/`)
 ];
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">

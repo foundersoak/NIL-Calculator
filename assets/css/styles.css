@@ -367,6 +367,76 @@ input[type=range]::-moz-range-thumb {
 }
 .team-chip:hover { border-color: var(--brand); color: var(--brand); }
 
+/* Athlete card tag + CTA (gated — no dollar value shown) */
+.ac-tag {
+  align-self: flex-start; font-family: var(--display); font-weight: 700; font-size: .72rem;
+  letter-spacing: .04em; text-transform: uppercase; color: var(--brand);
+  background: rgba(37,99,235,.10); border-radius: 999px; padding: .2rem .6rem;
+}
+.ac-cta { margin-top: .35rem; font-size: .82rem; font-weight: 600; color: var(--brand); }
+
+/* Calculator tabs */
+.calc-tabs { display: flex; gap: .4rem; margin-bottom: 1.1rem; background: rgba(15,23,42,.05); padding: .3rem; border-radius: 12px; }
+.calc-tab {
+  flex: 1; border: 0; background: transparent; cursor: pointer; padding: .6rem .5rem; border-radius: 9px;
+  font-family: var(--font); font-weight: 600; font-size: .92rem; color: var(--ink-soft);
+}
+.calc-tab.active { background: #fff; color: var(--ink); box-shadow: var(--shadow); }
+
+/* Player search */
+.player-search { position: relative; }
+.player-search input {
+  width: 100%; padding: .85rem 1rem; border: 1px solid var(--line); border-radius: 12px;
+  font-size: 1rem; background: #fff; color: var(--ink);
+}
+.player-search input:focus { outline: none; border-color: var(--brand); box-shadow: 0 0 0 3px rgba(37,99,235,.15); }
+.search-results {
+  position: absolute; z-index: 20; left: 0; right: 0; margin-top: 6px; background: #fff;
+  border: 1px solid var(--line); border-radius: 12px; box-shadow: var(--shadow-lg); overflow: hidden; max-height: 320px; overflow-y: auto;
+}
+.search-item { display: flex; flex-direction: column; gap: .1rem; width: 100%; text-align: left; border: 0; background: #fff; cursor: pointer; padding: .7rem 1rem; }
+.search-item:hover { background: var(--surface-2); }
+.search-item strong { color: var(--ink); font-size: .98rem; }
+.search-item span { color: var(--ink-soft); font-size: .82rem; }
+.search-empty { padding: .8rem 1rem; color: var(--ink-soft); font-size: .9rem; }
+#lookup-selected { margin-top: 1rem; padding: 1rem; background: var(--surface-2); border: 1px solid var(--line); border-radius: 12px; }
+.lookup-name { margin: 0 0 .3rem; color: var(--ink); }
+.lookup-full { font-weight: 600; color: var(--brand); font-size: .9rem; }
+
+/* Email gate (result card + athlete page) */
+.result-gate { text-align: center; padding: 10px 6px; }
+.result-gate .result-eyebrow { color: #93c5fd; }
+.big-number.blurred, .gate-locked .big-number {
+  font-family: var(--display); font-weight: 800; font-size: clamp(2rem, 6vw, 2.8rem);
+  filter: blur(7px); user-select: none; margin: .3rem 0 .6rem; color: #fff;
+}
+.gate-pitch { color: #cbd5e1; font-size: .92rem; margin: 0 0 1rem; }
+.nil-gate .gate-locked .big-number { color: var(--ink); }
+.nil-gate {
+  margin: 1.2rem 0; padding: 1.4rem; border: 1px solid var(--line); border-radius: var(--radius-sm);
+  background: var(--surface-2); text-align: center;
+}
+.nil-gate .gate-pitch { color: var(--ink-soft); }
+.nil-gate .result-eyebrow { color: var(--brand); font-weight: 700; }
+.gate-form, .result-gate .email-form { display: flex; gap: .5rem; max-width: 420px; margin: 0 auto .6rem; }
+.gate-form input[type=email], .result-gate .email-form input[type=email] {
+  flex: 1; padding: .7rem .9rem; border-radius: 10px; border: 1px solid var(--line); background: #fff; color: var(--ink);
+}
+.nil-gate .gate-reveal { text-align: center; }
+.nil-gate .gate-reveal .big-number { color: var(--ink); font-family: var(--display); font-weight: 800; font-size: clamp(2.2rem,7vw,3rem); }
+.nil-gate .result-bars { text-align: left; max-width: 420px; margin: 1rem auto 0; }
+.nil-gate .result-range { color: var(--ink); font-weight: 600; }
+
+/* Similar players */
+.similar { margin-top: 1.2rem; border-top: 1px solid rgba(255,255,255,.12); padding-top: 1rem; }
+.similar h4 { margin: 0 0 .6rem; font-size: .95rem; color: #e2e8f0; }
+.sim-list { display: flex; flex-direction: column; gap: .5rem; }
+.sim-card { display: flex; flex-direction: column; gap: .1rem; background: rgba(255,255,255,.06); border-radius: 10px; padding: .6rem .8rem; }
+.sim-card:hover { background: rgba(255,255,255,.12); }
+.sim-card strong { color: #fff; font-size: .95rem; }
+.sim-card span { color: #94a3b8; font-size: .8rem; }
+.sim-card .sim-range { color: #4ade80; font-weight: 600; }
+
 /* Legal pages */
 .legal { max-width: 760px; margin: 0 auto; padding: 50px 0 70px; }
 .legal h1 { font-size: 2.2rem; margin-bottom: .3rem; }

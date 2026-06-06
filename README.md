@@ -8,26 +8,47 @@ A fast, mobile-friendly **one-page NIL (Name, Image &amp; Likeness) value calcul
 
 ## What it does
 
-- Instant estimated annual NIL value from sport, division/level, on-field role, market, social following and engagement.
-- Animated result with a four-pillar breakdown (Influence, Exposure, Performance, Brand).
-- Email capture for a "full report" + a newsletter CTA.
-- Share button (native share / copy link) for organic growth.
-- AdSense ad slots, `ads.txt`, consent banner, Privacy Policy &amp; Terms — everything needed to get approved and start earning.
+- **Two calculator modes:** look up a college athlete in our database, or estimate any player from sport, level, role, market, social following and engagement.
+- **Email-gated results:** the value, range and four-pillar breakdown (Influence, Exposure, Performance, Brand) reveal after an email — a one-time unlock per browser.
+- **SEO athlete pages:** every tracked athlete gets a page (bio, social following, methodology, FAQ schema). The dollar value is gated; it is deliberately kept out of the title/meta/JSON-LD so we never "cloak."
+- **Ranges + comparables:** estimates are shown as ranges; the manual mode also surfaces the closest players in our database.
+- Newsletter CTA, share button, AdSense slots, `ads.txt`, consent banner, Privacy & Terms.
 
 ## Tech
 
-Plain HTML, CSS and vanilla JS. No dependencies. Just static files.
+Plain HTML, CSS and vanilla JS. Pages are **generated** from one data file — no framework.
 
 ```
-index.html            ← the one-page app
-privacy.html          ← required for AdSense
-terms.html
-ads.txt               ← required for programmatic ad demand
-robots.txt, sitemap.xml
-assets/css/styles.css
-assets/js/calculator.js
-.github/workflows/deploy.yml  ← auto-deploys to GitHub Pages
+data/athletes.json        ← SINGLE SOURCE OF TRUTH (athletes + teams)
+data/incoming.example.json← template for new research runs
+scripts/build.js          ← generates all HTML + sitemap + search index
+scripts/add-athletes.js   ← validates & merges a research run, then builds
+index.html                ← homepage (hero + two-mode calculator)
+athlete/<slug>/index.html ← generated athlete pages
+athletes/index.html       ← generated directory
+assets/data/athletes-index.json ← generated client-side search/similar index
+assets/css/styles.css  ·  assets/js/calculator.js
+.github/workflows/deploy.yml  ← auto-deploys to GitHub Pages on push to main
 ```
+
+---
+
+## ➕ Adding athletes (no HTML editing)
+
+You never touch HTML. Every page is generated from `data/athletes.json`. To add players from a new research run:
+
+1. Copy the template: `cp data/incoming.example.json data/incoming.json`
+2. Fill in the new players (only `name`, `sport`, `position`, `team`, `valuation` are required — see the
+   template comments). Add any **new** schools under `"teams"`.
+3. Run **`npm run add`** (or `node scripts/add-athletes.js`).
+
+The importer validates the data, fills defaults, auto-generates each `slug` and the low/high range,
+de-dupes by slug (re-importing a slug **updates** that athlete), merges everything into
+`data/athletes.json`, **rebuilds the whole site**, and archives your incoming file. Then just
+`git diff`, commit and push — the GitHub Action redeploys.
+
+> Prefer editing by hand? You can also add records directly to the `athletes` array in
+> `data/athletes.json` and run `npm run build`. Same result.
 
 ---
 

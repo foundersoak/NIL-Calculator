@@ -1,0 +1,36 @@
+{
+  "_comment": "Template for adding athletes from a research run. Copy to data/incoming.json, fill in, then run `npm run add`. Only name, sport, position, team and valuation are required — everything else has sensible defaults. Add any NEW schools under 'teams' (existing schools can be omitted). 'slug', 'low' and 'high' are auto-generated if you leave them out. Re-importing an existing slug UPDATES that athlete.",
+
+  "teams": {
+    "example-state-bobcats": { "name": "Example State Bobcats", "conference": "Big 12", "sport": "Football" }
+  },
+
+  "athletes": [
+    {
+      "name": "Jane Doe",
+      "sport": "Women's Basketball",
+      "position": "Guard",
+      "team": "example-state-bobcats",
+      "followers": { "instagram": 120000, "tiktok": 40000, "x": 5000, "youtube": 0 },
+      "engagement": 5,
+      "valuation": 850000,
+      "reported": true,
+      "source": "On3 NIL Valuations (2026)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/womens-basketball/",
+      "blurb": "One-sentence description used on the athlete page."
+    },
+    {
+      "name": "John Smith",
+      "sport": "Football",
+      "position": "Quarterback",
+      "team": "texas-longhorns",
+      "valuation": 600000,
+      "reported": false,
+      "source": "Estimate (On3 does not disclose exact figure)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/football/",
+      "blurb": "Backup-to-starter QB; modeled estimate.",
+      "former": false,
+      "nowWith": ""
+    }
+  ]
+}

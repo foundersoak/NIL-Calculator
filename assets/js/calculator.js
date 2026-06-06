@@ -1,219 +1,383 @@
 /* ============================================================
-   NIL ValueCalc — calculator, email, consent
+   NIL ValueCalc — calculator, player lookup, email gate
    ============================================================ */
 (function () {
   'use strict';
 
+  var $ = function (id) { return document.getElementById(id); };
+  var BASE = (document.querySelector('meta[name="nil-base"]') || {}).content || '';
+
   /* ---------- Footer year ---------- */
-  var yearEl = document.getElementById('year');
+  var yearEl = $('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
   /* ---------- Engagement slider live label ---------- */
-  var engagement = document.getElementById('engagement');
-  var engValue = document.getElementById('eng-value');
+  var engagement = $('engagement');
+  var engValue = $('eng-value');
   if (engagement && engValue) {
     var sync = function () { engValue.textContent = engagement.value + '%'; };
     engagement.addEventListener('input', sync);
     sync();
   }
 
-  /* ---------- Valuation model ----------
-     Annual estimate blends four pillars brands actually weigh:
-     Influence (engaged social reach), Exposure (division/market),
-     Performance (on-field role), Brand (sport marketability).
-     Calibrated to publicly reported NIL deal ranges. Estimate only.
+  function money(n) { return '$' + Math.round(n).toLocaleString('en-US'); }
+  function moneyShort(n) {
+    if (n >= 1e6) return '$' + (n / 1e6).toFixed(n % 1e6 === 0 ? 0 : 1) + 'M';
+    if (n >= 1e3) return '$' + Math.round(n / 1e3) + 'K';
+    return '$' + Math.round(n);
+  }
+  function range(lo, hi) { return moneyShort(lo) + ' – ' + moneyShort(hi); }
+
+  /* ---------- Email unlock state (one-time per browser) ---------- */
+  function isUnlocked() { return localStorage.getItem('nil_unlocked') === '1'; }
+  function setUnlocked() { localStorage.setItem('nil_unlocked', '1'); }
+
+  /* AJAX-submit an email form to its Formspree action, then run cb on success.
+     Falls back to just unlocking if the endpoint is a placeholder. */
+  function submitEmail(form, cb) {
+    var action = form.getAttribute('action') || '';
+    var emailInput = form.querySelector('input[type="email"]');
+    if (emailInput && !emailInput.checkValidity()) { emailInput.reportValidity(); return; }
+    if (/your-form-id|XXXX/.test(action) || !action) { cb(); return; }
+    var btn = form.querySelector('button[type="submit"]');
+    if (btn) { btn.disabled = true; btn.dataset.label = btn.textContent; btn.textContent = 'Unlocking…'; }
+    fetch(action, {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: new FormData(form)
+    }).then(function () { cb(); })
+      .catch(function () { cb(); })
+      .then(function () { if (btn) { btn.disabled = false; btn.textContent = btn.dataset.label || 'Unlock'; } });
+  }
+
+  /* ---------- Valuation model (manual mode) ----------
+     total = (engaged social + division floor) × sport × division × performance × market.
   ------------------------------------------------------------ */
-  var PLATFORM_RATE = {        // annual $ per engaged follower
-    instagram: 2.0,
-    tiktok: 1.2,
-    x: 1.0,
-    youtube: 4.5
+  var PLATFORM_RATE = { instagram: 2.0, tiktok: 1.2, x: 1.0, youtube: 4.5 };
+  var DIVISION = {
+    power: { mult: 1.40, floor: 9000 }, d1: { mult: 1.20, floor: 2800 },
+    d2: { mult: 0.70, floor: 700 }, d3: { mult: 0.48, floor: 250 },
+    naia: { mult: 0.45, floor: 200 }, juco: { mult: 0.55, floor: 300 }, hs: { mult: 0.38, floor: 150 }
   };
-
-  var DIVISION = {             // exposure multiplier + intangible brand floor ($)
-    power: { mult: 1.40, floor: 9000 },
-    d1:    { mult: 1.20, floor: 2800 },
-    d2:    { mult: 0.70, floor: 700  },
-    d3:    { mult: 0.48, floor: 250  },
-    naia:  { mult: 0.45, floor: 200  },
-    juco:  { mult: 0.55, floor: 300  },
-    hs:    { mult: 0.38, floor: 150  }
-  };
-
-  function num(id) {
-    var v = parseFloat((document.getElementById(id) || {}).value);
-    return isNaN(v) || v < 0 ? 0 : v;
-  }
-
-  function money(n) {
-    return '$' + Math.round(n).toLocaleString('en-US');
-  }
+  function num(id) { var v = parseFloat(($(id) || {}).value); return isNaN(v) || v < 0 ? 0 : v; }
 
   function compute() {
-    var sportMult = parseFloat(document.getElementById('sport').value) || 1;
-    var perfMult = parseFloat(document.getElementById('performance').value) || 1;
-    var marketMult = parseFloat(document.getElementById('market').value) || 1;
-    var div = DIVISION[document.getElementById('division').value] || DIVISION.d1;
+    var sportSel = $('sport');
+    var sportMult = parseFloat(sportSel.value) || 1;
+    var sportName = sportSel.options[sportSel.selectedIndex].text;
+    var perfMult = parseFloat($('performance').value) || 1;
+    var marketMult = parseFloat($('market').value) || 1;
+    var div = DIVISION[$('division').value] || DIVISION.d1;
     var eng = (parseFloat(engagement.value) || 0) / 100;
 
     var ig = num('instagram') * eng * PLATFORM_RATE.instagram;
-    var tt = num('tiktok')    * eng * PLATFORM_RATE.tiktok;
-    var xx = num('x')         * eng * PLATFORM_RATE.x;
-    var yt = num('youtube')   * eng * PLATFORM_RATE.youtube;
+    var tt = num('tiktok') * eng * PLATFORM_RATE.tiktok;
+    var xx = num('x') * eng * PLATFORM_RATE.x;
+    var yt = num('youtube') * eng * PLATFORM_RATE.youtube;
     var socialBase = ig + tt + xx + yt;
 
-    // Pillar contributions (for the breakdown bars)
-    var influence   = socialBase * sportMult;
-    var exposure    = (socialBase * (div.mult - 1)) + div.floor;        // visibility lift + base
+    var influence = socialBase * sportMult;
+    var exposure = (socialBase * (div.mult - 1)) + div.floor;
     var performance = socialBase * (perfMult - 1) + div.floor * (perfMult - 1);
-    var brand       = socialBase * (marketMult - 1) + div.floor * 0.4 * sportMult;
-
+    var brand = socialBase * (marketMult - 1) + div.floor * 0.4 * sportMult;
     var total = (socialBase + div.floor) * sportMult * div.mult * perfMult * marketMult;
 
-    // Normalize pillar bars to proportions of a positive baseline
     var parts = {
-      influence: Math.max(influence, 1),
-      exposure: Math.max(exposure, 1),
-      performance: Math.max(performance, 1),
-      brand: Math.max(brand, 1)
+      influence: Math.max(influence, 1), exposure: Math.max(exposure, 1),
+      performance: Math.max(performance, 1), brand: Math.max(brand, 1)
     };
     var sum = parts.influence + parts.exposure + parts.performance + parts.brand;
 
     return {
-      total: total,
-      low: total * 0.6,
-      high: total * 1.55,
+      value: total, low: total * 0.6, high: total * 1.55, sport: sportName,
       bars: [
-        { key: 'influence',   label: 'Influence (social)', pct: parts.influence / sum },
-        { key: 'exposure',    label: 'Exposure (level/market)', pct: parts.exposure / sum },
+        { key: 'influence', label: 'Influence (social)', pct: parts.influence / sum },
+        { key: 'exposure', label: 'Exposure (level/market)', pct: parts.exposure / sum },
         { key: 'performance', label: 'Performance', pct: parts.performance / sum },
-        { key: 'brand',       label: 'Brand & sport', pct: parts.brand / sum }
+        { key: 'brand', label: 'Brand & sport', pct: parts.brand / sum }
       ]
     };
   }
 
-  /* ---------- Animated counter ---------- */
+  /* ---------- Bars + counter ---------- */
+  function renderBars(container, bars) {
+    container.innerHTML = '';
+    bars.forEach(function (b) {
+      var row = document.createElement('div');
+      row.className = 'bar-row';
+      row.innerHTML = '<div class="bar-head"><span>' + b.label + '</span><span>' +
+        Math.round(b.pct * 100) + '%</span></div>' +
+        '<div class="bar-track"><div class="bar-fill ' + b.key + '" style="width:0%"></div></div>';
+      container.appendChild(row);
+      requestAnimationFrame(function () {
+        row.querySelector('.bar-fill').style.width = (b.pct * 100) + '%';
+      });
+    });
+  }
   function animateMoney(el, to) {
-    var start = 0, dur = 900, t0 = null;
+    var dur = 900, t0 = null;
     function step(ts) {
       if (!t0) t0 = ts;
       var p = Math.min((ts - t0) / dur, 1);
-      var eased = 1 - Math.pow(1 - p, 3);
-      el.textContent = money(start + (to - start) * eased);
+      el.textContent = money(to * (1 - Math.pow(1 - p, 3)));
       if (p < 1) requestAnimationFrame(step);
     }
     requestAnimationFrame(step);
   }
 
-  /* ---------- Render ---------- */
-  var form = document.getElementById('nil-form');
-  var emptyEl = document.getElementById('result-empty');
-  var filledEl = document.getElementById('result-filled');
-  var amountEl = document.getElementById('result-amount');
-  var rangeEl = document.getElementById('result-range');
-  var barsEl = document.getElementById('result-bars');
-  var estimateField = document.getElementById('nil_estimate_field');
+  /* ============================================================
+     HOMEPAGE CALCULATOR (two modes, gated result)
+     ============================================================ */
+  var resultCard = $('result');
+  if (resultCard) {
+    var emptyEl = $('result-empty');
+    var gateEl = $('result-gate');
+    var filledEl = $('result-filled');
+    var gateForm = $('gate-form');
+    var pending = null; // last computed/looked-up result awaiting reveal
 
-  function render(r) {
-    emptyEl.hidden = true;
-    filledEl.hidden = false;
-    animateMoney(amountEl, r.total);
-    rangeEl.textContent = 'Likely range: ' + money(r.low) + ' – ' + money(r.high) + ' / year';
-    if (estimateField) estimateField.value = money(r.total);
+    function renderFilled(res) {
+      if ($('result-eyebrow')) $('result-eyebrow').textContent = res.eyebrow || 'Estimated annual NIL value';
+      animateMoney($('result-amount'), res.value);
+      $('result-range').textContent = 'Likely range: ' + range(res.low, res.high) + ' / year';
+      renderBars($('result-bars'), res.bars || []);
+      var sim = $('result-similar');
+      if (sim) {
+        var players = similarPlayers(res);
+        if (players.length) {
+          sim.hidden = false;
+          sim.innerHTML = '<h4>Closest players in our database</h4>' +
+            '<div class="sim-list">' + players.map(function (p) {
+              return '<a class="sim-card" href="' + BASE + 'athlete/' + p.slug + '/index.html">' +
+                '<strong>' + p.name + '</strong><span>' + p.position + ' · ' + p.team + '</span>' +
+                '<span class="sim-range">' + range(p.low, p.high) + '</span></a>';
+            }).join('') + '</div>';
+        } else { sim.hidden = true; sim.innerHTML = ''; }
+      }
+      if (filledEl.scrollIntoView) filledEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
 
-    barsEl.innerHTML = '';
-    r.bars.forEach(function (b) {
-      var row = document.createElement('div');
-      row.className = 'bar-row';
-      row.innerHTML =
-        '<div class="bar-head"><span>' + b.label + '</span><span>' + Math.round(b.pct * 100) + '%</span></div>' +
-        '<div class="bar-track"><div class="bar-fill ' + b.key + '" style="width:0%"></div></div>';
-      barsEl.appendChild(row);
-      requestAnimationFrame(function () {
-        row.querySelector('.bar-fill').style.width = (b.pct * 100) + '%';
+    function present(res) {
+      pending = res;
+      if (emptyEl) emptyEl.hidden = true;
+      if (isUnlocked()) {
+        if (gateEl) gateEl.hidden = true;
+        filledEl.hidden = false;
+        renderFilled(res);
+      } else {
+        filledEl.hidden = true;
+        if (gateEl) {
+          gateEl.hidden = false;
+          if ($('nil_estimate_field')) $('nil_estimate_field').value = moneyShort(res.value);
+          if (gateEl.scrollIntoView) gateEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+      }
+    }
+
+    if (gateForm) {
+      gateForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        submitEmail(gateForm, function () {
+          setUnlocked();
+          if (gateEl) gateEl.hidden = true;
+          filledEl.hidden = false;
+          if (pending) renderFilled(pending);
+        });
       });
-    });
-    filledEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    /* --- Mode B: manual estimate --- */
+    var form = $('nil-form');
+    if (form) {
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var res = compute();
+        res.eyebrow = 'Estimated annual NIL value';
+        present(res);
+      });
+    }
+
+    /* --- Mode A: player lookup --- */
+    var searchInput = $('player-search-input');
+    if (searchInput) {
+      var resultsBox = $('search-results');
+      loadIndex(function (list) {
+        function close() { resultsBox.hidden = true; resultsBox.innerHTML = ''; }
+        searchInput.addEventListener('input', function () {
+          var q = searchInput.value.trim().toLowerCase();
+          if (q.length < 2) { close(); return; }
+          var hits = list.filter(function (p) { return p.name.toLowerCase().indexOf(q) > -1 ||
+            (p.team && p.team.toLowerCase().indexOf(q) > -1); }).slice(0, 8);
+          if (!hits.length) { resultsBox.hidden = false; resultsBox.innerHTML = '<div class="search-empty">No match — try the “Estimate any athlete” tab.</div>'; return; }
+          resultsBox.hidden = false;
+          resultsBox.innerHTML = hits.map(function (p) {
+            return '<button type="button" class="search-item" data-slug="' + p.slug + '">' +
+              '<strong>' + p.name + '</strong><span>' + p.position + ' · ' + p.team +
+              (p.former ? ' · former' : '') + '</span></button>';
+          }).join('');
+          Array.prototype.forEach.call(resultsBox.querySelectorAll('.search-item'), function (btn) {
+            btn.addEventListener('click', function () {
+              var p = list.filter(function (x) { return x.slug === btn.dataset.slug; })[0];
+              if (!p) return;
+              searchInput.value = p.name;
+              close();
+              var sel = $('lookup-selected');
+              if (sel) {
+                sel.hidden = false;
+                sel.innerHTML = '<p class="lookup-name">Selected: <strong>' + p.name + '</strong> — ' +
+                  p.position + ', ' + p.team + '</p>' +
+                  '<a class="lookup-full" href="' + BASE + 'athlete/' + p.slug + '/index.html">View full profile ›</a>';
+              }
+              present({
+                value: p.value, low: p.low, high: p.high, sport: p.sport,
+                eyebrow: (p.former ? 'Estimated college NIL value' : 'Estimated 2026 NIL value') + ' — ' + p.name,
+                bars: null, lookup: true
+              });
+            });
+          });
+        });
+        document.addEventListener('click', function (e) {
+          if (!resultsBox.contains(e.target) && e.target !== searchInput) close();
+        });
+      });
+    }
   }
 
-  if (form) {
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      render(compute());
+  /* ---------- Tabs ---------- */
+  function showTab(name) {
+    Array.prototype.forEach.call(document.querySelectorAll('.calc-tab'), function (t) {
+      t.classList.toggle('active', t.dataset.tab === name);
+    });
+    Array.prototype.forEach.call(document.querySelectorAll('.calc-panel'), function (p) {
+      p.hidden = p.dataset.panel !== name;
     });
   }
+  Array.prototype.forEach.call(document.querySelectorAll('.calc-tab'), function (tab) {
+    tab.addEventListener('click', function () { showTab(tab.dataset.tab); });
+  });
+  Array.prototype.forEach.call(document.querySelectorAll('.to-estimate'), function (lnk) {
+    lnk.addEventListener('click', function (e) { e.preventDefault(); showTab('estimate'); });
+  });
 
-  /* ---------- Email forms (graceful, no-backend-friendly) ---------- */
-  function wireEmail(formId, successId) {
-    var f = document.getElementById(formId);
+  /* ---------- Shared athlete index loader + similarity ---------- */
+  var _index = null, _indexCbs = [];
+  function loadIndex(cb) {
+    if (_index) { cb(_index); return; }
+    _indexCbs.push(cb);
+    if (_indexCbs.length > 1) return;
+    fetch(BASE + 'assets/data/athletes-index.json')
+      .then(function (r) { return r.json(); })
+      .then(function (data) { _index = data; _indexCbs.forEach(function (f) { f(data); }); _indexCbs = []; })
+      .catch(function () { _index = []; _indexCbs.forEach(function (f) { f([]); }); _indexCbs = []; });
+  }
+  function similarPlayers(res) {
+    if (!_index || res.lookup) return [];
+    var pool = _index.filter(function (p) { return !p.former; });
+    var same = pool.filter(function (p) { return p.sport === res.sport; });
+    var src = same.length >= 3 ? same : pool;
+    return src.map(function (p) { return { p: p, d: Math.abs(p.value - res.value) }; })
+      .sort(function (a, b) { return a.d - b.d; })
+      .slice(0, 3).map(function (x) { return x.p; });
+  }
+  // Warm the index on pages with the calculator
+  if (resultCard) loadIndex(function () {});
+
+  /* ============================================================
+     ATHLETE PAGE GATE
+     ============================================================ */
+  var gate = document.querySelector('.nil-gate');
+  if (gate) {
+    var locked = gate.querySelector('.gate-locked');
+    var reveal = gate.querySelector('.gate-reveal');
+    var gForm = gate.querySelector('.gate-form');
+
+    function renderReveal() {
+      var lo = +gate.dataset.low, hi = +gate.dataset.high, val = +gate.dataset.value;
+      var bars = [];
+      try { bars = JSON.parse(gate.dataset.bars || '[]'); } catch (e) {}
+      reveal.innerHTML =
+        '<span class="result-eyebrow">' + (locked.querySelector('.result-eyebrow') ?
+          locked.querySelector('.result-eyebrow').textContent.replace('🔒 ', '') : 'Estimated NIL value') + '</span>' +
+        '<div class="big-number"></div>' +
+        '<p class="result-range">Likely range: ' + range(lo, hi) + ' / year</p>' +
+        '<p class="val-note">' + (gate.dataset.note || '') + '</p>' +
+        '<div class="result-bars"></div>';
+      animateMoney(reveal.querySelector('.big-number'), val);
+      renderBars(reveal.querySelector('.result-bars'), bars);
+      locked.hidden = true;
+      reveal.hidden = false;
+    }
+
+    if (isUnlocked()) {
+      renderReveal();
+    } else if (gForm) {
+      gForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        submitEmail(gForm, function () { setUnlocked(); renderReveal(); });
+      });
+    }
+  }
+
+  /* ---------- Newsletter forms (no result gate) ---------- */
+  function wireNewsletter(formId, successId) {
+    var f = $(formId);
     if (!f) return;
     f.addEventListener('submit', function (e) {
-      // If the action still points at the placeholder, don't hit the network —
-      // just show success so the UX works before you connect Formspree/Mailchimp.
-      var placeholder = /your-form-id/.test(f.getAttribute('action') || '');
+      var placeholder = /your-form-id|XXXX/.test(f.getAttribute('action') || '');
       if (placeholder) {
         e.preventDefault();
         f.style.display = 'none';
-        if (successId) {
-          var s = document.getElementById(successId);
-          if (s) s.hidden = false;
-        } else {
+        var s = successId && $(successId);
+        if (s) s.hidden = false;
+        else {
           var note = document.createElement('p');
           note.className = 'email-success';
-          note.textContent = "✅ You're subscribed! (Connect your email provider to start collecting.)";
+          note.textContent = "✅ You're subscribed!";
           f.parentNode.appendChild(note);
         }
       }
-      // Otherwise let it POST normally to your real endpoint.
     });
   }
-  wireEmail('email-form', 'email-success');
-  wireEmail('cta-email-form', null);
+  wireNewsletter('email-form', 'email-success');
+  wireNewsletter('cta-email-form', null);
 
   /* ---------- Share ---------- */
-  var shareBtn = document.getElementById('share-btn');
+  var shareBtn = $('share-btn');
   if (shareBtn) {
     shareBtn.addEventListener('click', function () {
-      var amount = amountEl.textContent;
-      var text = 'My estimated NIL value is ' + amount + '/year 🏆 Find yours:';
+      var amount = ($('result-amount') || {}).textContent || '';
+      var text = 'NIL value estimate: ' + amount + '/year 🏆 Find any player’s value:';
       var url = location.href.split('#')[0];
       if (navigator.share) {
-        navigator.share({ title: 'My NIL Value', text: text, url: url }).catch(function () {});
+        navigator.share({ title: 'NIL Value', text: text, url: url }).catch(function () {});
       } else {
         navigator.clipboard.writeText(text + ' ' + url).then(function () {
           shareBtn.textContent = '✅ Link copied!';
-          setTimeout(function () { shareBtn.textContent = '🔗 Share my result'; }, 2000);
+          setTimeout(function () { shareBtn.textContent = '🔗 Share this result'; }, 2000);
         });
       }
     });
   }
 
-  /* ---------- Lightweight consent notice ----------
-     For EEA/UK traffic, also enable Google's certified CMP in the AdSense
-     dashboard (Privacy & messaging → GDPR). This banner is the baseline notice. */
+  /* ---------- Consent notice ---------- */
   if (!localStorage.getItem('nil_consent')) {
     var bar = document.createElement('div');
     bar.id = 'consent-bar';
     bar.innerHTML =
       '<p>We use cookies for analytics and to show ads that keep this tool free. ' +
-      'See our <a href="privacy.html">Privacy Policy</a>.</p>' +
+      'See our <a href="' + BASE + 'privacy.html">Privacy Policy</a>.</p>' +
       '<div class="consent-actions">' +
       '<button id="consent-decline" type="button">Decline</button>' +
       '<button id="consent-accept" type="button">Accept</button></div>';
     document.body.appendChild(bar);
-    var close = function (val) {
-      localStorage.setItem('nil_consent', val);
-      bar.remove();
-    };
-    document.getElementById('consent-accept').addEventListener('click', function () { close('accepted'); });
-    document.getElementById('consent-decline').addEventListener('click', function () { close('declined'); });
+    var close = function (val) { localStorage.setItem('nil_consent', val); bar.remove(); };
+    $('consent-accept').addEventListener('click', function () { close('accepted'); });
+    $('consent-decline').addEventListener('click', function () { close('declined'); });
   }
 
-  /* ---------- Initialize AdSense units ---------- */
+  /* ---------- AdSense ---------- */
   try {
     var ads = document.querySelectorAll('.adsbygoogle');
-    for (var i = 0; i < ads.length; i++) {
-      (window.adsbygoogle = window.adsbygoogle || []).push({});
-    }
-  } catch (e) { /* AdSense not loaded (e.g. local dev) — ignore */ }
+    for (var i = 0; i < ads.length; i++) { (window.adsbygoogle = window.adsbygoogle || []).push({}); }
+  } catch (e) { /* ignore */ }
 })();
