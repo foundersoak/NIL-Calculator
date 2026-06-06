@@ -16,7 +16,7 @@ const ROOT = path.join(__dirname, '..');
 const DATA = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'athletes.json'), 'utf8'));
 
 /* ---- Config: change SITE_URL to your custom domain when you have one ---- */
-const SITE_URL = 'https://foundersoak.github.io/NIL-Calculator'; // no trailing slash
+const SITE_URL = 'https://howmuchnil.com'; // no trailing slash
 const ADSENSE_CLIENT = 'ca-pub-XXXXXXXXXXXXXXXX';
 const FORMSPREE = 'https://formspree.io/f/mkoangpz';
 const UPDATED = DATA.updated || new Date().toISOString().slice(0, 10);
