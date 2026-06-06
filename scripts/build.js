@@ -105,8 +105,8 @@ function head(opts) {
   <header class="site-header">
     <div class="container nav">
       <a class="brand" href="${prefix}index.html">
-        <span class="brand-mark" aria-hidden="true">NIL</span>
-        <span class="brand-text">Value<span class="brand-accent">Calc</span></span>
+        <span class="brand-mark" aria-hidden="true">$</span>
+        <span class="brand-text">HowMuch<span class="brand-accent">NIL</span></span>
       </a>
       <nav class="nav-links">
         <a href="${prefix}athletes/index.html">Athletes</a>
@@ -143,7 +143,7 @@ function foot(prefix) {
   <footer class="site-footer">
     <div class="container footer-grid">
       <div>
-        <a class="brand" href="${prefix}index.html"><span class="brand-mark" aria-hidden="true">NIL</span><span class="brand-text">Value<span class="brand-accent">Calc</span></span></a>
+        <a class="brand" href="${prefix}index.html"><span class="brand-mark" aria-hidden="true">$</span><span class="brand-text">HowMuch<span class="brand-accent">NIL</span></span></a>
         <p class="footer-tag">Know the value. Follow the money.</p>
       </div>
       <nav class="footer-links">
@@ -154,7 +154,7 @@ function foot(prefix) {
       </nav>
     </div>
     <div class="container footer-bottom">
-      <p>© ${new Date().getFullYear()} NIL ValueCalc. NIL valuations are estimates of 12-month earning potential based on public data and our model, not amounts paid, and not endorsed by the athletes or schools. Informational only; not financial, legal or tax advice. Not affiliated with the NCAA. Data updated ${UPDATED}.</p>
+      <p>© ${new Date().getFullYear()} HowMuchNIL. NIL valuations are estimates of 12-month earning potential based on public data and our model, not amounts paid, and not endorsed by the athletes or schools. Informational only; not financial, legal or tax advice. Not affiliated with the NCAA. Data updated ${UPDATED}.</p>
     </div>
   </footer>
   <script src="${prefix}assets/js/calculator.js?v=${ASSET_VER}" defer></script>
