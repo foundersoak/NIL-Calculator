@@ -226,6 +226,11 @@
       "name": "Mississippi State Bulldogs",
       "conference": "SEC",
       "sport": "Baseball"
+    },
+    "troy-trojans": {
+      "name": "Troy Trojans",
+      "conference": "Sun Belt",
+      "sport": "Baseball"
     }
   },
   "athletes": [
@@ -2532,6 +2537,226 @@
       "engagement": 5,
       "low": 48000,
       "high": 75000
+    },
+    {
+      "name": "Daniel Jackson",
+      "sport": "Baseball",
+      "position": "Catcher",
+      "team": "georgia-bulldogs",
+      "followers": {
+        "instagram": 1600,
+        "tiktok": 0,
+        "x": 0,
+        "youtube": 0
+      },
+      "valuation": 175000,
+      "reported": false,
+      "source": "Estimate (On3 does not publicly list baseball NIL figures)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/baseball/",
+      "blurb": "Jackson is a 2026 Golden Spikes Award semifinalist who became the first SEC player ever with a 25 home run, 25 stolen base season.",
+      "slug": "daniel-jackson",
+      "level": "power",
+      "engagement": 5,
+      "low": 140000,
+      "high": 218750
+    },
+    {
+      "name": "Michael O'Shaughnessy",
+      "sport": "Baseball",
+      "position": "Third Baseman",
+      "team": "georgia-bulldogs",
+      "followers": {
+        "instagram": 0,
+        "tiktok": 0,
+        "x": 0,
+        "youtube": 0
+      },
+      "valuation": 70000,
+      "reported": false,
+      "source": "Estimate (On3 does not publicly list baseball NIL figures)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/baseball/",
+      "blurb": "A Davidson transfer, O'Shaughnessy hit a three-run homer in the eighth inning to win Game 1 of the Athens Super Regional and has roughly 20 home runs in 2026.",
+      "slug": "michael-oshaughnessy",
+      "level": "power",
+      "engagement": 5,
+      "low": 56000,
+      "high": 87500
+    },
+    {
+      "name": "Jason DeCaro",
+      "sport": "Baseball",
+      "position": "Pitcher",
+      "team": "north-carolina-tar-heels",
+      "followers": {
+        "instagram": 6030,
+        "tiktok": 0,
+        "x": 357,
+        "youtube": 0
+      },
+      "valuation": 130000,
+      "reported": false,
+      "source": "Estimate (On3 does not publicly list baseball NIL figures)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/baseball/",
+      "blurb": "DeCaro is a 2026 Golden Spikes Award semifinalist who threw a two-hit complete-game shutout to force a super regional Game 3, going 10-2 with a sub-2.60 ERA.",
+      "slug": "jason-decaro",
+      "level": "power",
+      "engagement": 5,
+      "low": 104000,
+      "high": 162500
+    },
+    {
+      "name": "Dean Carpentier",
+      "sport": "Baseball",
+      "position": "Shortstop",
+      "team": "usc-trojans",
+      "followers": {
+        "instagram": 3710,
+        "tiktok": 0,
+        "x": 0,
+        "youtube": 0
+      },
+      "valuation": 80000,
+      "reported": false,
+      "source": "Estimate (On3 does not publicly list baseball NIL figures)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/baseball/",
+      "blurb": "Carpentier hit a game-winning grand slam in Game 1 of the Chapel Hill Super Regional against North Carolina.",
+      "slug": "dean-carpentier",
+      "level": "power",
+      "engagement": 5,
+      "low": 64000,
+      "high": 100000
+    },
+    {
+      "name": "Adrian Rodriguez",
+      "sport": "Baseball",
+      "position": "Infielder",
+      "team": "texas-longhorns",
+      "followers": {
+        "instagram": 7309,
+        "tiktok": 0,
+        "x": 0,
+        "youtube": 0
+      },
+      "valuation": 110000,
+      "reported": false,
+      "source": "Estimate (On3 does not publicly list baseball NIL figures)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/baseball/",
+      "blurb": "Rodriguez is a former Freshman All-American infielder and a key 2026 draft prospect in the Texas lineup.",
+      "slug": "adrian-rodriguez",
+      "level": "power",
+      "engagement": 5,
+      "low": 88000,
+      "high": 137500
+    },
+    {
+      "name": "Austin Fawley",
+      "sport": "Baseball",
+      "position": "Catcher",
+      "team": "ole-miss-rebels",
+      "followers": {
+        "instagram": 0,
+        "tiktok": 0,
+        "x": 0,
+        "youtube": 0
+      },
+      "valuation": 90000,
+      "reported": false,
+      "source": "Estimate (On3 does not publicly list baseball NIL figures)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/baseball/",
+      "blurb": "Fawley hit 21 home runs in 2025, the most by an Ole Miss catcher in the Mike Bianco era, and returned as a draft-eligible bat.",
+      "slug": "austin-fawley",
+      "level": "power",
+      "engagement": 5,
+      "low": 72000,
+      "high": 112500
+    },
+    {
+      "name": "Brendan Brock",
+      "sport": "Baseball",
+      "position": "Catcher",
+      "team": "oklahoma-sooners",
+      "followers": {
+        "instagram": 0,
+        "tiktok": 0,
+        "x": 0,
+        "youtube": 0
+      },
+      "valuation": 110000,
+      "reported": false,
+      "source": "Estimate (On3 does not publicly list baseball NIL figures)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/baseball/",
+      "blurb": "Brock, a former NJCAA First Team All-American, is Oklahoma's top-ranked 2026 draft prospect and an SEC Player of the Week.",
+      "slug": "brendan-brock",
+      "level": "power",
+      "engagement": 5,
+      "low": 88000,
+      "high": 137500
+    },
+    {
+      "name": "Camden Johnson",
+      "sport": "Baseball",
+      "position": "Third Baseman",
+      "team": "oklahoma-sooners",
+      "followers": {
+        "instagram": 0,
+        "tiktok": 0,
+        "x": 0,
+        "youtube": 0
+      },
+      "valuation": 80000,
+      "reported": false,
+      "source": "Estimate (On3 does not publicly list baseball NIL figures)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/baseball/",
+      "blurb": "Johnson is a corner infielder and one of Oklahoma's top 2026 draft prospects, ranked inside the top 150.",
+      "slug": "camden-johnson",
+      "level": "power",
+      "engagement": 5,
+      "low": 64000,
+      "high": 100000
+    },
+    {
+      "name": "Armani Guzman",
+      "sport": "Baseball",
+      "position": "Outfielder",
+      "team": "west-virginia-mountaineers",
+      "followers": {
+        "instagram": 2827,
+        "tiktok": 0,
+        "x": 0,
+        "youtube": 0
+      },
+      "valuation": 70000,
+      "reported": false,
+      "source": "Estimate (On3 does not publicly list baseball NIL figures)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/baseball/",
+      "blurb": "Guzman is a contact and on-base utility man who helped West Virginia clinch its first College World Series berth.",
+      "slug": "armani-guzman",
+      "level": "power",
+      "engagement": 5,
+      "low": 56000,
+      "high": 87500
+    },
+    {
+      "name": "Jimmy Janicki",
+      "sport": "Baseball",
+      "position": "Catcher",
+      "team": "troy-trojans",
+      "followers": {
+        "instagram": 1615,
+        "tiktok": 0,
+        "x": 0,
+        "youtube": 0
+      },
+      "valuation": 85000,
+      "reported": false,
+      "source": "Estimate (On3 does not publicly list baseball NIL figures)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/baseball/",
+      "blurb": "Janicki is the 2026 Sun Belt Player of the Year who hit .349 with 19 home runs and 85 RBIs to lead Troy to its first College World Series.",
+      "slug": "jimmy-janicki",
+      "level": "power",
+      "engagement": 5,
+      "low": 68000,
+      "high": 106250
     }
   ]
 }
