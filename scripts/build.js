@@ -89,7 +89,7 @@ function head(opts) {
         <a href="${prefix}athletes/index.html">Athletes</a>
         <a href="${prefix}index.html#calculator">Calculator</a>
         <a href="${prefix}index.html#how">How it works</a>
-        <a class="nav-cta" href="${prefix}index.html#calculator">Estimate yours</a>
+        <a class="nav-cta" href="${prefix}index.html#calculator">Look up a player</a>
       </nav>
     </div>
   </header>
