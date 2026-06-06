@@ -23,7 +23,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/styles.css?v=f78ce9ae" />
+  <link rel="stylesheet" href="assets/css/styles.css?v=c39abd06" />
 
   <!-- Structured data for SEO -->
   <script type="application/ld+json">
@@ -56,32 +56,22 @@
   </header>
 
   <main>
-    <!-- HERO -->
-    <section class="hero">
+    <!-- HERO + CALCULATOR (split: pitch left, tool right) -->
+    <section id="calculator" class="hero">
       <div class="hero-glow" aria-hidden="true"></div>
-      <div class="container hero-inner">
-        <span class="eyebrow">Free • Curious what your favorite player makes?</span>
-        <h1>How much is any athlete's <span class="grad-text">NIL</span> worth?</h1>
-        <p class="lede">
-          Look up a college athlete in our database, or estimate any player from their following
-          and profile. See the value, the likely range and what drives it.
-        </p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="#calculator">Look up a player</a>
-          <a class="btn btn-ghost" href="athletes/index.html">Browse all athletes</a>
+      <div class="container hero-split">
+        <div class="hero-copy">
+          <span class="eyebrow">Free • Curious what your favorite player makes?</span>
+          <h1>How much is any athlete's <span class="grad-text">NIL</span> worth?</h1>
+          <p class="lede">Look up a college athlete, or estimate any player, in seconds.</p>
+          <ul class="hero-points">
+            <li>110+ athletes tracked, and growing every week</li>
+            <li>Values weigh social reach, position, role and market</li>
+            <li>Free, a quick email reveals each result</li>
+          </ul>
         </div>
-        <div class="hero-stats">
-          <div><strong>110+</strong><span>athletes tracked</span></div>
-          <div><strong>4</strong><span>valuation factors</span></div>
-          <div><strong>30s</strong><span>to an estimate</span></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CALCULATOR -->
-    <section id="calculator" class="calc-section">
-      <div class="container calc-grid">
-        <div class="calc-card">
+        <div class="hero-tool">
+          <div class="calc-card">
           <div class="calc-tabs" role="tablist">
             <button type="button" class="calc-tab active" data-tab="lookup">🔍 Look up a player</button>
             <button type="button" class="calc-tab" data-tab="estimate">⚙️ Estimate any athlete</button>
@@ -210,6 +200,7 @@
             <button class="share-btn" id="share-btn" type="button">🔗 Share this result</button>
           </div>
         </aside>
+        </div>
       </div>
     </section>
 
@@ -341,6 +332,6 @@
     </div>
   </footer>
 
-  <script src="assets/js/calculator.js?v=f78ce9ae" defer></script>
+  <script src="assets/js/calculator.js?v=c39abd06" defer></script>
 </body>
 </html>
