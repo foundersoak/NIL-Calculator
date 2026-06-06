@@ -125,6 +125,27 @@
     requestAnimationFrame(step);
   }
 
+  /* ---------- Shared athlete index loader + similarity ---------- */
+  var _index = null, _indexCbs = [];
+  function loadIndex(cb) {
+    if (_index) { cb(_index); return; }
+    _indexCbs.push(cb);
+    if (_indexCbs.length > 1) return;
+    fetch(BASE + 'assets/data/athletes-index.json')
+      .then(function (r) { return r.json(); })
+      .then(function (data) { _index = data; _indexCbs.forEach(function (f) { f(data); }); _indexCbs = []; })
+      .catch(function () { _index = []; _indexCbs.forEach(function (f) { f([]); }); _indexCbs = []; });
+  }
+  function similarPlayers(res) {
+    if (!_index || res.lookup) return [];
+    var pool = _index.filter(function (p) { return !p.former; });
+    var same = pool.filter(function (p) { return p.sport === res.sport; });
+    var src = same.length >= 3 ? same : pool;
+    return src.map(function (p) { return { p: p, d: Math.abs(p.value - res.value) }; })
+      .sort(function (a, b) { return a.d - b.d; })
+      .slice(0, 3).map(function (x) { return x.p; });
+  }
+
   /* ============================================================
      HOMEPAGE CALCULATOR (two modes, gated result)
      ============================================================ */
@@ -259,26 +280,6 @@
     lnk.addEventListener('click', function (e) { e.preventDefault(); showTab('estimate'); });
   });
 
-  /* ---------- Shared athlete index loader + similarity ---------- */
-  var _index = null, _indexCbs = [];
-  function loadIndex(cb) {
-    if (_index) { cb(_index); return; }
-    _indexCbs.push(cb);
-    if (_indexCbs.length > 1) return;
-    fetch(BASE + 'assets/data/athletes-index.json')
-      .then(function (r) { return r.json(); })
-      .then(function (data) { _index = data; _indexCbs.forEach(function (f) { f(data); }); _indexCbs = []; })
-      .catch(function () { _index = []; _indexCbs.forEach(function (f) { f([]); }); _indexCbs = []; });
-  }
-  function similarPlayers(res) {
-    if (!_index || res.lookup) return [];
-    var pool = _index.filter(function (p) { return !p.former; });
-    var same = pool.filter(function (p) { return p.sport === res.sport; });
-    var src = same.length >= 3 ? same : pool;
-    return src.map(function (p) { return { p: p, d: Math.abs(p.value - res.value) }; })
-      .sort(function (a, b) { return a.d - b.d; })
-      .slice(0, 3).map(function (x) { return x.p; });
-  }
   // Warm the index on pages with the calculator
   if (resultCard) loadIndex(function () {});
 
