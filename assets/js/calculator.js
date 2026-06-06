@@ -408,21 +408,10 @@
     });
   }
 
-  /* ---------- Consent notice ---------- */
-  if (!localStorage.getItem('nil_consent')) {
-    var bar = document.createElement('div');
-    bar.id = 'consent-bar';
-    bar.innerHTML =
-      '<p>We use cookies for analytics and to show ads that keep this tool free. ' +
-      'See our <a href="' + BASE + 'privacy.html">Privacy Policy</a>.</p>' +
-      '<div class="consent-actions">' +
-      '<button id="consent-decline" type="button">Decline</button>' +
-      '<button id="consent-accept" type="button">Accept</button></div>';
-    document.body.appendChild(bar);
-    var close = function (val) { localStorage.setItem('nil_consent', val); bar.remove(); };
-    $('consent-accept').addEventListener('click', function () { close('accepted'); });
-    $('consent-decline').addEventListener('click', function () { close('declined'); });
-  }
+  /* ---------- Consent ----------
+     Handled by Google's certified CMP (configured in AdSense), which shows a
+     consent prompt to EEA/UK/CH visitors automatically. We intentionally do
+     not render our own banner here to avoid a duplicate prompt. */
 
   /* ---------- AdSense ---------- */
   try {
