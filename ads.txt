@@ -1,4 +1,4 @@
-# ads.txt — Authorized Digital Sellers (IAB Tech Lab)
+# ads.txt - Authorized Digital Sellers (IAB Tech Lab)
 # This file tells ad exchanges (SSPs) who is allowed to sell ad space on this site.
 # Without it, most programmatic ad demand will refuse to buy your inventory.
 #
