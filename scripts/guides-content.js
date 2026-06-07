@@ -1,5 +1,5 @@
 /* ============================================================
-   HowMuchNIL — guide articles (un-gated SEO content)
+   HowMuchNIL: guide articles (un-gated SEO content)
    Each: { slug, title, desc, date, body(HTML) }
    Links use root-relative paths (the site is served at the domain root).
    No em or en dashes in copy.

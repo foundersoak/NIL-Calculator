@@ -1,6 +1,6 @@
 {
   "_comment": "NIL athlete dataset. Figures are estimated 12-month NIL valuations from public reporting (On3, FOX Sports, SportsGrid) and/or our model, not amounts paid. 'reported: true' cites a public figure (see source). Add athletes here and run `node scripts/build.js` to regenerate pages + sitemap. Keep data accurate and sourced, each page must offer real value to rank.",
-  "updated": "2026-06-06",
+  "updated": "2026-06-07",
   "teams": {
     "texas-longhorns": {
       "name": "Texas Longhorns",
@@ -65,7 +65,7 @@
     "duke-blue-devils": {
       "name": "Duke Blue Devils",
       "conference": "ACC",
-      "sport": "Men's Basketball"
+      "sport": "Multiple"
     },
     "kentucky-wildcats": {
       "name": "Kentucky Wildcats",
@@ -150,7 +150,7 @@
     "kansas-state-wildcats": {
       "name": "Kansas State Wildcats",
       "conference": "Big 12",
-      "sport": "Men's Basketball"
+      "sport": "Multiple"
     },
     "iowa-hawkeyes": {
       "name": "Iowa Hawkeyes",
@@ -231,6 +231,21 @@
       "name": "Troy Trojans",
       "conference": "Sun Belt",
       "sport": "Baseball"
+    },
+    "virginia-cavaliers": {
+      "name": "Virginia Cavaliers",
+      "conference": "ACC",
+      "sport": "Football"
+    },
+    "illinois-fighting-illini": {
+      "name": "Illinois Fighting Illini",
+      "conference": "Big Ten",
+      "sport": "Men's Basketball"
+    },
+    "vanderbilt-commodores": {
+      "name": "Vanderbilt Commodores",
+      "conference": "SEC",
+      "sport": "Women's Basketball"
     }
   },
   "athletes": [
@@ -2957,6 +2972,160 @@
       "engagement": 5,
       "low": 160000,
       "high": 250000
+    },
+    {
+      "name": "Avery Johnson",
+      "sport": "Football",
+      "position": "Quarterback",
+      "team": "kansas-state-wildcats",
+      "followers": {
+        "instagram": 56000,
+        "tiktok": 0,
+        "x": 23200,
+        "youtube": 0
+      },
+      "valuation": 1600000,
+      "reported": true,
+      "source": "On3 NIL Valuations (2026)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/football/",
+      "blurb": "Avery Johnson is a dual-threat senior quarterback returning to Kansas State for 2026 after setting the school single-season passing touchdown record, and ranks among the Big 12's top NIL earners.",
+      "slug": "avery-johnson",
+      "level": "power",
+      "engagement": 5,
+      "low": 1280000,
+      "high": 2000000
+    },
+    {
+      "name": "Beau Pribula",
+      "sport": "Football",
+      "position": "Quarterback",
+      "team": "virginia-cavaliers",
+      "followers": {
+        "instagram": 51000,
+        "tiktok": 0,
+        "x": 8826,
+        "youtube": 0
+      },
+      "valuation": 1300000,
+      "reported": true,
+      "source": "On3 NIL Valuations (2026)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/football/",
+      "blurb": "Beau Pribula is a quarterback who transferred from Missouri to Virginia for 2026 and is projected to start after passing for 1,941 yards and 11 touchdowns in 2025.",
+      "slug": "beau-pribula",
+      "level": "power",
+      "engagement": 5,
+      "low": 1040000,
+      "high": 1625000
+    },
+    {
+      "name": "Tomislav Ivisic",
+      "sport": "Men's Basketball",
+      "position": "Center",
+      "team": "illinois-fighting-illini",
+      "followers": {
+        "instagram": 22000,
+        "tiktok": 0,
+        "x": 0,
+        "youtube": 0
+      },
+      "valuation": 350000,
+      "reported": false,
+      "source": "Estimate (On3 does not publicly disclose a figure)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/basketball/",
+      "blurb": "Tomislav Ivisic is a 7-foot-1 Croatian stretch center who returns to Illinois for 2026-27 after a Final Four season.",
+      "slug": "tomislav-ivisic",
+      "level": "power",
+      "engagement": 5,
+      "low": 280000,
+      "high": 437500
+    },
+    {
+      "name": "Mikayla Blakes",
+      "sport": "Women's Basketball",
+      "position": "Guard",
+      "team": "vanderbilt-commodores",
+      "followers": {
+        "instagram": 21000,
+        "tiktok": 0,
+        "x": 0,
+        "youtube": 0
+      },
+      "valuation": 400000,
+      "reported": false,
+      "source": "Estimate (On3 does not publicly disclose a figure)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/womens-basketball/",
+      "blurb": "Mikayla Blakes led all of NCAA Division I in scoring at 27.0 points per game as a sophomore and returns as Vanderbilt's backcourt anchor.",
+      "slug": "mikayla-blakes",
+      "level": "power",
+      "engagement": 5,
+      "low": 320000,
+      "high": 500000
+    },
+    {
+      "name": "Olivia Olson",
+      "sport": "Women's Basketball",
+      "position": "Guard",
+      "team": "michigan-wolverines",
+      "followers": {
+        "instagram": 12000,
+        "tiktok": 0,
+        "x": 2304,
+        "youtube": 0
+      },
+      "valuation": 300000,
+      "reported": false,
+      "source": "Estimate (On3 does not publicly disclose a figure)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/womens-basketball/",
+      "blurb": "Olivia Olson is a 6-foot-1 guard who made the All-Big Ten First Team as a sophomore and headlines a top-ranked Michigan team for 2026-27.",
+      "slug": "olivia-olson",
+      "level": "power",
+      "engagement": 5,
+      "low": 240000,
+      "high": 375000
+    },
+    {
+      "name": "Toby Fournier",
+      "sport": "Women's Basketball",
+      "position": "Forward",
+      "team": "duke-blue-devils",
+      "followers": {
+        "instagram": 94000,
+        "tiktok": 15600,
+        "x": 0,
+        "youtube": 0
+      },
+      "valuation": 400000,
+      "reported": false,
+      "source": "Estimate (On3 does not publicly disclose a figure)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/womens-basketball/",
+      "blurb": "Toby Fournier is a 6-foot-2 forward from Toronto who averaged 17.3 points as a sophomore and earned All-ACC First Team and All-ACC Defensive Team honors at Duke.",
+      "slug": "toby-fournier",
+      "level": "power",
+      "engagement": 5,
+      "low": 320000,
+      "high": 500000
+    },
+    {
+      "name": "Kennedy Smith",
+      "sport": "Women's Basketball",
+      "position": "Guard",
+      "team": "usc-trojans",
+      "followers": {
+        "instagram": 40000,
+        "tiktok": 0,
+        "x": 1762,
+        "youtube": 0
+      },
+      "valuation": 250000,
+      "reported": false,
+      "source": "Estimate (On3 does not publicly disclose a figure)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/womens-basketball/",
+      "blurb": "Kennedy Smith is a 6-foot-1 wing who averaged 11.5 points, 4.3 rebounds and 3.6 assists as a sophomore, returning to a USC team built around JuJu Watkins.",
+      "slug": "kennedy-smith",
+      "level": "power",
+      "engagement": 5,
+      "low": 200000,
+      "high": 312500
     }
   ]
 }
