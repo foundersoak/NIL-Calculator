@@ -179,17 +179,45 @@ function socialTable(a) {
   return rows ? `<table class="data-table"><thead><tr><th>Platform</th><th>Followers (approx.)</th></tr></thead><tbody>${rows}</tbody></table>` : '';
 }
 
+/* Unique, data-derived summary per athlete (keeps pages distinct + accurate). */
+function uniqueSummary(a, team) {
+  const first = esc(a.name.split(' ')[0]);
+  const name = esc(a.name);
+  const tname = esc(team.name);
+  const pos = esc((a.position || 'athlete').toLowerCase());
+  const sport = esc((a.sport || '').toLowerCase());
+  const conf = team.conference ? esc(team.conference) : '';
+  const parts = [];
+  if (a.former) {
+    parts.push(`${name} is a former ${tname} ${pos}${a.nowWith ? `, now with ${esc(a.nowWith)}` : ''}.`);
+  } else {
+    parts.push(`${name} is a ${pos} for the ${tname}${conf ? ` in the ${conf}` : ''}.`);
+  }
+  const tot = totalFollowers(a);
+  if (tot > 0) {
+    const f = a.followers || {};
+    const lead = [['Instagram', f.instagram], ['TikTok', f.tiktok], ['X', f.x], ['YouTube', f.youtube]]
+      .filter(p => p[1] > 0).sort((x, y) => y[1] - x[1])[0];
+    parts.push(`${first} has roughly ${tot.toLocaleString('en-US')} followers across social media${lead ? `, led by ${lead[1].toLocaleString('en-US')} on ${lead[0]}` : ''}, a core driver of ${sport} NIL value.`);
+  }
+  parts.push(a.reported
+    ? `${first}'s NIL value shown here reflects publicly reported figures${a.source ? ` (${esc(a.source)})` : ''}; enter your email above to see the number and the full breakdown.`
+    : `${first}'s NIL value shown here is a modeled estimate based on audience, on-field role, market and sport; enter your email above to see the number and the full breakdown.`);
+  return parts.join(' ');
+}
+
 /* ---------- athlete page ---------- */
 function athletePage(a) {
   const team = DATA.teams[a.team] || { name: a.team, conference: '', sport: a.sport };
   const prefix = '../../';
   const url = `${SITE_URL}/athlete/${a.slug}/`;
+  const fn = a.name.split(' ')[0];
   const title = a.former
-    ? `How Much Did ${a.name} Make in NIL? | ${team.name} ${a.sport}`
-    : `How Much Does ${a.name} Make in NIL? | ${team.name} ${a.sport}`;
+    ? `${a.name} NIL Value: How Much Did ${fn} Make in NIL?`
+    : `${a.name} NIL Value 2026: How Much Does ${fn} Make in NIL?`;
   const desc = a.former
-    ? `${a.name}, former ${esc(team.name)} ${a.sport.toLowerCase()} star${a.nowWith ? ` (now ${esc(a.nowWith)})` : ''}. See the social following, NIL factors and unlock the estimated college NIL valuation, free.`
-    : `${a.name}, ${esc(team.name)} ${a.sport.toLowerCase()}. See the social following and NIL factors, and unlock ${a.name.split(' ')[0]}'s estimated 2026 NIL valuation. Free.`;
+    ? `What was ${a.name}'s NIL value at ${team.name}? See the ${a.sport.toLowerCase()} ${a.position.toLowerCase()}'s estimated NIL valuation, social following and how it is figured${a.nowWith ? `, now that ${fn} is with ${a.nowWith}` : ''}.`
+    : `What is ${a.name}'s NIL value? See the ${team.name} ${a.position.toLowerCase()}'s estimated 2026 NIL valuation, social following and how it is calculated. Free.`;
   const jsonld = {
     "@context": "https://schema.org",
     "@graph": [
@@ -249,12 +277,15 @@ function athletePage(a) {
     </section>
     ${adUnit()}
     <section class="container narrow">
-      <h2>Social media following</h2>
+      <h2>What ${a.former ? 'was' : 'is'} ${esc(a.name)}'s NIL value?</h2>
+      <p>${uniqueSummary(a, team)}</p>
+
+      <h2>${esc(a.name.split(' ')[0])}'s social media following</h2>
       ${socialTable(a) || '<p>We\'ll add social numbers soon.</p>'}
       ${totalFollowers(a) ? `<p class="muted">That's about ${totalFollowers(a).toLocaleString('en-US')} followers in all (rough number).</p>` : ''}
 
-      <h2>How we estimate ${esc(a.name.split(' ')[0])}'s NIL value</h2>
-      <p>An NIL value is an estimate of how much a player could earn in a year. It is not a salary or a confirmed deal. We weigh four things brands care about: <strong>fans</strong> (social reach and engagement), <strong>stage</strong> (school, conference and market), <strong>game</strong> (on-field role and performance), and <strong>brand</strong> (sport and story).${a.source ? ` Where a public figure exists, we sense-check against it (<a href="${a.sourceUrl}" rel="nofollow noopener" target="_blank">${esc(a.source)}</a>).` : ''}</p>
+      <h2>How NIL value is calculated</h2>
+      <p>An NIL value is an estimate of what an athlete could earn from name, image and likeness over 12 months, not a salary or a confirmed deal. We weigh audience (social reach and engagement), performance and role, school and market, and the sport and position.${a.source ? ` Where a public figure exists, we sense-check against it (<a href="${a.sourceUrl}" rel="nofollow noopener" target="_blank">${esc(a.source)}</a>).` : ''} <a href="${prefix}guide/how-nil-valuations-work/index.html">See how NIL valuations work</a>.</p>
 
       <div class="cta-inline">
         <p><strong>Curious about another player?</strong> Look one up or estimate any athlete in seconds.</p>
