@@ -45,6 +45,21 @@ const moneyShort = n => {
 };
 const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const totalFollowers = a => Object.values(a.followers || {}).reduce((s, v) => s + (v || 0), 0);
+/* Compact, deliberately-rounded follower display (e.g. 8312 -> "8.3K", 1394000 -> "1.4M").
+   Follower data is approximate, so we never show false precision. */
+const fmtFollowers = n => {
+  n = +n || 0;
+  if (n <= 0) return '0';
+  if (n >= 1e6) return (n / 1e6).toFixed(1).replace(/\.0$/, '') + 'M';
+  if (n >= 1e5) return Math.round(n / 1e3) + 'K';
+  if (n >= 1e3) return (n / 1e3).toFixed(1).replace(/\.0$/, '') + 'K';
+  return String(Math.round(n));
+};
+/* "As of" label for follower figures, derived from the dataset's updated date. */
+const FOLLOWERS_AS_OF = (() => {
+  const d = new Date((DATA.updated || '') + 'T00:00:00');
+  return isNaN(d) ? '2026' : d.toLocaleString('en-US', { month: 'long', year: 'numeric' });
+})();
 
 /* Four-pillar breakdown for a known valuation (mirrors calculator.js weighting). */
 function breakdown(a) {
@@ -175,7 +190,7 @@ function socialTable(a) {
   const f = a.followers || {};
   const rows = [
     ['Instagram', f.instagram], ['TikTok', f.tiktok], ['X / Twitter', f.x], ['YouTube', f.youtube]
-  ].filter(r => r[1]).map(r => `<tr><td>${r[0]}</td><td>${(r[1]).toLocaleString('en-US')}</td></tr>`).join('');
+  ].filter(r => r[1]).map(r => `<tr><td>${r[0]}</td><td>~${fmtFollowers(r[1])}</td></tr>`).join('');
   return rows ? `<table class="data-table"><thead><tr><th>Platform</th><th>Followers (approx.)</th></tr></thead><tbody>${rows}</tbody></table>` : '';
 }
 
@@ -198,7 +213,7 @@ function uniqueSummary(a, team) {
     const f = a.followers || {};
     const lead = [['Instagram', f.instagram], ['TikTok', f.tiktok], ['X', f.x], ['YouTube', f.youtube]]
       .filter(p => p[1] > 0).sort((x, y) => y[1] - x[1])[0];
-    parts.push(`${first} has roughly ${tot.toLocaleString('en-US')} followers across social media${lead ? `, led by ${lead[1].toLocaleString('en-US')} on ${lead[0]}` : ''}, a core driver of ${sport} NIL value.`);
+    parts.push(`${first} has about ${fmtFollowers(tot)} followers across social media${lead ? `, led by ${fmtFollowers(lead[1])} on ${lead[0]}` : ''}, a core driver of ${sport} NIL value.`);
   }
   parts.push(a.reported
     ? `${first}'s NIL value shown here reflects publicly reported figures${a.source ? ` (${esc(a.source)})` : ''}; enter your email above to see the number and the full breakdown.`
@@ -282,7 +297,7 @@ function athletePage(a) {
 
       <h2>${esc(a.name.split(' ')[0])}'s social media following</h2>
       ${socialTable(a) || '<p>We\'ll add social numbers soon.</p>'}
-      ${totalFollowers(a) ? `<p class="muted">That's about ${totalFollowers(a).toLocaleString('en-US')} followers in all (rough number).</p>` : ''}
+      ${totalFollowers(a) ? `<p class="muted">That's about ${fmtFollowers(totalFollowers(a))} followers in all. Follower figures are approximate and were last updated ${FOLLOWERS_AS_OF}.</p>` : ''}
 
       <h2>How NIL value is calculated</h2>
       <p>An NIL value is an estimate of what an athlete could earn from name, image and likeness over 12 months, not a salary or a confirmed deal. We weigh audience (social reach and engagement), performance and role, school and market, and the sport and position.${a.source ? ` Where a public figure exists, we sense-check against it (<a href="${a.sourceUrl}" rel="nofollow noopener" target="_blank">${esc(a.source)}</a>).` : ''} <a href="${prefix}guide/how-nil-valuations-work/index.html">See how NIL valuations work</a>.</p>
