@@ -1,0 +1,3 @@
+# ads.txt - Authorized Digital Sellers (IAB Tech Lab)
+# Tells ad exchanges who may sell ad space on this site.
+google.com, pub-PUBLISHER_ID, DIRECT, f08c47fec0942fa0

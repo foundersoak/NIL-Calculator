@@ -1,0 +1,25 @@
+{
+  "_comment": "Single source of truth for the site. Edit items here (or via the importer) and run `node scripts/build.js`. Generated HTML is never edited by hand. Rename 'items'/'groups' and fields to fit your niche, but keep slug/name/group/value/reported/source/blurb.",
+  "updated": "2026-01-01",
+  "groups": {
+    "example-group": { "name": "Example Group", "category": "Category A", "region": "US" }
+  },
+  "items": [
+    {
+      "slug": "example-item",
+      "name": "Example Item",
+      "group": "example-group",
+      "inputs": { "factorA": 12000, "factorB": 3000 },
+      "engagement": 5,
+      "value": 100000,
+      "low": 80000,
+      "high": 125000,
+      "reported": true,
+      "source": "Public source name (sense-check)",
+      "sourceUrl": "https://example.com/source",
+      "blurb": "One sentence describing the item, used on its page.",
+      "former": false,
+      "nowWith": ""
+    }
+  ]
+}
