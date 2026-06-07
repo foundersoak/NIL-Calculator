@@ -246,6 +246,11 @@
       "name": "Vanderbilt Commodores",
       "conference": "SEC",
       "sport": "Women's Basketball"
+    },
+    "baylor-bears": {
+      "name": "Baylor Bears",
+      "conference": "Big 12",
+      "sport": "Football"
     }
   },
   "athletes": [
@@ -575,7 +580,9 @@
       "reported": true,
       "source": "On3 NIL Valuations (2026)",
       "sourceUrl": "https://www.on3.com/nil/rankings/player/college/basketball/",
-      "blurb": "The North Carolina freshman forward ranks near the top of college basketball NIL valuations."
+      "blurb": "The North Carolina freshman forward ranks near the top of college basketball NIL valuations.",
+      "former": true,
+      "nowWith": "NBA (2026 Draft)"
     },
     {
       "slug": "braden-smith",
@@ -826,7 +833,7 @@
       "name": "Deja Kelly",
       "sport": "Women's Basketball",
       "position": "Guard",
-      "team": "texas-tech-red-raiders",
+      "team": "oregon-ducks",
       "level": "power",
       "followers": {
         "instagram": 514000,
@@ -839,7 +846,9 @@
       "reported": true,
       "source": "On3 Women's NIL Valuations (2026)",
       "sourceUrl": "https://www.on3.com/nil/rankings/player/womens-nil-valuations/",
-      "blurb": "The veteran guard is a proven NIL performer and one of the higher-valued players in women's college basketball."
+      "blurb": "The veteran guard is a proven NIL performer and one of the higher-valued players in women's college basketball.",
+      "former": true,
+      "nowWith": "Charlotte Crown (AU Pro Basketball)"
     },
     {
       "slug": "chloe-kitts",
@@ -906,7 +915,7 @@
       "name": "DJ Lagway",
       "sport": "Football",
       "position": "Quarterback",
-      "team": "florida-gators",
+      "team": "baylor-bears",
       "level": "power",
       "followers": {
         "instagram": 106000,
@@ -919,7 +928,8 @@
       "reported": true,
       "source": "On3 NIL Valuations (2026)",
       "sourceUrl": "https://www.on3.com/nil/rankings/player/college/football/",
-      "blurb": "The Florida quarterback owns one of the highest NIL valuations in college football as the face of the Gators' offense."
+      "blurb": "The Florida quarterback owns one of the highest NIL valuations in college football as the face of the Gators' offense.",
+      "former": false
     },
     {
       "slug": "julian-sayin",
@@ -1088,7 +1098,7 @@
       "name": "PJ Haggerty",
       "sport": "Men's Basketball",
       "position": "Guard",
-      "team": "kansas-state-wildcats",
+      "team": "texas-am-aggies",
       "level": "power",
       "followers": {
         "instagram": 11000,
