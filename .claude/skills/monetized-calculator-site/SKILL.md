@@ -48,7 +48,7 @@ assets/js/calculator.js <- calculator (lookup + estimate), email gate, lead capt
 assets/css/styles.css   <- styling
 assets/data/items-index.json <- generated client-side search/similar index
 .github/workflows/deploy.yml <- auto-deploys to GitHub Pages on push to main
-ads.txt robots.txt CNAME privacy.html terms.html
+ads.txt robots.txt CNAME privacy.html terms.html contact.html
 ```
 
 Key invariants that make it work:
@@ -62,6 +62,12 @@ Key invariants that make it work:
   of the title/meta/JSON-LD. Showing a number to Google while hiding it from users
   is cloaking and gets penalized. (Alternative: show a public range, gate the
   exact figure + breakdown. Better SEO; weigh it per project.)
+- **Contact without exposing the owner:** do NOT put a personal name or email in
+  privacy/terms. Ship a `noindex` `contact.html` with a Formspree-backed form
+  (name optional, email, message, plus a `_gotcha` honeypot) and link privacy,
+  terms, and the footer to it. This keeps the owner's identity off the site while
+  still giving AdSense reviewers and privacy-law data requests a real contact path.
+  Add `contact.html` to the build.js stamp list; keep it OUT of the sitemap.
 
 ## The value model pattern
 
