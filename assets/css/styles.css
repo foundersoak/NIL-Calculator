@@ -455,6 +455,7 @@ input[type=range]::-moz-range-thumb {
 .article h2 { margin-top: 1.7rem; font-size: 1.35rem; }
 .article p, .article li { color: #334155; }
 .article a { color: var(--brand); }
+.article a.btn, .legal a.btn { color: #fff; }
 .article-meta { color: var(--ink-soft); font-size: .85rem; margin: -.2rem 0 1rem; }
 .article .muted { color: var(--ink-soft); font-size: .9rem; }
 .article .sources li { font-size: .9rem; }
