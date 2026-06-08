@@ -78,7 +78,33 @@
     d2: { mult: 0.70, floor: 700 }, d3: { mult: 0.48, floor: 250 },
     naia: { mult: 0.45, floor: 200 }, juco: { mult: 0.55, floor: 300 }, hs: { mult: 0.38, floor: 150 }
   };
-  function num(id) { var v = parseFloat(($(id) || {}).value); return isNaN(v) || v < 0 ? 0 : v; }
+  function num(id) {
+    var el = $(id);
+    var v = el ? parseFloat(String(el.value).replace(/[^0-9.]/g, '')) : NaN;
+    return isNaN(v) || v < 0 ? 0 : v;
+  }
+
+  /* Live thousands separators in number-entry fields (caret preserved). */
+  function attachThousands(id) {
+    var el = $(id);
+    if (!el) return;
+    el.addEventListener('input', function () {
+      var before = el.value;
+      var caret = el.selectionStart;
+      var digits = before.replace(/[^0-9]/g, '');
+      if (digits === '') { el.value = ''; return; }
+      var digitsLeft = before.slice(0, caret).replace(/[^0-9]/g, '').length;
+      var formatted = Number(digits).toLocaleString('en-US');
+      el.value = formatted;
+      var pos = 0, count = 0;
+      while (pos < formatted.length && count < digitsLeft) {
+        if (formatted.charCodeAt(pos) >= 48 && formatted.charCodeAt(pos) <= 57) count++;
+        pos++;
+      }
+      try { el.setSelectionRange(pos, pos); } catch (e) {}
+    });
+  }
+  ['instagram', 'tiktok', 'x', 'youtube'].forEach(attachThousands);
 
   function compute() {
     var sportSel = $('sport');
