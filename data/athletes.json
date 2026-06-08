@@ -1,6 +1,6 @@
 {
   "_comment": "NIL athlete dataset. Figures are estimated 12-month NIL valuations from public reporting (On3, FOX Sports, SportsGrid) and/or our model, not amounts paid. 'reported: true' cites a public figure (see source). Add athletes here and run `node scripts/build.js` to regenerate pages + sitemap. Keep data accurate and sourced, each page must offer real value to rank.",
-  "updated": "2026-06-07",
+  "updated": "2026-06-08",
   "teams": {
     "texas-longhorns": {
       "name": "Texas Longhorns",
@@ -3228,7 +3228,7 @@
     {
       "name": "Jack Brooks",
       "sport": "Baseball",
-      "position": "Outfielder",
+      "position": "Utility",
       "team": "oregon-ducks",
       "followers": {
         "instagram": 1346,
@@ -3380,7 +3380,7 @@
       "high": 100000
     },
     {
-      "name": "Malosi Mata’Afa-Alferos",
+      "name": "Malosi Mata'afa-Alferos",
       "sport": "Baseball",
       "position": "Infielder",
       "team": "oregon-ducks",
@@ -4696,6 +4696,28 @@
       "level": "power",
       "engagement": 5,
       "slug": "brett-crossland",
+      "low": 33600,
+      "high": 52500
+    },
+    {
+      "name": "Mark Wiepert",
+      "sport": "Baseball",
+      "position": "Catcher",
+      "team": "oregon-ducks",
+      "followers": {
+        "instagram": 0,
+        "tiktok": 0,
+        "x": 0,
+        "youtube": 0
+      },
+      "valuation": 42000,
+      "reported": false,
+      "source": "Estimate (On3 does not publicly list baseball NIL figures)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/baseball/",
+      "blurb": "Wiepert is a freshman catcher for the Oregon Ducks out of Wilsonville, Oregon.",
+      "level": "power",
+      "engagement": 5,
+      "slug": "mark-wiepert",
       "low": 33600,
       "high": 52500
     }
