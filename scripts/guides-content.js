@@ -158,5 +158,74 @@ module.exports = [
         ['ESPN: NiJaree Canady signs another seven-figure deal with Texas Tech', 'https://www.espn.com/college-sports/story/_/id/45464899/nijaree-canady-signs-another-7-figure-deal-texas-tech']
       ])}
     `
+  },
+
+  {
+    slug: 'texas-oregon-2026-super-regional-nil',
+    title: 'Texas vs Oregon 2026 Super Regional: NIL Stars and the Game 2 Pitching Matchup',
+    desc: "No. 6 Texas leads No. 11 Oregon 1-0 in the 2026 Austin Super Regional with a trip to Omaha on the line. The Riojas vs Sanford pitching matchup, plus the NIL stars on both rosters.",
+    date: '2026-06-08',
+    body: `
+      <p>The road to Omaha runs through Austin. <strong>No. 6 Texas</strong> and <strong>No. 11 Oregon</strong> are playing a best-of-three NCAA Super Regional, and the winner punches a ticket to the <strong>2026 Men's College World Series</strong>, which opens June 12 at Charles Schwab Field. Texas leads the series 1-0 after an 11 to 3 Game 1 win. Game 2 is set for Sunday, June 8 (8 p.m. Central, ESPN); if Oregon wins, a decisive Game 3 follows. However it ends, here is the pitching matchup and what the stars are worth.</p>
+
+      <h2>The Game 2 pitching matchup: Riojas vs Sanford</h2>
+      <p>Texas hands the ball to senior right-hander <a href="/athlete/ruger-riojas/">Ruger Riojas</a> (5-2, 3.86 ERA), an Austin native working back from a midseason bout of tendinitis. Oregon, facing elimination, counters with right-hander <a href="/athlete/will-sanford/">Will Sanford</a> (9-2, 3.46 ERA), the Eugene Regional MVP who struck out 14 and allowed just one hit over 6.1 innings against Washington State to push the Ducks to this round.</p>
+      <p>Texas set the tone in Game 1 behind ace left-hander <a href="/athlete/dylan-volantis/">Dylan Volantis</a>, the reigning national freshman of the year and a finalist for national pitcher of the year, who struck out 10 over 5.1 innings. If the series goes the distance, the Longhorns would still have Volantis and weekend starter <a href="/athlete/luke-harrison/">Luke Harrison</a> available, with closer <a href="/athlete/thomas-burns/">Thomas Burns</a> anchoring the back end.</p>
+
+      <h2>Texas's NIL names to know</h2>
+      <p>Texas pairs elite pitching with a lineup full of draft-caliber bats. Beyond Volantis, watch catcher <a href="/athlete/carson-tinney/">Carson Tinney</a>, a Notre Dame transfer and middle-of-the-order presence; infielder <a href="/athlete/adrian-rodriguez/">Adrian Rodriguez</a>, the offensive star of the Game 1 rout; freshman outfielder <a href="/athlete/anthony-pack-jr/">Anthony Pack Jr.</a>, one of the SEC's top first-year players; <a href="/athlete/aiden-robbins/">Aiden Robbins</a>, a breakout Seton Hall transfer; and <a href="/athlete/jonah-williams/">Jonah Williams</a>, a two-sport athlete (also a football defensive back) who carries the biggest social following on the roster. Second baseman <a href="/athlete/ethan-mendoza/">Ethan Mendoza</a>, first baseman <a href="/athlete/casey-borba/">Casey Borba</a>, and LSU transfer outfielder <a href="/athlete/ashton-larson/">Ashton Larson</a> round out a deep group.</p>
+
+      <h2>Oregon's NIL names to know</h2>
+      <p>Sanford is the headliner on the mound, but the Ducks have pro upside in the field too. Shortstop <a href="/athlete/maddox-molony/">Maddox Molony</a> is a projected 2026 MLB Draft pick, switch-hitting outfielder <a href="/athlete/jax-gimenez/">Jax Gimenez</a> is a high-profile young prospect, and veteran corner bat <a href="/athlete/dominic-hellman/">Dominic Hellman</a> brings power to the middle of the order.</p>
+
+      <h2>So what is a college baseball player worth in NIL?</h2>
+      <p>Baseball NIL is real and growing, but it works differently than football or basketball, and public dollar figures are scarce. We break down exactly why in <a href="/guide/college-baseball-nil-explained/">how college baseball NIL works</a>. To see an estimate for any player above, open their page and unlock the value, or <a href="/#calculator">estimate any athlete in the calculator</a>. You can also <a href="/athletes/">browse the full database</a> or read <a href="/guide/how-nil-valuations-work/">how NIL valuations actually work</a>.</p>
+
+      <p class="muted">Series details as of Sunday, June 8, 2026, compiled from NCAA.com, ESPN and other outlets. NIL figures on this site are modeled estimates of earning potential, not confirmed deals.</p>
+      ${SOURCES([
+        ['NCAA.com: 2026 baseball tournament bracket and schedule', 'https://www.ncaa.com/news/baseball/article/2026-06-07/2026-ncaa-baseball-tournament-bracket-schedule-scores-mens-college-world-series'],
+        ['On3: Texas vs Oregon Game 2 preview', 'https://www.on3.com/teams/texas-longhorns/news/texas-vs-oregon-g2-preview-the-arms-that-will-define-texas-hopes-of-a-college-world-series-appearance/'],
+        ['Sports Illustrated: Oregon vs Texas Game 2 starting pitchers', 'https://www.si.com/college/oregon/news/oregon-baseball-texas-longhorns-starting-pitchers-how-watch-elimination-will-sanford-ruger-riojas'],
+        ['Burnt Orange Nation: Texas tops Oregon 11-3 in Game 1', 'https://www.burntorangenation.com/texas-longhorns-baseball/102509/texas-longhorns-11-oregon-ducks-3-adrian-rodriguez'],
+        ['Texas Athletics: Austin Super Regional preview', 'https://texaslonghorns.com/news/2026/6/5/no-6-baseball-preview-no-11-oregon-ncaa-austin-super-regional']
+      ])}
+    `
+  },
+
+  {
+    slug: 'college-baseball-nil-explained',
+    title: 'Do College Baseball Players Get NIL Money? How Baseball NIL Works in 2026',
+    desc: "Yes, college baseball players earn NIL, but it works differently than football or basketball. How baseball NIL works in 2026, what drives it, and the College World Series effect.",
+    date: '2026-06-08',
+    body: `
+      <p>With the <strong>2026 Men's College World Series</strong> set to open June 12 in Omaha, a question always follows the sport's biggest stage: <strong>do college baseball players actually get NIL money?</strong> The short answer is yes, but baseball NIL works differently than it does in football or basketball, and the numbers are both smaller and far less public.</p>
+
+      <h2>Yes, baseball players earn NIL, but the pool is smaller</h2>
+      <p>Since 2021, college baseball players have been free to earn from their name, image, and likeness through brand deals, autograph and memorabilia sales, camps, and school collectives. Top draft prospects and postseason heroes can do real business. But the total NIL pool in baseball trails football, men's basketball, and women's basketball by a wide margin, because baseball draws smaller national TV audiences for individual stars and carries 35-plus man rosters that spread attention thin.</p>
+
+      <h2>Why you rarely see baseball NIL dollar figures</h2>
+      <p>For football and basketball, outlets like On3 publish per-player NIL valuations. For baseball, they generally do not, so reliable public dollar figures are hard to find. That is why baseball valuations on this site are clearly labeled <strong>modeled estimates</strong> rather than reported figures: we estimate earning potential from the same inputs brands actually weigh. See <a href="/guide/how-nil-valuations-work/">how NIL valuations actually work</a> for the full method.</p>
+
+      <h2>What drives a baseball player's NIL value</h2>
+      <ul>
+        <li><strong>MLB Draft stock and pro upside.</strong> This matters more in baseball than in almost any other college sport. A projected high pick is a brand magnet, even at a smaller school.</li>
+        <li><strong>Role and production.</strong> A Friday-night ace or an everyday middle-of-the-order bat earns more than a depth arm or a reserve.</li>
+        <li><strong>Social following and engagement.</strong> A large, active audience is something brands pay for directly.</li>
+        <li><strong>Program and the postseason spotlight.</strong> A run to Omaha puts players in front of a national audience and spikes their value in real time.</li>
+        <li><strong>Position and story.</strong> Two-way players, power hitters, and flame-throwing closers carry appeal beyond the box score.</li>
+      </ul>
+
+      <h2>The College World Series effect</h2>
+      <p>Postseason exposure is the single biggest short-term lever for a baseball player's NIL. Among the teams headed to the 2026 College World Series are Georgia, Ole Miss, North Carolina, and Troy, which is making the first trip in school history, with the Texas and Oregon Super Regional winner still to join them. You can look up players from those rosters in our database, from Georgia's <a href="/athlete/tre-phelps/">Tre Phelps</a> and Ole Miss's <a href="/athlete/cade-townsend/">Cade Townsend</a> to North Carolina's <a href="/athlete/jake-schaffner/">Jake Schaffner</a>, Troy's <a href="/athlete/jimmy-janicki/">Jimmy Janicki</a>, Texas ace <a href="/athlete/dylan-volantis/">Dylan Volantis</a>, and Oregon's <a href="/athlete/maddox-molony/">Maddox Molony</a>. Every deep run creates new household names, and new NIL opportunities.</p>
+
+      <h2>Estimate any baseball player's NIL</h2>
+      <p>Curious what a specific player could be worth? <a href="/#calculator">Use the calculator</a> to estimate any athlete, <a href="/athletes/">browse the full database</a>, or see the <a href="/guide/highest-paid-college-athletes-2026/">highest-paid college athletes of 2026</a> for how baseball stacks up against the big-money sports.</p>
+
+      <p class="muted">NIL figures for baseball on this site are modeled estimates of 12 month earning potential, not confirmed deals or reported salaries.</p>
+      ${SOURCES([
+        ['On3 NIL Valuations: college baseball', 'https://www.on3.com/nil/rankings/player/college/baseball/'],
+        ['NCAA.com: 2026 College World Series bracket and schedule', 'https://www.ncaa.com/news/baseball/article/2026-06-07/2026-ncaa-baseball-tournament-bracket-schedule-scores-mens-college-world-series']
+      ])}
+    `
   }
 ];
