@@ -476,6 +476,15 @@ input[type=range]::-moz-range-thumb {
 .legal p, .legal li { color: #334155; }
 .legal a { color: var(--brand); }
 .legal .back { display: inline-block; margin-top: 2rem; font-weight: 600; color: var(--brand); }
+.contact-form { max-width: 520px; margin-top: 1.3rem; }
+.contact-form label { display: block; font-weight: 600; margin: .9rem 0 .35rem; color: var(--ink); }
+.contact-form input, .contact-form textarea {
+  width: 100%; padding: .7rem .9rem; border: 1px solid #cbd5e1; border-radius: 10px;
+  font: inherit; color: var(--ink); background: #fff;
+}
+.contact-form input:focus, .contact-form textarea:focus { outline: 2px solid var(--brand); border-color: var(--brand); }
+.contact-form textarea { min-height: 140px; resize: vertical; }
+.contact-form .btn { margin-top: 1.1rem; }
 
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {

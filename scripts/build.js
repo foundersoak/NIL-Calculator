@@ -169,6 +169,7 @@ function foot(prefix) {
         <a href="${prefix}index.html#calculator">Calculator</a>
         <a href="${prefix}privacy.html">Privacy</a>
         <a href="${prefix}terms.html">Terms</a>
+        <a href="${prefix}contact.html">Contact</a>
       </nav>
     </div>
     <div class="container footer-bottom">
@@ -419,7 +420,7 @@ GUIDES.forEach(g => writeFile(path.join('guide', g.slug, 'index.html'), guidePag
 writeFile(path.join('guides', 'index.html'), guidesIndex());
 
 /* Stamp the current asset version onto the hand-written static pages too. */
-['index.html', 'privacy.html', 'terms.html'].forEach(f => {
+['index.html', 'privacy.html', 'terms.html', 'contact.html'].forEach(f => {
   const fp = path.join(ROOT, f);
   if (!fs.existsSync(fp)) return;
   const out = fs.readFileSync(fp, 'utf8')
