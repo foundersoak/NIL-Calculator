@@ -413,13 +413,17 @@ writeFile(path.join('athletes', 'index.html'), directoryPage(athletes, teams));
 GUIDES.forEach(g => writeFile(path.join('guide', g.slug, 'index.html'), guidePage(g)));
 writeFile(path.join('guides', 'index.html'), guidesIndex());
 
+/* Live athlete count, rounded down to a clean number for the homepage copy. */
+const COUNT_LABEL = Math.floor(DATA.athletes.length / 10) * 10 + '+';
+
 /* Stamp the current asset version onto the hand-written static pages too. */
 ['index.html', 'privacy.html', 'terms.html', 'contact.html'].forEach(f => {
   const fp = path.join(ROOT, f);
   if (!fs.existsSync(fp)) return;
   const out = fs.readFileSync(fp, 'utf8')
     .replace(/(assets\/css\/styles\.css|assets\/js\/calculator\.js)(\?v=[a-z0-9]+)?/g, `$1?v=${ASSET_VER}`)
-    .replace(/<!-- ANALYTICS:START -->[\s\S]*?<!-- ANALYTICS:END -->/, `<!-- ANALYTICS:START -->${analyticsSnippet()}<!-- ANALYTICS:END -->`);
+    .replace(/<!-- ANALYTICS:START -->[\s\S]*?<!-- ANALYTICS:END -->/, `<!-- ANALYTICS:START -->${analyticsSnippet()}<!-- ANALYTICS:END -->`)
+    .replace(/<!-- COUNT:START -->[\s\S]*?<!-- COUNT:END -->/g, `<!-- COUNT:START -->${COUNT_LABEL}<!-- COUNT:END -->`);
   fs.writeFileSync(fp, out);
   console.log('  stamped', f, '→ v=' + ASSET_VER);
 });
