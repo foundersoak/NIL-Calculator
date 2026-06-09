@@ -6,6 +6,16 @@
 
   var $ = function (id) { return document.getElementById(id); };
   var BASE = (document.querySelector('meta[name="nil-base"]') || {}).content || '';
+  /* Cache-buster for the data index: reuse the ?v= hash stamped on our own
+     <script> src, which changes whenever data (or css/js) changes. */
+  var ASSET_VER = (function () {
+    try {
+      var sc = document.currentScript;
+      if (!sc) { var all = document.getElementsByTagName('script'); for (var i = 0; i < all.length; i++) { if (/calculator\.js/.test(all[i].src)) { sc = all[i]; break; } } }
+      var m = sc && sc.src.match(/[?&]v=([a-z0-9]+)/i);
+      return m ? m[1] : '';
+    } catch (e) { return ''; }
+  })();
 
   /* ---------- Footer year ---------- */
   var yearEl = $('year');
@@ -174,7 +184,7 @@
     if (_index) { cb(_index); return; }
     _indexCbs.push(cb);
     if (_indexCbs.length > 1) return;
-    fetch(BASE + 'assets/data/athletes-index.json')
+    fetch(BASE + 'assets/data/athletes-index.json' + (ASSET_VER ? '?v=' + ASSET_VER : ''))
       .then(function (r) { return r.json(); })
       .then(function (data) { _index = data; _indexCbs.forEach(function (f) { f(data); }); _indexCbs = []; })
       .catch(function () { _index = []; _indexCbs.forEach(function (f) { f([]); }); _indexCbs = []; });

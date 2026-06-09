@@ -32,7 +32,8 @@ const ASSET_VER = (() => {
   try {
     const css = fs.readFileSync(path.join(ROOT, 'assets', 'css', 'styles.css'));
     const js = fs.readFileSync(path.join(ROOT, 'assets', 'js', 'calculator.js'));
-    return crypto.createHash('md5').update(css).update(js).digest('hex').slice(0, 8);
+    const data = fs.readFileSync(path.join(ROOT, 'data', 'items.json'));
+    return crypto.createHash('md5').update(css).update(js).update(data).digest('hex').slice(0, 8);
   } catch (e) { return String(Date.now()); }
 })();
 

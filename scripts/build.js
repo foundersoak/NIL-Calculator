@@ -26,13 +26,16 @@ const GA4_ID = 'G-WFXLBN94GQ'; // Google Analytics 4 Measurement ID, e.g. 'G-XXX
 const GSC_VERIFICATION = '';  // Search Console "HTML tag" verification token (the content="..." value)
 const UPDATED = DATA.updated || new Date().toISOString().slice(0, 10);
 
-/* Asset version: hash of CSS+JS so browsers re-fetch when either changes. */
+/* Asset version: hash of CSS+JS+DATA so browsers re-fetch when any change.
+   Including the data file means a values-only update (e.g. new valuations)
+   still busts the cached search index that calculator.js loads. */
 const crypto = require('crypto');
 const ASSET_VER = (() => {
   try {
     const css = fs.readFileSync(path.join(ROOT, 'assets', 'css', 'styles.css'));
     const js = fs.readFileSync(path.join(ROOT, 'assets', 'js', 'calculator.js'));
-    return crypto.createHash('md5').update(css).update(js).digest('hex').slice(0, 8);
+    const data = fs.readFileSync(path.join(ROOT, 'data', 'athletes.json'));
+    return crypto.createHash('md5').update(css).update(js).update(data).digest('hex').slice(0, 8);
   } catch (e) { return String(Date.now()); }
 })();
 
