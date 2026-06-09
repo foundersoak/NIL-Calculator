@@ -48,23 +48,12 @@ const totalFollowers = a => Object.values(a.followers || {}).reduce((s, v) => s 
 
 /* Four-pillar breakdown for a known valuation (mirrors calculator.js weighting). */
 function breakdown(a) {
-  const f = a.followers || {};
-  const eng = (a.engagement || 3) / 100;
-  const social = (f.instagram || 0) * eng * 2 + (f.tiktok || 0) * eng * 1.2 +
-                 (f.x || 0) * eng * 1 + (f.youtube || 0) * eng * 4.5;
-  // Proportional split, weighted toward influence for social-heavy athletes.
-  const parts = {
-    influence: Math.max(social, 1) * 1.0,
-    exposure: Math.max(social, 1) * 0.55 + 1,
-    performance: Math.max(social, 1) * 0.45 + 1,
-    brand: Math.max(social, 1) * 0.5 + 1
-  };
-  const sum = parts.influence + parts.exposure + parts.performance + parts.brand;
+  const t = Math.max(0, Math.min(1, (Math.log10(totalFollowers(a) + 1) - 3) / 3));
   return [
-    { key: 'influence', label: 'Influence (social)', pct: parts.influence / sum },
-    { key: 'exposure', label: 'Exposure (program/market)', pct: parts.exposure / sum },
-    { key: 'performance', label: 'Performance', pct: parts.performance / sum },
-    { key: 'brand', label: 'Brand & sport', pct: parts.brand / sum }
+    { key: 'influence', label: 'Influence (social)', pct: (12 + 33 * t) / 100 },
+    { key: 'exposure', label: 'Exposure (program/market)', pct: (28 - 8 * t) / 100 },
+    { key: 'performance', label: 'Performance', pct: (38 - 23 * t) / 100 },
+    { key: 'brand', label: 'Brand & sport', pct: (22 - 2 * t) / 100 }
   ];
 }
 

@@ -98,25 +98,18 @@
     var yt = num('youtube') * eng * PLATFORM_RATE.youtube;
     var socialBase = ig + tt + xx + yt;
 
-    var influence = socialBase * sportMult;
-    var exposure = (socialBase * (div.mult - 1)) + div.floor;
-    var performance = socialBase * (roleMult - 1) + div.floor * (roleMult - 1);
-    var brand = socialBase * (marketMult - 1) + div.floor * 0.4 * sportMult;
     var total = (socialBase + div.floor) * sportMult * div.mult * roleMult * marketMult;
 
-    var parts = {
-      influence: Math.max(influence, 1), exposure: Math.max(exposure, 1),
-      performance: Math.max(performance, 1), brand: Math.max(brand, 1)
-    };
-    var sum = parts.influence + parts.exposure + parts.performance + parts.brand;
+    var followTotal = num('instagram') + num('tiktok') + num('x') + num('youtube');
+    var t = Math.max(0, Math.min(1, ((Math.log(followTotal + 1) / Math.LN10) - 3) / 3));
 
     return {
       value: total, low: total * 0.6, high: total * 1.55, sport: sportName,
       bars: [
-        { key: 'influence', label: 'Influence (social)', pct: parts.influence / sum },
-        { key: 'exposure', label: 'Exposure (level/market)', pct: parts.exposure / sum },
-        { key: 'performance', label: 'Performance', pct: parts.performance / sum },
-        { key: 'brand', label: 'Brand & sport', pct: parts.brand / sum }
+        { key: 'influence', label: 'Influence (social)', pct: (12 + 33 * t) / 100 },
+        { key: 'exposure', label: 'Exposure (level/market)', pct: (28 - 8 * t) / 100 },
+        { key: 'performance', label: 'Performance', pct: (38 - 23 * t) / 100 },
+        { key: 'brand', label: 'Brand & sport', pct: (22 - 2 * t) / 100 }
       ]
     };
   }
