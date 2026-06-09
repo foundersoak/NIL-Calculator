@@ -169,7 +169,7 @@ steps (clearly flagged with **[USER]**).
 - **No cloaking:** keep the gated value out of title/meta/JSON-LD.
 - **Style/voice:** if the user bans em/en dashes (or any token), enforce it
   everywhere including generated pages, comments, and JSON, then re-scan.
-- **AdSense payment country can't be changed later** — get it right at signup.
+- **AdSense payment country can't be changed later**: get it right at signup.
 - **Brand in the homepage `<title>`** so the site ranks for its own name.
 - **Date/eligibility realism in data:** for sports/seasonal niches, verify who
   has left/aged out; offer a `former: true` + `nowWith` state instead of deleting.
@@ -190,4 +190,4 @@ feature a recurring-check calculator as the centerpiece.
 `build.js`, `calculator.js`, `styles.css`, `add-items.js`, `guides-content.js`,
 `deploy.yml`, `ads.txt`, `robots.txt`, `data.example.json`. Private IDs are
 placeholders (`ca-pub-XXXX`, `G-XXXX`, `pub-PUBLISHER_ID`, `your-form-id`,
-`YOURDOMAIN.com`) — fill them in per project.
+`YOURDOMAIN.com`); fill them in per project.

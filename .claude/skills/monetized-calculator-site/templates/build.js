@@ -21,7 +21,7 @@ const SITE_URL = 'https://YOURDOMAIN.com'; // no trailing slash
 const ADSENSE_CLIENT = 'ca-pub-XXXXXXXXXXXXXXXX';
 const FORMSPREE = 'https://formspree.io/f/your-form-id';
 
-/* Analytics + Search Console — paste your IDs here, leave '' to disable. Applies site-wide on rebuild. */
+/* Analytics + Search Console: paste your IDs here, leave '' to disable. Applies site-wide on rebuild. */
 const GA4_ID = 'G-XXXXXXXXXX'; // Google Analytics 4 Measurement ID, e.g. 'G-XXXXXXXXXX'
 const GSC_VERIFICATION = '';  // Search Console "HTML tag" verification token (the content="..." value)
 const UPDATED = DATA.updated || new Date().toISOString().slice(0, 10);
