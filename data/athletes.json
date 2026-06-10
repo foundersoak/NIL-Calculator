@@ -1,6 +1,6 @@
 {
   "_comment": "NIL athlete dataset. Figures are estimated 12-month NIL valuations from public reporting (On3, FOX Sports, SportsGrid) and/or our model, not amounts paid. 'reported: true' cites a public figure (see source). Add athletes here and run `node scripts/build.js` to regenerate pages + sitemap. Keep data accurate and sourced, each page must offer real value to rank.",
-  "updated": "2026-06-09",
+  "updated": "2026-06-10",
   "teams": {
     "texas-longhorns": {
       "name": "Texas Longhorns",
@@ -10242,6 +10242,28 @@
       "slug": "mason-kosowick",
       "low": 49600,
       "high": 77500
+    },
+    {
+      "name": "Brendan Sorsby",
+      "sport": "Football",
+      "position": "Quarterback",
+      "team": "texas-tech-red-raiders",
+      "followers": {
+        "instagram": 24000,
+        "tiktok": 0,
+        "x": 0,
+        "youtube": 0
+      },
+      "valuation": 6000000,
+      "low": 5000000,
+      "high": 7000000,
+      "reported": true,
+      "source": "Reports: Texas Tech 2026 NIL package (~$6M)",
+      "sourceUrl": "https://sports.yahoo.com/articles/texas-tech-already-promised-brendan-211541481.html",
+      "blurb": "Sorsby is the starting quarterback for the Texas Tech Red Raiders, a transfer from Cincinnati where he was the 2025 PFF Big 12 Offensive Player of the Year.",
+      "level": "power",
+      "engagement": 4,
+      "slug": "brendan-sorsby"
     }
   ]
 }

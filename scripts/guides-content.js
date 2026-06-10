@@ -227,5 +227,41 @@ module.exports = [
         ['NCAA.com: 2026 College World Series bracket and schedule', 'https://www.ncaa.com/news/baseball/article/2026-06-07/2026-ncaa-baseball-tournament-bracket-schedule-scores-mens-college-world-series']
       ])}
     `
+  },
+
+  {
+    slug: 'brendan-sorsby-nil-lawsuit-texas-tech',
+    title: "Brendan Sorsby's $6M NIL Deal and the Cincinnati Lawsuit, Explained",
+    desc: "Brendan Sorsby left Cincinnati for a reported $6M Texas Tech NIL package, and now Cincinnati is suing him over a $1M exit fee. The deal, the lawsuit, and the NCAA eligibility ruling, explained.",
+    date: '2026-06-09',
+    body: `
+      <p>No player better captures the new, messy economics of college football than <a href="/athlete/brendan-sorsby/">Brendan Sorsby</a>. In a matter of months the quarterback has been tied to a reported <strong>$6 million</strong> Texas Tech NIL package, been <strong>sued by his old school</strong> over a $1 million exit fee, and won a court fight to stay eligible. Here is what is actually going on, and why it matters for NIL.</p>
+
+      <h2>Who is Brendan Sorsby?</h2>
+      <p>Sorsby spent 2024 and 2025 as the starting quarterback at Cincinnati, where he became one of the best players in the Big 12. In 2025 he was named the <strong>PFF Big 12 Offensive Player of the Year</strong>, threw for 2,800 yards and 27 touchdowns, ran for 580 yards and nine more scores, and his 36 total touchdowns tied a school record. After the season he entered the transfer portal and committed to <a href="/athlete/brendan-sorsby/">Texas Tech</a>.</p>
+
+      <h2>The reported $6 million Texas Tech deal</h2>
+      <p>Texas Tech has built one of the most expensive rosters in the sport, and Sorsby is the anchor: reports peg his 2026 NIL package at about <strong>$6 million</strong>, part of a roster reportedly valued north of $38 million. That puts him among the highest-paid players in college football. See how he stacks up in our roundup of the <a href="/guide/highest-paid-college-athletes-2026/">highest-paid college athletes in 2026</a>.</p>
+
+      <h2>Why Cincinnati is suing him</h2>
+      <p>Here is the twist. Before the 2025 season, Cincinnati signed Sorsby to an 18-month NIL contract that ran through December 2026 and included a <strong>$1 million liquidated-damages clause</strong>, an exit fee owed if he left early. When he transferred to Texas Tech, Cincinnati sued to collect it. Sorsby has pushed back, arguing the deal functioned less like true name, image and likeness compensation and more as a pay-for-play retention tool. However the case ends, it is one of the first real tests of whether school and collective NIL contracts are actually enforceable, the question that defines this whole era. We break down how the money works in <a href="/guide/how-nil-valuations-work/">how NIL valuations actually work</a> and <a href="/guide/nil-revenue-sharing-house-settlement-2026/">NIL revenue sharing explained</a>.</p>
+
+      <h2>The eligibility ruling</h2>
+      <p>Sorsby's 2026 status was also in doubt: the NCAA had moved to rule him ineligible amid a gambling inquiry. In June 2026 he was granted a <strong>temporary injunction</strong> against the NCAA, clearing him to play for Texas Tech this season while the matter plays out. The ruling immediately shifted Texas Tech's outlook for 2026.</p>
+
+      <h2>Why it matters</h2>
+      <p>Sorsby is a preview of college football's next phase: guaranteed money, multi-year contracts, buyout clauses, and courtrooms. As deals get bigger, the paperwork behind them, exit fees and all, starts to look a lot like professional sports. That is exactly why a player's NIL value is now front-page news.</p>
+
+      <h2>See the numbers</h2>
+      <p>Check <a href="/athlete/brendan-sorsby/">Brendan Sorsby's NIL value</a>, <a href="/#calculator">estimate any athlete</a> in our calculator, or <a href="/athletes/">browse the full database</a>.</p>
+
+      <p class="muted">Reporting compiled from ESPN, Sportico, Yahoo Sports and other outlets. Deal figures are as reported; NIL values on this site are estimates of earning potential, not confirmed amounts paid.</p>
+      ${SOURCES([
+        ['ESPN: Cincinnati sues Sorsby over $1M exit fee after Texas Tech transfer', 'https://www.espn.com/college-football/story/_/id/48035774/cincinnati-sues-sorsby-1m-exit-fee-texas-tech-transfer'],
+        ['ESPN: Sorsby granted injunction vs. NCAA, eligible to play in 2026', 'https://www.espn.com/college-football/story/_/id/49000177/brendan-sorsby-granted-injunction-vs-ncaa-eligible-play-2026'],
+        ['Sportico: Sorsby calls out NIL purpose in lawsuit', 'https://www.sportico.com/law/analysis/2026/brendan-sorsby-nil-deal-cincinnati-lawsuit-1234891362/'],
+        ['Yahoo Sports: Texas Tech promised Sorsby $6M NIL', 'https://sports.yahoo.com/articles/texas-tech-already-promised-brendan-211541481.html']
+      ])}
+    `
   }
 ];
