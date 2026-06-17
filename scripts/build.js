@@ -216,7 +216,49 @@ function uniqueSummary(a, team) {
   return parts.join(' ');
 }
 
-/* ---------- athlete page ---------- */
+/* ---------- athlete page enrichment helpers ---------- */
+const LEVEL_LABEL = { power: 'NCAA Division I (Power conference)', d1: 'NCAA Division I', d2: 'NCAA Division II', d3: 'NCAA Division III', naia: 'NAIA', juco: 'JUCO', hs: 'High school' };
+
+function quickFacts(a, team) {
+  const rows = [['Sport', a.sport], ['Position', a.position], ['School', team.name]];
+  if (team.conference) rows.push(['Conference', team.conference]);
+  rows.push(['Level', LEVEL_LABEL[a.level] || 'College']);
+  if (a.former && a.nowWith) rows.push(['Now with', a.nowWith]);
+  return `<table class="data-table facts"><tbody>` +
+    rows.map(r => `<tr><td>${esc(r[0])}</td><td>${esc(r[1])}</td></tr>`).join('') + `</tbody></table>`;
+}
+
+/* Shared FAQ content (used for both the visible FAQ and the JSON-LD FAQPage). */
+function faqItems(a, team) {
+  const name = a.name, first = a.name.split(' ')[0];
+  const doesDid = a.former ? 'did' : 'does', playsPlayed = a.former ? 'played' : 'plays';
+  const yr = a.former ? '' : '2026 ', conf = team.conference || '', tot = totalFollowers(a);
+  return [
+    { q: `How much ${doesDid} ${name} make in NIL?`,
+      a: `${name}'s ${yr}NIL value on HowMuchNIL is ${a.reported ? 'based on publicly reported figures' : 'a modeled estimate'} of 12-month name, image and likeness earning potential${a.reported && a.source ? ` (${a.source})` : ''}. Enter your email on this page to unlock the exact figure, the likely range, and the full breakdown. It is an estimate of earning potential, not a confirmed salary.` },
+    { q: `What is ${name}'s NIL value based on?`,
+      a: `Four factors: audience (social reach and engagement), on-field performance and role, school and market size, and the sport and position.${tot > 0 ? ` ${first} has about ${fmtFollowers(tot)} followers across social media.` : ''}` },
+    { q: `What team ${doesDid} ${name} play for?`,
+      a: `${name} ${playsPlayed} ${(a.position || 'athlete').toLowerCase()} for the ${team.name}${conf ? ` in the ${conf}` : ''}${a.former && a.nowWith ? `, and is now with ${a.nowWith}` : ''}.` },
+    { q: `${a.former ? 'Did' : 'Does'} ${name} have NIL deals?`,
+      a: `The number shown is an estimate of ${first}'s 12-month NIL earning potential, not a list of signed contracts. ${a.reported ? 'It is anchored to publicly reported figures.' : 'The deals an athlete actually signs can differ from any estimate.'}` }
+  ];
+}
+
+/* Up to 4 players in a similar valuation range (links only, value stays gated). */
+function comparables(a) {
+  const same = DATA.athletes.filter(x => x.slug !== a.slug && x.sport === a.sport && !x.former);
+  same.sort((x, y) => Math.abs(x.valuation - a.valuation) - Math.abs(y.valuation - a.valuation));
+  const picks = same.slice(0, 4);
+  if (!picks.length) return '';
+  const items = picks.map(p => {
+    const pt = DATA.teams[p.team] || {};
+    return `<li><a href="../../athlete/${p.slug}/index.html">${esc(p.name)}</a> <span class="muted">(${esc(p.position)}, ${esc(pt.name || p.team)})</span></li>`;
+  }).join('');
+  return `<h2>Players with a similar NIL profile</h2>
+      <p>Other ${esc((a.sport || '').toLowerCase())} players whose estimated NIL value lands in a similar range. Open any profile to see how its valuation breaks down.</p>
+      <ul class="compare-list">${items}</ul>`;
+}
 function athletePage(a) {
   const team = DATA.teams[a.team] || { name: a.team, conference: '', sport: a.sport };
   const prefix = '../../';
@@ -237,16 +279,8 @@ function athletePage(a) {
         { "@type": "ListItem", "position": 1, "name": "Athletes", "item": `${SITE_URL}/athletes/` },
         { "@type": "ListItem", "position": 2, "name": a.name, "item": url }
       ]},
-      { "@type": "FAQPage", "mainEntity": [
-        { "@type": "Question", "name": `How much ${a.former ? 'did' : 'does'} ${a.name} make in NIL?`,
-          "acceptedAnswer": { "@type": "Answer", "text": a.former
-            ? `${a.name}'s estimated college NIL valuation is based on social following, on-field performance and market. Unlock the figure with our free NIL calculator. It's an estimate of earning potential, not a confirmed salary.`
-            : `${a.name}'s estimated 2026 NIL valuation is based on social following, on-field performance and market reach. Unlock the figure with our free NIL calculator. It's an estimate of earning potential, not a confirmed salary.` } },
-        { "@type": "Question", "name": `What team ${a.former ? 'did' : 'does'} ${a.name} play for?`,
-          "acceptedAnswer": { "@type": "Answer", "text": a.former
-            ? `${a.name} played ${a.position} for the ${team.name}${a.nowWith ? ` and is now with ${a.nowWith}` : ''}.`
-            : `${a.name} plays ${a.position} for the ${team.name}.` } }
-      ]}
+      { "@type": "FAQPage", "mainEntity": faqItems(a, team).map(it => (
+        { "@type": "Question", "name": it.q, "acceptedAnswer": { "@type": "Answer", "text": it.a } })) }
     ]
   };
 
@@ -289,6 +323,7 @@ function athletePage(a) {
     <section class="container narrow">
       <h2>What ${a.former ? 'was' : 'is'} ${esc(a.name)}'s NIL value?</h2>
       <p>${uniqueSummary(a, team)}</p>
+      ${quickFacts(a, team)}
 
       <h2>${esc(a.name.split(' ')[0])}'s social media following</h2>
       ${socialTable(a) || '<p>We\'ll add social numbers soon.</p>'}
@@ -296,6 +331,11 @@ function athletePage(a) {
 
       <h2>How NIL value is calculated</h2>
       <p>An NIL value is an estimate of what an athlete could earn from name, image and likeness over 12 months, not a salary or a confirmed deal. We weigh audience (social reach and engagement), performance and role, school and market, and the sport and position.${a.source ? ` Where a public figure exists, we sense-check against it (<a href="${a.sourceUrl}" rel="nofollow noopener" target="_blank">${esc(a.source)}</a>).` : ''} <a href="${prefix}guide/how-nil-valuations-work/index.html">See how NIL valuations work</a>.</p>
+
+      ${comparables(a)}
+
+      <h2>${esc(a.name.split(' ')[0])} NIL FAQ</h2>
+      <div class="faq">${faqItems(a, team).map(it => `<h3>${esc(it.q)}</h3><p>${esc(it.a)}</p>`).join('')}</div>
 
       <div class="cta-inline">
         <p><strong>Curious about another player?</strong> Look one up or estimate any athlete in seconds.</p>

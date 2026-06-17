@@ -350,6 +350,12 @@ input[type=range]::-moz-range-thumb {
 .data-table td.num, .data-table th.num { text-align: right; font-variant-numeric: tabular-nums; }
 .data-table.ranked td:first-child { color: var(--ink-soft); width: 2rem; }
 .data-table a { color: var(--brand); font-weight: 600; }
+.data-table.facts td:first-child { color: var(--ink-soft); width: 38%; font-weight: 600; }
+.compare-list { list-style: none; padding: 0; margin: .7rem 0 0; display: grid; gap: .5rem; }
+.compare-list li { padding: .6rem .85rem; border: 1px solid #e2e8f0; border-radius: 10px; background: #fff; }
+.compare-list a { color: var(--brand); font-weight: 600; }
+.faq h3 { font-size: 1.05rem; margin: 1.2rem 0 .3rem; }
+.faq p { margin: 0; color: #334155; }
 
 .cta-inline {
   display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;
