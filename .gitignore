@@ -3,3 +3,4 @@
 data/incoming.json
 data/incoming.imported-*.json
 node_modules/
+scripts/sweep/out/
