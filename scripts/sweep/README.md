@@ -59,7 +59,18 @@ athletics sites — that is the only reason tranche 1 hasn't run yet).
 
 ## Status
 
-- [ ] Tranche 1 (ranks 1-5): OSU, Notre Dame, Texas, Penn State, Michigan
+- [x] Tranche 1 (ranks 1-5): OSU, Notre Dame, Texas, Penn State, Michigan
+      — done 2026-07-28. 554 new athletes + 9 updates, zero REVIEW items, all
+      rosters official 2026 (119/113/110/112/109). Notes for final QA:
+      - Departed players still in DB with stale records: Caleb Downs
+        (ohio-state-buckeyes, $2.4M) and Drew Allar (penn-state-nittany-lions,
+        $3.1M) are not on 2026 rosters (NFL). Decide: delete, or mark alumni.
+      - Penn State players 21-40: real handles verified from the official
+        roster page, but ALL follower counts are 0 (search tooling was
+        blocked). Cheap re-run: count-only pass on those 20.
+      - Search-frontend tip from agents: Yahoo (search.yahoo.com/search?p=)
+        tolerates parallel WebFetch when the WebSearch budget runs out;
+        DuckDuckGo CAPTCHAs, Brave 429s.
 - [ ] Tranche 2 (6-10): Florida, Oregon, Alabama, Wisconsin*, USC
 - [ ] Tranche 3 (11-15): LSU, Georgia, Texas A&M, Auburn, Tennessee
 - [ ] Tranche 4 (16-20): Oklahoma, Nebraska, Clemson, FSU*, Michigan State*
