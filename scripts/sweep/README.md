@@ -109,8 +109,23 @@ athletics sites — that is the only reason tranche 1 hasn't run yet).
       (pre-camp count, above the 60 alarm threshold but re-check in
       August); Clemson socials pass added valuations for its 20 as well
       (40 researched vals total).
-- [ ] Tranche 5 (21-25): South Carolina, Arkansas*, Kentucky, Iowa, Washington*
-- [ ] Final QA: counts vs official rosters, review-list resolution, flag
-      re-sweeps, full build, sitemap/index sanity, spot-check pages, push
+- [x] Tranche 5 (21-25): South Carolina, Arkansas*, Kentucky, Iowa, Washington*
+      — done 2026-07-28. 546 new + 2 updates. Seven REVIEW items, all
+      DISTINCT PEOPLE (suffixed): jordan-thomas-south-carolina,
+      max-anderson-kentucky, tyler-thomas-kentucky, tyler-brown-iowa,
+      trent-wilson-iowa, elijah-brown-washington, austin-simmons-washington.
+      Notes: Demond Williams Jr. (UW) is the sweep's only reported=true
+      contract figure (~\$4M to return in 2026). Iowa had ZERO valuation
+      anchors (all 109 rubric) and Arkansas only 4 of 20 - thin NIL markets.
+      Monte Harrison (Arkansas, age-30 former MLB OF) is a human-interest
+      page candidate.
+- [x] Final QA: DONE 2026-07-28. DB total 3,241 athletes (2,812 football
+      across all 25 programs). Zero duplicate slugs, zero missing fields,
+      sitemap 3,253 URLs, search index 3,241 entries, spot-checks pass.
+      All REVIEW items resolved (1 transfer: Raiola; 11 distinct-person
+      suffixes). Departed players marked former (Downs, Allar).
+      AUGUST RE-SWEEP LIST (fall rosters post ~Aug 1-15): Florida, USC
+      (spring rosters), Oregon (missing confirmed adds), Michigan State
+      (97 pre-camp), + count-only socials backfill for Texas A&M (7).
 
 \* = new team entry (handled automatically by merge-team.js from teams.json).
