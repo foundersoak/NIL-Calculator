@@ -75,7 +75,17 @@ athletics sites — that is the only reason tranche 1 hasn't run yet).
         api.fxtwitter.com/<handle> returns user.followers as an integer.
         IG counts: og:description via curl with a Googlebot UA (needs
         10-20s spacing; direct WebFetch 429s).
-- [ ] Tranche 2 (6-10): Florida, Oregon, Alabama, Wisconsin*, USC
+- [x] Tranche 2 (6-10): Florida, Oregon, Alabama, Wisconsin*, USC
+      — done 2026-07-28. 544 new + 4 updates (DB total 1,557). REVIEW items
+      resolved: Dylan Raiola = transfer, existing record moved
+      Nebraska→Oregon (tranche 4's Nebraska sweep will find him gone);
+      Christian Pierce = two distinct players, USC safety added as
+      christian-pierce-usc. Ryan Williams renamed to Ryan Coleman-Williams
+      for 2026: fresh research merged into the established ryan-williams
+      slug (SEO), duplicate page removed. August re-sweeps: Florida + USC
+      published spring rosters; Oregon roster missing confirmed additions
+      (Iheanacho, 4 PWOs). Wisconsin NIL coverage is thin: only 1 valuation
+      anchor found (Colton Joseph), rest rubric.
 - [ ] Tranche 3 (11-15): LSU, Georgia, Texas A&M, Auburn, Tennessee
 - [ ] Tranche 4 (16-20): Oklahoma, Nebraska, Clemson, FSU*, Michigan State*
 - [ ] Tranche 5 (21-25): South Carolina, Arkansas*, Kentucky, Iowa, Washington*

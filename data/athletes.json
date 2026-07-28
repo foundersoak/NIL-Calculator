@@ -1087,23 +1087,33 @@
     },
     {
       "slug": "ryan-williams",
-      "name": "Ryan Williams",
+      "name": "Ryan Coleman-Williams",
       "sport": "Football",
       "position": "Wide Receiver",
       "team": "alabama-crimson-tide",
       "level": "power",
       "followers": {
-        "instagram": 741000,
+        "instagram": 728000,
         "tiktok": 0,
         "x": 0,
         "youtube": 0
       },
-      "engagement": 5,
+      "engagement": 7,
       "valuation": 1800000,
-      "reported": true,
-      "source": "On3 NIL Valuations (2026)",
+      "reported": false,
+      "source": "Estimate (On3 NIL Valuation ~$1.8M; The NIL Standard 2026 model has him at ~$1.65M — no contract figure disclosed)",
       "sourceUrl": "https://www.on3.com/nil/rankings/player/college/football/",
-      "blurb": "The electric Alabama wide receiver and former five-star recruit carries brand deals with Uber Eats and Hollister."
+      "blurb": "Coleman-Williams is Alabama's No. 1 wide receiver and a 2024 Freshman All-American who caught 49 passes for 689 yards and four touchdowns in 2025. He plays under the name Coleman-Williams and jersey No. 1 in 2026 after going by Ryan Williams his first two seasons.",
+      "roleTier": "star",
+      "class": "junior",
+      "hometown": "Mobile, Ala.",
+      "jersey": "1",
+      "handles": {
+        "instagram": "@ryanwms1",
+        "x": "@Ryanwms1"
+      },
+      "low": 1440000,
+      "high": 2250000
     },
     {
       "slug": "hannah-hidalgo",
@@ -31200,36 +31210,6 @@
       "handles": {},
       "low": 148000,
       "high": 231250
-    },
-    {
-      "slug": "ryan-coleman-williams",
-      "name": "Ryan Coleman-Williams",
-      "sport": "Football",
-      "position": "Wide Receiver",
-      "team": "alabama-crimson-tide",
-      "level": "power",
-      "roleTier": "star",
-      "followers": {
-        "instagram": 728000,
-        "tiktok": 0,
-        "x": 0,
-        "youtube": 0
-      },
-      "engagement": 7,
-      "valuation": 1800000,
-      "reported": false,
-      "source": "Estimate (On3 NIL Valuation ~$1.8M; The NIL Standard 2026 model has him at ~$1.65M — no contract figure disclosed)",
-      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/football/",
-      "blurb": "Coleman-Williams is Alabama's No. 1 wide receiver and a 2024 Freshman All-American who caught 49 passes for 689 yards and four touchdowns in 2025. He plays under the name Coleman-Williams and jersey No. 1 in 2026 after going by Ryan Williams his first two seasons.",
-      "class": "junior",
-      "hometown": "Mobile, Ala.",
-      "jersey": "1",
-      "handles": {
-        "instagram": "@ryanwms1",
-        "x": "@Ryanwms1"
-      },
-      "low": 1440000,
-      "high": 2250000
     },
     {
       "slug": "zabien-brown",
