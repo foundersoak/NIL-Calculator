@@ -86,7 +86,18 @@ athletics sites — that is the only reason tranche 1 hasn't run yet).
       published spring rosters; Oregon roster missing confirmed additions
       (Iheanacho, 4 PWOs). Wisconsin NIL coverage is thin: only 1 valuation
       anchor found (Colton Joseph), rest rubric.
-- [ ] Tranche 3 (11-15): LSU, Georgia, Texas A&M, Auburn, Tennessee
+- [x] Tranche 3 (11-15): LSU, Georgia, Texas A&M, Auburn, Tennessee
+      — done 2026-07-28. 580 new + 9 updates (DB total 2,137). Four REVIEW
+      items, all DISTINCT PEOPLE (originals confirmed still on their own
+      2026 rosters): cayden-jones-lsu (FR QB), justin-williams-georgia
+      (JR ILB starter), jake-johnson-auburn (SR TE, UNC transfer),
+      hudson-powell-auburn (SR LS). No transfers this tranche. Notes:
+      Auburn agent found an uncorroborated off-field allegation re: Womack
+      (social post only) and correctly EXCLUDED it from the blurb - keep it
+      out unless mainstream-verified. A&M websearch budget died before 7 of
+      20 socials-pass counts (handles recorded, counts 0) - candidates for
+      a count-only backfill. Whit Weeks (LSU) valuation sources conflict
+      badly (On3 $1.8M vs NIL Standard $451K; used On3).
 - [ ] Tranche 4 (16-20): Oklahoma, Nebraska, Clemson, FSU*, Michigan State*
 - [ ] Tranche 5 (21-25): South Carolina, Arkansas*, Kentucky, Iowa, Washington*
 - [ ] Final QA: counts vs official rosters, review-list resolution, flag
