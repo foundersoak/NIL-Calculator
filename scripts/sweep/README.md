@@ -129,3 +129,24 @@ athletics sites — that is the only reason tranche 1 hasn't run yet).
       (97 pre-camp), + count-only socials backfill for Texas A&M (7).
 
 \* = new team entry (handled automatically by merge-team.js from teams.json).
+
+## Expansion set (ranks 26-39, done 2026-07-28)
+
+- [x] Tranche 6 (preseason top-25 gaps): Indiana*, Miami, Texas Tech,
+      Ole Miss, BYU, Missouri, SMU* — 748 new + 2 updates. REVIEW items all
+      distinct people: carter-smith-indiana (star LT \$1.5M),
+      ben-roberts-texas-tech, ashton-hampton-texas-tech,
+      luke-hamilton-texas-tech, cam-clark-ole-miss, andrew-williams-byu.
+      Brendan Sorsby marked former (left Texas Tech amid NCAA eligibility
+      dispute; blurb kept neutral, no gambling specifics - single-source).
+      Josh Hoover: TCU->Indiana, \$2.5M reported=true. Darian Mensah now at
+      Miami (\$6.5M, On3 NIL 100 No. 1).
+- [x] Tranche 7 (Week 0 P4 + G5): North Carolina, TCU*, NC State*,
+      Virginia, Stanford*, Memphis* (G5), UNLV* (G5) — 798 new + 2 updates.
+      REVIEW items all distinct: jordan-hall-north-carolina,
+      jordan-washington-north-carolina, landen-thomas-unlv.
+      Memphis/UNLV use progMult 0.55 + level d1 (G5 support added to
+      merge-team.js). NIL-anchor coverage is thin across this set: UNC,
+      TCU, Virginia, UNLV = 0 anchors; NC State/Stanford/Memphis = 1-2.
+      TCU's collective folded 2025-07-31 (payments now in-house).
+- DB after expansion: 4,809 athletes / 4,393 football / 39 swept programs.
