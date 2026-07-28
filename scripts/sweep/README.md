@@ -98,7 +98,17 @@ athletics sites — that is the only reason tranche 1 hasn't run yet).
       20 socials-pass counts (handles recorded, counts 0) - candidates for
       a count-only backfill. Whit Weeks (LSU) valuation sources conflict
       badly (On3 $1.8M vs NIL Standard $451K; used On3).
-- [ ] Tranche 4 (16-20): Oklahoma, Nebraska, Clemson, FSU*, Michigan State*
+- [x] Tranche 4 (16-20): Oklahoma, Nebraska, Clemson, FSU*, Michigan State*
+      — done 2026-07-28. 553 new + 1 update (DB total 2,690). Four REVIEW
+      items, all DISTINCT PEOPLE: anthony-jones-jr-nebraska (SR EDGE),
+      jordan-hall-michigan-state (SR LB star, no valuation anchor - rubric),
+      fredrick-moore-michigan-state (WR, Michigan transfer),
+      bryson-williams-michigan-state (R-FR WR). Nebraska sweep confirmed
+      Raiola gone (already moved to Oregon); no other departures.
+      Notes: Nebraska NIL coverage thin (2 of 20 anchors); MSU roster is 97
+      (pre-camp count, above the 60 alarm threshold but re-check in
+      August); Clemson socials pass added valuations for its 20 as well
+      (40 researched vals total).
 - [ ] Tranche 5 (21-25): South Carolina, Arkansas*, Kentucky, Iowa, Washington*
 - [ ] Final QA: counts vs official rosters, review-list resolution, flag
       re-sweeps, full build, sitemap/index sanity, spot-check pages, push
