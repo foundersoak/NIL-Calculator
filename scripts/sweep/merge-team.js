@@ -96,8 +96,12 @@ function normClass(c) {
 }
 
 /* ---------- valuation rubric (House-era P4 football) ---------- */
-const PROG_MULT = team.rank <= 5 ? 1.30 : team.rank <= 10 ? 1.18 :
+/* team.progMult (teams.json) overrides the rank tiers - used for G5 programs;
+   team.level (default 'power') sets the athletes' division level. */
+const PROG_MULT = team.progMult != null ? team.progMult :
+                  team.rank <= 5 ? 1.30 : team.rank <= 10 ? 1.18 :
                   team.rank <= 15 ? 1.08 : team.rank <= 20 ? 1.00 : 0.92;
+const LEVEL = team.level || 'power';
 const TIER_BASE = { star: 400000, starter: 160000, rotation: 60000, depth: 25000, walkon: 9000 };
 const POS_MULT = { QB: 2.4, RB: 1.05, FB: 0.7, WR: 1.15, TE: 0.95, OL: 0.9, EDGE: 1.15,
                    DL: 1.0, LB: 0.95, CB: 1.1, S: 0.95, DB: 1.0, ATH: 1.0, K: 0.55, P: 0.5, LS: 0.4 };
@@ -156,7 +160,7 @@ for (const p of tiered.players) {
       // update-mode: refresh soft fields, preserve the enriched core
       const rec = {
         slug, name: existing.name, sport: 'Football',
-        position: posFull, team: team.slug, level: 'power',
+        position: posFull, team: team.slug, level: LEVEL,
         valuation: existing.valuation, low: existing.low, high: existing.high,
         reported: existing.reported, source: existing.source, sourceUrl: existing.sourceUrl,
         blurb: existing.blurb,
@@ -183,7 +187,7 @@ for (const p of tiered.players) {
   const researched = !!p.researched && p.followers;
   const rec = {
     slug, name: p.name, sport: 'Football', position: posFull,
-    team: team.slug, level: 'power', roleTier: tier,
+    team: team.slug, level: LEVEL, roleTier: tier,
     followers: Object.assign({ instagram: 0, tiktok: 0, x: 0, youtube: 0 }, researched ? p.followers : {}),
     engagement: (researched && p.engagement != null) ? p.engagement : 5,
     valuation: (p.valuation != null && !isNaN(+p.valuation)) ? Math.round(+p.valuation) : rubricValue(tier, group, slug),
