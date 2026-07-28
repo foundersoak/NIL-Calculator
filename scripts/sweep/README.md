@@ -66,12 +66,15 @@ athletics sites — that is the only reason tranche 1 hasn't run yet).
         `nowWith` (Thomas approved 2026-07-28). Caleb Downs (Cowboys) and
         Drew Allar (Steelers) are handled; when a sweep finds a DB athlete
         missing from the official roster, mark them former the same way.
-      - Penn State players 21-40: real handles verified from the official
-        roster page, but ALL follower counts are 0 (search tooling was
-        blocked). Cheap re-run: count-only pass on those 20.
-      - Search-frontend tip from agents: Yahoo (search.yahoo.com/search?p=)
-        tolerates parallel WebFetch when the WebSearch budget runs out;
-        DuckDuckGo CAPTCHAs, Brave 429s.
+      - Penn State players 21-40: DONE 2026-07-28 (count-only backfill pass;
+        exact X counts, verified IG). Brezina IG handle typo on the official
+        roster page fixed (@cd.breznia -> @cd.brezina11, via his X bio).
+      - Search/count tips from agents: Yahoo (search.yahoo.com/search?p=)
+        tolerates parallel WebFetch when the WebSearch budget runs out
+        (DuckDuckGo CAPTCHAs, Brave 429s). EXACT X follower counts:
+        api.fxtwitter.com/<handle> returns user.followers as an integer.
+        IG counts: og:description via curl with a Googlebot UA (needs
+        10-20s spacing; direct WebFetch 429s).
 - [ ] Tranche 2 (6-10): Florida, Oregon, Alabama, Wisconsin*, USC
 - [ ] Tranche 3 (11-15): LSU, Georgia, Texas A&M, Auburn, Tennessee
 - [ ] Tranche 4 (16-20): Oklahoma, Nebraska, Clemson, FSU*, Michigan State*
