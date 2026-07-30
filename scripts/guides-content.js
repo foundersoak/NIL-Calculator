@@ -263,5 +263,159 @@ module.exports = [
         ['Yahoo Sports: Texas Tech promised Sorsby $6M NIL', 'https://sports.yahoo.com/articles/texas-tech-already-promised-brendan-211541481.html']
       ])}
     `
+  },
+
+  {
+    slug: 'sec-top-transfers-nil-2026',
+    title: "The SEC's Most Valuable Transfers of 2026, Ranked by NIL Value",
+    desc: "Sam Leavitt, Jordan Seaton and the portal additions carrying the biggest NIL price tags into SEC camps this fall, ranked with valuation ranges.",
+    date: '2026-07-30',
+    body: `
+      <p>Lane Kiffin needed a quarterback, a left tackle and an edge rusher for his first season at LSU. He bought all three out of the transfer portal, and two of them now carry the largest NIL valuations of any transfers in the SEC. Across the conference, programs treated the 2026 portal cycle like a free agency period, and the money followed.</p>
+      <p>Below are the highest-valued players who changed schools within, into or around the SEC for the 2026 season, ranked by their current valuation in our database. We show ranges here rather than exact figures. Each player's page carries the specific number, the projected range and the four-pillar breakdown behind it. Valuations blend figures published by services such as On3 and The NIL Standard with our own modeled estimates. Unless a deal is noted as reported, treat every number as an estimate, not a confirmed contract.</p>
+
+      <h2>The top 10 SEC transfers by NIL value</h2>
+      <ol>
+        <li><a href="/athlete/sam-leavitt/">Sam Leavitt</a>, quarterback, Arizona State to LSU. Range: $3.5 million to $4.5 million. Leavitt broke out in Tempe, entered the portal as the cycle's most coveted passer and landed with Kiffin in Baton Rouge, where he carries a reported top-five NIL valuation among all college athletes.</li>
+        <li><a href="/athlete/jordan-seaton/">Jordan Seaton</a>, offensive tackle, Colorado to LSU. Range: $3.5 million to $4.5 million. Seaton started at left tackle from his true freshman season in Boulder and was among the most pursued linemen in the portal. He protects Leavitt's blind side, which explains the price.</li>
+        <li><a href="/athlete/kenny-minchey/">Kenny Minchey</a>, quarterback, Notre Dame to Kentucky. Range: $1.7 million to $2.3 million. Minchey lost a tight competition to CJ Carr in South Bend. He becomes Kentucky's fifth transfer starter at quarterback in six seasons and the first under new head coach Will Stein.</li>
+        <li><a href="/athlete/lance-heard/">Lance Heard</a>, offensive tackle, Tennessee to Kentucky. Range: $1.7 million to $2.3 million. A former five-star who began his career at LSU, Heard earned third-team All-SEC honors in Knoxville and arrives in Lexington as a preseason All-SEC pick. On3 rated him the No. 3 tackle in the portal.</li>
+        <li><a href="/athlete/aaron-philo/">Aaron Philo</a>, quarterback, Georgia Tech to Florida. Range: $1.3 million to $1.7 million. Philo followed offensive coordinator Buster Faulkner from Atlanta to Gainesville and is battling Tramell Jones Jr. for the starting job under first-year head coach Jon Sumrall.</li>
+        <li><a href="/athlete/princewill-umanmielen/">Princewill Umanmielen</a>, edge rusher, Ole Miss to LSU. Range: $1.3 million to $1.7 million. Umanmielen followed Kiffin from Oxford and was one of the highest-rated defensive players available in the cycle.</li>
+        <li><a href="/athlete/wilkin-formby/">Wilkin Formby</a>, offensive tackle, Alabama to Texas A&M. Range: $1.2 million to $1.65 million. The 6-foot-7, 324-pound Formby started 14 games for the Crimson Tide in 2025 and arrived in College Station in January with two seasons of eligibility left.</li>
+        <li><a href="/athlete/melvin-siani/">Melvin Siani</a>, offensive tackle, Wake Forest to Texas. Range: $1.1 million to $1.5 million. Siani has not allowed a sack in 853 career pass-blocking snaps across stops at Temple and Wake Forest. Texas projects him at right tackle.</li>
+        <li><a href="/athlete/tyree-adams/">Tyree Adams</a>, offensive tackle, LSU to Texas A&M. Range: $1 million to $1.4 million. Adams started nine games at left tackle for LSU in 2025 and allowed one sack. The Aggies added him and Formby to rebuild both edges of their line in one cycle.</li>
+        <li><a href="/athlete/jordan-norman/">Jordan Norman</a>, edge rusher, Tulane to Tennessee. Range: $950,000 to $1.25 million. Norman, who began his career at South Alabama, projects as the Volunteers' starting Leo rusher.</li>
+      </ol>
+
+      <h2>What the list says about the market</h2>
+      <p>Half of this list plays offensive tackle. That is not an accident. Pass protection is the scarcest skill in the portal, the position takes years to develop, and a proven college starter is worth more to an SEC contender than a projection. Quarterbacks still set the ceiling, but the middle of the SEC transfer market in 2026 belonged to linemen.</p>
+      <p>Just outside the top 10, LSU's <a href="/athlete/jordan-ross/">Jordan Ross</a> (from Tennessee) and Texas A&M's <a href="/athlete/cj-mims/">CJ Mims</a> (from North Carolina) both carry valuations in the neighborhood of seven figures, part of the same defensive front reshuffle that touched nearly every SEC West roster.</p>
+
+      <h2>Look up the exact numbers</h2>
+      <p>Every player above has a full profile with his current valuation, projected range and the breakdown behind it. <a href="/athletes/">Browse the database</a> or <a href="/#calculator">look up any athlete in the calculator</a>, including players who have not hit the portal yet.</p>
+
+      <p class="muted">Ranges reflect current valuations in our database as of late July 2026. They are estimates of 12 month earning potential, not confirmed salaries or contract amounts, and they move as roles and markets change.</p>
+      ${SOURCES([
+        ['On3 NIL Valuations', 'https://www.on3.com/nil/rankings/player/nil-valuations/'],
+        ['On3 Transfer Portal rankings', 'https://www.on3.com/transfer-portal/rankings/football/2026/'],
+        ['The NIL Standard team valuations', 'https://thenilstandard.com/']
+      ])}
+    `
+  },
+
+  {
+    slug: 'big-ten-top-transfers-nil-2026',
+    title: "The Big Ten's Most Valuable Transfers of 2026, Ranked by NIL Value",
+    desc: "Josh Hoover's move to the defending champs headlines the Big Ten's 2026 portal class. The top transfers in the conference, ranked by NIL valuation range.",
+    date: '2026-07-30',
+    body: `
+      <p>The defending national champions lost their quarterback and most of their edge room, so Indiana went shopping. The Hoosiers left the 2026 portal cycle with the Big Ten's most expensive transfer and two of its priciest defenders, and they were not alone. Oregon restocked four spots on this list by itself.</p>
+      <p>These are the highest-valued players suiting up for a new Big Ten program in 2026, ranked by their current valuation in our database. Ranges are shown here; each player's page has the exact figure and the full breakdown. Valuations blend published figures from services such as On3 and The NIL Standard with our own modeled estimates, and only deals noted as reported reflect actual published dollar amounts.</p>
+
+      <h2>The top 10 Big Ten transfers by NIL value</h2>
+      <ol>
+        <li><a href="/athlete/josh-hoover/">Josh Hoover</a>, quarterback, TCU to Indiana. Range: $2 million to $3 million. Hoover threw for 3,472 yards and 29 touchdowns at TCU in 2025 and enters the season as the active FBS leader in career passing yards and touchdowns. His Indiana deal was widely reported at seven figures, one of the few transfer contracts of the cycle with a published number.</li>
+        <li><a href="/athlete/chiddi-obiazor/">Chiddi Obiazor</a>, edge rusher, Kansas State to Indiana. Range: $1.3 million to $1.7 million. An honorable mention All-Big 12 pick, Obiazor is half of the Kansas State edge pair Indiana imported to replace Mikail Kamara.</li>
+        <li><a href="/athlete/tobi-osunsanmi/">Tobi Osunsanmi</a>, edge rusher, Kansas State to Indiana. Range: $1.3 million to $1.7 million. The other half. Osunsanmi rates as the Hoosiers' highest-graded defensive addition of the cycle and is competing for the starting Stud role.</li>
+        <li><a href="/athlete/dylan-raiola/">Dylan Raiola</a>, quarterback, Nebraska to Oregon. Range: $1.1 million to $1.5 million. A two-year starter in Lincoln, Raiola arrives in Eugene as the veteran in the quarterback room and still carries one of the sport's most recognizable NIL portfolios, with past national deals including adidas and EA Sports.</li>
+        <li><a href="/athlete/john-henry-daley/">John Henry Daley</a>, edge rusher, Utah to Michigan. Range: $1 million to $1.4 million. Daley followed Kyle Whittingham to Ann Arbor after a first-team Walter Camp All-America season: 17.5 tackles for loss and 11.5 sacks in 11 games.</li>
+        <li><a href="/athlete/michael-bennett-iii/">Michael Bennett III</a>, offensive tackle, Yale to Oregon. Range: $1 million to $1.4 million. A first-team All-Ivy pick who allowed two sacks on 839 snaps in 2025, Bennett is the rare FCS-to-power jump that projects as a day-one starter.</li>
+        <li><a href="/athlete/koi-perich/">Koi Perich</a>, safety, Minnesota to Oregon. Range: $950,000 to $1.25 million. Rated the top safety in the portal after piling up 128 tackles and multiple all-conference honors in two Minnesota seasons.</li>
+        <li><a href="/athlete/anthony-colandrea/">Anthony Colandrea</a>, quarterback, UNLV to Nebraska. Range: $950,000 to $1.25 million. The 2025 Mountain West Offensive Player of the Year threw for 3,459 yards on a nine-win UNLV team. Nebraska hired him to replace the man one spot above him on this list.</li>
+        <li><a href="/athlete/james-smith/">James Smith</a>, defensive lineman, Alabama to Ohio State. Range: $925,000 to $1.25 million. A former five-star, Smith is expected to anchor the interior for the Buckeyes.</li>
+        <li><a href="/athlete/iverson-hooks/">Iverson Hooks</a>, wide receiver, UAB to Oregon. Range: $900,000 to $1.2 million. Hooks caught 72 passes for 927 yards and seven scores at UAB and slots in at slot receiver for the Ducks.</li>
+      </ol>
+
+      <h2>The Raiola-Colandrea trade that wasn't</h2>
+      <p>No two moves explain the modern portal better than Nebraska and its quarterback room. Raiola left Lincoln for Oregon, and Nebraska replaced him within weeks by signing Colandrea away from UNLV. Two starting-caliber quarterbacks, two seven-figure valuations, zero high school recruiting involved.</p>
+      <p>One name deliberately missing: Washington's <a href="/athlete/demond-williams-jr/">Demond Williams Jr.</a>, who entered the portal in December and then agreed to return to the Huskies on one of the largest reported packages in the sport. He never changed schools, so he is not on the list, but his page tells that story.</p>
+
+      <h2>Look up the exact numbers</h2>
+      <p>Every player above has a profile with his current valuation and range. <a href="/athletes/">Browse the full database</a> or <a href="/#calculator">run any player through the calculator</a>.</p>
+
+      <p class="muted">Ranges reflect current valuations in our database as of late July 2026. They are estimates of 12 month earning potential, not confirmed salaries or contract amounts.</p>
+      ${SOURCES([
+        ['On3 NIL Valuations', 'https://www.on3.com/nil/rankings/player/nil-valuations/'],
+        ['On3 Transfer Portal rankings', 'https://www.on3.com/transfer-portal/rankings/football/2026/'],
+        ['The NIL Standard team valuations', 'https://thenilstandard.com/']
+      ])}
+    `
+  },
+
+  {
+    slug: 'big-12-top-transfers-nil-2026',
+    title: "The Big 12's Most Valuable Transfers of 2026, Ranked by NIL Value",
+    desc: "Texas Tech doubled down after a Big 12 title, BYU rebuilt through the blue bloods and a Harvard record-setter landed at TCU. The conference's top 2026 transfers, ranked.",
+    date: '2026-07-30',
+    body: `
+      <p>Texas Tech won the Big 12 in 2025 by outspending the conference in the portal, then answered every departure with another check. Six of the nine players on this list are new Red Raiders. The rest of the conference's marquee moves came from unexpected directions: a Harvard record-holder taking over at TCU, and BYU raiding USC, Cal and Oregon for starters.</p>
+      <p>These are the highest-valued players joining a new Big 12 program for 2026 among the conference schools in our database (Texas Tech, TCU, BYU and Oklahoma's former conference mates are covered separately). Ranges are shown here; exact figures live on each player's page. Valuations blend published figures from services such as On3 and The NIL Standard with our own modeled estimates.</p>
+
+      <h2>The top Big 12 transfers by NIL value</h2>
+      <ol>
+        <li><a href="/athlete/adam-trick/">Adam Trick</a>, edge rusher, Miami (Ohio) to Texas Tech. Range: $1.25 million to $1.7 million. Trick posted 12.5 tackles for loss and 8.5 sacks in the MAC in 2025 and projects as the starting rush end on a rebuilt front.</li>
+        <li><a href="/athlete/trey-white/">Trey White</a>, edge rusher, San Diego State to Texas Tech. Range: $1.25 million to $1.7 million. A two-time first-team All-Mountain West pick with 19.5 career sacks, White inherits the pass-rushing production Texas Tech lost to the NFL in David Bailey and Romello Height.</li>
+        <li><a href="/athlete/kenny-johnson/">Kenny Johnson</a>, wide receiver, Pittsburgh to Texas Tech. Range: $850,000 to $1.15 million. Johnson caught 48 passes for 695 yards and five touchdowns for the Panthers in 2025 and projects to start at the Z.</li>
+        <li><a href="/athlete/bryce-butler/">Bryce Butler</a>, defensive lineman, Washington to Texas Tech. Range: $800,000 to $1.1 million. The Toronto native gives the Red Raiders a plug-and-play nose tackle.</li>
+        <li><a href="/athlete/jaden-craig/">Jaden Craig</a>, quarterback, Harvard to TCU. Range: $700,000 to $950,000. Craig left Harvard as its all-time leader in touchdown passes and passing yards, set single-season program records in 2025 and steps into the Big 12 as TCU's projected starter.</li>
+        <li><a href="/athlete/austin-romaine/">Austin Romaine</a>, linebacker, Kansas State to Texas Tech. Range: $500,000 to $700,000. Romaine averaged better than seven tackles a game in an injury-shortened 2025 and graded among the Big 12's best linebackers the year before.</li>
+        <li><a href="/athlete/walker-lyons/">Walker Lyons</a>, tight end, USC to BYU. Range: $325,000 to $450,000. Lyons brings 20 college catches and one of the biggest social followings on BYU's roster, with more than 100,000 followers on both Instagram and TikTok.</li>
+        <li><a href="/athlete/cade-uluave/">Cade Uluave</a>, linebacker, Cal to BYU. Range: $300,000 to $425,000. Rated the top linebacker in the portal after a 97-tackle season in Berkeley, Uluave arrives with preseason All-Big 12 billing.</li>
+        <li><a href="/athlete/kyler-kasper/">Kyler Kasper</a>, wide receiver, Oregon to BYU. Range: $150,000 to $210,000. The 6-foot-6 son of former NFL receiver Kevin Kasper was once a top national recruit and gets his first extended runway in Provo.</li>
+      </ol>
+
+      <h2>The deal that defined the cycle never counted</h2>
+      <p>The most expensive Big 12 transfer of the winter is not on this list because he never played a down. Texas Tech landed Cincinnati quarterback Brendan Sorsby on a package reported near $6 million, then lost him before the season amid an NCAA eligibility fight that turned into the sport's most closely watched NIL lawsuit. <a href="/guide/brendan-sorsby-nil-lawsuit-texas-tech/">We covered the full saga here</a>.</p>
+      <p>The other lesson in the numbers: Big 12 money runs a full tier below the SEC and Big Ten. The conference's top transfer valuation would rank sixth in the SEC's portal class and fourth in the Big Ten's.</p>
+
+      <h2>Look up the exact numbers</h2>
+      <p>Every player above has a profile with his current valuation and range. <a href="/athletes/">Browse the database</a> or <a href="/#calculator">estimate any player in the calculator</a>.</p>
+
+      <p class="muted">Ranges reflect current valuations in our database as of late July 2026. They are estimates of 12 month earning potential, not confirmed salaries or contract amounts.</p>
+      ${SOURCES([
+        ['On3 NIL Valuations', 'https://www.on3.com/nil/rankings/player/nil-valuations/'],
+        ['On3 Transfer Portal rankings', 'https://www.on3.com/transfer-portal/rankings/football/2026/'],
+        ['The NIL Standard team valuations', 'https://thenilstandard.com/']
+      ])}
+    `
+  },
+
+  {
+    slug: 'acc-top-transfers-nil-2026',
+    title: "The ACC's Most Valuable Transfers of 2026, Ranked by NIL Value",
+    desc: "Miami made Darian Mensah the most valuable player in college football. The ACC's top 2026 portal additions, ranked by NIL valuation range.",
+    date: '2026-07-30',
+    body: `
+      <p>The biggest NIL valuation in college football does not belong to Arch Manning anymore. It belongs to a quarterback who was throwing for Duke last November. Miami's addition of Darian Mensah reset the ACC's price ceiling and headlines a portal cycle in which the conference's contenders did most of their roster building after the season ended.</p>
+      <p>These are the highest-valued players joining a new ACC program for 2026, ranked by their current valuation in our database. Ranges are shown here; the exact figure, projected range and breakdown live on each player's page. Valuations blend published figures from services such as On3 and The NIL Standard with our own modeled estimates. Deals noted as reported reflect published dollar figures; everything else is an estimate.</p>
+
+      <h2>The top ACC transfers by NIL value</h2>
+      <ol>
+        <li><a href="/athlete/darian-mensah/">Darian Mensah</a>, quarterback, Duke to Miami. Range: $5.5 million to $7.5 million. Mensah threw for 3,973 yards with 34 touchdowns against six interceptions in 2025, and his reported Miami package tops On3's NIL 100. He is the most valuable player in our entire database.</li>
+        <li><a href="/athlete/damon-wilson-ii/">Damon Wilson II</a>, edge rusher, Missouri to Miami. Range: $1.3 million to $1.7 million. Wilson recorded nine sacks in Columbia in 2025 after beginning his career at Georgia. His deal, like Mensah's, was publicly reported.</li>
+        <li><a href="/athlete/beau-pribula/">Beau Pribula</a>, quarterback, Missouri to Virginia. Range: $1.1 million to $1.5 million. Pribula passed for 1,941 yards and 11 touchdowns in 2025 and projects as Virginia's starter on a reported deal.</li>
+        <li><a href="/athlete/nate-pabst/">Nate Pabst</a>, offensive lineman, Bowling Green to Florida State. Range: $975,000 to $1.35 million. Pabst projects to start on the interior for a Seminoles line rebuilt almost entirely through the portal.</li>
+        <li><a href="/athlete/rylan-kennedy/">Rylan Kennedy</a>, edge rusher, Texas A&M to Florida State. Range: $950,000 to $1.3 million. Kennedy arrived in January and projects as the starting JACK, a bigger role than he held at any earlier stop.</li>
+        <li><a href="/athlete/davis-warren/">Davis Warren</a>, quarterback, Michigan to Stanford. Range: $950,000 to $1.25 million. A leukemia survivor who walked on at Michigan and made nine starts in 2024, Warren transferred west as a graduate and is projected to start for new-look Stanford.</li>
+        <li><a href="/athlete/marques-white/">Marques White</a>, edge rusher, UMass to SMU. Range: $800,000 to $1.1 million. White posted 11 tackles for loss and five sacks in 2025 and made the All-New England first team.</li>
+        <li><a href="/athlete/billy-edwards-jr/">Billy Edwards Jr.</a>, quarterback, Wisconsin to North Carolina. Range: $800,000 to $1.1 million. The headline addition of Bill Belichick's second portal cycle in Chapel Hill, Edwards threw for 2,881 yards as Maryland's starter in 2024.</li>
+        <li><a href="/athlete/ashton-daniels/">Ashton Daniels</a>, quarterback, Auburn to Florida State. Range: $675,000 to $925,000. Daniels won the FSU job out of spring. He has started 23 of his 37 career games across stops at Stanford and Auburn.</li>
+      </ol>
+
+      <h2>Missouri paid the exit bill</h2>
+      <p>Two of the top three names on this list left the same locker room. Missouri lost Wilson to Miami and Pribula to Virginia in the same cycle, a reminder that in the revenue-share era, developing a player and keeping him are now separate line items.</p>
+      <p>A note on who is missing: Florida State's <a href="/athlete/duce-robinson/">Duce Robinson</a>, the ACC's most productive transfer receiver, does not appear because he made his move from USC a year earlier. His 1,081-yard 2025 season is exactly why programs keep paying portal prices.</p>
+
+      <h2>Look up the exact numbers</h2>
+      <p>Every player above has a profile with his current valuation and range. <a href="/athletes/">Browse the database</a> or <a href="/#calculator">look up any athlete in the calculator</a>.</p>
+
+      <p class="muted">Ranges reflect current valuations in our database as of late July 2026. They are estimates of 12 month earning potential, not confirmed salaries or contract amounts.</p>
+      ${SOURCES([
+        ['On3 NIL Valuations', 'https://www.on3.com/nil/rankings/player/nil-valuations/'],
+        ['On3 Transfer Portal rankings', 'https://www.on3.com/transfer-portal/rankings/football/2026/'],
+        ['The NIL Standard team valuations', 'https://thenilstandard.com/']
+      ])}
+    `
   }
 ];
