@@ -130,9 +130,17 @@ function head(opts) {
   <main>`;
 }
 
+/* Ad units are OFF until real AdSense slot IDs exist: the placeholder slots
+   never fill, which left an empty grey block on every page. To turn ads back
+   on, set ADS_ENABLED = true, put a real unit ID in AD_SLOT_INLINE, and
+   uncomment the two blocks in index.html. */
+const ADS_ENABLED = false;
+const AD_SLOT_INLINE = '2222222222';
+
 function adUnit() {
+  if (!ADS_ENABLED) return '';
   return `<div class="container ad-wrap"><p class="ad-label">Advertisement</p>
-    <ins class="adsbygoogle ad-inline" style="display:block" data-ad-client="${ADSENSE_CLIENT}" data-ad-slot="2222222222" data-ad-format="auto" data-full-width-responsive="true"></ins></div>`;
+    <ins class="adsbygoogle ad-inline" style="display:block" data-ad-client="${ADSENSE_CLIENT}" data-ad-slot="${AD_SLOT_INLINE}" data-ad-format="auto" data-full-width-responsive="true"></ins></div>`;
 }
 
 function emailCapture(prefix) {
