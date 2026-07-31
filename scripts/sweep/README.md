@@ -150,3 +150,40 @@ athletics sites — that is the only reason tranche 1 hasn't run yet).
       TCU, Virginia, UNLV = 0 anchors; NC State/Stanford/Memphis = 1-2.
       TCU's collective folded 2025-07-31 (payments now in-house).
 - DB after expansion: 4,809 athletes / 4,393 football / 39 swept programs.
+
+## Conference completion set (ranks 40-48, done 2026-07-30)
+
+- [x] Tranche 8: UCLA, Illinois, Minnesota*, Maryland*, Purdue — 567 new.
+- [x] Tranche 9: Northwestern*, Rutgers*, Mississippi State, Vanderbilt — 480 new.
+- **BIG TEN 18/18 and SEC 16/16 now complete** (2,007 + 1,845 football
+  athletes). DB: 5,863 athletes / 5,447 football / 48 programs / 65 teams.
+- 13 REVIEW items, ALL distinct people (no transfers): 3 separate Smiths
+  (isaac-smith-mississippi-state, jared-smith-rutgers,
+  michael-smith-vanderbilt, plus jalen-smith-minnesota), a THIRD Carter
+  Smith (carter-smith-illinois, after Wisconsin and Indiana), plus
+  daniel-anderson-northwestern, xavier-williams-rutgers, evan-ward-rutgers,
+  donovan-johnson-rutgers, aaron-williams-ucla, andrew-marshall-minnesota,
+  hayden-moore-minnesota, chris-wells-maryland, jojo-johnson-purdue.
+- Nico Iamaleava (UCLA) verified intact through update-mode: kept \$2M
+  reported figure + blurb, refreshed to 180K IG / 29.6K X, tier star.
+  Brother Madden added at \$145K.
+- WITHHELD from published copy (deliberate): Drake Lindsey (Minnesota) has
+  a May 2026 misdemeanor underage-drinking/fake-ID charge; Jackson Carsello
+  (Northwestern) plays 2026 under a Cook County injunction restoring
+  eligibility. Carsello's court status IS in his blurb (public, material to
+  his role); Lindsey's charge is NOT (misdemeanor, not material to NIL).
+  Keep it that way absent a change in circumstances.
+- NIL-anchor coverage is very thin in this set: Rutgers 2/20, Northwestern
+  1/20, Vanderbilt 1/20, Minnesota 2/20. Mostly rubric valuations.
+- Notable reported figures found: Jared Curtis (Vanderbilt, ~\$2M, true
+  freshman QB who has not played a snap), Drake Lindsey (Minnesota, ~\$1M).
+- Cross-check that worked: Minnesota's roster correctly lacks Koi Perich,
+  who our Oregon sweep already has as a 2026 transfer.
+
+## Remaining P4 (not yet swept)
+
+- ACC 8/17: Boston College, California, Duke, Georgia Tech, Louisville,
+  Pitt, Syracuse, Virginia Tech, Wake Forest (9).
+- Big 12 3/16: Arizona, Arizona State, Baylor, Cincinnati, Colorado,
+  Houston, Iowa State, Kansas, Kansas State, Oklahoma State, UCF, Utah,
+  West Virginia (13). Colorado is the biggest traffic gap.
