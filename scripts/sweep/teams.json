@@ -1,5 +1,5 @@
 {
-  "_source": "Ranks 1-15: Tony Altimore fanbase study (NYT/FiveThirtyEight/Census/Google Trends, 130 FBS fanbases). 16-25: consensus next tier (attendance/TV/social rankings); Altimore's #14 Stanford treated as population-model artifact and excluded. Ranks 26-37: expansion set (2026 preseason top-25 gaps + Week 0 P4 participants), all get the bottom P4 multiplier (0.92). Ranks 38-39: G5 Week 0 participants with progMult 0.55 and level d1.",
+  "_source": "Ranks 1-15: Tony Altimore fanbase study (NYT/FiveThirtyEight/Census/Google Trends, 130 FBS fanbases). 16-25: consensus next tier (attendance/TV/social rankings); Altimore's #14 Stanford treated as population-model artifact and excluded. Ranks 26-37: expansion set (2026 preseason top-25 gaps + Week 0 P4 participants), all get the bottom P4 multiplier (0.92). Ranks 38-39: G5 Week 0 participants with progMult 0.55 and level d1. Ranks 40-48: Big Ten + SEC completion set (all remaining football members of both conferences), bottom P4 multiplier (0.92).",
   "teams": [
     {
       "rank": 1,
@@ -433,6 +433,105 @@
       "url": "https://unlvrebels.com/sports/football/roster",
       "progMult": 0.55,
       "level": "d1"
+    },
+    {
+      "rank": 40,
+      "slug": "ucla-bruins",
+      "school": "UCLA",
+      "name": "UCLA Bruins",
+      "nickname": "Bruins",
+      "suffix": "ucla",
+      "conference": "Big Ten",
+      "isNew": false,
+      "url": "https://uclabruins.com/sports/football/roster"
+    },
+    {
+      "rank": 41,
+      "slug": "illinois-fighting-illini",
+      "school": "Illinois",
+      "name": "Illinois Fighting Illini",
+      "nickname": "Fighting Illini",
+      "suffix": "illinois",
+      "conference": "Big Ten",
+      "isNew": false,
+      "url": "https://fightingillini.com/sports/football/roster"
+    },
+    {
+      "rank": 42,
+      "slug": "minnesota-golden-gophers",
+      "school": "Minnesota",
+      "name": "Minnesota Golden Gophers",
+      "nickname": "Golden Gophers",
+      "suffix": "minnesota",
+      "conference": "Big Ten",
+      "isNew": true,
+      "url": "https://gophersports.com/sports/football/roster"
+    },
+    {
+      "rank": 43,
+      "slug": "maryland-terrapins",
+      "school": "Maryland",
+      "name": "Maryland Terrapins",
+      "nickname": "Terrapins",
+      "suffix": "maryland",
+      "conference": "Big Ten",
+      "isNew": true,
+      "url": "https://umterps.com/sports/football/roster"
+    },
+    {
+      "rank": 44,
+      "slug": "purdue-boilermakers",
+      "school": "Purdue",
+      "name": "Purdue Boilermakers",
+      "nickname": "Boilermakers",
+      "suffix": "purdue",
+      "conference": "Big Ten",
+      "isNew": false,
+      "url": "https://purduesports.com/sports/football/roster"
+    },
+    {
+      "rank": 45,
+      "slug": "northwestern-wildcats",
+      "school": "Northwestern",
+      "name": "Northwestern Wildcats",
+      "nickname": "Wildcats",
+      "suffix": "northwestern",
+      "conference": "Big Ten",
+      "isNew": true,
+      "url": "https://nusports.com/sports/football/roster"
+    },
+    {
+      "rank": 46,
+      "slug": "rutgers-scarlet-knights",
+      "school": "Rutgers",
+      "name": "Rutgers Scarlet Knights",
+      "nickname": "Scarlet Knights",
+      "suffix": "rutgers",
+      "conference": "Big Ten",
+      "isNew": true,
+      "url": "https://scarletknights.com/sports/football/roster"
+    },
+    {
+      "rank": 47,
+      "slug": "mississippi-state-bulldogs",
+      "school": "Mississippi State",
+      "name": "Mississippi State Bulldogs",
+      "nickname": "Bulldogs",
+      "suffix": "mississippi-state",
+      "conference": "SEC",
+      "isNew": false,
+      "url": "https://hailstate.com/sports/football/roster"
+    },
+    {
+      "rank": 48,
+      "slug": "vanderbilt-commodores",
+      "school": "Vanderbilt",
+      "name": "Vanderbilt Commodores",
+      "nickname": "Commodores",
+      "suffix": "vanderbilt",
+      "conference": "SEC",
+      "isNew": false,
+      "url": "https://vucommodores.com/sports/football/roster"
     }
   ]
 }
