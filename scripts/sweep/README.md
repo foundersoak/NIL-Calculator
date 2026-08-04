@@ -180,10 +180,63 @@ athletics sites — that is the only reason tranche 1 hasn't run yet).
 - Cross-check that worked: Minnesota's roster correctly lacks Koi Perich,
   who our Oregon sweep already has as a 2026 transfer.
 
-## Remaining P4 (not yet swept)
+## Big 12 + ACC completion (ranks 49-70, done 2026-08-04)
 
-- ACC 8/17: Boston College, California, Duke, Georgia Tech, Louisville,
-  Pitt, Syracuse, Virginia Tech, Wake Forest (9).
-- Big 12 3/16: Arizona, Arizona State, Baylor, Cincinnati, Colorado,
-  Houston, Iowa State, Kansas, Kansas State, Oklahoma State, UCF, Utah,
-  West Virginia (13). Colorado is the biggest traffic gap.
+**POWER 4 COMPLETE: Big Ten 18/18, SEC 16/16, ACC 17/17, Big 12 16/16.**
+70 programs, 8,288 athletes, 7,872 football. Zero duplicate slugs, zero
+missing fields, zero name artifacts, no roster under 90.
+
+- [x] Tranche 10 (49-53): Colorado, Utah, Oklahoma State*, Kansas State, Baylor
+- [x] Tranche 11 (54-58): Houston, Arizona State, Arizona, Iowa State*, Kansas
+- [x] Tranche 12 (59-63): West Virginia, Cincinnati*, UCF*, Georgia Tech, Virginia Tech*
+- [x] Tranche 13 (64-68): Louisville, Pitt*, Syracuse*, Duke, California*
+- [x] Tranche 14 (69-70): Boston College*, Wake Forest*
+
+### Oklahoma State Cowboys/Cowgirls
+Handled correctly, keep it this way: `oklahoma-state-cowboys` (Football,
+created by this sweep) and `oklahoma-state-cowgirls` (Women's Basketball,
+pre-existing) are SEPARATE team slugs, matching the school's naming.
+Do not merge them.
+
+### Data-integrity failures caught (add these checks to future sweeps)
+- **Baylor's roster file was a different team entirely**: 0/113 name
+  overlap with its own tiered file, and the scrape reported a phantom 113.
+  The tier agent had silently re-scraped correctly, and merge-team.js reads
+  only `-tiered.json`, so the merge was safe. Verified against the live
+  site: 99 real players. LESSON: always diff `-roster.json` vs
+  `-tiered.json` name overlap before merging; never trust the workflow's
+  reported playerCount alone.
+- **Colorado shipped two corrupted names from the school's own CMS**:
+  `Gideon ESPN Lampron` (ESPN leaked into the firstName field) and
+  `Cam Netwon` (school-side typo, appears 10x on their live page). Real
+  name verified as Cam Newton via
+  cubuffs.com/sports/football/roster/cam-newton - a 2026 RB from Prosper
+  Walnut Grove, no relation to the NFL MVP. Would otherwise have shipped
+  as /athlete/cam-netwon/ and lost a strong search term.
+- **Arizona had 11 names with double spaces.** Slugs were unaffected
+  (slugify collapses whitespace runs) but display names were wrong.
+  Whitespace is now normalized across all tiered files.
+- **Wake Forest's socials agent hung**: workflow died with 5 of 6 results,
+  tiered file untouched for an hour, 0-byte output, registry entry gone.
+  Re-ran that single step standalone against the intact scrape+tier output
+  (19/20 verified). LESSON: a stalled workflow does not lose completed
+  steps - re-run only the failed agent, not the whole team.
+
+### REVIEW items: 30 across these 22 teams, ALL distinct people, zero transfers
+Name saturation is real at this scale: a THIRD Jordan Allen (Kansas State
+edge / Houston DB / Georgia Tech WR), a THIRD Max Anderson (Notre Dame /
+Kentucky / West Virginia), plus repeat Smiths, Johnsons and Williamses.
+Each confirmed by position + hometown + class, with the original still on
+its own 2026 roster.
+
+### Thin-NIL-market note
+Cincinnati and UCF returned ZERO valuation anchors between them (217
+players, all rubric); Cal and Kansas managed one each. Their team totals
+are formula output, not market data - same caveat as Iowa in the Big Ten.
+
+## Remaining (optional future work)
+
+- Group of Five beyond Memphis and UNLV (already swept as `level: d1`,
+  `progMult` 0.55).
+- August re-sweep list: Florida, USC, Oregon, Michigan State (spring or
+  pre-camp rosters), plus a count-only socials backfill for Texas A&M (7).
