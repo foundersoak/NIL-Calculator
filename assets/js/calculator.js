@@ -423,6 +423,11 @@
     }
   }
 
+  /* ---------- Team jump selects ---------- */
+  Array.prototype.forEach.call(document.querySelectorAll('.team-jump'), function (sel) {
+    sel.addEventListener('change', function () { if (sel.value) location.href = sel.value; });
+  });
+
   /* ---------- Header search (every generated page) ---------- */
   var hdrInput = $('hdr-search-input');
   if (hdrInput) {

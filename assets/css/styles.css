@@ -635,3 +635,9 @@ input[type=range]::-moz-range-thumb {
 .team-context { margin: .6rem 0 0; color: var(--ink); }
 .roster-table td, .roster-table th { padding: .5rem .6rem; }
 .site-footer .brand-text { color: var(--ink); }
+
+.jump-bar { display: flex; align-items: center; gap: .5rem; flex-wrap: wrap; margin: .8rem 0 0; }
+.jump-pill { border: 1px solid var(--line); background: #fff; border-radius: 8px; padding: .35rem .8rem; font-size: .88rem; font-weight: 600; color: var(--ink); }
+.jump-pill:hover { border-color: #166534; color: #166534; }
+.team-jump { padding: .38rem .6rem; border: 1px solid var(--line); border-radius: 8px; background: #fff; color: var(--ink); font-size: .88rem; max-width: 240px; }
+.crumbs-row { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }

@@ -444,6 +444,20 @@ const CONF_ORDER = ['SEC', 'Big Ten', 'Big 12', 'ACC'];
 function teamAthletes(slug) {
   return DATA.athletes.filter(a => a.team === slug).sort((x, y) => y.valuation - x.valuation);
 }
+
+const confSlug = c => String(c).toLowerCase().replace(/[^a-z0-9]+/g, '-');
+function teamJump(prefix, current) {
+  const groups = {};
+  Object.entries(DATA.teams).forEach(([slug, t]) => {
+    const conf = CONF_ORDER.includes(t.conference) ? t.conference : 'Other';
+    (groups[conf] = groups[conf] || []).push([slug, t.name]);
+  });
+  const opts = [...CONF_ORDER, 'Other'].filter(c => groups[c]).map(conf =>
+    `<optgroup label="${esc(conf)}">${groups[conf].sort((a, b) => a[1].localeCompare(b[1])).map(([slug, name]) =>
+      `<option value="${prefix}team/${slug}/index.html"${slug === current ? ' selected' : ''}>${esc(name)}</option>`).join('')}</optgroup>`).join('');
+  return `<select class="team-jump" aria-label="Go to a team"><option value="">Go to a team…</option>${opts}</select>`;
+}
+
 function teamPage(slug) {
   const team = DATA.teams[slug];
   const roster = teamAthletes(slug);
@@ -465,7 +479,7 @@ function teamPage(slug) {
     ]
   }}) + `
     <section class="container athlete-hero">
-      <nav class="crumbs"><a href="${prefix}athletes/index.html">Athletes</a> › <span>${esc(team.name)}</span></nav>
+      <nav class="crumbs crumbs-row"><span><a href="${prefix}athletes/index.html">Athletes</a> › <span>${esc(team.name)}</span></span> ${teamJump(prefix, slug)}</nav>
       <h1>${esc(team.name)} NIL valuations</h1>
       <p class="athlete-sub">${roster.length} athletes${team.conference ? ' · ' + esc(team.conference) : ''} · estimated ranges as of ${FOLLOWERS_AS_OF}</p>
       ${team.nilContext ? `<p class="how-prose team-context">${esc(team.nilContext)}</p>` : ''}
@@ -499,7 +513,7 @@ function directoryPage(athletes, teams) {
       const top = teamAthletes(slug)[0];
       return `<tr><td><a href="${prefix}team/${slug}/index.html">${esc(t.name)}</a></td><td>${esc(t.sport === 'Multiple' ? 'Football & more' : t.sport)}</td><td class="num">${bySlugCount[slug] || 0}</td><td>${top ? `<a href="${prefix}athlete/${top.slug}/index.html">${esc(top.name)}</a>` : ''}</td></tr>`;
     }).join('');
-    return `<div class="module conf-module">
+    return `<div class="module conf-module" id="conf-${confSlug(conf)}">
       <div class="module-hd">${esc(conf)}</div>
       <div class="module-bd"><div class="table-scroll"><table class="data-table">
         <thead><tr><th>Team</th><th>Sports</th><th class="num">Athletes</th><th>Top valuation</th></tr></thead>
@@ -513,6 +527,10 @@ function directoryPage(athletes, teams) {
     <section class="container athlete-hero">
       <h1>College athlete NIL valuations</h1>
       <p class="athlete-sub">${athletes.length.toLocaleString('en-US')} athletes across ${Object.keys(teams).length} programs. Pick a team, or search any player from the bar above.</p>
+      <div class="jump-bar">
+        ${[...CONF_ORDER, 'Other conferences & sports'].map(c => `<a class="jump-pill" href="#conf-${confSlug(c)}">${esc(c === 'Other conferences & sports' ? 'Other' : c)}</a>`).join('')}
+        ${teamJump(prefix)}
+      </div>
     </section>
     ${adUnit()}
     <section class="container">
