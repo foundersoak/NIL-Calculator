@@ -268,14 +268,22 @@ function handleLinks(a) {
 function quickFacts(a, team) {
   const rows = [['Sport', a.sport], ['Position', a.position], ['School', team.name]];
   if (team.conference) rows.push(['Conference', team.conference]);
-  if (a.class) rows.push(['Class', capFirst(a.class)]);
-  if (a.hometown) rows.push(['Hometown', a.hometown]);
-  if (a.jersey) rows.push(['Jersey', '#' + a.jersey]);
-  if (a.roleTier && ROLE_LABEL[a.roleTier] && !a.former) rows.push(['2026 role', ROLE_LABEL[a.roleTier]]);
   rows.push(['Level', LEVEL_LABEL[a.level] || 'College']);
   if (a.former && a.nowWith) rows.push(['Now with', a.nowWith]);
   return `<table class="data-table facts"><tbody>` +
     rows.map(r => `<tr><td>${esc(r[0])}</td><td>${esc(r[1])}</td></tr>`).join('') + `</tbody></table>`;
+}
+
+/* ESPN-style label-over-value strip under the athlete header. */
+function statStrip(a) {
+  const cells = [];
+  if (a.class) cells.push(['Class', capFirst(a.class)]);
+  if (a.jersey) cells.push(['Jersey', '#' + a.jersey]);
+  if (a.roleTier && ROLE_LABEL[a.roleTier] && !a.former) cells.push(['2026 role', ROLE_LABEL[a.roleTier]]);
+  if (a.hometown) cells.push(['Hometown', a.hometown]);
+  if (!cells.length) return '';
+  return `<div class="stat-strip">` + cells.map(c =>
+    `<div class="stat-cell"><span class="stat-label">${esc(c[0])}</span><span class="stat-value">${esc(c[1])}</span></div>`).join('') + `</div>`;
 }
 
 /* Visible FAQ content. Two genuinely distinct questions only; no restatement
@@ -349,6 +357,7 @@ function athletePage(a) {
       <h1>How much ${a.former ? 'did' : 'does'} ${esc(a.name)} make in NIL?</h1>
       <p class="athlete-sub">${a.former ? 'Former ' : ''}${esc(a.position)} · ${esc(team.name)}${team.conference ? ' · ' + esc(team.conference) : ''}${a.former && a.nowWith ? ` · <strong>Now: ${esc(a.nowWith)}</strong>` : ''}</p>
       <p class="athlete-blurb">${esc(a.blurb || '')}</p>
+      ${statStrip(a)}
 
       <div class="nil-gate" data-value="${a.valuation}" data-low="${lo}" data-high="${hi}"
            data-name="${esc(a.name)}" data-reported="${a.reported ? 1 : 0}"
