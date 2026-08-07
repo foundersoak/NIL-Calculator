@@ -100,6 +100,8 @@ function head(opts) {
   <meta name="theme-color" content="#166534" />
   <meta name="nil-base" content="${prefix}" />
   <link rel="canonical" href="${canonical}" />
+  <link rel="icon" type="image/png" href="${prefix}assets/img/favicon.png" />
+  <link rel="apple-touch-icon" href="${prefix}assets/img/apple-touch-icon.png" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="${esc(title)}" />
   <meta property="og:description" content="${esc(desc)}" />
@@ -116,8 +118,11 @@ function head(opts) {
   <header class="site-header">
     <div class="container mast">
       <a class="brand" href="${prefix}index.html">
-        <span class="brand-mark" aria-hidden="true">$</span>
-        <span class="brand-text">HowMuch<span class="brand-accent">NIL</span></span>
+        <img class="brand-logo" src="${prefix}assets/img/logo.png" alt="" width="44" height="44" />
+        <span class="brand-block">
+          <span class="brand-text">HowMuch<span class="brand-accent">NIL</span></span>
+          <span class="brand-tag">College athlete NIL valuations</span>
+        </span>
       </a>
       <div class="hdr-search">
         <input id="hdr-search-input" type="search" placeholder="Search a player or team" autocomplete="off" aria-label="Search players" />
@@ -572,15 +577,11 @@ const ARTICLES_LIST = `<ul class="headline-list">${latest.map(g =>
 
 /* Homepage top-25 valuations table, stamped between TOP25 markers. */
 const top25 = [...DATA.athletes].filter(a => !a.former).sort((x, y) => y.valuation - x.valuation).slice(0, 25);
-const TOP25_TABLE = `<div class="table-scroll"><table class="data-table rank-table">
-  <thead><tr><th>#</th><th>Athlete</th><th>Team</th><th>Position</th><th>Est. range</th></tr></thead>
-  <tbody>${top25.map((a, i) => {
-    const t = DATA.teams[a.team] || { name: a.team };
-    const lo = a.low || Math.round(a.valuation * 0.8), hi = a.high || Math.round(a.valuation * 1.25);
-    return `<tr><td>${i + 1}</td><td><a href="athlete/${a.slug}/index.html">${esc(a.name)}</a></td><td>${esc(t.name)}</td><td>${esc(a.position)}</td><td class="num">${moneyShort(lo)} to ${moneyShort(hi)}</td></tr>`;
-  }).join('')}</tbody>
-</table></div>
-<p class="muted">Estimated ranges as of ${FOLLOWERS_AS_OF}. Open a profile for the breakdown and comparables.</p>`;
+const TOP25_RAIL = `<ol class="rank-list">${top25.slice(0, 10).map((a, i) => {
+  const lo = a.low || Math.round(a.valuation * 0.8), hi = a.high || Math.round(a.valuation * 1.25);
+  return `<li><a href="athlete/${a.slug}/index.html">${esc(a.name)}</a><span class="rank-val">${moneyShort(lo)} to ${moneyShort(hi)}</span></li>`;
+}).join('')}</ol>
+<p class="mod-more"><a href="athletes/index.html">View all athletes</a></p>`;
 
 /* Stamp the current asset version onto the hand-written static pages too. */
 ['index.html', 'about.html', 'privacy.html', 'terms.html', 'contact.html'].forEach(f => {
@@ -590,8 +591,8 @@ const TOP25_TABLE = `<div class="table-scroll"><table class="data-table rank-tab
     .replace(/(assets\/css\/styles\.css|assets\/js\/calculator\.js)(\?v=[a-z0-9]+)?/g, `$1?v=${ASSET_VER}`)
     .replace(/<!-- ANALYTICS:START -->[\s\S]*?<!-- ANALYTICS:END -->/, `<!-- ANALYTICS:START -->${analyticsSnippet()}<!-- ANALYTICS:END -->`)
     .replace(/<!-- COUNT:START -->[\s\S]*?<!-- COUNT:END -->/g, `<!-- COUNT:START -->${COUNT_LABEL}<!-- COUNT:END -->`)
-    .replace(/<!-- TOP25:START -->[\s\S]*?<!-- TOP25:END -->/g, `<!-- TOP25:START -->${TOP25_TABLE}<!-- TOP25:END -->`)
-    .replace(/<!-- ARTICLES:START -->[\s\S]*?<!-- ARTICLES:END -->/g, `<!-- ARTICLES:START -->${ARTICLES_COMPACT}<!-- ARTICLES:END -->`)
+    .replace(/<!-- TOP25:START -->[\s\S]*?<!-- TOP25:END -->/g, `<!-- TOP25:START -->${TOP25_RAIL}<!-- TOP25:END -->`)
+    .replace(/<!-- ARTICLES:START -->[\s\S]*?<!-- ARTICLES:END -->/g, `<!-- ARTICLES:START -->${ARTICLES_LIST}<!-- ARTICLES:END -->`)
     .replace(/<!-- PORTAL:START -->[\s\S]*?<!-- PORTAL:END -->/g, `<!-- PORTAL:START -->${PORTAL_LEFT}<!-- PORTAL:END -->`);
   fs.writeFileSync(fp, out);
   console.log('  stamped', f, '→ v=' + ASSET_VER);

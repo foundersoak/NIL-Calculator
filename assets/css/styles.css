@@ -56,12 +56,11 @@ img { max-width: 100%; }
 
 /* ---------- Header ---------- */
 .site-header {
-  position: sticky; top: 0; z-index: 50;
-  background: #166534;
-  border-bottom: 1px solid #14532d;
+  background: #fff;
+  border-bottom: 2px solid #166534;
 }
 .nav { display: flex; align-items: center; justify-content: space-between; height: 66px; }
-.brand { display: inline-flex; align-items: center; gap: .55rem; color: #fff; font-family: var(--display); font-weight: 800; }
+.brand { display: inline-flex; align-items: center; gap: .7rem; color: var(--ink); font-family: var(--display); font-weight: 800; }
 .brand-mark {
   display: grid; place-items: center; width: 38px; height: 38px; border-radius: 10px;
   background: linear-gradient(135deg, var(--brand), var(--brand-2));
@@ -70,8 +69,8 @@ img { max-width: 100%; }
 .brand-text { font-size: 1.15rem; }
 .brand-accent { color: var(--brand-2); }
 .nav-links { display: flex; align-items: center; gap: 1.6rem; }
-.nav-links a { color: rgba(255,255,255,.85); font-weight: 500; font-size: .9rem; }
-.nav-links a:hover { color: #fff; }
+.nav-links a { color: var(--ink-soft); font-weight: 500; font-size: .9rem; }
+.nav-links a:hover { color: var(--ink); }
 .nav-cta {
   background: #fff; color: #166534 !important; padding: .45rem .9rem;
   border-radius: 8px; font-weight: 600;
@@ -556,7 +555,7 @@ input[type=range]::-moz-range-thumb {
 
 /* ---------- BR/ESPN blend: homepage structure ---------- */
 .site-footer .brand { color: var(--ink); }
-.hdr-search input { background: #fff; border-color: #14532d; }
+.hdr-search input { background: #fff; border: 1px solid var(--line); }
 .home-intro { padding: 26px 0 4px; }
 .home-intro h1 { font-size: clamp(1.5rem, 3vw, 1.9rem); margin-bottom: .3rem; }
 .home-sub { color: var(--ink-soft); max-width: 68ch; margin: 0; }
@@ -592,7 +591,7 @@ input[type=range]::-moz-range-thumb {
 .portal-grid { display: grid; grid-template-columns: 1fr 1.5fr 1fr; gap: 16px; padding: 18px 0 6px; align-items: start; }
 @media (max-width: 1000px) { .portal-grid { grid-template-columns: 1fr; } }
 .module { border: 1px solid var(--line); background: #fff; margin-bottom: 16px; border-radius: 4px; overflow: hidden; }
-.module-hd { background: #166534; color: #fff; font-weight: 700; font-size: .92rem; padding: .45rem .75rem; }
+.module-hd { background: #fff; color: #166534; font-weight: 700; font-size: .95rem; padding: .55rem .85rem .35rem; border-bottom: 1px solid var(--line); }
 .module-bd { padding: .7rem .85rem; }
 .module-bd .data-table { margin: .2rem 0 .4rem; font-size: .88rem; }
 .module-bd .data-table th, .module-bd .data-table td { padding: .42rem .5rem; }
@@ -605,3 +604,24 @@ input[type=range]::-moz-range-thumb {
 .module .cta-form { display: flex; flex-wrap: wrap; gap: .5rem; }
 .module .cta-form input[type="email"] { min-width: 0; flex: 1 1 140px; padding: .55rem .7rem; border: 1px solid var(--line); border-radius: 8px; }
 .module .cta-form .btn { padding: .55rem .9rem; font-size: .9rem; }
+
+/* ---------- Savant blend ---------- */
+.brand-logo { border-radius: 9px; display: block; }
+.brand-block { display: flex; flex-direction: column; line-height: 1.15; }
+.brand-text { font-size: 1.25rem; }
+.brand-accent { color: #166534; }
+.brand-tag { font-size: .74rem; font-weight: 500; color: var(--ink-soft); }
+.mast { padding: 12px 0; }
+.mast .hdr-search input { padding: .65rem .9rem; border: 1px solid #94a3b8; border-radius: 6px; }
+.subnav { border-top: 0; }
+.tagline-strip { background: #fff; border-bottom: 1px solid var(--line); }
+.tool-section { border-top: 0; padding: 22px 0 8px; }
+.portal-grid.two-col { grid-template-columns: 1.6fr 1fr; }
+@media (max-width: 1000px) { .portal-grid.two-col { grid-template-columns: 1fr; } }
+.rank-list { list-style: none; margin: 0; padding: 0; counter-reset: rk; }
+.rank-list li { display: flex; align-items: baseline; gap: .5rem; padding: .42rem 0; border-bottom: 1px solid var(--line); font-size: .9rem; }
+.rank-list li::before { counter-increment: rk; content: counter(rk); color: var(--ink-soft); min-width: 1.2rem; font-variant-numeric: tabular-nums; }
+.rank-list li:last-child { border-bottom: 0; }
+.rank-list a { color: var(--ink); font-weight: 600; }
+.rank-list a:hover { color: var(--brand); }
+.rank-val { margin-left: auto; color: var(--ink-soft); font-variant-numeric: tabular-nums; white-space: nowrap; font-size: .84rem; }
