@@ -175,7 +175,7 @@ function foot(prefix) {
   <footer class="site-footer">
     <div class="container footer-grid">
       <div>
-        <a class="brand" href="${prefix}index.html"><span class="brand-mark" aria-hidden="true">$</span><span class="brand-text">HowMuch<span class="brand-accent">NIL</span></span></a>
+        <a class="brand" href="${prefix}index.html"><img class="brand-logo brand-logo-sm" src="${prefix}assets/img/logo.png" alt="" width="34" height="34" /><span class="brand-text">HowMuch<span class="brand-accent">NIL</span></span></a>
         <p class="footer-tag">Know the value. Follow the money.</p>
       </div>
       <nav class="footer-links">
@@ -438,36 +438,85 @@ function athletePage(a) {
 }
 
 /* ---------- athletes directory ---------- */
+
+/* Team pages: roster table plus the team's NIL context. One per program. */
+const CONF_ORDER = ['SEC', 'Big Ten', 'Big 12', 'ACC'];
+function teamAthletes(slug) {
+  return DATA.athletes.filter(a => a.team === slug).sort((x, y) => y.valuation - x.valuation);
+}
+function teamPage(slug) {
+  const team = DATA.teams[slug];
+  const roster = teamAthletes(slug);
+  const prefix = '../../';
+  const url = `${SITE_URL}/team/${slug}/`;
+  const title = `${team.name} NIL Valuations 2026: Full Roster Estimates`;
+  const desc = `Estimated NIL value ranges for ${roster.length} ${team.name} athletes, with roles, classes and social reach. Updated ${FOLLOWERS_AS_OF}.`;
+  const rows = roster.map(a => {
+    const lo = a.low || Math.round(a.valuation * 0.8), hi = a.high || Math.round(a.valuation * 1.25);
+    return `<tr><td><a href="../../athlete/${a.slug}/index.html">${esc(a.name)}</a>${a.former ? ' <span class="muted">(former)</span>' : ''}</td><td>${esc(a.position)}</td><td>${esc(a.class ? capFirst(a.class) : '')}</td><td>${a.roleTier && ROLE_LABEL[a.roleTier] ? esc(ROLE_LABEL[a.roleTier]) : ''}</td><td class="num">${moneyShort(lo)} to ${moneyShort(hi)}</td></tr>`;
+  }).join('');
+  return head({ title, desc, canonical: url, prefix, jsonld: {
+    "@context": "https://schema.org", "@graph": [
+      { "@type": "CollectionPage", "name": title, "url": url },
+      { "@type": "BreadcrumbList", "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Athletes", "item": `${SITE_URL}/athletes/` },
+        { "@type": "ListItem", "position": 2, "name": team.name, "item": url }
+      ]}
+    ]
+  }}) + `
+    <section class="container athlete-hero">
+      <nav class="crumbs"><a href="${prefix}athletes/index.html">Athletes</a> › <span>${esc(team.name)}</span></nav>
+      <h1>${esc(team.name)} NIL valuations</h1>
+      <p class="athlete-sub">${roster.length} athletes${team.conference ? ' · ' + esc(team.conference) : ''} · estimated ranges as of ${FOLLOWERS_AS_OF}</p>
+      ${team.nilContext ? `<p class="how-prose team-context">${esc(team.nilContext)}</p>` : ''}
+    </section>
+    ${adUnit()}
+    <section class="container">
+      <div class="table-scroll"><table class="data-table roster-table">
+        <thead><tr><th>Athlete</th><th>Position</th><th>Class</th><th>2026 role</th><th>Est. range</th></tr></thead>
+        <tbody>${rows}</tbody>
+      </table></div>
+      <p class="muted">The exact estimate and breakdown for each athlete are free on their page with an email.</p>
+    </section>
+    ${emailCapture(prefix)}
+  ` + foot(prefix);
+}
+
 function directoryPage(athletes, teams) {
   const prefix = '../';
   const url = `${SITE_URL}/athletes/`;
-  const title = `College Athlete NIL Valuations 2026: Browse by Player & Team`;
-  const desc = `Browse estimated 2026 NIL valuations for top college athletes and team rosters. See how much your favorite players make in NIL.`;
-  const sorted = athletes.slice().sort((x, y) => y.valuation - x.valuation);
-  const cards = sorted.map(a => {
-    const team = teams[a.team] || {};
-    return `<a class="athlete-card" href="${prefix}athlete/${a.slug}/index.html">
-      <span class="ac-tag">${esc(a.sport)}</span>
-      <strong>${esc(a.name)}</strong>
-      <span class="ac-meta">${esc(a.position)} · ${esc(team.name || '')}${a.former ? ' · former' : ''}</span>
-      <span class="ac-cta">View NIL value ›</span>
-    </a>`;
+  const title = `College Athlete NIL Valuations 2026: Browse by Team & Conference`;
+  const desc = `Estimated NIL valuations for ${athletes.length.toLocaleString('en-US')} college athletes, organized by conference and team. Every Power Four football roster plus baseball, basketball and more.`;
+  const bySlugCount = {};
+  athletes.forEach(a => { bySlugCount[a.team] = (bySlugCount[a.team] || 0) + 1; });
+  const confs = {};
+  Object.entries(teams).forEach(([slug, t]) => {
+    const conf = CONF_ORDER.includes(t.conference) ? t.conference : 'Other conferences & sports';
+    (confs[conf] = confs[conf] || []).push([slug, t]);
+  });
+  const sections = [...CONF_ORDER, 'Other conferences & sports'].filter(c => confs[c]).map(conf => {
+    const rows = confs[conf].sort((a, b) => a[1].name.localeCompare(b[1].name)).map(([slug, t]) => {
+      const top = teamAthletes(slug)[0];
+      return `<tr><td><a href="${prefix}team/${slug}/index.html">${esc(t.name)}</a></td><td>${esc(t.sport === 'Multiple' ? 'Football & more' : t.sport)}</td><td class="num">${bySlugCount[slug] || 0}</td><td>${top ? `<a href="${prefix}athlete/${top.slug}/index.html">${esc(top.name)}</a>` : ''}</td></tr>`;
+    }).join('');
+    return `<div class="module conf-module">
+      <div class="module-hd">${esc(conf)}</div>
+      <div class="module-bd"><div class="table-scroll"><table class="data-table">
+        <thead><tr><th>Team</th><th>Sports</th><th class="num">Athletes</th><th>Top valuation</th></tr></thead>
+        <tbody>${rows}</tbody>
+      </table></div></div>
+    </div>`;
   }).join('');
   return head({ title, desc, canonical: url, prefix, jsonld: {
     "@context": "https://schema.org", "@type": "CollectionPage", "name": title, "url": url
   }}) + `
-    <section class="container narrow athlete-hero">
+    <section class="container athlete-hero">
       <h1>College athlete NIL valuations</h1>
-      <p class="athlete-sub">Browse top players and unlock each one's estimated 2026 NIL value, free.</p>
+      <p class="athlete-sub">${athletes.length.toLocaleString('en-US')} athletes across ${Object.keys(teams).length} programs. Pick a team, or search any player from the bar above.</p>
     </section>
     ${adUnit()}
     <section class="container">
-      <h2>Browse athletes</h2>
-      <div class="athlete-grid">${cards}</div>
-      <div class="cta-inline" style="margin-top:2rem">
-        <p><strong>Don't see someone?</strong> Look up a player or estimate any athlete with the calculator.</p>
-        <a class="btn btn-primary" href="${prefix}index.html#calculator">Open the NIL calculator</a>
-      </div>
+      ${sections}
     </section>
     ${emailCapture(prefix)}
   ` + foot(prefix);
@@ -540,6 +589,8 @@ console.log(`Generating from ${athletes.length} athletes, ${Object.keys(teams).l
 athletes.forEach(a => writeFile(path.join('athlete', a.slug, 'index.html'), athletePage(a)));
 
 writeFile(path.join('athletes', 'index.html'), directoryPage(athletes, teams));
+Object.keys(DATA.teams).forEach(slug => writeFile(path.join('team', slug, 'index.html'), teamPage(slug)));
+console.log('  wrote', Object.keys(DATA.teams).length, 'team pages');
 
 GUIDES.forEach(g => writeFile(path.join('guide', g.slug, 'index.html'), guidePage(g)));
 writeFile(path.join('guides', 'index.html'), guidesIndex());
@@ -617,6 +668,7 @@ const urls = [
   `${SITE_URL}/privacy.html`,
   `${SITE_URL}/terms.html`,
   `${SITE_URL}/guides/`,
+  ...Object.keys(DATA.teams).map(t => `${SITE_URL}/team/${t}/`),
   ...GUIDES.map(g => `${SITE_URL}/guide/${g.slug}/`),
   ...athletes.filter(a => !a.thin).map(a => `${SITE_URL}/athlete/${a.slug}/`)
 ];

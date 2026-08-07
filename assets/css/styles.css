@@ -561,7 +561,7 @@ input[type=range]::-moz-range-thumb {
 .home-sub { color: var(--ink-soft); max-width: 68ch; margin: 0; }
 .section-h { font-size: 1.2rem; margin: 0 0 .7rem; }
 .how-section { padding: 30px 0; }
-.how-prose { max-width: 68ch; line-height: 1.7; color: var(--ink); margin: 0; }
+.how-prose { max-width: none; line-height: 1.7; color: var(--ink); margin: 0; }
 .tool-section { padding: 30px 0; border-top: 1px solid var(--line); }
 .tool-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 20px; align-items: start; }
 @media (max-width: 900px) { .tool-grid { grid-template-columns: 1fr; } }
@@ -625,3 +625,13 @@ input[type=range]::-moz-range-thumb {
 .rank-list a { color: var(--ink); font-weight: 600; }
 .rank-list a:hover { color: var(--brand); }
 .rank-val { margin-left: auto; color: var(--ink-soft); font-variant-numeric: tabular-nums; white-space: nowrap; font-size: .84rem; }
+
+.nl-row { display: flex; align-items: center; gap: 1.2rem; flex-wrap: wrap; }
+.nl-row .mod-note { margin: 0; flex: 1 1 280px; }
+.nl-row .cta-form { flex: 1 1 320px; justify-content: flex-end; }
+
+.brand-logo-sm { border-radius: 7px; }
+.conf-module { margin-bottom: 18px; }
+.team-context { margin: .6rem 0 0; color: var(--ink); }
+.roster-table td, .roster-table th { padding: .5rem .6rem; }
+.site-footer .brand-text { color: var(--ink); }

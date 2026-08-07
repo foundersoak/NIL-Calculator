@@ -7,17 +7,33 @@
   <title>Terms of Use: HowMuchNIL</title>
   <meta name="description" content="Terms of Use for the HowMuchNIL Name, Image & Likeness value calculator." />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/styles.css?v=6661c3de" />
+  <link rel="stylesheet" href="assets/css/styles.css?v=f6f0bbf7" />
 </head>
 <body>
   <header class="site-header">
-    <div class="container nav">
+    <div class="container mast">
       <a class="brand" href="index.html">
-        <span class="brand-mark" aria-hidden="true">$</span>
-        <span class="brand-text">HowMuch<span class="brand-accent">NIL</span></span>
+        <img class="brand-logo" src="assets/img/logo.png" alt="" width="44" height="44" />
+        <span class="brand-block">
+          <span class="brand-text">HowMuch<span class="brand-accent">NIL</span></span>
+          <span class="brand-tag">College athlete NIL valuations</span>
+        </span>
       </a>
+      <div class="hdr-search">
+        <input id="hdr-search-input" type="search" placeholder="Search a player or team" autocomplete="off" aria-label="Search players" />
+        <div class="search-results" id="hdr-search-results" hidden></div>
+      </div>
     </div>
   </header>
+  <nav class="subnav">
+    <div class="container subnav-in">
+      <a href="athletes/index.html">Athletes</a>
+      <a href="index.html#top25">Top 25</a>
+      <a href="guides/index.html">Articles</a>
+      <a href="index.html#calculator">Calculator</a>
+      <a href="about.html">About</a>
+    </div>
+  </nav>
 
   <main class="container">
     <article class="legal">
@@ -50,5 +66,6 @@
       <a class="back" href="index.html">← Back to the calculator</a>
     </article>
   </main>
+  <script src="assets/js/calculator.js?v=f6f0bbf7" defer></script>
 </body>
 </html>
