@@ -170,6 +170,7 @@ function foot(prefix) {
         <a href="${prefix}athletes/index.html">Athletes</a>
         <a href="${prefix}guides/index.html">Guides</a>
         <a href="${prefix}index.html#calculator">Calculator</a>
+        <a href="${prefix}about.html">About</a>
         <a href="${prefix}privacy.html">Privacy</a>
         <a href="${prefix}terms.html">Terms</a>
         <a href="${prefix}contact.html">Contact</a>
@@ -220,7 +221,7 @@ function uniqueSummary(a, team) {
     parts.push(`${first} has about ${fmtFollowers(tot)} followers across social media${lead ? `, led by ${fmtFollowers(lead[1])} on ${lead[0]}` : ''}, a core driver of ${sport} NIL value.`);
   }
   parts.push(a.reported
-    ? `${first}'s NIL value shown here reflects publicly reported figures${a.source ? ` (${esc(a.source)})` : ''}; enter your email above to see the number and the full breakdown.`
+    ? `${first}'s NIL value shown here reflects publicly reported figures${a.source ? `, per ${esc(a.source)}` : ''}; enter your email above to see the number and the full breakdown.`
     : `${first}'s NIL value shown here is a modeled estimate based on audience, on-field role, market and sport; enter your email above to see the number and the full breakdown.`);
   return parts.join(' ');
 }
@@ -244,7 +245,7 @@ function faqItems(a, team) {
   const yr = a.former ? '' : '2026 ', conf = team.conference || '', tot = totalFollowers(a);
   return [
     { q: `How much ${doesDid} ${name} make in NIL?`,
-      a: `${name}'s ${yr}NIL value on HowMuchNIL is ${a.reported ? 'based on publicly reported figures' : 'a modeled estimate'} of 12-month name, image and likeness earning potential${a.reported && a.source ? ` (${a.source})` : ''}. Enter your email on this page to unlock the exact figure, the likely range, and the full breakdown. It is an estimate of earning potential, not a confirmed salary.` },
+      a: `${name}'s ${yr}NIL value on HowMuchNIL is ${a.reported ? `anchored to publicly reported figures${a.source ? `, per ${a.source}` : ''}` : 'a modeled estimate of 12-month name, image and likeness earning potential'}. Enter your email on this page to unlock the exact figure, the likely range, and the full breakdown. It is an estimate of earning potential, not a confirmed salary.` },
     { q: `What is ${name}'s NIL value based on?`,
       a: `Four factors: audience (social reach and engagement), on-field performance and role, school and market size, and the sport and position.${tot > 0 ? ` ${first} has about ${fmtFollowers(tot)} followers across social media.` : ''}` },
     { q: `What team ${doesDid} ${name} play for?`,
@@ -340,7 +341,7 @@ function athletePage(a) {
       ${totalFollowers(a) ? `<p class="muted">That's about ${fmtFollowers(totalFollowers(a))} followers in all. Follower figures are approximate and were last updated ${FOLLOWERS_AS_OF}.</p>` : ''}
 
       <h2>How NIL value is calculated</h2>
-      <p>An NIL value is an estimate of what an athlete could earn from name, image and likeness over 12 months, not a salary or a confirmed deal. We weigh audience (social reach and engagement), performance and role, school and market, and the sport and position.${a.source ? ` Where a public figure exists, we sense-check against it (<a href="${a.sourceUrl}" rel="nofollow noopener" target="_blank">${esc(a.source)}</a>).` : ''} <a href="${prefix}guide/how-nil-valuations-work/index.html">See how NIL valuations work</a>.</p>
+      <p>An NIL value is an estimate of what an athlete could earn from name, image and likeness over 12 months, not a salary or a confirmed deal. We weigh audience (social reach and engagement), performance and role, school and market, and the sport and position.${a.reported && a.source ? ` Where a public figure exists, we sense-check against it; this valuation is anchored to <a href="${a.sourceUrl}" rel="nofollow noopener" target="_blank">${esc(a.source)}</a>.` : ` No exact NIL figure is publicly disclosed for ${esc(a.name.split(' ')[0])}, so the value shown here is a modeled estimate.`} <a href="${prefix}guide/how-nil-valuations-work/index.html">See how NIL valuations work</a>.</p>
 
       ${comparables(a)}
 
@@ -467,7 +468,7 @@ writeFile(path.join('guides', 'index.html'), guidesIndex());
 const COUNT_LABEL = Math.floor(DATA.athletes.length / 10) * 10 + '+';
 
 /* Stamp the current asset version onto the hand-written static pages too. */
-['index.html', 'privacy.html', 'terms.html', 'contact.html'].forEach(f => {
+['index.html', 'about.html', 'privacy.html', 'terms.html', 'contact.html'].forEach(f => {
   const fp = path.join(ROOT, f);
   if (!fs.existsSync(fp)) return;
   const out = fs.readFileSync(fp, 'utf8')
@@ -493,6 +494,7 @@ writeFile(path.join('assets', 'data', 'athletes-index.json'), JSON.stringify(ind
 const urls = [
   `${SITE_URL}/`,
   `${SITE_URL}/athletes/`,
+  `${SITE_URL}/about.html`,
   `${SITE_URL}/privacy.html`,
   `${SITE_URL}/terms.html`,
   `${SITE_URL}/guides/`,

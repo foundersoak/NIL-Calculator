@@ -32,10 +32,23 @@ jobs:
         with:
           enablement: true
 
+      # Whitelist copy: only public site files are deployed. Internal files
+      # (scripts/, data/, .claude/, README.md, package.json, workflow files)
+      # must never reach the live domain.
+      - name: Assemble site artifact
+        run: |
+          mkdir -p _site/assets
+          cp index.html contact.html privacy.html terms.html about.html _site/
+          cp sitemap.xml robots.txt ads.txt CNAME .nojekyll _site/
+          cp -r athlete athletes guide guides _site/
+          cp -r assets/css assets/js _site/assets/
+          mkdir -p _site/assets/data
+          cp assets/data/athletes-index.json _site/assets/data/
+
       - name: Upload site artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: '.'
+          path: '_site'
 
       - name: Deploy to GitHub Pages
         id: deployment
