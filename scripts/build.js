@@ -149,6 +149,7 @@ function emailCapture(prefix) {
       <h4>Get the NIL newsletter 📩</h4>
       <p>Deal breakdowns, valuation updates and athlete brand tips. Free.</p>
       <form class="email-form" action="${FORMSPREE}" method="POST">
+        <input type="hidden" name="newsletter" value="yes" />
         <input type="email" name="email" required placeholder="you@email.com" aria-label="Email address" />
         <button type="submit" class="btn btn-primary">Subscribe</button>
       </form>
@@ -321,6 +322,7 @@ function athletePage(a) {
             <input type="hidden" name="page" value="athlete/${a.slug}" />
             <input type="email" name="email" required placeholder="you@email.com" aria-label="Email address" />
             <button type="submit" class="btn btn-primary">Unlock the value</button>
+            <label class="consent-check"><input type="checkbox" name="newsletter" value="yes" /> Also send me the free newsletter: college football, NIL deals and valuation updates</label>
           </form>
           <p class="privacy-note">No spam. Unsubscribe anytime. <a href="${prefix}privacy.html">Privacy</a>.</p>
         </div>
