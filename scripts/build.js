@@ -97,7 +97,7 @@ function head(opts) {
   <title>${esc(title)}</title>
   <meta name="description" content="${esc(desc)}" />
   ${noindex ? '<meta name="robots" content="noindex" />' : ''}
-  <meta name="theme-color" content="#0b1120" />
+  <meta name="theme-color" content="#166534" />
   <meta name="nil-base" content="${prefix}" />
   <link rel="canonical" href="${canonical}" />
   <meta property="og:type" content="website" />
@@ -125,7 +125,7 @@ function head(opts) {
       </div>
       <nav class="nav-links">
         <a href="${prefix}athletes/index.html">Athletes</a>
-        <a href="${prefix}guides/index.html">Guides</a>
+        <a href="${prefix}guides/index.html">Articles</a>
         <a href="${prefix}index.html#calculator">Calculator</a>
         <a class="nav-cta" href="${prefix}index.html#calculator">Look up a player</a>
       </nav>
@@ -172,7 +172,7 @@ function foot(prefix) {
       </div>
       <nav class="footer-links">
         <a href="${prefix}athletes/index.html">Athletes</a>
-        <a href="${prefix}guides/index.html">Guides</a>
+        <a href="${prefix}guides/index.html">Articles</a>
         <a href="${prefix}index.html#calculator">Calculator</a>
         <a href="${prefix}about.html">About</a>
         <a href="${prefix}privacy.html">Privacy</a>
@@ -479,7 +479,7 @@ function guidePage(g) {
   };
   return head({ title: `${g.title} | HowMuchNIL`, desc: g.desc, canonical: url, prefix, jsonld }) + `
     <section class="container narrow article">
-      <nav class="crumbs"><a href="${prefix}index.html">Home</a> › <a href="${prefix}guides/index.html">Guides</a> › <span>${esc(g.title)}</span></nav>
+      <nav class="crumbs"><a href="${prefix}index.html">Home</a> › <a href="${prefix}guides/index.html">Articles</a> › <span>${esc(g.title)}</span></nav>
       <h1>${esc(g.title)}</h1>
       <p class="article-meta">Updated ${g.date}</p>
       ${g.body}
@@ -497,20 +497,20 @@ function guidePage(g) {
 function guidesIndex() {
   const prefix = '../';
   const url = `${SITE_URL}/guides/`;
-  const cards = GUIDES.map(g =>
-    `<a class="guide-card" href="${prefix}guide/${g.slug}/index.html"><strong>${esc(g.title)}</strong><span>${esc(g.desc)}</span></a>`).join('');
+  const items = [...GUIDES].sort((a, b) => (b.date || '').localeCompare(a.date || '')).map(g =>
+    `<li><a class="hl-title" href="${prefix}guide/${g.slug}/index.html">${esc(g.title)}</a><span class="hl-meta">${esc(g.date || '')}</span><p class="hl-dek">${esc(g.desc)}</p></li>`).join('');
   return head({
-    title: 'NIL Guides and Rankings | HowMuchNIL',
+    title: 'NIL Articles and Rankings | HowMuchNIL',
     desc: 'Plain-English guides to college NIL: the highest-paid athletes, how valuations work, and how revenue sharing changed college sports.',
     canonical: url, prefix,
-    jsonld: { "@context": "https://schema.org", "@type": "CollectionPage", "name": "NIL Guides", "url": url }
+    jsonld: { "@context": "https://schema.org", "@type": "CollectionPage", "name": "NIL Articles", "url": url }
   }) + `
     <section class="container narrow athlete-hero">
-      <h1>NIL guides and rankings</h1>
+      <h1>NIL articles and rankings</h1>
       <p class="athlete-sub">Plain-English guides to college NIL money.</p>
     </section>
     <section class="container narrow">
-      <div class="guide-list">${cards}</div>
+      <ul class="headline-list">${items}</ul>
     </section>
     ${emailCapture(prefix)}
   ` + foot(prefix);
@@ -539,6 +539,11 @@ writeFile(path.join('guides', 'index.html'), guidesIndex());
 /* Live athlete count, rounded down to a clean number for the homepage copy. */
 const COUNT_LABEL = Math.floor(DATA.athletes.length / 10) * 10 + '+';
 
+/* ESPN-style headline list of latest articles, stamped between ARTICLES markers. */
+const latest = [...GUIDES].sort((a, b) => (b.date || '').localeCompare(a.date || '')).slice(0, 6);
+const ARTICLES_LIST = `<ul class="headline-list">${latest.map(g =>
+  `<li><a class="hl-title" href="guide/${g.slug}/index.html">${esc(g.title)}</a><span class="hl-meta">${esc(g.date || '')}</span><p class="hl-dek">${esc(g.desc || '')}</p></li>`).join('')}</ul>`;
+
 /* Homepage top-25 valuations table, stamped between TOP25 markers. */
 const top25 = [...DATA.athletes].filter(a => !a.former).sort((x, y) => y.valuation - x.valuation).slice(0, 25);
 const TOP25_TABLE = `<div class="table-scroll"><table class="data-table rank-table">
@@ -559,7 +564,8 @@ const TOP25_TABLE = `<div class="table-scroll"><table class="data-table rank-tab
     .replace(/(assets\/css\/styles\.css|assets\/js\/calculator\.js)(\?v=[a-z0-9]+)?/g, `$1?v=${ASSET_VER}`)
     .replace(/<!-- ANALYTICS:START -->[\s\S]*?<!-- ANALYTICS:END -->/, `<!-- ANALYTICS:START -->${analyticsSnippet()}<!-- ANALYTICS:END -->`)
     .replace(/<!-- COUNT:START -->[\s\S]*?<!-- COUNT:END -->/g, `<!-- COUNT:START -->${COUNT_LABEL}<!-- COUNT:END -->`)
-    .replace(/<!-- TOP25:START -->[\s\S]*?<!-- TOP25:END -->/g, `<!-- TOP25:START -->${TOP25_TABLE}<!-- TOP25:END -->`);
+    .replace(/<!-- TOP25:START -->[\s\S]*?<!-- TOP25:END -->/g, `<!-- TOP25:START -->${TOP25_TABLE}<!-- TOP25:END -->`)
+    .replace(/<!-- ARTICLES:START -->[\s\S]*?<!-- ARTICLES:END -->/g, `<!-- ARTICLES:START -->${ARTICLES_LIST}<!-- ARTICLES:END -->`);
   fs.writeFileSync(fp, out);
   console.log('  stamped', f, '→ v=' + ASSET_VER);
 });
