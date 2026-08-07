@@ -41,7 +41,7 @@ jobs:
           cp index.html contact.html privacy.html terms.html about.html _site/
           cp sitemap.xml robots.txt ads.txt CNAME .nojekyll _site/
           cp -r athlete athletes guide guides _site/
-          cp -r assets/css assets/js _site/assets/
+          cp -r assets/css assets/js assets/img _site/assets/
           mkdir -p _site/assets/data
           cp assets/data/athletes-index.json _site/assets/data/
 
