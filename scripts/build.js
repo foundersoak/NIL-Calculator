@@ -108,7 +108,7 @@ function head(opts) {
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT}" crossorigin="anonymous"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="${prefix}assets/css/styles.css?v=${ASSET_VER}" />
   ${jsonld ? `<script type="application/ld+json">${JSON.stringify(jsonld)}</script>` : ''}
 </head>
@@ -119,11 +119,14 @@ function head(opts) {
         <span class="brand-mark" aria-hidden="true">$</span>
         <span class="brand-text">HowMuch<span class="brand-accent">NIL</span></span>
       </a>
+      <div class="hdr-search">
+        <input id="hdr-search-input" type="search" placeholder="Search players or teams" autocomplete="off" aria-label="Search players" />
+        <div class="search-results" id="hdr-search-results" hidden></div>
+      </div>
       <nav class="nav-links">
         <a href="${prefix}athletes/index.html">Athletes</a>
         <a href="${prefix}guides/index.html">Guides</a>
         <a href="${prefix}index.html#calculator">Calculator</a>
-        <a href="${prefix}index.html#how">How it works</a>
         <a class="nav-cta" href="${prefix}index.html#calculator">Look up a player</a>
       </nav>
     </div>
