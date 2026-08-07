@@ -123,6 +123,7 @@ function lastName(name) {
     .filter(w => !/^(jr\.?|sr\.?|ii|iii|iv|v)$/i.test(w));
   return parts[parts.length - 1] || name;
 }
+const possessive = n => /s$/i.test(n) ? `${n}'` : `${n}'s`;
 function blurbFor(p, posFull, cls) {
   const ln = lastName(p.name);
   const from = p.hometown ? ` out of ${p.hometown}` : '';
@@ -131,10 +132,12 @@ function blurbFor(p, posFull, cls) {
   const t = hash01(p.name + team.slug);
   const role =
     p.tier === 'starter'  ? ` and is projected to play a key role for the ${team.nickname} in 2026` :
-    p.tier === 'rotation' ? ` and is competing for a spot in the ${team.nickname}' two-deep this fall` : '';
-  if (t < 0.34) return `${ln} is a ${clsTxt}${pos} for the ${team.name}${from}${role}.`;
-  if (t < 0.67) return `A ${clsTxt}${pos}${from}, ${ln} is on the ${team.name}' 2026 football roster${role}.`;
-  return `${p.name} is a ${clsTxt}${pos} on the 2026 ${team.name} football roster${from}${role}.`;
+    p.tier === 'rotation' ? ` and is competing for a spot in the ${possessive(team.nickname)} two-deep this fall` : '';
+  let out;
+  if (t < 0.34) out = `${ln} is a ${clsTxt}${pos} for the ${team.name}${from}${role}.`;
+  else if (t < 0.67) out = `A ${clsTxt}${pos}${from}, ${ln} is on the ${possessive(team.name)} 2026 football roster${role}.`;
+  else out = `${p.name} is a ${clsTxt}${pos} on the 2026 ${team.name} football roster${from}${role}.`;
+  return out.replace(/\.\.+$/, '.'); // hometowns ending in an abbreviation ("Ga.") otherwise double the final period
 }
 
 /* ---------- build incoming records ---------- */

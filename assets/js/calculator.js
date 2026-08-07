@@ -61,6 +61,19 @@
   function isUnlocked() { return localStorage.getItem('nil_unlocked') === '1'; }
   function setUnlocked() { localStorage.setItem('nil_unlocked', '1'); }
 
+  /* Every Formspree submission carries the source page path and a timestamp,
+     so leads are attributable no matter which form they came through. */
+  Array.prototype.forEach.call(document.querySelectorAll('form[action*="formspree"]'), function (f) {
+    if (!f.querySelector('input[name="page"]')) {
+      var pg = document.createElement('input');
+      pg.type = 'hidden'; pg.name = 'page'; pg.value = location.pathname;
+      f.appendChild(pg);
+    }
+    var ts = document.createElement('input');
+    ts.type = 'hidden'; ts.name = 'ts'; ts.value = new Date().toISOString();
+    f.appendChild(ts);
+  });
+
   /* AJAX-submit an email form to its Formspree action, then run cb on success.
      Falls back to just unlocking if the endpoint is a placeholder. */
   function submitEmail(form, cb) {
@@ -372,17 +385,29 @@
     var gForm = gate.querySelector('.gate-form');
 
     function renderReveal() {
-      var lo = +gate.dataset.low, hi = +gate.dataset.high, val = +gate.dataset.value;
+      /* The exact figure is server-rendered as real (hidden) text in .gate-exact,
+         per Google's paywalled-content pattern. Unlocking simply unhides it and
+         retires the form; the visible range and bars stay. */
+      var exact = gate.querySelector('.gate-exact');
+      if (exact) {
+        exact.hidden = false;
+        gate.classList.add('unlocked');
+        var num = exact.querySelector('.big-number span') || exact.querySelector('.big-number');
+        var val = +gate.dataset.value;
+        if (num && val) { animateMoney(num, val); }
+        return;
+      }
+      /* Fallback for any stale page still using the injected-reveal markup. */
+      var lo = +gate.dataset.low, hi = +gate.dataset.high, valOld = +gate.dataset.value;
       var bars = [];
       try { bars = JSON.parse(gate.dataset.bars || '[]'); } catch (e) {}
       reveal.innerHTML =
-        '<span class="result-eyebrow">' + (locked.querySelector('.result-eyebrow') ?
-          locked.querySelector('.result-eyebrow').textContent.replace('🔒 ', '') : 'Estimated NIL value') + '</span>' +
+        '<span class="result-eyebrow">Estimated NIL value</span>' +
         '<div class="big-number"></div>' +
         '<p class="result-range">Likely range: ' + range(lo, hi) + ' / year</p>' +
         '<p class="val-note">' + (gate.dataset.note || '') + '</p>' +
         '<div class="result-bars"></div>';
-      animateMoney(reveal.querySelector('.big-number'), val);
+      animateMoney(reveal.querySelector('.big-number'), valOld);
       renderBars(reveal.querySelector('.result-bars'), bars);
       locked.hidden = true;
       reveal.hidden = false;
@@ -412,7 +437,7 @@
         else {
           var note = document.createElement('p');
           note.className = 'email-success';
-          note.textContent = "✅ You're subscribed!";
+          note.textContent = "You're subscribed!";
           f.parentNode.appendChild(note);
         }
       }
@@ -426,14 +451,14 @@
   if (shareBtn) {
     shareBtn.addEventListener('click', function () {
       var amount = ($('result-amount') || {}).textContent || '';
-      var text = 'NIL value estimate: ' + amount + '/year 🏆 Find any player’s value:';
+      var text = 'NIL value estimate: ' + amount + '/year. Find any player’s value:';
       var url = location.href.split('#')[0];
       if (navigator.share) {
         navigator.share({ title: 'NIL Value', text: text, url: url }).catch(function () {});
       } else {
         navigator.clipboard.writeText(text + ' ' + url).then(function () {
-          shareBtn.textContent = '✅ Link copied!';
-          setTimeout(function () { shareBtn.textContent = '🔗 Share this result'; }, 2000);
+          shareBtn.textContent = 'Link copied!';
+          setTimeout(function () { shareBtn.textContent = 'Share this result'; }, 2000);
         });
       }
     });

@@ -57,8 +57,7 @@ img { max-width: 100%; }
 /* ---------- Header ---------- */
 .site-header {
   position: sticky; top: 0; z-index: 50;
-  background: rgba(11, 17, 32, .82);
-  backdrop-filter: blur(12px);
+  background: #0b1120;
   border-bottom: 1px solid rgba(255,255,255,.08);
 }
 .nav { display: flex; align-items: center; justify-content: space-between; height: 66px; }
@@ -116,8 +115,8 @@ img { max-width: 100%; }
 .hero-split { display: grid; grid-template-columns: 1fr 1.12fr; gap: 38px; align-items: start; }
 .hero-copy { padding-top: 8px; }
 .hero-points { list-style: none; padding: 0; margin: 1.3rem 0 0; display: flex; flex-direction: column; gap: .55rem; }
-.hero-points li { position: relative; padding-left: 1.6rem; color: #cbd5e1; font-size: .98rem; }
-.hero-points li::before { content: "\2713"; position: absolute; left: 0; color: #22c55e; font-weight: 700; }
+.hero-points li { position: relative; padding-left: 1.1rem; color: #cbd5e1; font-size: .98rem; }
+.hero-points li::before { content: "\2022"; position: absolute; left: 0; color: #64748b; }
 .hero-tool { display: flex; flex-direction: column; gap: 16px; }
 .hero .calc-card { color: var(--ink); }            /* keep card text dark on the dark hero band */
 .hero .result-card { position: static; top: auto; }
@@ -221,6 +220,41 @@ input[type=range]::-moz-range-thumb {
 .email-success { color: #4ade80; font-weight: 600; margin: .6rem 0 0; }
 .privacy-note { font-size: .76rem; color: #94a3b8; margin: .7rem 0 0; }
 .privacy-note a { color: #93c5fd; }
+.consent-check {
+  flex-basis: 100%; display: flex; align-items: flex-start; gap: .45rem;
+  font-size: .78rem; color: var(--ink-soft); cursor: pointer; text-align: left;
+}
+.consent-check input { margin-top: .15rem; accent-color: var(--brand); flex: 0 0 auto; }
+.result-gate .consent-check { color: #94a3b8; }
+.gate-role {
+  flex: 1 1 100%; padding: .55rem .7rem; border-radius: var(--radius-sm);
+  border: 1px solid var(--line); background: #fff; color: var(--ink-soft); font-size: .88rem;
+}
+
+/* ---------- Athlete gate: visible range + gated exact figure ---------- */
+.gate-range {
+  font-family: var(--display); font-weight: 800; color: var(--ink);
+  font-size: clamp(1.9rem, 6vw, 2.7rem); line-height: 1.1; margin: .35rem 0 .1rem;
+  font-variant-numeric: tabular-nums;
+}
+.gate-range .range-to { font-size: .55em; font-weight: 600; color: var(--ink-soft); padding: 0 .15em; }
+.gate-asof { font-size: .82rem; color: var(--ink-soft); margin: 0 0 .8rem; }
+.nil-gate .result-bars.static { text-align: left; max-width: 420px; margin: 0 auto 1rem; }
+.nil-gate .bar-track { background: #e2e8f0; }
+.nil-gate .bar-head { color: var(--ink-soft); font-size: .8rem; }
+.gate-exact .big-number {
+  font-family: var(--display); font-weight: 800; color: var(--ink);
+  background: none; -webkit-background-clip: initial; background-clip: initial;
+  font-size: clamp(2.1rem, 6.5vw, 2.9rem); margin: .3rem 0 .1rem;
+}
+.gate-exact .gate-note { font-size: .82rem; color: var(--ink-soft); margin: 0 0 .6rem; }
+.nil-gate.unlocked .gate-pitch, .nil-gate.unlocked .gate-form { display: none; }
+.compare-range { font-size: .85rem; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+
+/* ---------- Homepage top-25 table ---------- */
+.table-scroll { overflow-x: auto; }
+.rank-table { width: 100%; }
+.rank-table td.num, .rank-table th:last-child { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
 .share-btn {
   width: 100%; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.18);
   color: #fff; padding: .75rem; border-radius: 999px; font-weight: 600; cursor: pointer; font-size: .95rem;
@@ -428,12 +462,12 @@ input[type=range]::-moz-range-thumb {
 /* Email gate (result card + athlete page) */
 .result-gate { text-align: center; padding: 10px 6px; }
 .result-gate .result-eyebrow { color: #93c5fd; }
-.big-number.blurred, .gate-locked .big-number {
+.big-number.blurred {
   font-family: var(--display); font-weight: 800; font-size: clamp(2rem, 6vw, 2.8rem);
   filter: blur(7px); user-select: none; margin: .3rem 0 .6rem; color: #fff;
 }
 .gate-pitch { color: #cbd5e1; font-size: .92rem; margin: 0 0 1rem; }
-.nil-gate .gate-locked .big-number { color: var(--ink); }
+.nil-gate .gate-pitch { color: var(--ink-soft); }
 .nil-gate {
   margin: 1.2rem 0; padding: 1.4rem; border: 1px solid var(--line); border-radius: var(--radius-sm);
   background: var(--surface-2); text-align: center;
