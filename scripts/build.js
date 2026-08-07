@@ -87,7 +87,7 @@ function analyticsSnippet() {
 
 /* ---------- shared HTML chunks ---------- */
 function head(opts) {
-  const { title, desc, canonical, prefix, jsonld } = opts;
+  const { title, desc, canonical, prefix, jsonld, noindex } = opts;
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -96,6 +96,7 @@ function head(opts) {
   ${analyticsSnippet()}
   <title>${esc(title)}</title>
   <meta name="description" content="${esc(desc)}" />
+  ${noindex ? '<meta name="robots" content="noindex" />' : ''}
   <meta name="theme-color" content="#0b1120" />
   <meta name="nil-base" content="${prefix}" />
   <link rel="canonical" href="${canonical}" />
@@ -146,7 +147,7 @@ function adUnit() {
 function emailCapture(prefix) {
   return `<section class="container narrow">
     <div class="email-capture light">
-      <h4>Get the NIL newsletter 📩</h4>
+      <h4>Get the NIL newsletter</h4>
       <p>Deal breakdowns, valuation updates and athlete brand tips. Free.</p>
       <form class="email-form" action="${FORMSPREE}" method="POST">
         <input type="hidden" name="newsletter" value="yes" />
@@ -191,12 +192,30 @@ function breakdownBars(a) {
      <div class="bar-track"><div class="bar-fill ${b.key}" style="width:${(b.pct * 100).toFixed(0)}%"></div></div></div>`).join('') + `</div>`;
 }
 
-function socialTable(a) {
+/* Social section: table for 2+ platforms, a sentence for 1, omitted entirely for 0.
+   No caption restating the total; one dated note only. */
+function socialSection(a) {
+  const first = esc(a.name.split(' ')[0]);
   const f = a.followers || {};
-  const rows = [
-    ['Instagram', f.instagram], ['TikTok', f.tiktok], ['X / Twitter', f.x], ['YouTube', f.youtube]
-  ].filter(r => r[1]).map(r => `<tr><td>${r[0]}</td><td>~${fmtFollowers(r[1])}</td></tr>`).join('');
-  return rows ? `<table class="data-table"><thead><tr><th>Platform</th><th>Followers (approx.)</th></tr></thead><tbody>${rows}</tbody></table>` : '';
+  const links = Object.fromEntries(handleLinks(a));
+  const plats = [
+    ['Instagram', 'instagram', f.instagram], ['TikTok', 'tiktok', f.tiktok],
+    ['X / Twitter', 'x', f.x], ['YouTube', 'youtube', f.youtube]
+  ].filter(p => p[2]);
+  if (!plats.length) return '';
+  const label = (p) => links[p[1]] ? `<a href="${links[p[1]]}" rel="nofollow noopener" target="_blank">${p[0]}</a>` : p[0];
+  let body;
+  if (plats.length === 1) {
+    const p = plats[0];
+    body = `<p>${first}'s public social presence is about ~${fmtFollowers(p[2])} followers on ${label(p)}. Follower figures are approximate, as of ${FOLLOWERS_AS_OF}.</p>`;
+  } else {
+    body = `<table class="data-table"><thead><tr><th>Platform</th><th>Followers (approx.)</th></tr></thead><tbody>` +
+      plats.map(p => `<tr><td>${label(p)}</td><td>~${fmtFollowers(p[2])}</td></tr>`).join('') +
+      `</tbody></table>
+      <p class="muted">Follower figures are approximate, as of ${FOLLOWERS_AS_OF}.</p>`;
+  }
+  return `<h2>${first}'s social media following</h2>
+      ${body}`;
 }
 
 /* Unique, data-derived summary per athlete (keeps pages distinct + accurate). */
@@ -221,37 +240,56 @@ function uniqueSummary(a, team) {
     parts.push(`${first} has about ${fmtFollowers(tot)} followers across social media${lead ? `, led by ${fmtFollowers(lead[1])} on ${lead[0]}` : ''}, a core driver of ${sport} NIL value.`);
   }
   parts.push(a.reported
-    ? `${first}'s NIL value shown here reflects publicly reported figures${a.source ? `, per ${esc(a.source)}` : ''}; enter your email above to see the number and the full breakdown.`
-    : `${first}'s NIL value shown here is a modeled estimate based on audience, on-field role, market and sport; enter your email above to see the number and the full breakdown.`);
+    ? `${first}'s figure reflects publicly reported figures, per ${esc(a.source || 'public reporting')}.`
+    : `${first}'s figure is a modeled estimate based on audience, on-field role, market and sport.`);
   return parts.join(' ');
 }
 
 /* ---------- athlete page enrichment helpers ---------- */
 const LEVEL_LABEL = { power: 'NCAA Division I (Power conference)', d1: 'NCAA Division I', d2: 'NCAA Division II', d3: 'NCAA Division III', naia: 'NAIA', juco: 'JUCO', hs: 'High school' };
+const ROLE_LABEL = { star: 'Star / headline name', starter: 'Projected starter', rotation: 'Rotation / two-deep candidate', depth: 'Roster depth', walkon: 'Roster depth' };
+const capFirst = s => s ? s.charAt(0).toUpperCase() + s.slice(1) : s;
+
+const HANDLE_URL = {
+  instagram: h => `https://www.instagram.com/${h}/`,
+  tiktok: h => `https://www.tiktok.com/@${h}`,
+  x: h => `https://x.com/${h}`,
+  youtube: h => `https://www.youtube.com/@${h}`
+};
+function handleLinks(a) {
+  const out = [];
+  for (const [plat, fn] of Object.entries(HANDLE_URL)) {
+    const raw = a.handles && a.handles[plat];
+    if (raw) out.push([plat, fn(String(raw).replace(/^@/, ''))]);
+  }
+  return out;
+}
 
 function quickFacts(a, team) {
   const rows = [['Sport', a.sport], ['Position', a.position], ['School', team.name]];
   if (team.conference) rows.push(['Conference', team.conference]);
+  if (a.class) rows.push(['Class', capFirst(a.class)]);
+  if (a.hometown) rows.push(['Hometown', a.hometown]);
+  if (a.jersey) rows.push(['Jersey', '#' + a.jersey]);
+  if (a.roleTier && ROLE_LABEL[a.roleTier] && !a.former) rows.push(['2026 role', ROLE_LABEL[a.roleTier]]);
   rows.push(['Level', LEVEL_LABEL[a.level] || 'College']);
   if (a.former && a.nowWith) rows.push(['Now with', a.nowWith]);
   return `<table class="data-table facts"><tbody>` +
     rows.map(r => `<tr><td>${esc(r[0])}</td><td>${esc(r[1])}</td></tr>`).join('') + `</tbody></table>`;
 }
 
-/* Shared FAQ content (used for both the visible FAQ and the JSON-LD FAQPage). */
-function faqItems(a, team) {
+/* Visible FAQ content. Two genuinely distinct questions only; no restatement
+   of data shown elsewhere on the page. FAQPage JSON-LD is deliberately NOT
+   emitted: Google retired FAQ rich results for all sites in May 2026. */
+function faqItems(a, team, lo, hi) {
   const name = a.name, first = a.name.split(' ')[0];
-  const doesDid = a.former ? 'did' : 'does', playsPlayed = a.former ? 'played' : 'plays';
-  const yr = a.former ? '' : '2026 ', conf = team.conference || '', tot = totalFollowers(a);
+  const doesDid = a.former ? 'did' : 'does';
+  const yr = a.former ? '' : '2026 ';
   return [
     { q: `How much ${doesDid} ${name} make in NIL?`,
-      a: `${name}'s ${yr}NIL value on HowMuchNIL is ${a.reported ? `anchored to publicly reported figures${a.source ? `, per ${a.source}` : ''}` : 'a modeled estimate of 12-month name, image and likeness earning potential'}. Enter your email on this page to unlock the exact figure, the likely range, and the full breakdown. It is an estimate of earning potential, not a confirmed salary.` },
-    { q: `What is ${name}'s NIL value based on?`,
-      a: `Four factors: audience (social reach and engagement), on-field performance and role, school and market size, and the sport and position.${tot > 0 ? ` ${first} has about ${fmtFollowers(tot)} followers across social media.` : ''}` },
-    { q: `What team ${doesDid} ${name} play for?`,
-      a: `${name} ${playsPlayed} ${(a.position || 'athlete').toLowerCase()} for the ${team.name}${conf ? ` in the ${conf}` : ''}${a.former && a.nowWith ? `, and is now with ${a.nowWith}` : ''}.` },
-    { q: `${a.former ? 'Did' : 'Does'} ${name} have NIL deals?`,
-      a: `The number shown is an estimate of ${first}'s 12-month NIL earning potential, not a list of signed contracts. ${a.reported ? 'It is anchored to publicly reported figures.' : 'The deals an athlete actually signs can differ from any estimate.'}` }
+      a: `${name}'s ${yr}estimated NIL value falls between ${moneyShort(lo)} and ${moneyShort(hi)}, ${a.reported ? `anchored to publicly reported figures${a.source ? `, per ${a.source}` : ''}` : 'a modeled estimate of 12-month name, image and likeness earning potential'}. The exact figure and the full breakdown are free on this page with an email.` },
+    { q: `Is that ${first}'s salary or net worth?`,
+      a: `No. The figure estimates what ${first} could earn from name, image and likeness deals over 12 months, such as endorsements, appearances and social media. It is not a salary, not a signed contract, and not ${first}'s net worth. ${a.reported ? 'It is anchored to publicly reported figures.' : 'The deals an athlete actually signs can differ from any estimate.'}` }
   ];
 }
 
@@ -263,10 +301,11 @@ function comparables(a) {
   if (!picks.length) return '';
   const items = picks.map(p => {
     const pt = DATA.teams[p.team] || {};
-    return `<li><a href="../../athlete/${p.slug}/index.html">${esc(p.name)}</a> <span class="muted">(${esc(p.position)}, ${esc(pt.name || p.team)})</span></li>`;
+    const plo = p.low || Math.round(p.valuation * 0.8), phi = p.high || Math.round(p.valuation * 1.25);
+    return `<li><a href="../../athlete/${p.slug}/index.html">${esc(p.name)}</a> <span class="muted">(${esc(p.position)}, ${esc(pt.name || p.team)})</span> <span class="compare-range">${moneyShort(plo)} to ${moneyShort(phi)}</span></li>`;
   }).join('');
   return `<h2>Players with a similar NIL profile</h2>
-      <p>Other ${esc((a.sport || '').toLowerCase())} players whose estimated NIL value lands in a similar range. Open any profile to see how its valuation breaks down.</p>
+      <p>Other ${esc((a.sport || '').toLowerCase())} players whose estimated NIL value lands in a similar range.</p>
       <ul class="compare-list">${items}</ul>`;
 }
 function athletePage(a) {
@@ -280,25 +319,31 @@ function athletePage(a) {
   const desc = a.former
     ? `What was ${a.name}'s NIL value at ${team.name}? See the ${a.sport.toLowerCase()} ${a.position.toLowerCase()}'s estimated NIL valuation, social following and how it is figured${a.nowWith ? `, now that ${fn} is with ${a.nowWith}` : ''}.`
     : `What is ${a.name}'s NIL value? See the ${team.name} ${a.position.toLowerCase()}'s estimated 2026 NIL valuation, social following and how it is calculated. Free.`;
+  const person = { "@type": "Person", "name": a.name, "jobTitle": `${a.position}, ${team.name}`,
+    "affiliation": { "@type": "SportsTeam", "name": team.name }, "url": url };
+  const sameAs = handleLinks(a).map(h => h[1]);
+  if (sameAs.length) person.sameAs = sameAs;
   const jsonld = {
     "@context": "https://schema.org",
     "@graph": [
-      { "@type": "Person", "name": a.name, "jobTitle": `${a.position}, ${team.name}`,
-        "affiliation": { "@type": "SportsTeam", "name": team.name }, "url": url },
+      person,
       { "@type": "BreadcrumbList", "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Athletes", "item": `${SITE_URL}/athletes/` },
         { "@type": "ListItem", "position": 2, "name": a.name, "item": url }
       ]},
-      { "@type": "FAQPage", "mainEntity": faqItems(a, team).map(it => (
-        { "@type": "Question", "name": it.q, "acceptedAnswer": { "@type": "Answer", "text": it.a } })) }
+      /* Paywalled-content markup per Google's gated-content guidance: the exact
+         figure is real text in the DOM, hidden until email unlock. */
+      { "@type": "WebPage", "url": url, "name": title, "isAccessibleForFree": "False",
+        "hasPart": { "@type": "WebPageElement", "isAccessibleForFree": "False", "cssSelector": ".gate-exact" } }
     ]
   };
 
   const lo = a.low || Math.round(a.valuation * 0.8);
   const hi = a.high || Math.round(a.valuation * 1.25);
   const barsJson = esc(JSON.stringify(breakdown(a).map(b => ({ key: b.key, label: b.label, pct: b.pct }))));
+  const note = (a.reported ? 'Based on publicly reported figures' : 'Modeled estimate') + (a.former ? ' · final season in college' : ' · 12-month earning potential');
 
-  return head({ title, desc, canonical: url, prefix, jsonld }) + `
+  return head({ title, desc, canonical: url, prefix, jsonld, noindex: !!a.thin }) + `
     <section class="container narrow athlete-hero">
       <nav class="crumbs"><a href="${prefix}athletes/index.html">Athletes</a> › <span>${esc(a.name)}</span></nav>
       <h1>How much ${a.former ? 'did' : 'does'} ${esc(a.name)} make in NIL?</h1>
@@ -310,9 +355,15 @@ function athletePage(a) {
            data-note="${esc((a.reported ? 'Based on publicly reported figures' : 'Modeled estimate') + (a.former ? ' · final season in college' : ' · 12-month earning potential'))}"
            data-bars="${barsJson}">
         <div class="gate-locked">
-          <span class="result-eyebrow">🔒 ${a.former ? 'Final college NIL valuation' : 'Estimated 2026 NIL valuation'}</span>
-          <div class="big-number blurred" aria-hidden="true">$•,•••,•••</div>
-          <p class="gate-pitch">Enter your email to unlock ${esc(a.name.split(' ')[0])}'s estimated NIL value, the likely range, and the full breakdown. Free.</p>
+          <span class="result-eyebrow">${a.former ? 'Final college NIL valuation' : 'Estimated 2026 NIL valuation'}</span>
+          <div class="gate-range">${moneyShort(lo)} <span class="range-to">to</span> ${moneyShort(hi)}</div>
+          <p class="gate-asof">Estimated range as of ${FOLLOWERS_AS_OF}. ${a.reported ? 'Anchored to publicly reported figures.' : 'Modeled estimate, not a confirmed deal.'}</p>
+          ${breakdownBars(a)}
+          <div class="gate-exact" hidden>
+            <div class="big-number"><span data-nosnippet>${money(a.valuation)}</span></div>
+            <p class="gate-note">${esc(note)}</p>
+          </div>
+          <p class="gate-pitch">Enter your email to see ${esc(a.name.split(' ')[0])}'s exact estimated figure and the full breakdown. Free.</p>
           <form class="gate-form email-form" action="${FORMSPREE}" method="POST">
             <input type="hidden" name="_subject" value="NIL unlock: ${esc(a.name)}" />
             <input type="hidden" name="mode" value="Athlete page" />
@@ -323,6 +374,14 @@ function athletePage(a) {
             <input type="hidden" name="page" value="athlete/${a.slug}" />
             <input type="email" name="email" required placeholder="you@email.com" aria-label="Email address" />
             <button type="submit" class="btn btn-primary">Unlock the value</button>
+            <select name="role" class="gate-role" aria-label="I am a">
+              <option value="" selected>I am a… (optional)</option>
+              <option>Fan</option>
+              <option>Athlete</option>
+              <option>Parent or guardian</option>
+              <option>Agent or advisor</option>
+              <option>Brand or collective</option>
+            </select>
             <label class="consent-check"><input type="checkbox" name="newsletter" value="yes" /> Also send me the free newsletter: college football, NIL deals and valuation updates</label>
           </form>
           <p class="privacy-note">No spam. Unsubscribe anytime. <a href="${prefix}privacy.html">Privacy</a>.</p>
@@ -333,12 +392,13 @@ function athletePage(a) {
     ${adUnit()}
     <section class="container narrow">
       <h2>What ${a.former ? 'was' : 'is'} ${esc(a.name)}'s NIL value?</h2>
-      <p>${uniqueSummary(a, team)}</p>
+      <p>As of ${FOLLOWERS_AS_OF}, ${esc(a.name)}'s estimated NIL value falls between ${moneyShort(lo)} and ${moneyShort(hi)}. ${uniqueSummary(a, team)}</p>
       ${quickFacts(a, team)}
 
-      <h2>${esc(a.name.split(' ')[0])}'s social media following</h2>
-      ${socialTable(a) || '<p>We\'ll add social numbers soon.</p>'}
-      ${totalFollowers(a) ? `<p class="muted">That's about ${fmtFollowers(totalFollowers(a))} followers in all. Follower figures are approximate and were last updated ${FOLLOWERS_AS_OF}.</p>` : ''}
+      ${socialSection(a)}
+
+      ${team.nilContext ? `<h2>NIL at ${esc(team.name)}</h2>
+      <p>${esc(team.nilContext)}</p>` : ''}
 
       <h2>How NIL value is calculated</h2>
       <p>An NIL value is an estimate of what an athlete could earn from name, image and likeness over 12 months, not a salary or a confirmed deal. We weigh audience (social reach and engagement), performance and role, school and market, and the sport and position.${a.reported && a.source ? ` Where a public figure exists, we sense-check against it; this valuation is anchored to <a href="${a.sourceUrl}" rel="nofollow noopener" target="_blank">${esc(a.source)}</a>.` : ` No exact NIL figure is publicly disclosed for ${esc(a.name.split(' ')[0])}, so the value shown here is a modeled estimate.`} <a href="${prefix}guide/how-nil-valuations-work/index.html">See how NIL valuations work</a>.</p>
@@ -346,7 +406,7 @@ function athletePage(a) {
       ${comparables(a)}
 
       <h2>${esc(a.name.split(' ')[0])} NIL FAQ</h2>
-      <div class="faq">${faqItems(a, team).map(it => `<h3>${esc(it.q)}</h3><p>${esc(it.a)}</p>`).join('')}</div>
+      <div class="faq">${faqItems(a, team, lo, hi).map(it => `<h3>${esc(it.q)}</h3><p>${esc(it.a)}</p>`).join('')}</div>
 
       <div class="cta-inline">
         <p><strong>Curious about another player?</strong> Look one up or estimate any athlete in seconds.</p>
@@ -467,6 +527,18 @@ writeFile(path.join('guides', 'index.html'), guidesIndex());
 /* Live athlete count, rounded down to a clean number for the homepage copy. */
 const COUNT_LABEL = Math.floor(DATA.athletes.length / 10) * 10 + '+';
 
+/* Homepage top-25 valuations table, stamped between TOP25 markers. */
+const top25 = [...DATA.athletes].filter(a => !a.former).sort((x, y) => y.valuation - x.valuation).slice(0, 25);
+const TOP25_TABLE = `<div class="table-scroll"><table class="data-table rank-table">
+  <thead><tr><th>#</th><th>Athlete</th><th>Team</th><th>Position</th><th>Est. range</th></tr></thead>
+  <tbody>${top25.map((a, i) => {
+    const t = DATA.teams[a.team] || { name: a.team };
+    const lo = a.low || Math.round(a.valuation * 0.8), hi = a.high || Math.round(a.valuation * 1.25);
+    return `<tr><td>${i + 1}</td><td><a href="athlete/${a.slug}/index.html">${esc(a.name)}</a></td><td>${esc(t.name)}</td><td>${esc(a.position)}</td><td class="num">${moneyShort(lo)} to ${moneyShort(hi)}</td></tr>`;
+  }).join('')}</tbody>
+</table></div>
+<p class="muted">Estimated ranges as of ${FOLLOWERS_AS_OF}. Open a profile for the breakdown and comparables.</p>`;
+
 /* Stamp the current asset version onto the hand-written static pages too. */
 ['index.html', 'about.html', 'privacy.html', 'terms.html', 'contact.html'].forEach(f => {
   const fp = path.join(ROOT, f);
@@ -474,7 +546,8 @@ const COUNT_LABEL = Math.floor(DATA.athletes.length / 10) * 10 + '+';
   const out = fs.readFileSync(fp, 'utf8')
     .replace(/(assets\/css\/styles\.css|assets\/js\/calculator\.js)(\?v=[a-z0-9]+)?/g, `$1?v=${ASSET_VER}`)
     .replace(/<!-- ANALYTICS:START -->[\s\S]*?<!-- ANALYTICS:END -->/, `<!-- ANALYTICS:START -->${analyticsSnippet()}<!-- ANALYTICS:END -->`)
-    .replace(/<!-- COUNT:START -->[\s\S]*?<!-- COUNT:END -->/g, `<!-- COUNT:START -->${COUNT_LABEL}<!-- COUNT:END -->`);
+    .replace(/<!-- COUNT:START -->[\s\S]*?<!-- COUNT:END -->/g, `<!-- COUNT:START -->${COUNT_LABEL}<!-- COUNT:END -->`)
+    .replace(/<!-- TOP25:START -->[\s\S]*?<!-- TOP25:END -->/g, `<!-- TOP25:START -->${TOP25_TABLE}<!-- TOP25:END -->`);
   fs.writeFileSync(fp, out);
   console.log('  stamped', f, '→ v=' + ASSET_VER);
 });
@@ -499,7 +572,7 @@ const urls = [
   `${SITE_URL}/terms.html`,
   `${SITE_URL}/guides/`,
   ...GUIDES.map(g => `${SITE_URL}/guide/${g.slug}/`),
-  ...athletes.map(a => `${SITE_URL}/athlete/${a.slug}/`)
+  ...athletes.filter(a => !a.thin).map(a => `${SITE_URL}/athlete/${a.slug}/`)
 ];
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
