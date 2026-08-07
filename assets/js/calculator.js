@@ -423,6 +423,51 @@
     }
   }
 
+  /* ---------- Header search (every generated page) ---------- */
+  var hdrInput = $('hdr-search-input');
+  if (hdrInput) {
+    var hdrBox = $('hdr-search-results');
+    loadIndex(function (list) {
+      function hclose() { hdrBox.hidden = true; hdrBox.innerHTML = ''; }
+      hdrInput.addEventListener('input', function () {
+        var q = hdrInput.value.trim().toLowerCase();
+        if (q.length < 2) { hclose(); return; }
+        var hits = list.filter(function (p) { return p.name.toLowerCase().indexOf(q) > -1 ||
+          (p.team && p.team.toLowerCase().indexOf(q) > -1); }).slice(0, 8);
+        hdrBox.hidden = false;
+        hdrBox.innerHTML = hits.length ? hits.map(function (p) {
+          return '<a class="search-item" href="' + BASE + 'athlete/' + p.slug + '/index.html">' +
+            '<strong>' + p.name + '</strong><span>' + p.position + ' · ' + p.team +
+            (p.former ? ' · former' : '') + '</span></a>';
+        }).join('') : '<div class="search-empty">No match yet. More athletes are added weekly.</div>';
+      });
+      document.addEventListener('click', function (e) {
+        if (!hdrBox.contains(e.target) && e.target !== hdrInput) hclose();
+      });
+    });
+  }
+
+  /* ---------- Newsletter and CTA forms resolve inline (no Formspree page) ---------- */
+  Array.prototype.forEach.call(
+    document.querySelectorAll('form.email-form[action*="formspree"], form.cta-form[action*="formspree"]'),
+    function (f) {
+      if (f.classList.contains('gate-form') || f.id === 'gate-form') return;
+      f.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var email = f.querySelector('input[type="email"]');
+        if (email && !email.checkValidity()) { email.reportValidity(); return; }
+        function done() {
+          f.style.display = 'none';
+          var note = document.createElement('p');
+          note.className = 'email-success';
+          note.textContent = "You're subscribed!";
+          f.parentNode.appendChild(note);
+        }
+        fetch(f.getAttribute('action'), { method: 'POST', headers: { 'Accept': 'application/json' }, body: new FormData(f) })
+          .then(done).catch(done);
+      });
+    });
+
   /* ---------- Newsletter forms (no result gate) ---------- */
   function wireNewsletter(formId, successId) {
     var f = $(formId);

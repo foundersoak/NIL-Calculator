@@ -119,11 +119,14 @@ function head(opts) {
         <span class="brand-mark" aria-hidden="true">$</span>
         <span class="brand-text">HowMuch<span class="brand-accent">NIL</span></span>
       </a>
+      <div class="hdr-search">
+        <input id="hdr-search-input" type="search" placeholder="Search players or teams" autocomplete="off" aria-label="Search players" />
+        <div class="search-results" id="hdr-search-results" hidden></div>
+      </div>
       <nav class="nav-links">
         <a href="${prefix}athletes/index.html">Athletes</a>
         <a href="${prefix}guides/index.html">Guides</a>
         <a href="${prefix}index.html#calculator">Calculator</a>
-        <a href="${prefix}index.html#how">How it works</a>
         <a class="nav-cta" href="${prefix}index.html#calculator">Look up a player</a>
       </nav>
     </div>
