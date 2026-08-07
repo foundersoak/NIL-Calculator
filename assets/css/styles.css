@@ -641,3 +641,12 @@ input[type=range]::-moz-range-thumb {
 .jump-pill:hover { border-color: #166534; color: #166534; }
 .team-jump { padding: .38rem .6rem; border: 1px solid var(--line); border-radius: 8px; background: #fff; color: var(--ink); font-size: .88rem; max-width: 240px; }
 .crumbs-row { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+
+.portal-full { grid-column: 1 / -1; }
+.nl-module { border-color: #86efac; background: #f0fdf4; margin-bottom: 0; }
+.nl-module .module-hd { background: transparent; color: #166534; font-size: 1.05rem; border-bottom: 1px solid #bbf7d0; }
+.nl-module .module-bd { padding: .9rem 1rem; }
+.nl-module .mod-note { color: #14532d; font-size: .95rem; }
+.nl-module .btn-primary { background: #166534; }
+.nl-module .btn-primary:hover { background: #14532d; }
+.nl-module .cta-form input[type="email"] { border-color: #bbf7d0; background: #fff; }

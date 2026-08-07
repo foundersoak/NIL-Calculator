@@ -402,7 +402,7 @@ function athletePage(a) {
               <option>Agent or advisor</option>
               <option>Brand or collective</option>
             </select>
-            <label class="consent-check"><input type="checkbox" name="newsletter" value="yes" /> Also send me the free newsletter: college football, NIL deals and valuation updates</label>
+            <label class="consent-check"><input type="checkbox" name="newsletter" value="yes" /> Also send me the free newsletter: college sports, NIL deals and valuation updates</label>
           </form>
           <p class="privacy-note">No spam. Unsubscribe anytime. <a href="${prefix}privacy.html">Privacy</a>.</p>
         </div>
