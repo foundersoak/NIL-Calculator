@@ -629,3 +629,9 @@ input[type=range]::-moz-range-thumb {
 .nl-row { display: flex; align-items: center; gap: 1.2rem; flex-wrap: wrap; }
 .nl-row .mod-note { margin: 0; flex: 1 1 280px; }
 .nl-row .cta-form { flex: 1 1 320px; justify-content: flex-end; }
+
+.brand-logo-sm { border-radius: 7px; }
+.conf-module { margin-bottom: 18px; }
+.team-context { margin: .6rem 0 0; color: var(--ink); }
+.roster-table td, .roster-table th { padding: .5rem .6rem; }
+.site-footer .brand-text { color: var(--ink); }
