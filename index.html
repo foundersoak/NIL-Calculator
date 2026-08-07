@@ -23,7 +23,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/styles.css?v=6aee918e" />
+  <link rel="stylesheet" href="assets/css/styles.css?v=94f5a9f0" />
 
   <!-- Structured data for SEO -->
   <script type="application/ld+json">
@@ -41,24 +41,26 @@
 </head>
 <body>
   <header class="site-header">
-    <div class="container nav">
+    <div class="container mast">
       <a class="brand" href="index.html">
         <span class="brand-mark" aria-hidden="true">$</span>
         <span class="brand-text">HowMuch<span class="brand-accent">NIL</span></span>
       </a>
       <div class="hdr-search">
-        <input id="hdr-search-input" type="search" placeholder="Search players or teams" autocomplete="off" aria-label="Search players" />
+        <input id="hdr-search-input" type="search" placeholder="Search a player or team" autocomplete="off" aria-label="Search players" />
         <div class="search-results" id="hdr-search-results" hidden></div>
       </div>
-      <nav class="nav-links">
-        <a href="athletes/index.html">Athletes</a>
-        <a href="guides/index.html">Articles</a>
-        <a href="#how">How it works</a>
-        <a href="#faq">FAQ</a>
-        <a class="nav-cta" href="#calculator">Look up a player</a>
-      </nav>
     </div>
   </header>
+  <nav class="subnav">
+    <div class="container subnav-in">
+      <a href="athletes/index.html">Athletes</a>
+      <a href="#top25">Top 25</a>
+      <a href="guides/index.html">Articles</a>
+      <a href="#calculator">Calculator</a>
+      <a href="about.html">About</a>
+    </div>
+  </nav>
 
   <main>
     
@@ -76,23 +78,57 @@
     </div>
     -->
 
-    <section class="container home-intro">
-      <h1>College athlete NIL valuations</h1>
-      <p class="home-sub">Estimated NIL value ranges, social reach and roles for <!-- COUNT:START -->8280+<!-- COUNT:END --> college athletes across every Power Four football roster and more. Updated monthly. <a href="about.html">How the numbers work</a>.</p>
-    </section>
+    <div class="tagline-strip">
+      <div class="container"><h1>College athlete NIL valuations</h1> <p>Estimated NIL value ranges, social reach and roles for <!-- COUNT:START -->8280+<!-- COUNT:END --> college athletes. Updated monthly. <a href="about.html">How the numbers work</a>.</p></div>
+    </div>
 
-    <!-- TOP VALUATIONS -->
-    <section class="how-section" style="padding-top:40px">
-      <div class="container">
-        <h2 class="section-h">Top 25 NIL valuations</h2>
-        <p class="section-lede">The highest estimated NIL values in the database right now. <a href="athletes/index.html">Browse all athletes</a>.</p>
-        <!-- TOP25:START --><div class="table-scroll"><table class="data-table rank-table">
+    <div class="container portal-grid">
+      <div class="portal-col">
+        <!-- PORTAL:START --><div class="module">
+  <div class="module-hd">8,288 college athletes</div>
+  <div class="module-bd">
+    <p class="mod-note">Estimated NIL value ranges for every Power Four football roster, plus baseball, basketball, softball and more. Updated August 2026.</p>
+    <p class="mod-label">Trending player pages</p>
+    <p class="linklist"><a href="athlete/tre-phelps/index.html">Tre Phelps</a>, <a href="athlete/carson-tinney/index.html">Carson Tinney</a>, <a href="athlete/arch-manning/index.html">Arch Manning</a>, <a href="athlete/jeremiah-smith/index.html">Jeremiah Smith</a>, <a href="athlete/brendan-sorsby/index.html">Brendan Sorsby</a>, <a href="athlete/aj-dybantsa/index.html">AJ Dybantsa</a>, <a href="athlete/lj-mercurius/index.html">LJ Mercurius</a>, <a href="athlete/anthony-pack-jr/index.html">Anthony Pack Jr.</a>, <a href="athlete/malachi-toney/index.html">Malachi Toney</a>, <a href="athlete/whit-weeks/index.html">Whit Weeks</a></p>
+    <p class="mod-label">Recently updated</p>
+    <p class="linklist"><a href="athlete/aiden-hall-wake-forest/index.html">Aiden Hall</a>, <a href="athlete/dj-johnson-wake-forest/index.html">D.J. Johnson</a>, <a href="athlete/zach-lohavichan/index.html">Zach Lohavichan</a>, <a href="athlete/sydir-mitchell/index.html">Sydir Mitchell</a>, <a href="athlete/connor-calvert/index.html">Connor Calvert</a>, <a href="athlete/landon-morris/index.html">Landon Morris</a>, <a href="athlete/john-ohnegian/index.html">John Ohnegian</a>, <a href="athlete/george-steih/index.html">George Steih</a>, <a href="athlete/clinton-richard/index.html">Clinton Richard</a>, <a href="athlete/ryan-berger/index.html">Ryan Berger</a></p>
+    <p class="mod-more"><a href="athletes/index.html">Browse all athletes</a></p>
+  </div>
+</div><!-- PORTAL:END -->
+      </div>
+      <div class="portal-col portal-main">
+        <div class="module" id="top25">
+          <div class="module-hd">Top 25 NIL valuations</div>
+          <div class="module-bd">
+            <!-- TOP25:START --><div class="table-scroll"><table class="data-table rank-table">
   <thead><tr><th>#</th><th>Athlete</th><th>Team</th><th>Position</th><th>Est. range</th></tr></thead>
   <tbody><tr><td>1</td><td><a href="athlete/darian-mensah/index.html">Darian Mensah</a></td><td>Miami Hurricanes</td><td>Quarterback</td><td class="num">$5.2M to $8.1M</td></tr><tr><td>2</td><td><a href="athlete/arch-manning/index.html">Arch Manning</a></td><td>Texas Longhorns</td><td>Quarterback</td><td class="num">$4.3M to $6.8M</td></tr><tr><td>3</td><td><a href="athlete/trinidad-chambliss/index.html">Trinidad Chambliss</a></td><td>Ole Miss Rebels</td><td>Quarterback</td><td class="num">$4M to $6.3M</td></tr><tr><td>4</td><td><a href="athlete/jeremiah-smith/index.html">Jeremiah Smith</a></td><td>Ohio State Buckeyes</td><td>Wide Receiver</td><td class="num">$3.4M to $5.3M</td></tr><tr><td>5</td><td><a href="athlete/aj-dybantsa/index.html">AJ Dybantsa</a></td><td>BYU Cougars</td><td>Guard/Forward</td><td class="num">$3.4M to $5.3M</td></tr><tr><td>6</td><td><a href="athlete/sam-leavitt/index.html">Sam Leavitt</a></td><td>LSU Tigers</td><td>Quarterback</td><td class="num">$3.2M to $5M</td></tr><tr><td>7</td><td><a href="athlete/jordan-seaton/index.html">Jordan Seaton</a></td><td>LSU Tigers</td><td>Offensive Lineman</td><td class="num">$3.2M to $5M</td></tr><tr><td>8</td><td><a href="athlete/demond-williams-jr/index.html">Demond Williams Jr.</a></td><td>Washington Huskies</td><td>Quarterback</td><td class="num">$3.2M to $5M</td></tr><tr><td>9</td><td><a href="athlete/lanorris-sellers/index.html">LaNorris Sellers</a></td><td>South Carolina Gamecocks</td><td>Quarterback</td><td class="num">$3.0M to $4.6M</td></tr><tr><td>10</td><td><a href="athlete/dj-lagway/index.html">DJ Lagway</a></td><td>Baylor Bears</td><td>Quarterback</td><td class="num">$3.0M to $4.6M</td></tr><tr><td>11</td><td><a href="athlete/drew-mestemaker/index.html">Drew Mestemaker</a></td><td>Oklahoma State Cowboys</td><td>Quarterback</td><td class="num">$2.8M to $4.4M</td></tr><tr><td>12</td><td><a href="athlete/dante-moore/index.html">Dante Moore</a></td><td>Oregon Ducks</td><td>Quarterback</td><td class="num">$2.4M to $3.8M</td></tr><tr><td>13</td><td><a href="athlete/bryce-underwood/index.html">Bryce Underwood</a></td><td>Michigan Wolverines</td><td>Quarterback</td><td class="num">$2.4M to $3.8M</td></tr><tr><td>14</td><td><a href="athlete/byrum-brown/index.html">Byrum Brown</a></td><td>Auburn Tigers</td><td>Quarterback</td><td class="num">$2.4M to $3.8M</td></tr><tr><td>15</td><td><a href="athlete/mason-heintschel/index.html">Mason Heintschel</a></td><td>Pittsburgh Panthers</td><td>Quarterback</td><td class="num">$2.4M to $3.8M</td></tr><tr><td>16</td><td><a href="athlete/jaron-keawe-sagapolutele/index.html">Jaron-Keawe Sagapolutele</a></td><td>California Golden Bears</td><td>Quarterback</td><td class="num">$2.4M to $3.8M</td></tr><tr><td>17</td><td><a href="athlete/cam-coleman/index.html">Cam Coleman</a></td><td>Texas Longhorns</td><td>Wide Receiver</td><td class="num">$2.3M to $3.6M</td></tr><tr><td>18</td><td><a href="athlete/jt-toppin/index.html">JT Toppin</a></td><td>Texas Tech Red Raiders</td><td>Power Forward</td><td class="num">$2.2M to $3.5M</td></tr><tr><td>19</td><td><a href="athlete/john-mateer/index.html">John Mateer</a></td><td>Oklahoma Sooners</td><td>Quarterback</td><td class="num">$2.2M to $3.5M</td></tr><tr><td>20</td><td><a href="athlete/justice-haynes/index.html">Justice Haynes</a></td><td>Georgia Tech Yellow Jackets</td><td>Running Back</td><td class="num">$2.1M to $3.3M</td></tr><tr><td>21</td><td><a href="athlete/pj-haggerty/index.html">PJ Haggerty</a></td><td>Texas A&amp;M Aggies</td><td>Guard</td><td class="num">$2M to $3.1M</td></tr><tr><td>22</td><td><a href="athlete/dylan-stewart/index.html">Dylan Stewart</a></td><td>South Carolina Gamecocks</td><td>Edge Rusher</td><td class="num">$2M to $3.1M</td></tr><tr><td>23</td><td><a href="athlete/jayden-maiava/index.html">Jayden Maiava</a></td><td>USC Trojans</td><td>Quarterback</td><td class="num">$2M to $3.1M</td></tr><tr><td>24</td><td><a href="athlete/josh-hoover/index.html">Josh Hoover</a></td><td>Indiana Hoosiers</td><td>Quarterback</td><td class="num">$2M to $3.1M</td></tr><tr><td>25</td><td><a href="athlete/julian-sayin/index.html">Julian Sayin</a></td><td>Ohio State Buckeyes</td><td>Quarterback</td><td class="num">$1.9M to $3M</td></tr></tbody>
 </table></div>
 <p class="muted">Estimated ranges as of August 2026. Open a profile for the breakdown and comparables.</p><!-- TOP25:END -->
+          </div>
+        </div>
       </div>
-    </section>
+      <div class="portal-col">
+        <div class="module">
+          <div class="module-hd">Top headlines</div>
+          <div class="module-bd">
+            <!-- ARTICLES:START --><ul class="headline-list compact"><li><a class="hl-title" href="guide/sec-top-transfers-nil-2026/index.html">The SEC's Most Valuable Transfers of 2026, Ranked by NIL Value</a></li><li><a class="hl-title" href="guide/big-ten-top-transfers-nil-2026/index.html">The Big Ten's Most Valuable Transfers of 2026, Ranked by NIL Value</a></li><li><a class="hl-title" href="guide/big-12-top-transfers-nil-2026/index.html">The Big 12's Most Valuable Transfers of 2026, Ranked by NIL Value</a></li><li><a class="hl-title" href="guide/acc-top-transfers-nil-2026/index.html">The ACC's Most Valuable Transfers of 2026, Ranked by NIL Value</a></li><li><a class="hl-title" href="guide/brendan-sorsby-nil-lawsuit-texas-tech/index.html">Brendan Sorsby's $6M NIL Deal and the Cincinnati Lawsuit, Explained</a></li><li><a class="hl-title" href="guide/texas-oregon-2026-super-regional-nil/index.html">Texas vs Oregon 2026 Super Regional: NIL Stars and the Game 2 Pitching Matchup</a></li><li><a class="hl-title" href="guide/college-baseball-nil-explained/index.html">Do College Baseball Players Get NIL Money? How Baseball NIL Works in 2026</a></li><li><a class="hl-title" href="guide/highest-paid-college-athletes-2026/index.html">Highest-Paid College Athletes by NIL in 2026</a></li></ul>
+<p class="mod-more"><a href="guides/index.html">All articles</a></p><!-- ARTICLES:END -->
+          </div>
+        </div>
+        <div class="module">
+          <div class="module-hd">The NIL newsletter</div>
+          <div class="module-bd">
+            <p class="mod-note">Deal breakdowns, valuation updates and new athletes added to the database. Free.</p>
+            <form class="cta-form" id="cta-email-form" action="https://formspree.io/f/mkoangpz" method="POST">
+              <input type="hidden" name="newsletter" value="yes" />
+              <input type="email" name="email" required placeholder="you@email.com" aria-label="Email address" />
+              <button class="btn btn-primary" type="submit">Subscribe</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- LOOKUP + CALCULATOR -->
     <section id="calculator" class="tool-section">
@@ -301,24 +337,10 @@
     </section>
 
     <!-- GUIDES -->
-    <h2 class="section-h">Latest articles</h2>
-        <!-- ARTICLES:START --><ul class="headline-list"><li><a class="hl-title" href="guide/sec-top-transfers-nil-2026/index.html">The SEC's Most Valuable Transfers of 2026, Ranked by NIL Value</a><span class="hl-meta">2026-07-30</span><p class="hl-dek">Sam Leavitt, Jordan Seaton and the portal additions carrying the biggest NIL price tags into SEC camps this fall, ranked with valuation ranges.</p></li><li><a class="hl-title" href="guide/big-ten-top-transfers-nil-2026/index.html">The Big Ten's Most Valuable Transfers of 2026, Ranked by NIL Value</a><span class="hl-meta">2026-07-30</span><p class="hl-dek">Josh Hoover's move to the defending champs headlines the Big Ten's 2026 portal class. The top transfers in the conference, ranked by NIL valuation range.</p></li><li><a class="hl-title" href="guide/big-12-top-transfers-nil-2026/index.html">The Big 12's Most Valuable Transfers of 2026, Ranked by NIL Value</a><span class="hl-meta">2026-07-30</span><p class="hl-dek">Texas Tech doubled down after a Big 12 title, BYU rebuilt through the blue bloods and a Harvard record-setter landed at TCU. The conference's top 2026 transfers, ranked.</p></li><li><a class="hl-title" href="guide/acc-top-transfers-nil-2026/index.html">The ACC's Most Valuable Transfers of 2026, Ranked by NIL Value</a><span class="hl-meta">2026-07-30</span><p class="hl-dek">Miami made Darian Mensah the most valuable player in college football. The ACC's top 2026 portal additions, ranked by NIL valuation range.</p></li><li><a class="hl-title" href="guide/brendan-sorsby-nil-lawsuit-texas-tech/index.html">Brendan Sorsby's $6M NIL Deal and the Cincinnati Lawsuit, Explained</a><span class="hl-meta">2026-06-09</span><p class="hl-dek">Brendan Sorsby left Cincinnati for a reported $6M Texas Tech NIL package, and now Cincinnati is suing him over a $1M exit fee. The deal, the lawsuit, and the NCAA eligibility ruling, explained.</p></li><li><a class="hl-title" href="guide/texas-oregon-2026-super-regional-nil/index.html">Texas vs Oregon 2026 Super Regional: NIL Stars and the Game 2 Pitching Matchup</a><span class="hl-meta">2026-06-08</span><p class="hl-dek">No. 6 Texas leads No. 11 Oregon 1-0 in the 2026 Austin Super Regional with a trip to Omaha on the line. The Riojas vs Sanford pitching matchup, plus the NIL stars on both rosters.</p></li></ul><!-- ARTICLES:END -->
-        <p class="muted"><a href="guides/index.html">All articles</a></p>
-      </div>
-    </section>
+    
 
     <!-- EMAIL CTA BAND -->
-    <section class="container">
-      <div class="email-capture light">
-        <h4>The NIL newsletter</h4>
-        <p>Deal breakdowns, valuation updates and new athletes added to the database. Free.</p>
-        <form class="cta-form" id="cta-email-form" action="https://formspree.io/f/mkoangpz" method="POST">
-          <input type="hidden" name="newsletter" value="yes" />
-          <input type="email" name="email" required placeholder="you@email.com" aria-label="Email address" />
-          <button class="btn btn-primary" type="submit">Subscribe free</button>
-        </form>
-      </div>
-    </section>
+    
   </main>
 
   <footer class="site-footer">
@@ -347,6 +369,6 @@
     </div>
   </footer>
 
-  <script src="assets/js/calculator.js?v=6aee918e" defer></script>
+  <script src="assets/js/calculator.js?v=94f5a9f0" defer></script>
 </body>
 </html>
