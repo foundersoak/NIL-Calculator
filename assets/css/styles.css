@@ -578,17 +578,17 @@ input[type=range]::-moz-range-thumb {
 .hl-dek { margin: .25rem 0 0; color: var(--ink-soft); font-size: .92rem; max-width: 68ch; line-height: 1.55; }
 
 /* ---------- Baseball-Reference portal anatomy ---------- */
-.mast { display: flex; align-items: center; gap: 18px; padding: 13px 0; }
+.mast { display: flex; align-items: center; gap: 18px; padding: 13px 22px; }
 .mast .hdr-search { flex: 1; margin: 0; max-width: none; }
 .mast .hdr-search input { padding: .6rem .85rem; font-size: .95rem; border-radius: 8px; }
 .subnav { background: #fff; border-bottom: 1px solid var(--line); }
-.subnav-in { display: flex; gap: 1.5rem; padding: .55rem 0; overflow-x: auto; }
+.subnav-in { display: flex; gap: 1.5rem; padding: .55rem 22px; overflow-x: auto; }
 .subnav a { color: var(--ink); font-weight: 600; font-size: .92rem; white-space: nowrap; }
 .subnav a:hover { color: var(--brand); }
 .tagline-strip { background: var(--surface-2); border-bottom: 1px solid var(--line); padding: .55rem 0; }
 .tagline-strip h1 { display: inline; font-size: 1rem; margin: 0 .3rem 0 0; }
 .tagline-strip p { display: inline; color: var(--ink-soft); font-size: .93rem; margin: 0; }
-.portal-grid { display: grid; grid-template-columns: 1fr 1.5fr 1fr; gap: 16px; padding: 18px 0 6px; align-items: start; }
+.portal-grid { display: grid; grid-template-columns: 1fr 1.5fr 1fr; gap: 16px; padding: 18px 22px 6px; align-items: start; }
 @media (max-width: 1000px) { .portal-grid { grid-template-columns: 1fr; } }
 .module { border: 1px solid var(--line); background: #fff; margin-bottom: 16px; border-radius: 4px; overflow: hidden; }
 .module-hd { background: #fff; color: #166534; font-weight: 700; font-size: .95rem; padding: .55rem .85rem .35rem; border-bottom: 1px solid var(--line); }
@@ -611,7 +611,7 @@ input[type=range]::-moz-range-thumb {
 .brand-text { font-size: 1.25rem; }
 .brand-accent { color: #166534; }
 .brand-tag { font-size: .74rem; font-weight: 500; color: var(--ink-soft); }
-.mast { padding: 12px 0; }
+.mast { padding: 12px 22px; }
 .mast .hdr-search input { padding: .65rem .9rem; border: 1px solid #94a3b8; border-radius: 6px; }
 .subnav { border-top: 0; }
 .tagline-strip { background: #fff; border-bottom: 1px solid var(--line); }
