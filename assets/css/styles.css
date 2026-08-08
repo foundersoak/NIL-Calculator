@@ -650,3 +650,15 @@ input[type=range]::-moz-range-thumb {
 .nl-module .btn-primary { background: #166534; }
 .nl-module .btn-primary:hover { background: #14532d; }
 .nl-module .cta-form input[type="email"] { border-color: #bbf7d0; background: #fff; }
+/* ---------- Athlete page: two-column with click-through rail ---------- */
+.athlete-cols { display: grid; grid-template-columns: 1.55fr 1fr; gap: 22px; align-items: start; padding-top: 6px; }
+@media (max-width: 1000px) { .athlete-cols { grid-template-columns: 1fr; } }
+.a-main { min-width: 0; }
+.a-main h2 { font-size: 1.15rem; margin: 1.6rem 0 .6rem; padding-top: .9rem; border-top: 1px solid var(--line); }
+.a-main > p { max-width: 68ch; }
+.a-rail { position: sticky; top: 12px; min-width: 0; }
+.rail-list li { align-items: center; }
+.rk-who { display: flex; flex-direction: column; line-height: 1.25; min-width: 0; }
+.rk-who a { font-weight: 600; color: var(--ink); }
+.rk-who a:hover { color: var(--brand); }
+.rk-sub { color: var(--ink-soft); font-size: .78rem; }
