@@ -235,7 +235,7 @@
           sim.hidden = false;
           sim.innerHTML = '<h4>Closest players in our database</h4>' +
             '<div class="sim-list">' + players.map(function (p) {
-              return '<a class="sim-card" href="' + BASE + 'athlete/' + p.slug + '/index.html">' +
+              return '<a class="sim-card" href="' + '/athlete/' + p.slug + '/">' +
                 '<strong>' + p.name + '</strong><span>' + p.position + ' · ' + p.team + '</span>' +
                 '<span class="sim-range">' + range(p.low, p.high) + '</span></a>';
             }).join('') + '</div>';
@@ -338,7 +338,7 @@
                 sel.hidden = false;
                 sel.innerHTML = '<p class="lookup-name">Selected: <strong>' + p.name + '</strong>, ' +
                   p.position + ', ' + p.team + '</p>' +
-                  '<a class="lookup-full" href="' + BASE + 'athlete/' + p.slug + '/index.html">View full profile ›</a>';
+                  '<a class="lookup-full" href="' + '/athlete/' + p.slug + '/">View full profile ›</a>';
               }
               present({
                 value: p.value, low: p.low, high: p.high, sport: p.sport,
@@ -441,7 +441,7 @@
           (p.team && p.team.toLowerCase().indexOf(q) > -1); }).slice(0, 8);
         hdrBox.hidden = false;
         hdrBox.innerHTML = hits.length ? hits.map(function (p) {
-          return '<a class="search-item" href="' + BASE + 'athlete/' + p.slug + '/index.html">' +
+          return '<a class="search-item" href="' + '/athlete/' + p.slug + '/">' +
             '<strong>' + p.name + '</strong><span>' + p.position + ' · ' + p.team +
             (p.former ? ' · former' : '') + '</span></a>';
         }).join('') : '<div class="search-empty">No match yet. More athletes are added weekly.</div>';

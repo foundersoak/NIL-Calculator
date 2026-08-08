@@ -117,7 +117,7 @@ function head(opts) {
 <body>
   <header class="site-header">
     <div class="container mast">
-      <a class="brand" href="${prefix}index.html">
+      <a class="brand" href="/">
         <img class="brand-logo" src="${prefix}assets/img/logo.png" alt="" width="44" height="44" />
         <span class="brand-block">
           <span class="brand-text">HowMuch<span class="brand-accent">NIL</span></span>
@@ -132,11 +132,11 @@ function head(opts) {
   </header>
   <nav class="subnav">
     <div class="container subnav-in">
-      <a href="${prefix}athletes/index.html">Athletes</a>
-      <a href="${prefix}index.html#top25">Top 25</a>
-      <a href="${prefix}guides/index.html">Articles</a>
-      <a href="${prefix}index.html#calculator">Calculator</a>
-      <a href="${prefix}about.html">About</a>
+      <a href="/athletes/">Athletes</a>
+      <a href="/#top25">Top 25</a>
+      <a href="/guides/">Articles</a>
+      <a href="/#calculator">Calculator</a>
+      <a href="/about.html">About</a>
     </div>
   </nav>
   <main>`;
@@ -165,7 +165,7 @@ function emailCapture(prefix) {
         <input type="email" name="email" required placeholder="you@email.com" aria-label="Email address" />
         <button type="submit" class="btn btn-primary">Subscribe</button>
       </form>
-      <p class="privacy-note"><a href="${prefix}privacy.html">Privacy</a> · No spam, unsubscribe anytime.</p>
+      <p class="privacy-note"><a href="/privacy.html">Privacy</a> · No spam, unsubscribe anytime.</p>
     </div>
   </section>`;
 }
@@ -175,17 +175,17 @@ function foot(prefix) {
   <footer class="site-footer">
     <div class="container footer-grid">
       <div>
-        <a class="brand" href="${prefix}index.html"><img class="brand-logo brand-logo-sm" src="${prefix}assets/img/logo.png" alt="" width="34" height="34" /><span class="brand-text">HowMuch<span class="brand-accent">NIL</span></span></a>
+        <a class="brand" href="/"><img class="brand-logo brand-logo-sm" src="${prefix}assets/img/logo.png" alt="" width="34" height="34" /><span class="brand-text">HowMuch<span class="brand-accent">NIL</span></span></a>
         <p class="footer-tag">Know the value. Follow the money.</p>
       </div>
       <nav class="footer-links">
-        <a href="${prefix}athletes/index.html">Athletes</a>
-        <a href="${prefix}guides/index.html">Articles</a>
-        <a href="${prefix}index.html#calculator">Calculator</a>
-        <a href="${prefix}about.html">About</a>
-        <a href="${prefix}privacy.html">Privacy</a>
-        <a href="${prefix}terms.html">Terms</a>
-        <a href="${prefix}contact.html">Contact</a>
+        <a href="/athletes/">Athletes</a>
+        <a href="/guides/">Articles</a>
+        <a href="/#calculator">Calculator</a>
+        <a href="/about.html">About</a>
+        <a href="/privacy.html">Privacy</a>
+        <a href="/terms.html">Terms</a>
+        <a href="/contact.html">Contact</a>
       </nav>
     </div>
     <div class="container footer-bottom">
@@ -321,7 +321,7 @@ function comparables(a) {
   const items = picks.map(p => {
     const pt = DATA.teams[p.team] || {};
     const plo = p.low || Math.round(p.valuation * 0.8), phi = p.high || Math.round(p.valuation * 1.25);
-    return `<li><span class="rk-who"><a href="../../athlete/${p.slug}/index.html">${esc(p.name)}</a><span class="rk-sub">${esc(p.position)} · ${esc(pt.name || p.team)}</span></span><span class="rank-val">${moneyShort(plo)} to ${moneyShort(phi)}</span></li>`;
+    return `<li><span class="rk-who"><a href="/athlete/${p.slug}/">${esc(p.name)}</a><span class="rk-sub">${esc(p.position)} · ${esc(pt.name || p.team)}</span></span><span class="rank-val">${moneyShort(plo)} to ${moneyShort(phi)}</span></li>`;
   }).join('');
   return `<div class="module">
       <div class="module-hd">Similar NIL profiles</div>
@@ -336,12 +336,12 @@ function teammates(a, team) {
   if (!mates.length) return '';
   const items = mates.map(p => {
     const plo = p.low || Math.round(p.valuation * 0.8), phi = p.high || Math.round(p.valuation * 1.25);
-    return `<li><span class="rk-who"><a href="../../athlete/${p.slug}/index.html">${esc(p.name)}</a><span class="rk-sub">${esc(p.position)}</span></span><span class="rank-val">${moneyShort(plo)} to ${moneyShort(phi)}</span></li>`;
+    return `<li><span class="rk-who"><a href="/athlete/${p.slug}/">${esc(p.name)}</a><span class="rk-sub">${esc(p.position)}</span></span><span class="rank-val">${moneyShort(plo)} to ${moneyShort(phi)}</span></li>`;
   }).join('');
   return `<div class="module">
       <div class="module-hd">Top ${esc(team.name)} valuations</div>
       <div class="module-bd"><ol class="rank-list rail-list">${items}</ol>
-      <p class="mod-more"><a href="../../team/${a.team}/index.html">Full ${esc(team.name)} roster</a></p></div>
+      <p class="mod-more"><a href="/team/${a.team}/">Full ${esc(team.name)} roster</a></p></div>
     </div>`;
 }
 function athletePage(a) {
@@ -381,7 +381,7 @@ function athletePage(a) {
 
   return head({ title, desc, canonical: url, prefix, jsonld, noindex: !!a.thin }) + `
     <section class="container athlete-hero">
-      <nav class="crumbs"><a href="${prefix}athletes/index.html">Athletes</a> › <span>${esc(a.name)}</span></nav>
+      <nav class="crumbs"><a href="/athletes/">Athletes</a> › <span>${esc(a.name)}</span></nav>
       <h1>How much ${a.former ? 'did' : 'does'} ${esc(a.name)} make in NIL?</h1>
       <p class="athlete-sub">${a.former ? 'Former ' : ''}${esc(a.position)} · ${esc(team.name)}${team.conference ? ' · ' + esc(team.conference) : ''}${a.former && a.nowWith ? ` · <strong>Now: ${esc(a.nowWith)}</strong>` : ''}</p>
       <p class="athlete-blurb">${esc(a.blurb || '')}</p>
@@ -424,7 +424,7 @@ function athletePage(a) {
             </select>
             <label class="consent-check"><input type="checkbox" name="newsletter" value="yes" checked /> Also send me the free newsletter: college sports, NIL deals and valuation updates</label>
           </form>
-          <p class="privacy-note">No spam. Unsubscribe anytime. <a href="${prefix}privacy.html">Privacy</a>.</p>
+          <p class="privacy-note">No spam. Unsubscribe anytime. <a href="/privacy.html">Privacy</a>.</p>
         </div>
         <div class="gate-reveal" hidden></div>
       </div>
@@ -439,7 +439,7 @@ function athletePage(a) {
       <p>${esc(team.nilContext)}</p>` : ''}
 
       <h2>How NIL value is calculated</h2>
-      <p>An NIL value is an estimate of what an athlete could earn from name, image and likeness over 12 months, not a salary or a confirmed deal. We weigh audience (social reach and engagement), performance and role, school and market, and the sport and position.${a.reported && a.source ? ` Where a public figure exists, we sense-check against it; this valuation is anchored to <a href="${a.sourceUrl}" rel="nofollow noopener" target="_blank">${esc(a.source)}</a>.` : ` No exact NIL figure is publicly disclosed for ${esc(a.name.split(' ')[0])}, so the value shown here is a modeled estimate.`} <a href="${prefix}guide/how-nil-valuations-work/index.html">See how NIL valuations work</a>.</p>
+      <p>An NIL value is an estimate of what an athlete could earn from name, image and likeness over 12 months, not a salary or a confirmed deal. We weigh audience (social reach and engagement), performance and role, school and market, and the sport and position.${a.reported && a.source ? ` Where a public figure exists, we sense-check against it; this valuation is anchored to <a href="${a.sourceUrl}" rel="nofollow noopener" target="_blank">${esc(a.source)}</a>.` : ` No exact NIL figure is publicly disclosed for ${esc(a.name.split(' ')[0])}, so the value shown here is a modeled estimate.`} <a href="/guide/how-nil-valuations-work/">See how NIL valuations work</a>.</p>
 
 
       <h2>${esc(a.name.split(' ')[0])} NIL FAQ</h2>
@@ -447,7 +447,7 @@ function athletePage(a) {
 
       <div class="cta-inline">
         <p><strong>Curious about another player?</strong> Look one up or estimate any athlete in seconds.</p>
-        <a class="btn btn-primary" href="${prefix}index.html#calculator">Open the NIL calculator</a>
+        <a class="btn btn-primary" href="/#calculator">Open the NIL calculator</a>
       </div>
       </div>
       <aside class="a-rail">
@@ -476,7 +476,7 @@ function teamJump(prefix, current) {
   });
   const opts = [...CONF_ORDER, 'Other'].filter(c => groups[c]).map(conf =>
     `<optgroup label="${esc(conf)}">${groups[conf].sort((a, b) => a[1].localeCompare(b[1])).map(([slug, name]) =>
-      `<option value="${prefix}team/${slug}/index.html"${slug === current ? ' selected' : ''}>${esc(name)}</option>`).join('')}</optgroup>`).join('');
+      `<option value="/team/${slug}/"${slug === current ? ' selected' : ''}>${esc(name)}</option>`).join('')}</optgroup>`).join('');
   return `<select class="team-jump" aria-label="Go to a team"><option value="">Go to a team…</option>${opts}</select>`;
 }
 
@@ -489,7 +489,7 @@ function teamPage(slug) {
   const desc = `Estimated NIL value ranges for ${roster.length} ${team.name} athletes, with roles, classes and social reach. Updated ${FOLLOWERS_AS_OF}.`;
   const rows = roster.map(a => {
     const lo = a.low || Math.round(a.valuation * 0.8), hi = a.high || Math.round(a.valuation * 1.25);
-    return `<tr><td><a href="../../athlete/${a.slug}/index.html">${esc(a.name)}</a>${a.former ? ' <span class="muted">(former)</span>' : ''}</td><td>${esc(a.position)}</td><td>${esc(a.class ? capFirst(a.class) : '')}</td><td>${a.roleTier && ROLE_LABEL[a.roleTier] ? esc(ROLE_LABEL[a.roleTier]) : ''}</td><td class="num">${moneyShort(lo)} to ${moneyShort(hi)}</td></tr>`;
+    return `<tr><td><a href="/athlete/${a.slug}/">${esc(a.name)}</a>${a.former ? ' <span class="muted">(former)</span>' : ''}</td><td>${esc(a.position)}</td><td>${esc(a.class ? capFirst(a.class) : '')}</td><td>${a.roleTier && ROLE_LABEL[a.roleTier] ? esc(ROLE_LABEL[a.roleTier]) : ''}</td><td class="num">${moneyShort(lo)} to ${moneyShort(hi)}</td></tr>`;
   }).join('');
   return head({ title, desc, canonical: url, prefix, jsonld: {
     "@context": "https://schema.org", "@graph": [
@@ -501,7 +501,7 @@ function teamPage(slug) {
     ]
   }}) + `
     <section class="container athlete-hero">
-      <nav class="crumbs crumbs-row"><span><a href="${prefix}athletes/index.html">Athletes</a> › <span>${esc(team.name)}</span></span> ${teamJump(prefix, slug)}</nav>
+      <nav class="crumbs crumbs-row"><span><a href="/athletes/">Athletes</a> › <span>${esc(team.name)}</span></span> ${teamJump(prefix, slug)}</nav>
       <h1>${esc(team.name)} NIL valuations</h1>
       <p class="athlete-sub">${roster.length} athletes${team.conference ? ' · ' + esc(team.conference) : ''} · estimated ranges as of ${FOLLOWERS_AS_OF}</p>
       ${team.nilContext ? `<p class="how-prose team-context">${esc(team.nilContext)}</p>` : ''}
@@ -533,7 +533,7 @@ function directoryPage(athletes, teams) {
   const sections = [...CONF_ORDER, 'Other conferences & sports'].filter(c => confs[c]).map(conf => {
     const rows = confs[conf].sort((a, b) => a[1].name.localeCompare(b[1].name)).map(([slug, t]) => {
       const top = teamAthletes(slug)[0];
-      return `<tr><td><a href="${prefix}team/${slug}/index.html">${esc(t.name)}</a></td><td>${esc(t.sport === 'Multiple' ? 'Football & more' : t.sport)}</td><td class="num">${bySlugCount[slug] || 0}</td><td>${top ? `<a href="${prefix}athlete/${top.slug}/index.html">${esc(top.name)}</a>` : ''}</td></tr>`;
+      return `<tr><td><a href="/team/${slug}/">${esc(t.name)}</a></td><td>${esc(t.sport === 'Multiple' ? 'Football & more' : t.sport)}</td><td class="num">${bySlugCount[slug] || 0}</td><td>${top ? `<a href="/athlete/${top.slug}/">${esc(top.name)}</a>` : ''}</td></tr>`;
     }).join('');
     return `<div class="module conf-module" id="conf-${confSlug(conf)}">
       <div class="module-hd">${esc(conf)}</div>
@@ -576,13 +576,13 @@ function guidePage(g) {
   };
   return head({ title: `${g.title} | HowMuchNIL`, desc: g.desc, canonical: url, prefix, jsonld }) + `
     <section class="container narrow article">
-      <nav class="crumbs"><a href="${prefix}index.html">Home</a> › <a href="${prefix}guides/index.html">Articles</a> › <span>${esc(g.title)}</span></nav>
+      <nav class="crumbs"><a href="/">Home</a> › <a href="/guides/">Articles</a> › <span>${esc(g.title)}</span></nav>
       <h1>${esc(g.title)}</h1>
       <p class="article-meta">Updated ${g.date}</p>
       ${g.body}
       <div class="cta-inline">
         <p><strong>Curious about a specific player?</strong> Look anyone up, or estimate any athlete in seconds.</p>
-        <a class="btn btn-primary" href="${prefix}index.html#calculator">Open the NIL calculator</a>
+        <a class="btn btn-primary" href="/#calculator">Open the NIL calculator</a>
       </div>
     </section>
     ${adUnit()}
@@ -595,7 +595,7 @@ function guidesIndex() {
   const prefix = '../';
   const url = `${SITE_URL}/guides/`;
   const items = [...GUIDES].sort((a, b) => (b.date || '').localeCompare(a.date || '')).map(g =>
-    `<li><a class="hl-title" href="${prefix}guide/${g.slug}/index.html">${esc(g.title)}</a><span class="hl-meta">${esc(g.date || '')}</span><p class="hl-dek">${esc(g.desc)}</p></li>`).join('');
+    `<li><a class="hl-title" href="/guide/${g.slug}/">${esc(g.title)}</a><span class="hl-meta">${esc(g.date || '')}</span><p class="hl-dek">${esc(g.desc)}</p></li>`).join('');
   return head({
     title: 'NIL Articles and Rankings | HowMuchNIL',
     desc: 'Plain-English guides to college NIL: the highest-paid athletes, how valuations work, and how revenue sharing changed college sports.',
@@ -642,9 +642,9 @@ const COUNT_LABEL = Math.floor(DATA.athletes.length / 10) * 10 + '+';
 const TRENDING_SLUGS = ['tre-phelps', 'carson-tinney', 'arch-manning', 'jeremiah-smith', 'brendan-sorsby', 'aj-dybantsa', 'lj-mercurius', 'anthony-pack-jr', 'malachi-toney', 'whit-weeks'];
 const bySlugAll = new Map(DATA.athletes.map(a => [a.slug, a]));
 const trendLinks = TRENDING_SLUGS.map(sl => bySlugAll.get(sl)).filter(Boolean)
-  .map(a => `<a href="athlete/${a.slug}/index.html">${esc(a.name)}</a>`).join(', ');
+  .map(a => `<a href="/athlete/${a.slug}/">${esc(a.name)}</a>`).join(', ');
 const recentLinks = [...DATA.athletes].filter(a => !a.thin).slice(-10).reverse()
-  .map(a => `<a href="athlete/${a.slug}/index.html">${esc(a.name)}</a>`).join(', ');
+  .map(a => `<a href="/athlete/${a.slug}/">${esc(a.name)}</a>`).join(', ');
 const PORTAL_LEFT = `<div class="module">
   <div class="module-hd">${DATA.athletes.length.toLocaleString('en-US')} college athletes</div>
   <div class="module-bd">
@@ -653,26 +653,26 @@ const PORTAL_LEFT = `<div class="module">
     <p class="linklist">${trendLinks}</p>
     <p class="mod-label">Recently updated</p>
     <p class="linklist">${recentLinks}</p>
-    <p class="mod-more"><a href="athletes/index.html">Browse all athletes</a></p>
+    <p class="mod-more"><a href="/athletes/">Browse all athletes</a></p>
   </div>
 </div>`;
 
 const ARTICLES_COMPACT = `<ul class="headline-list compact">${[...GUIDES].sort((a, b) => (b.date || '').localeCompare(a.date || '')).slice(0, 8).map(g =>
-  `<li><a class="hl-title" href="guide/${g.slug}/index.html">${esc(g.title)}</a></li>`).join('')}</ul>
-<p class="mod-more"><a href="guides/index.html">All articles</a></p>`;
+  `<li><a class="hl-title" href="/guide/${g.slug}/">${esc(g.title)}</a></li>`).join('')}</ul>
+<p class="mod-more"><a href="/guides/">All articles</a></p>`;
 
 /* ESPN-style headline list of latest articles, stamped between ARTICLES markers. */
 const latest = [...GUIDES].sort((a, b) => (b.date || '').localeCompare(a.date || '')).slice(0, 6);
 const ARTICLES_LIST = `<ul class="headline-list">${latest.map(g =>
-  `<li><a class="hl-title" href="guide/${g.slug}/index.html">${esc(g.title)}</a><span class="hl-meta">${esc(g.date || '')}</span><p class="hl-dek">${esc(g.desc || '')}</p></li>`).join('')}</ul>`;
+  `<li><a class="hl-title" href="/guide/${g.slug}/">${esc(g.title)}</a><span class="hl-meta">${esc(g.date || '')}</span><p class="hl-dek">${esc(g.desc || '')}</p></li>`).join('')}</ul>`;
 
 /* Homepage top-25 valuations table, stamped between TOP25 markers. */
 const top25 = [...DATA.athletes].filter(a => !a.former).sort((x, y) => y.valuation - x.valuation).slice(0, 25);
 const TOP25_RAIL = `<ol class="rank-list">${top25.slice(0, 10).map((a, i) => {
   const lo = a.low || Math.round(a.valuation * 0.8), hi = a.high || Math.round(a.valuation * 1.25);
-  return `<li><a href="athlete/${a.slug}/index.html">${esc(a.name)}</a><span class="rank-val">${moneyShort(lo)} to ${moneyShort(hi)}</span></li>`;
+  return `<li><a href="/athlete/${a.slug}/">${esc(a.name)}</a><span class="rank-val">${moneyShort(lo)} to ${moneyShort(hi)}</span></li>`;
 }).join('')}</ol>
-<p class="mod-more"><a href="athletes/index.html">View all athletes</a></p>`;
+<p class="mod-more"><a href="/athletes/">View all athletes</a></p>`;
 
 /* Stamp the current asset version onto the hand-written static pages too. */
 ['index.html', 'about.html', 'privacy.html', 'terms.html', 'contact.html'].forEach(f => {
