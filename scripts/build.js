@@ -596,20 +596,46 @@ function guidesIndex() {
   const url = `${SITE_URL}/guides/`;
   const items = [...GUIDES].sort((a, b) => (b.date || '').localeCompare(a.date || '')).map(g =>
     `<li><a class="hl-title" href="/guide/${g.slug}/">${esc(g.title)}</a><span class="hl-meta">${esc(g.date || '')}</span><p class="hl-dek">${esc(g.desc)}</p></li>`).join('');
+  const top = [...DATA.athletes].filter(a => !a.former).sort((a, b) => b.valuation - a.valuation).slice(0, 10).map(a => {
+    const lo = a.low || a.valuation * 0.8, hi = a.high || a.valuation * 1.25;
+    return `<li><a href="/athlete/${a.slug}/">${esc(a.name)}</a><span class="rank-val">${moneyShort(lo)} to ${moneyShort(hi)}</span></li>`;
+  }).join('');
   return head({
     title: 'NIL Articles and Rankings | HowMuchNIL',
-    desc: 'Plain-English guides to college NIL: the highest-paid athletes, how valuations work, and how revenue sharing changed college sports.',
+    desc: 'NIL transfer rankings, deal breakdowns and the numbers behind college sports money: the highest-paid athletes, how valuations work, and what revenue sharing changed.',
     canonical: url, prefix,
     jsonld: { "@context": "https://schema.org", "@type": "CollectionPage", "name": "NIL Articles", "url": url }
   }) + `
-    <section class="container narrow athlete-hero">
+    <section class="container athlete-hero">
       <h1>NIL articles and rankings</h1>
-      <p class="athlete-sub">Plain-English guides to college NIL money.</p>
+      <p class="athlete-sub">Transfer rankings, deal breakdowns and the numbers behind college sports money.</p>
     </section>
-    <section class="container narrow">
-      <ul class="headline-list">${items}</ul>
-    </section>
-    ${emailCapture(prefix)}
+    <div class="container portal-grid two-col">
+      <div class="portal-col portal-main">
+        <div class="module">
+          <div class="module-hd">All articles</div>
+          <div class="module-bd"><ul class="headline-list">${items}</ul></div>
+        </div>
+      </div>
+      <div class="portal-col">
+        <div class="module">
+          <div class="module-hd">Top NIL valuations</div>
+          <div class="module-bd"><ol class="rank-list">${top}</ol>
+          <p class="mod-more"><a href="/athletes/">View all athletes</a></p></div>
+        </div>
+        <div class="module nl-module">
+          <div class="module-hd">The NIL newsletter</div>
+          <div class="module-bd">
+            <p class="mod-note">Deal breakdowns, valuation updates and new athletes added to the database. Free.</p>
+            <form class="cta-form" id="cta-email-form" action="${FORMSPREE}" method="POST">
+              <input type="hidden" name="newsletter" value="yes" />
+              <input type="email" name="email" required placeholder="you@email.com" aria-label="Email address" />
+              <button class="btn btn-primary" type="submit">Subscribe</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
   ` + foot(prefix);
 }
 

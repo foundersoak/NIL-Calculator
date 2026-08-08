@@ -132,7 +132,7 @@ module.exports = [
 
   {
     slug: 'texas-softball-2026-wcws-champions',
-    title: 'Texas Softball Wins Back-to-Back WCWS Titles in 2026',
+    title: 'Texas Softball Wins Back-to-Back WCWS Titles: The NIL Stars Behind the Repeat',
     desc: "Texas swept Texas Tech to win the 2026 Women's College World Series, its second straight national title, behind two-time Most Outstanding Player Teagan Kavan.",
     date: '2026-06-06',
     body: `
@@ -267,7 +267,7 @@ module.exports = [
 
   {
     slug: 'sec-top-transfers-nil-2026',
-    title: "The SEC's Most Valuable Transfers of 2026, Ranked by NIL Value",
+    title: "The SEC's Most Valuable Transfers of 2026: What Each Move Is Worth",
     desc: "Sam Leavitt, Jordan Seaton and the portal additions carrying the biggest NIL price tags into SEC camps this fall, ranked with valuation ranges.",
     date: '2026-07-30',
     body: `
@@ -312,7 +312,7 @@ module.exports = [
 
   {
     slug: 'big-ten-top-transfers-nil-2026',
-    title: "The Big Ten's Most Valuable Transfers of 2026, Ranked by NIL Value",
+    title: "The Big Ten's Most Valuable Transfers of 2026: What Each Move Is Worth",
     desc: "Josh Hoover's move to the defending champs headlines the Big Ten's 2026 portal class. The top transfers in the conference, ranked by NIL valuation range.",
     date: '2026-07-30',
     body: `
@@ -359,7 +359,7 @@ module.exports = [
 
   {
     slug: 'big-12-top-transfers-nil-2026',
-    title: "The Big 12's Most Valuable Transfers of 2026, Ranked by NIL Value",
+    title: "The Big 12's Most Valuable Transfers of 2026: What Each Move Is Worth",
     desc: "Texas Tech doubled down after a Big 12 title, BYU rebuilt through the blue bloods and a Harvard record-setter landed at TCU. The conference's top 2026 transfers, ranked.",
     date: '2026-07-30',
     body: `
@@ -397,7 +397,7 @@ module.exports = [
 
   {
     slug: 'acc-top-transfers-nil-2026',
-    title: "The ACC's Most Valuable Transfers of 2026, Ranked by NIL Value",
+    title: "The ACC's Most Valuable Transfers of 2026: What Each Move Is Worth",
     desc: "Miami made Darian Mensah the most valuable player in college football. The ACC's top 2026 portal additions, ranked by NIL valuation range.",
     date: '2026-07-30',
     body: `
