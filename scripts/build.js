@@ -316,16 +316,33 @@ function faqItems(a, team, lo, hi) {
 function comparables(a) {
   const same = DATA.athletes.filter(x => x.slug !== a.slug && x.sport === a.sport && !x.former);
   same.sort((x, y) => Math.abs(x.valuation - a.valuation) - Math.abs(y.valuation - a.valuation));
-  const picks = same.slice(0, 4);
+  const picks = same.slice(0, 6);
   if (!picks.length) return '';
   const items = picks.map(p => {
     const pt = DATA.teams[p.team] || {};
     const plo = p.low || Math.round(p.valuation * 0.8), phi = p.high || Math.round(p.valuation * 1.25);
-    return `<li><a href="../../athlete/${p.slug}/index.html">${esc(p.name)}</a> <span class="muted">(${esc(p.position)}, ${esc(pt.name || p.team)})</span> <span class="compare-range">${moneyShort(plo)} to ${moneyShort(phi)}</span></li>`;
+    return `<li><span class="rk-who"><a href="../../athlete/${p.slug}/index.html">${esc(p.name)}</a><span class="rk-sub">${esc(p.position)} · ${esc(pt.name || p.team)}</span></span><span class="rank-val">${moneyShort(plo)} to ${moneyShort(phi)}</span></li>`;
   }).join('');
-  return `<h2>Players with a similar NIL profile</h2>
-      <p>Other ${esc((a.sport || '').toLowerCase())} players whose estimated NIL value lands in a similar range.</p>
-      <ul class="compare-list">${items}</ul>`;
+  return `<div class="module">
+      <div class="module-hd">Similar NIL profiles</div>
+      <div class="module-bd"><ol class="rank-list rail-list">${items}</ol></div>
+    </div>`;
+}
+
+/* Right-rail module: top teammates by estimated value, linking the team page. */
+function teammates(a, team) {
+  const mates = DATA.athletes.filter(x => x.slug !== a.slug && x.team === a.team && !x.former)
+    .sort((x, y) => y.valuation - x.valuation).slice(0, 6);
+  if (!mates.length) return '';
+  const items = mates.map(p => {
+    const plo = p.low || Math.round(p.valuation * 0.8), phi = p.high || Math.round(p.valuation * 1.25);
+    return `<li><span class="rk-who"><a href="../../athlete/${p.slug}/index.html">${esc(p.name)}</a><span class="rk-sub">${esc(p.position)}</span></span><span class="rank-val">${moneyShort(plo)} to ${moneyShort(phi)}</span></li>`;
+  }).join('');
+  return `<div class="module">
+      <div class="module-hd">Top ${esc(team.name)} valuations</div>
+      <div class="module-bd"><ol class="rank-list rail-list">${items}</ol>
+      <p class="mod-more"><a href="../../team/${a.team}/index.html">Full ${esc(team.name)} roster</a></p></div>
+    </div>`;
 }
 function athletePage(a) {
   const team = DATA.teams[a.team] || { name: a.team, conference: '', sport: a.sport };
@@ -363,12 +380,15 @@ function athletePage(a) {
   const note = (a.reported ? 'Based on publicly reported figures' : 'Modeled estimate') + (a.former ? ' · final season in college' : ' · 12-month earning potential');
 
   return head({ title, desc, canonical: url, prefix, jsonld, noindex: !!a.thin }) + `
-    <section class="container narrow athlete-hero">
+    <section class="container athlete-hero">
       <nav class="crumbs"><a href="${prefix}athletes/index.html">Athletes</a> › <span>${esc(a.name)}</span></nav>
       <h1>How much ${a.former ? 'did' : 'does'} ${esc(a.name)} make in NIL?</h1>
       <p class="athlete-sub">${a.former ? 'Former ' : ''}${esc(a.position)} · ${esc(team.name)}${team.conference ? ' · ' + esc(team.conference) : ''}${a.former && a.nowWith ? ` · <strong>Now: ${esc(a.nowWith)}</strong>` : ''}</p>
       <p class="athlete-blurb">${esc(a.blurb || '')}</p>
       ${statStrip(a)}
+    </section>
+    <div class="container athlete-cols">
+      <div class="a-main">
 
       <div class="nil-gate" data-value="${a.valuation}" data-low="${lo}" data-high="${hi}"
            data-name="${esc(a.name)}" data-reported="${a.reported ? 1 : 0}"
@@ -408,9 +428,7 @@ function athletePage(a) {
         </div>
         <div class="gate-reveal" hidden></div>
       </div>
-    </section>
     ${adUnit()}
-    <section class="container narrow">
       <h2>What ${a.former ? 'was' : 'is'} ${esc(a.name)}'s NIL value?</h2>
       <p>As of ${FOLLOWERS_AS_OF}, ${esc(a.name)}'s estimated NIL value falls between ${moneyShort(lo)} and ${moneyShort(hi)}. ${uniqueSummary(a, team)}</p>
       ${quickFacts(a, team)}
@@ -423,7 +441,6 @@ function athletePage(a) {
       <h2>How NIL value is calculated</h2>
       <p>An NIL value is an estimate of what an athlete could earn from name, image and likeness over 12 months, not a salary or a confirmed deal. We weigh audience (social reach and engagement), performance and role, school and market, and the sport and position.${a.reported && a.source ? ` Where a public figure exists, we sense-check against it; this valuation is anchored to <a href="${a.sourceUrl}" rel="nofollow noopener" target="_blank">${esc(a.source)}</a>.` : ` No exact NIL figure is publicly disclosed for ${esc(a.name.split(' ')[0])}, so the value shown here is a modeled estimate.`} <a href="${prefix}guide/how-nil-valuations-work/index.html">See how NIL valuations work</a>.</p>
 
-      ${comparables(a)}
 
       <h2>${esc(a.name.split(' ')[0])} NIL FAQ</h2>
       <div class="faq">${faqItems(a, team, lo, hi).map(it => `<h3>${esc(it.q)}</h3><p>${esc(it.a)}</p>`).join('')}</div>
@@ -432,7 +449,12 @@ function athletePage(a) {
         <p><strong>Curious about another player?</strong> Look one up or estimate any athlete in seconds.</p>
         <a class="btn btn-primary" href="${prefix}index.html#calculator">Open the NIL calculator</a>
       </div>
-    </section>
+      </div>
+      <aside class="a-rail">
+        ${comparables(a)}
+        ${teammates(a, team)}
+      </aside>
+    </div>
     ${emailCapture(prefix)}
   ` + foot(prefix);
 }
