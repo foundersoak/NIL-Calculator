@@ -388,7 +388,7 @@ function athletePage(a) {
       ${statStrip(a)}
     </section>
     <div class="container athlete-cols">
-      <div class="a-main">
+      <div class="a-gate">
 
       <div class="nil-gate" data-value="${a.valuation}" data-low="${lo}" data-high="${hi}"
            data-name="${esc(a.name)}" data-reported="${a.reported ? 1 : 0}"
@@ -429,6 +429,12 @@ function athletePage(a) {
         <div class="gate-reveal" hidden></div>
       </div>
     ${adUnit()}
+      </div>
+      <aside class="a-rail">
+        ${comparables(a)}
+        ${teammates(a, team)}
+      </aside>
+      <div class="a-prose">
       <h2>What ${a.former ? 'was' : 'is'} ${esc(a.name)}'s NIL value?</h2>
       <p>As of ${FOLLOWERS_AS_OF}, ${esc(a.name)}'s estimated NIL value falls between ${moneyShort(lo)} and ${moneyShort(hi)}. ${uniqueSummary(a, team)}</p>
       ${quickFacts(a, team)}
@@ -450,10 +456,6 @@ function athletePage(a) {
         <a class="btn btn-primary" href="/#calculator">Open the NIL calculator</a>
       </div>
       </div>
-      <aside class="a-rail">
-        ${comparables(a)}
-        ${teammates(a, team)}
-      </aside>
     </div>
     ${emailCapture(prefix)}
   ` + foot(prefix);
