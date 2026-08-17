@@ -314,7 +314,7 @@ function faqItems(a, team, lo, hi) {
 
 /* Up to 4 players in a similar valuation range (links only, value stays gated). */
 function comparables(a) {
-  const same = DATA.athletes.filter(x => x.slug !== a.slug && x.sport === a.sport && !x.former);
+  const same = DATA.athletes.filter(x => x.slug !== a.slug && x.sport === a.sport && !x.former && !x.thin);
   same.sort((x, y) => Math.abs(x.valuation - a.valuation) - Math.abs(y.valuation - a.valuation));
   const picks = same.slice(0, 6);
   if (!picks.length) return '';
@@ -331,7 +331,7 @@ function comparables(a) {
 
 /* Right-rail module: top teammates by estimated value, linking the team page. */
 function teammates(a, team) {
-  const mates = DATA.athletes.filter(x => x.slug !== a.slug && x.team === a.team && !x.former)
+  const mates = DATA.athletes.filter(x => x.slug !== a.slug && x.team === a.team && !x.former && !x.thin)
     .sort((x, y) => y.valuation - x.valuation).slice(0, 6);
   if (!mates.length) return '';
   const items = mates.map(p => {
@@ -491,7 +491,7 @@ function teamPage(slug) {
   const desc = `Estimated NIL value ranges for ${roster.length} ${team.name} athletes, with roles, classes and social reach. Updated ${FOLLOWERS_AS_OF}.`;
   const rows = roster.map(a => {
     const lo = a.low || Math.round(a.valuation * 0.8), hi = a.high || Math.round(a.valuation * 1.25);
-    return `<tr><td><a href="/athlete/${a.slug}/">${esc(a.name)}</a>${a.former ? ' <span class="muted">(former)</span>' : ''}</td><td>${esc(a.position)}</td><td>${esc(a.class ? capFirst(a.class) : '')}</td><td>${a.roleTier && ROLE_LABEL[a.roleTier] ? esc(ROLE_LABEL[a.roleTier]) : ''}</td><td class="num">${moneyShort(lo)} to ${moneyShort(hi)}</td></tr>`;
+    return `<tr><td>${a.thin ? esc(a.name) : `<a href="/athlete/${a.slug}/">${esc(a.name)}</a>`}${a.former ? ' <span class="muted">(former)</span>' : ''}</td><td>${esc(a.position)}</td><td>${esc(a.class ? capFirst(a.class) : '')}</td><td>${a.roleTier && ROLE_LABEL[a.roleTier] ? esc(ROLE_LABEL[a.roleTier]) : ''}</td><td class="num">${moneyShort(lo)} to ${moneyShort(hi)}</td></tr>`;
   }).join('');
   return head({ title, desc, canonical: url, prefix, jsonld: {
     "@context": "https://schema.org", "@graph": [
@@ -534,7 +534,7 @@ function directoryPage(athletes, teams) {
   });
   const sections = [...CONF_ORDER, 'Other conferences & sports'].filter(c => confs[c]).map(conf => {
     const rows = confs[conf].sort((a, b) => a[1].name.localeCompare(b[1].name)).map(([slug, t]) => {
-      const top = teamAthletes(slug)[0];
+      const top = teamAthletes(slug).find(x => !x.thin);
       return `<tr><td><a href="/team/${slug}/">${esc(t.name)}</a></td><td>${esc(t.sport === 'Multiple' ? 'Football & more' : t.sport)}</td><td class="num">${bySlugCount[slug] || 0}</td><td>${top ? `<a href="/athlete/${top.slug}/">${esc(top.name)}</a>` : ''}</td></tr>`;
     }).join('');
     return `<div class="module conf-module" id="conf-${confSlug(conf)}">
