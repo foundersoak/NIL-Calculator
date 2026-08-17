@@ -53,3 +53,5 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+# Redeploy marker: 2026-08-17 Pages 503 retry
