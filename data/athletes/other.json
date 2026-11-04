@@ -1,0 +1,185 @@
+{
+  "group": "other",
+  "athletes": [
+    {
+      "slug": "nijaree-canady",
+      "name": "NiJaree Canady",
+      "sport": "Softball",
+      "position": "Pitcher",
+      "team": "texas-tech-red-raiders",
+      "level": "power",
+      "followers": {
+        "instagram": 106000,
+        "tiktok": 110000,
+        "x": 0,
+        "youtube": 0
+      },
+      "engagement": 5,
+      "valuation": 1000000,
+      "reported": true,
+      "source": "On3 / public reporting (2026)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/womens-nil-valuations/",
+      "blurb": "Texas Tech's ace became the first softball player to cross the $1M NIL threshold after leading the Red Raiders to a Women's College World Series appearance.",
+      "updated": "2026-08-04"
+    },
+    {
+      "slug": "kai-trump",
+      "name": "Kai Trump",
+      "sport": "Golf",
+      "position": "Golfer",
+      "team": "miami-hurricanes",
+      "level": "power",
+      "followers": {
+        "instagram": 3000000,
+        "tiktok": 3600000,
+        "x": 200000,
+        "youtube": 200000
+      },
+      "engagement": 5,
+      "valuation": 1200000,
+      "reported": true,
+      "source": "SportsGrid Women's NIL Rankings (2026)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/womens-nil-valuations/",
+      "blurb": "The Miami golf commit carries one of the largest NIL valuations in women's sports, powered by an enormous social following and national name recognition.",
+      "updated": "2026-08-04"
+    },
+    {
+      "slug": "jade-carey",
+      "name": "Jade Carey",
+      "sport": "Gymnastics",
+      "position": "Gymnast",
+      "team": "oregon-state-beavers",
+      "level": "power",
+      "followers": {
+        "instagram": 595000,
+        "tiktok": 148000,
+        "x": 0,
+        "youtube": 0
+      },
+      "engagement": 5,
+      "valuation": 397000,
+      "reported": true,
+      "source": "On3 Women's NIL Valuations (2026)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/womens-nil-valuations/",
+      "blurb": "The Olympic gold medalist and Oregon State gymnast is one of the highest-valued NIL athletes in college gymnastics.",
+      "updated": "2026-08-04"
+    },
+    {
+      "name": "Teagan Kavan",
+      "sport": "Softball",
+      "position": "Pitcher",
+      "team": "texas-longhorns",
+      "followers": {
+        "instagram": 53000,
+        "tiktok": 2200,
+        "x": 0,
+        "youtube": 0
+      },
+      "valuation": 400000,
+      "reported": false,
+      "source": "Estimate (On3 does not publicly disclose a figure)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/softball/",
+      "blurb": "Kavan is the first player to win Women's College World Series Most Outstanding Player in back to back years, closing out Texas's repeat national title in 2026.",
+      "slug": "teagan-kavan",
+      "level": "power",
+      "engagement": 5,
+      "low": 320000,
+      "high": 500000,
+      "updated": "2026-08-04"
+    },
+    {
+      "name": "Katie Stewart",
+      "sport": "Softball",
+      "position": "First Baseman",
+      "team": "texas-longhorns",
+      "followers": {
+        "instagram": 15000,
+        "tiktok": 0,
+        "x": 0,
+        "youtube": 0
+      },
+      "valuation": 250000,
+      "reported": false,
+      "source": "Estimate (On3 does not publicly disclose a figure)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/softball/",
+      "blurb": "Stewart was the 2026 SEC Player of the Year and set a Texas single-season home run record with 24 during a .441 campaign.",
+      "slug": "katie-stewart",
+      "level": "power",
+      "engagement": 5,
+      "low": 200000,
+      "high": 312500,
+      "updated": "2026-08-04"
+    },
+    {
+      "name": "Kayden Henry",
+      "sport": "Softball",
+      "position": "Outfielder",
+      "team": "texas-longhorns",
+      "followers": {
+        "instagram": 15000,
+        "tiktok": 0,
+        "x": 0,
+        "youtube": 0
+      },
+      "valuation": 150000,
+      "reported": false,
+      "source": "Estimate (On3 does not publicly disclose a figure)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/softball/",
+      "blurb": "Henry hit .409 with 72 runs in 2026 and homered in Game 2 of the Women's College World Series championship series.",
+      "slug": "kayden-henry",
+      "level": "power",
+      "engagement": 5,
+      "low": 120000,
+      "high": 187500,
+      "updated": "2026-08-04"
+    },
+    {
+      "name": "Reese Atwood",
+      "sport": "Softball",
+      "position": "Catcher",
+      "team": "texas-longhorns",
+      "followers": {
+        "instagram": 41000,
+        "tiktok": 0,
+        "x": 0,
+        "youtube": 0
+      },
+      "valuation": 300000,
+      "reported": false,
+      "source": "Estimate (On3 does not publicly disclose a figure)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/softball/",
+      "blurb": "Atwood, regarded as the nation's top catcher, won back to back national titles at Texas before being drafted into the pro AUSL.",
+      "former": true,
+      "nowWith": "Carolina Blaze (AUSL)",
+      "slug": "reese-atwood",
+      "level": "power",
+      "engagement": 5,
+      "low": 240000,
+      "high": 375000,
+      "updated": "2026-08-04"
+    },
+    {
+      "name": "Mia Williams",
+      "sport": "Softball",
+      "position": "Infielder",
+      "team": "texas-tech-red-raiders",
+      "followers": {
+        "instagram": 10000,
+        "tiktok": 0,
+        "x": 0,
+        "youtube": 0
+      },
+      "valuation": 200000,
+      "reported": false,
+      "source": "Estimate (On3 does not publicly disclose a figure)",
+      "sourceUrl": "https://www.on3.com/nil/rankings/player/college/softball/",
+      "blurb": "Williams led Texas Tech in average, home runs and RBIs in 2026 at .438 with 26 home runs, and is the daughter of former NBA guard Jason Williams.",
+      "slug": "mia-williams",
+      "level": "power",
+      "engagement": 5,
+      "low": 160000,
+      "high": 250000,
+      "updated": "2026-08-04"
+    }
+  ]
+}

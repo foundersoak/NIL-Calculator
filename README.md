@@ -19,7 +19,9 @@ A fast, mobile-friendly **one-page NIL (Name, Image &amp; Likeness) value calcul
 Plain HTML, CSS and vanilla JS. Pages are **generated** from one data file, no framework.
 
 ```
-data/athletes.json        ← SINGLE SOURCE OF TRUTH (athletes + teams)
+data/athletes/*.json      ← SINGLE SOURCE OF TRUTH, one file per sport
+data/teams.json           ← teams (slug → name, conference, sport)
+data/history/*.json       ← monthly valuation snapshots (scripts/snapshot.js)
 data/incoming.example.json← template for new research runs
 scripts/build.js          ← generates all HTML + sitemap + search index
 scripts/add-athletes.js   ← validates & merges a research run, then builds
@@ -35,7 +37,7 @@ assets/css/styles.css  ·  assets/js/calculator.js
 
 ## ➕ Adding athletes (no HTML editing)
 
-You never touch HTML. Every page is generated from `data/athletes.json`. To add players from a new research run:
+You never touch HTML. Every page is generated from the files under `data/` (read through `scripts/lib/data.js`, validated by `scripts/lib/schema.js`). Generated pages are not committed: the deploy workflow builds them. To add players from a new research run:
 
 1. Copy the template: `cp data/incoming.example.json data/incoming.json`
 2. Fill in the new players (only `name`, `sport`, `position`, `team`, `valuation` are required, see the
@@ -44,11 +46,11 @@ You never touch HTML. Every page is generated from `data/athletes.json`. To add 
 
 The importer validates the data, fills defaults, auto-generates each `slug` and the low/high range,
 de-dupes by slug (re-importing a slug **updates** that athlete), merges everything into
-`data/athletes.json`, **rebuilds the whole site**, and archives your incoming file. Then just
+the per-sport data files, **rebuilds the whole site**, and archives your incoming file. Then just
 `git diff`, commit and push, the GitHub Action redeploys.
 
 > Prefer editing by hand? You can also add records directly to the `athletes` array in
-> `data/athletes.json` and run `npm run build`. Same result.
+> the data files and run `npm run build`. Same result.
 
 ---
 
