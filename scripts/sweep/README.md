@@ -8,7 +8,7 @@ athletics sites — that is the only reason tranche 1 hasn't run yet).
 ## Goal & locked decisions (approved by Thomas)
 
 - Add **full official 2026 rosters (~105 players each)** for the top 25 college
-  football fanbases → ~2,400-2,600 new athletes in `data/athletes.json`.
+  football fanbases → ~2,400-2,600 new athletes in `data/athletes/football.json`.
 - Fanbase ranking: Tony Altimore fanbase study for ranks 1-15 (verified via
   WebSearch); consensus next tier for 16-25 (Altimore's #14 Stanford/Syracuse
   treated as population-model artifact, excluded). Full list + ranks + official

@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /* ============================================================
    NIL ValueCalc - static page generator
-   Reads data/athletes.json and generates:
+   Reads data/ (meta.json, teams.json, athletes/*.json via scripts/lib/data.js) and generates:
      - /athlete/<slug>/index.html   (one per athlete)
      - /team/<slug>/index.html      (one per team, aggregates roster)
      - /athletes/index.html         (directory of all athletes + teams)
@@ -13,7 +13,10 @@ const fs = require('fs');
 const path = require('path');
 
 const ROOT = path.join(__dirname, '..');
-const DATA = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'athletes.json'), 'utf8'));
+const { load, dataFiles } = require('./lib/data');
+let DATA;
+try { DATA = load({ validate: true }); }
+catch (e) { console.error('\n' + e.message + '\n'); process.exit(1); }
 const GUIDES = require('./guides-content.js');
 
 /* ---- Config: change SITE_URL to your custom domain when you have one ---- */
@@ -34,12 +37,15 @@ const ASSET_VER = (() => {
   try {
     const css = fs.readFileSync(path.join(ROOT, 'assets', 'css', 'styles.css'));
     const js = fs.readFileSync(path.join(ROOT, 'assets', 'js', 'calculator.js'));
-    const data = fs.readFileSync(path.join(ROOT, 'data', 'athletes.json'));
-    return crypto.createHash('md5').update(css).update(js).update(data).digest('hex').slice(0, 8);
+    const h = crypto.createHash('md5').update(css).update(js);
+    for (const f of dataFiles()) h.update(fs.readFileSync(f));
+    return h.digest('hex').slice(0, 8);
   } catch (e) { return String(Date.now()); }
 })();
 
 /* ---------- helpers ---------- */
+/* Highest value first; ties broken by slug so output is independent of data file order. */
+const byValueDesc = (x, y) => (y.valuation - x.valuation) || x.slug.localeCompare(y.slug);
 const money = n => '$' + Math.round(n).toLocaleString('en-US');
 const moneyShort = n => {
   if (n >= 1e6) return '$' + (n / 1e6).toFixed(n % 1e6 === 0 ? 0 : 1) + 'M';
@@ -315,7 +321,7 @@ function faqItems(a, team, lo, hi) {
 /* Up to 4 players in a similar valuation range (links only, value stays gated). */
 function comparables(a) {
   const same = DATA.athletes.filter(x => x.slug !== a.slug && x.sport === a.sport && !x.former && !x.thin);
-  same.sort((x, y) => Math.abs(x.valuation - a.valuation) - Math.abs(y.valuation - a.valuation));
+  same.sort((x, y) => (Math.abs(x.valuation - a.valuation) - Math.abs(y.valuation - a.valuation)) || byValueDesc(x, y));
   const picks = same.slice(0, 6);
   if (!picks.length) return '';
   const items = picks.map(p => {
@@ -332,7 +338,7 @@ function comparables(a) {
 /* Right-rail module: top teammates by estimated value, linking the team page. */
 function teammates(a, team) {
   const mates = DATA.athletes.filter(x => x.slug !== a.slug && x.team === a.team && !x.former && !x.thin)
-    .sort((x, y) => y.valuation - x.valuation).slice(0, 6);
+    .sort(byValueDesc).slice(0, 6);
   if (!mates.length) return '';
   const items = mates.map(p => {
     const plo = p.low || Math.round(p.valuation * 0.8), phi = p.high || Math.round(p.valuation * 1.25);
@@ -466,7 +472,7 @@ function athletePage(a) {
 /* Team pages: roster table plus the team's NIL context. One per program. */
 const CONF_ORDER = ['SEC', 'Big Ten', 'Big 12', 'ACC'];
 function teamAthletes(slug) {
-  return DATA.athletes.filter(a => a.team === slug).sort((x, y) => y.valuation - x.valuation);
+  return DATA.athletes.filter(a => a.team === slug).sort(byValueDesc);
 }
 
 const confSlug = c => String(c).toLowerCase().replace(/[^a-z0-9]+/g, '-');
@@ -598,7 +604,7 @@ function guidesIndex() {
   const url = `${SITE_URL}/guides/`;
   const items = [...GUIDES].sort((a, b) => (b.date || '').localeCompare(a.date || '')).map(g =>
     `<li><a class="hl-title" href="/guide/${g.slug}/">${esc(g.title)}</a><span class="hl-meta">${esc(g.date || '')}</span><p class="hl-dek">${esc(g.desc)}</p></li>`).join('');
-  const top = [...DATA.athletes].filter(a => !a.former).sort((a, b) => b.valuation - a.valuation).slice(0, 10).map(a => {
+  const top = [...DATA.athletes].filter(a => !a.former).sort(byValueDesc).slice(0, 10).map(a => {
     const lo = a.low || a.valuation * 0.8, hi = a.high || a.valuation * 1.25;
     return `<li><a href="/athlete/${a.slug}/">${esc(a.name)}</a><span class="rank-val">${moneyShort(lo)} to ${moneyShort(hi)}</span></li>`;
   }).join('');
@@ -642,11 +648,11 @@ function guidesIndex() {
 }
 
 /* ---------- write helpers ---------- */
-function writeFile(rel, html) {
+function writeFile(rel, html, quiet) {
   const full = path.join(ROOT, rel);
   fs.mkdirSync(path.dirname(full), { recursive: true });
   fs.writeFileSync(full, html);
-  console.log('  wrote', rel);
+  if (!quiet) console.log('  wrote', rel);
 }
 
 /* ---------- run ---------- */
@@ -654,7 +660,8 @@ const athletes = DATA.athletes || [];
 const teams = DATA.teams || {};
 console.log(`Generating from ${athletes.length} athletes, ${Object.keys(teams).length} teams...`);
 
-athletes.forEach(a => writeFile(path.join('athlete', a.slug, 'index.html'), athletePage(a)));
+athletes.forEach(a => writeFile(path.join('athlete', a.slug, 'index.html'), athletePage(a), true));
+console.log('  wrote', athletes.length, 'athlete pages');
 
 writeFile(path.join('athletes', 'index.html'), directoryPage(athletes, teams));
 Object.keys(DATA.teams).forEach(slug => writeFile(path.join('team', slug, 'index.html'), teamPage(slug)));
@@ -671,7 +678,10 @@ const TRENDING_SLUGS = ['tre-phelps', 'carson-tinney', 'arch-manning', 'jeremiah
 const bySlugAll = new Map(DATA.athletes.map(a => [a.slug, a]));
 const trendLinks = TRENDING_SLUGS.map(sl => bySlugAll.get(sl)).filter(Boolean)
   .map(a => `<a href="/athlete/${a.slug}/">${esc(a.name)}</a>`).join(', ');
-const recentLinks = [...DATA.athletes].filter(a => !a.thin).slice(-10).reverse()
+const top25 = [...DATA.athletes].filter(a => !a.former).sort(byValueDesc).slice(0, 25);
+const featured = new Set([...TRENDING_SLUGS, ...top25.map(a => a.slug)]);
+const recentLinks = [...DATA.athletes].filter(a => !a.thin && !a.former && !featured.has(a.slug))
+  .sort((x, y) => (y.updated || '').localeCompare(x.updated || '') || byValueDesc(x, y)).slice(0, 10)
   .map(a => `<a href="/athlete/${a.slug}/">${esc(a.name)}</a>`).join(', ');
 const PORTAL_LEFT = `<div class="module">
   <div class="module-hd">${DATA.athletes.length.toLocaleString('en-US')} college athletes</div>
@@ -694,8 +704,7 @@ const latest = [...GUIDES].sort((a, b) => (b.date || '').localeCompare(a.date ||
 const ARTICLES_LIST = `<ul class="headline-list">${latest.map(g =>
   `<li><a class="hl-title" href="/guide/${g.slug}/">${esc(g.title)}</a><span class="hl-meta">${esc(g.date || '')}</span><p class="hl-dek">${esc(g.desc || '')}</p></li>`).join('')}</ul>`;
 
-/* Homepage top-25 valuations table, stamped between TOP25 markers. */
-const top25 = [...DATA.athletes].filter(a => !a.former).sort((x, y) => y.valuation - x.valuation).slice(0, 25);
+/* Homepage top-25 valuations table, stamped between TOP25 markers (top25 computed above). */
 const TOP25_RAIL = `<ol class="rank-list">${top25.slice(0, 10).map((a, i) => {
   const lo = a.low || Math.round(a.valuation * 0.8), hi = a.high || Math.round(a.valuation * 1.25);
   return `<li><a href="/athlete/${a.slug}/">${esc(a.name)}</a><span class="rank-val">${moneyShort(lo)} to ${moneyShort(hi)}</span></li>`;
@@ -725,7 +734,7 @@ const index = athletes.map(a => {
     position: a.position, former: !!a.former, nowWith: a.nowWith || '',
     value: a.valuation, low: a.low || Math.round(a.valuation * 0.8), high: a.high || Math.round(a.valuation * 1.25)
   };
-}).sort((x, y) => y.value - x.value);
+}).sort((x, y) => (y.value - x.value) || x.slug.localeCompare(y.slug));
 writeFile(path.join('assets', 'data', 'athletes-index.json'), JSON.stringify(index));
 
 /* sitemap */

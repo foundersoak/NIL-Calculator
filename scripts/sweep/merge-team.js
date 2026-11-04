@@ -33,7 +33,7 @@ if (!team) { console.error('unknown team ' + teamArg); process.exit(1); }
 
 const tieredPath = path.join(OUT, team.slug + '-tiered.json');
 const tiered = JSON.parse(fs.readFileSync(tieredPath, 'utf8'));
-const db = JSON.parse(fs.readFileSync(path.join(REPO, 'data', 'athletes.json'), 'utf8'));
+const db = require('../lib/data').load();
 const bySlug = new Map(db.athletes.map(a => [a.slug, a]));
 
 /* ---------- helpers (slugify copied from add-athletes.js) ---------- */

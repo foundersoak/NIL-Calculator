@@ -2,16 +2,16 @@
 /* ============================================================
    NIL ValueCalc - add athletes from a research run
    ------------------------------------------------------------
-   You NEVER edit HTML. All pages are generated from
-   data/athletes.json. This importer lets each research run be a
-   simple append:
+   You NEVER edit HTML. All pages are generated from the data files
+   under data/ (one athletes file per sport, see scripts/lib/data.js).
+   This importer lets each research run be a simple append:
 
      1. Put new players in  data/incoming.json
         (see data/incoming.example.json for the format)
      2. Run:  npm run add        (or: node scripts/add-athletes.js)
 
    It validates, fills defaults, de-dupes by slug, adds any new
-   teams, merges into data/athletes.json, and rebuilds the site.
+   teams, merges into the data files, and rebuilds the site.
    Re-importing a slug UPDATES that athlete (safe to re-run).
    ============================================================ */
 'use strict';
@@ -20,7 +20,9 @@ const path = require('path');
 const { execFileSync } = require('child_process');
 
 const ROOT = path.join(__dirname, '..');
-const DATA_PATH = path.join(ROOT, 'data', 'athletes.json');
+const { load, save } = require('./lib/data');
+const { validate } = require('./lib/schema');
+const TODAY = new Date().toISOString().slice(0, 10);
 const INCOMING_PATH = path.join(ROOT, 'data', process.argv[2] || 'incoming.json');
 
 function die(msg) { console.error('\n❌ ' + msg + '\n'); process.exit(1); }
@@ -35,7 +37,7 @@ if (!fs.existsSync(INCOMING_PATH)) {
   die(`No incoming file at ${INCOMING_PATH}.\n   Create data/incoming.json (copy data/incoming.example.json) and try again.`);
 }
 
-const data = JSON.parse(fs.readFileSync(DATA_PATH, 'utf8'));
+const data = load();
 let incoming;
 try { incoming = JSON.parse(fs.readFileSync(INCOMING_PATH, 'utf8')); }
 catch (e) { die('incoming.json is not valid JSON: ' + e.message); }
@@ -79,6 +81,7 @@ incAthletes.forEach((raw, i) => {
   a.valuation = Math.round(+a.valuation);
   a.low = a.low || Math.round(a.valuation * 0.8);
   a.high = a.high || Math.round(a.valuation * 1.25);
+  a.updated = TODAY;
 
   if (bySlug.has(a.slug)) {
     Object.assign(bySlug.get(a.slug), a); updated++;
@@ -91,8 +94,12 @@ if (problems.length) {
   die('Fix these issues in the incoming file, then re-run:\n   - ' + problems.join('\n   - '));
 }
 
-data.updated = new Date().toISOString().slice(0, 10);
-fs.writeFileSync(DATA_PATH, JSON.stringify(data, null, 2) + '\n');
+data.updated = TODAY;
+const schemaProblems = validate(data);
+if (schemaProblems.length) {
+  die('Merged data fails validation; nothing was written:\n   - ' + schemaProblems.slice(0, 30).join('\n   - '));
+}
+save(data);
 console.log(`\n✅ Merged: ${added} added, ${updated} updated, ${teamsAdded} new team(s).`);
 console.log(`   Dataset now has ${data.athletes.length} athletes across ${Object.keys(data.teams).length} teams.`);
 
